@@ -1,0 +1,174 @@
+/**
+ * Iqra Service Worker
+ * Versi Cache: v1.1.0
+ * Strategi:
+ * - App Shell & Offline: Cache-first
+ * - Halaman Navigasi: Network-first dengan fallback ke cache dan /offline.html
+ * - Static Assets (JS, CSS, Icons): Stale-While-Revalidate / Cache-First
+ * - Audio Qori: Range Request handler untuk Safari/iOS dari Cache Storage
+ */
+
+const CACHE_NAME = 'iqra-static-v1.2.0';
+const DATA_CACHE_NAME = 'iqra-data-v1.2.0';
+const AUDIO_CACHE_NAME = 'iqra-audio-cache-v1';
+
+const PRECACHE_ASSETS = [
+  '/',
+  '/manifest.webmanifest',
+  '/offline.html',
+  '/icons/icon-192.png',
+  '/icons/icon-512.png',
+  '/icons/icon-maskable.png',
+  '/icons/apple-touch-icon.png',
+  '/icons/favicon-32.png',
+  '/favicon.ico',
+];
+
+// Install: Precache App Shell
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(PRECACHE_ASSETS);
+    })
+  );
+});
+
+// Activate: Clean up old caches
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((keys) => {
+      return Promise.all(
+        keys.map((key) => {
+          if (key !== CACHE_NAME && key !== DATA_CACHE_NAME && key !== AUDIO_CACHE_NAME) {
+            return caches.delete(key);
+          }
+        })
+      );
+    }).then(() => self.clients.claim())
+  );
+});
+
+// Message listener for skipWaiting
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
+
+// Helper: Handle Range Request untuk Audio Safari / iOS
+async function handleRangeAudioRequest(request) {
+  const cache = await caches.open(AUDIO_CACHE_NAME);
+  const cachedResponse = await cache.match(request.url);
+
+  if (!cachedResponse) {
+    return fetch(request);
+  }
+
+  const rangeHeader = request.headers.get('range');
+  if (!rangeHeader) {
+    return cachedResponse;
+  }
+
+  const arrayBuffer = await cachedResponse.arrayBuffer();
+  const bytes = /^bytes\=(\d+)\-(\d+)?$/g.exec(rangeHeader);
+  if (bytes) {
+    const start = Number(bytes[1]);
+    const end = Number(bytes[2]) || arrayBuffer.byteLength - 1;
+    const sliced = arrayBuffer.slice(start, end + 1);
+
+    return new Response(sliced, {
+      status: 206,
+      statusText: 'Partial Content',
+      headers: [
+        ['Content-Type', cachedResponse.headers.get('Content-Type') || 'audio/mpeg'],
+        ['Content-Range', `bytes ${start}-${end}/${arrayBuffer.byteLength}`],
+        ['Content-Length', String(sliced.byteLength)],
+        ['Accept-Ranges', 'bytes'],
+      ],
+    });
+  }
+
+  return cachedResponse;
+}
+
+// Fetch: Strategy dispatcher
+self.addEventListener('fetch', (event) => {
+  const { request } = event;
+  const url = new URL(request.url);
+
+  // Skip non-GET requests
+  if (request.method !== 'GET') return;
+
+  // Handle Audio CDN requests (.mp3)
+  if (url.pathname.endsWith('.mp3')) {
+    event.respondWith(handleRangeAudioRequest(request));
+    return;
+  }
+
+  // Handle Navigation (HTML pages)
+  if (request.mode === 'navigate') {
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          if (response && response.status === 200) {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
+          }
+          return response;
+        })
+        .catch(async () => {
+          const cached = await caches.match(request);
+          if (cached) return cached;
+          return caches.match('/offline.html');
+        })
+    );
+    return;
+  }
+
+  // Handle public/data/ (JSON Content) -> Stale While Revalidate
+  if (url.origin === self.location.origin && url.pathname.startsWith('/data/')) {
+    event.respondWith(
+      caches.open(DATA_CACHE_NAME).then(async (cache) => {
+        const cachedResponse = await cache.match(request);
+        const networkPromise = fetch(request).then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            cache.put(request, networkResponse.clone());
+          }
+          return networkResponse;
+        }).catch(() => null);
+
+        return cachedResponse || networkPromise || caches.match('/offline.html');
+      })
+    );
+    return;
+  }
+
+  // Handle Static Assets (Next.js _next/static, icons, fonts)
+  if (
+    url.origin === self.location.origin &&
+    (url.pathname.startsWith('/_next/static/') ||
+      url.pathname.startsWith('/icons/') ||
+      url.pathname.endsWith('.woff2') ||
+      url.pathname.endsWith('.css') ||
+      url.pathname.endsWith('.js'))
+  ) {
+    event.respondWith(
+      caches.match(request).then((cached) => {
+        if (cached) return cached;
+        return fetch(request).then((response) => {
+          if (response && response.status === 200) {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
+          }
+          return response;
+        });
+      })
+    );
+    return;
+  }
+
+  // Default: Network with cache fallback
+  event.respondWith(
+    fetch(request).catch(() => caches.match(request))
+  );
+});

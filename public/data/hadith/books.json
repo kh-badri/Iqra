@@ -1,0 +1,22 @@
+[
+  {
+    "id": "bukhari",
+    "name": "Shahih Bukhari",
+    "arabicName": "صحيح البخاري",
+    "author": "Imam Abu Abdillah Muhammad bin Ismail Al-Bukhari",
+    "grade": "Shahih",
+    "totalChunks": 3,
+    "totalHadiths": 300,
+    "description": "Kitab hadits paling shahih setelah Al-Qur'an, memuat kumpulan sabda dan petunjuk Rasulullah ﷺ yang diriwayatkan dengan sanad muttashil bersambung."
+  },
+  {
+    "id": "muslim",
+    "name": "Shahih Muslim",
+    "arabicName": "صحيح مسلم",
+    "author": "Imam Abul Husain Muslim bin Al-Hajjaj An-Naisaburi",
+    "grade": "Shahih",
+    "totalChunks": 3,
+    "totalHadiths": 300,
+    "description": "Kitab hadits rujukan induk kedua kaum muslimin dengan sistematika penyusunan bab yang sangat rapi dan teliti oleh Imam Muslim."
+  }
+]

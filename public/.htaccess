@@ -1,0 +1,31 @@
+RewriteEngine On
+
+# Paksa HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Halaman 404 statis
+ErrorDocument 404 /404.html
+
+# MIME type untuk Web App Manifest
+AddType application/manifest+json .webmanifest
+
+# Cache Headers untuk aset statis
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# Cegah caching Service Worker, Manifest, dan Offline Shell
+<FilesMatch "^(sw\.js|manifest\.webmanifest|offline\.html)$">
+  Header set Cache-Control "no-cache, no-store, must-revalidate"
+  Header set Pragma "no-cache"
+  Header set Expires 0
+</FilesMatch>
+
+# Header Service-Worker-Allowed scope "/"
+<Files "sw.js">
+  Header set Service-Worker-Allowed "/"
+</Files>

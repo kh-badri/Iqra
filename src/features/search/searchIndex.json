@@ -1,0 +1,1487 @@
+[
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "1. Al-Fatihah",
+    "subtitle": "Pembukaan · 7 Ayat (Makkiyah)",
+    "arabic": "الفاتحة",
+    "keywords": "Al-Fatihah Pembukaan surat juz 1",
+    "href": "/quran/1/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "2. Al-Baqarah",
+    "subtitle": "Sapi · 286 Ayat (Madaniyah)",
+    "arabic": "البقرة",
+    "keywords": "Al-Baqarah Sapi surat juz 2",
+    "href": "/quran/2/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "3. Ali 'Imran",
+    "subtitle": "Keluarga Imran · 200 Ayat (Madaniyah)",
+    "arabic": "اٰل عمران",
+    "keywords": "Ali 'Imran Keluarga Imran surat juz 3",
+    "href": "/quran/3/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "4. An-Nisa'",
+    "subtitle": "Wanita · 176 Ayat (Madaniyah)",
+    "arabic": "النساۤء",
+    "keywords": "An-Nisa' Wanita surat juz 4",
+    "href": "/quran/4/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "5. Al-Ma'idah",
+    "subtitle": "Hidangan · 120 Ayat (Madaniyah)",
+    "arabic": "الماۤئدة",
+    "keywords": "Al-Ma'idah Hidangan surat juz 5",
+    "href": "/quran/5/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "6. Al-An'am",
+    "subtitle": "Binatang Ternak · 165 Ayat (Makkiyah)",
+    "arabic": "الانعام",
+    "keywords": "Al-An'am Binatang Ternak surat juz 6",
+    "href": "/quran/6/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "7. Al-A'raf",
+    "subtitle": "Tempat Tertinggi · 206 Ayat (Makkiyah)",
+    "arabic": "الاعراف",
+    "keywords": "Al-A'raf Tempat Tertinggi surat juz 7",
+    "href": "/quran/7/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "8. Al-Anfal",
+    "subtitle": "Rampasan Perang · 75 Ayat (Madaniyah)",
+    "arabic": "الانفال",
+    "keywords": "Al-Anfal Rampasan Perang surat juz 8",
+    "href": "/quran/8/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "9. At-Taubah",
+    "subtitle": "Pengampunan · 129 Ayat (Madaniyah)",
+    "arabic": "التوبة",
+    "keywords": "At-Taubah Pengampunan surat juz 9",
+    "href": "/quran/9/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "10. Yunus",
+    "subtitle": "Yunus · 109 Ayat (Makkiyah)",
+    "arabic": "يونس",
+    "keywords": "Yunus Yunus surat juz 10",
+    "href": "/quran/10/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "11. Hud",
+    "subtitle": "Hud · 123 Ayat (Makkiyah)",
+    "arabic": "هود",
+    "keywords": "Hud Hud surat juz 11",
+    "href": "/quran/11/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "12. Yusuf",
+    "subtitle": "Yusuf · 111 Ayat (Makkiyah)",
+    "arabic": "يوسف",
+    "keywords": "Yusuf Yusuf surat juz 12",
+    "href": "/quran/12/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "13. Ar-Ra'd",
+    "subtitle": "Guruh · 43 Ayat (Madaniyah)",
+    "arabic": "الرّعد",
+    "keywords": "Ar-Ra'd Guruh surat juz 13",
+    "href": "/quran/13/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "14. Ibrahim",
+    "subtitle": "Ibrahim · 52 Ayat (Makkiyah)",
+    "arabic": "ابرٰهيم",
+    "keywords": "Ibrahim Ibrahim surat juz 14",
+    "href": "/quran/14/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "15. Al-Hijr",
+    "subtitle": "Hijr · 99 Ayat (Makkiyah)",
+    "arabic": "الحجر",
+    "keywords": "Al-Hijr Hijr surat juz 15",
+    "href": "/quran/15/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "16. An-Nahl",
+    "subtitle": "Lebah · 128 Ayat (Makkiyah)",
+    "arabic": "النحل",
+    "keywords": "An-Nahl Lebah surat juz 16",
+    "href": "/quran/16/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "17. Al-Isra'",
+    "subtitle": "Memperjalankan Malam Hari · 111 Ayat (Makkiyah)",
+    "arabic": "الاسراۤء",
+    "keywords": "Al-Isra' Memperjalankan Malam Hari surat juz 17",
+    "href": "/quran/17/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "18. Al-Kahf",
+    "subtitle": "Goa · 110 Ayat (Makkiyah)",
+    "arabic": "الكهف",
+    "keywords": "Al-Kahf Goa surat juz 18",
+    "href": "/quran/18/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "19. Maryam",
+    "subtitle": "Maryam · 98 Ayat (Makkiyah)",
+    "arabic": "مريم",
+    "keywords": "Maryam Maryam surat juz 19",
+    "href": "/quran/19/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "20. Taha",
+    "subtitle": "Taha · 135 Ayat (Makkiyah)",
+    "arabic": "طٰهٰ",
+    "keywords": "Taha Taha surat juz 20",
+    "href": "/quran/20/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "21. Al-Anbiya'",
+    "subtitle": "Para Nabi · 112 Ayat (Makkiyah)",
+    "arabic": "الانبياۤء",
+    "keywords": "Al-Anbiya' Para Nabi surat juz 21",
+    "href": "/quran/21/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "22. Al-Hajj",
+    "subtitle": "Haji · 78 Ayat (Madaniyah)",
+    "arabic": "الحج",
+    "keywords": "Al-Hajj Haji surat juz 22",
+    "href": "/quran/22/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "23. Al-Mu'minun",
+    "subtitle": "Orang-Orang Mukmin · 118 Ayat (Makkiyah)",
+    "arabic": "المؤمنون",
+    "keywords": "Al-Mu'minun Orang-Orang Mukmin surat juz 23",
+    "href": "/quran/23/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "24. An-Nur",
+    "subtitle": "Cahaya · 64 Ayat (Madaniyah)",
+    "arabic": "النّور",
+    "keywords": "An-Nur Cahaya surat juz 24",
+    "href": "/quran/24/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "25. Al-Furqan",
+    "subtitle": "Pembeda · 77 Ayat (Makkiyah)",
+    "arabic": "الفرقان",
+    "keywords": "Al-Furqan Pembeda surat juz 25",
+    "href": "/quran/25/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "26. Asy-Syu'ara'",
+    "subtitle": "Para Penyair · 227 Ayat (Makkiyah)",
+    "arabic": "الشعراۤء",
+    "keywords": "Asy-Syu'ara' Para Penyair surat juz 26",
+    "href": "/quran/26/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "27. An-Naml",
+    "subtitle": "Semut-semut · 93 Ayat (Makkiyah)",
+    "arabic": "النمل",
+    "keywords": "An-Naml Semut-semut surat juz 27",
+    "href": "/quran/27/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "28. Al-Qasas",
+    "subtitle": "Kisah-Kisah · 88 Ayat (Makkiyah)",
+    "arabic": "القصص",
+    "keywords": "Al-Qasas Kisah-Kisah surat juz 28",
+    "href": "/quran/28/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "29. Al-'Ankabut",
+    "subtitle": "Laba-Laba · 69 Ayat (Makkiyah)",
+    "arabic": "العنكبوت",
+    "keywords": "Al-'Ankabut Laba-Laba surat juz 29",
+    "href": "/quran/29/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "30. Ar-Rum",
+    "subtitle": "Romawi · 60 Ayat (Makkiyah)",
+    "arabic": "الرّوم",
+    "keywords": "Ar-Rum Romawi surat juz 30",
+    "href": "/quran/30/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "31. Luqman",
+    "subtitle": "Luqman · 34 Ayat (Makkiyah)",
+    "arabic": "لقمٰن",
+    "keywords": "Luqman Luqman surat juz 31",
+    "href": "/quran/31/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "32. As-Sajdah",
+    "subtitle": "Sajdah · 30 Ayat (Makkiyah)",
+    "arabic": "السّجدة",
+    "keywords": "As-Sajdah Sajdah surat juz 32",
+    "href": "/quran/32/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "33. Al-Ahzab",
+    "subtitle": "Golongan Yang Bersekutu · 73 Ayat (Madaniyah)",
+    "arabic": "الاحزاب",
+    "keywords": "Al-Ahzab Golongan Yang Bersekutu surat juz 33",
+    "href": "/quran/33/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "34. Saba'",
+    "subtitle": "Saba' · 54 Ayat (Makkiyah)",
+    "arabic": "سبأ",
+    "keywords": "Saba' Saba' surat juz 34",
+    "href": "/quran/34/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "35. Fatir",
+    "subtitle": "Maha Pencipta · 45 Ayat (Makkiyah)",
+    "arabic": "فاطر",
+    "keywords": "Fatir Maha Pencipta surat juz 35",
+    "href": "/quran/35/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "36. Yasin",
+    "subtitle": "Yasin · 83 Ayat (Makkiyah)",
+    "arabic": "يٰسۤ",
+    "keywords": "Yasin Yasin surat juz 36",
+    "href": "/quran/36/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "37. As-Saffat",
+    "subtitle": "Barisan-Barisan · 182 Ayat (Makkiyah)",
+    "arabic": "الصّٰۤفّٰت",
+    "keywords": "As-Saffat Barisan-Barisan surat juz 37",
+    "href": "/quran/37/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "38. Sad",
+    "subtitle": "Sad · 88 Ayat (Makkiyah)",
+    "arabic": "ص",
+    "keywords": "Sad Sad surat juz 38",
+    "href": "/quran/38/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "39. Az-Zumar",
+    "subtitle": "Rombongan · 75 Ayat (Makkiyah)",
+    "arabic": "الزمر",
+    "keywords": "Az-Zumar Rombongan surat juz 39",
+    "href": "/quran/39/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "40. Ghafir",
+    "subtitle": "Maha Pengampun · 85 Ayat (Makkiyah)",
+    "arabic": "غافر",
+    "keywords": "Ghafir Maha Pengampun surat juz 40",
+    "href": "/quran/40/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "41. Fussilat",
+    "subtitle": "Yang Dijelaskan · 54 Ayat (Makkiyah)",
+    "arabic": "فصّلت",
+    "keywords": "Fussilat Yang Dijelaskan surat juz 41",
+    "href": "/quran/41/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "42. Asy-Syura",
+    "subtitle": "Musyawarah · 53 Ayat (Makkiyah)",
+    "arabic": "الشورى",
+    "keywords": "Asy-Syura Musyawarah surat juz 42",
+    "href": "/quran/42/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "43. Az-Zukhruf",
+    "subtitle": "Perhiasan · 89 Ayat (Makkiyah)",
+    "arabic": "الزخرف",
+    "keywords": "Az-Zukhruf Perhiasan surat juz 43",
+    "href": "/quran/43/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "44. Ad-Dukhan",
+    "subtitle": "Kabut · 59 Ayat (Makkiyah)",
+    "arabic": "الدخان",
+    "keywords": "Ad-Dukhan Kabut surat juz 44",
+    "href": "/quran/44/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "45. Al-Jasiyah",
+    "subtitle": "Berlutut · 37 Ayat (Makkiyah)",
+    "arabic": "الجاثية",
+    "keywords": "Al-Jasiyah Berlutut surat juz 45",
+    "href": "/quran/45/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "46. Al-Ahqaf",
+    "subtitle": "Bukit Pasir · 35 Ayat (Makkiyah)",
+    "arabic": "الاحقاف",
+    "keywords": "Al-Ahqaf Bukit Pasir surat juz 46",
+    "href": "/quran/46/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "47. Muhammad",
+    "subtitle": "Muhammad · 38 Ayat (Madaniyah)",
+    "arabic": "محمّد",
+    "keywords": "Muhammad Muhammad surat juz 47",
+    "href": "/quran/47/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "48. Al-Fath",
+    "subtitle": "Kemenangan · 29 Ayat (Madaniyah)",
+    "arabic": "الفتح",
+    "keywords": "Al-Fath Kemenangan surat juz 48",
+    "href": "/quran/48/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "49. Al-Hujurat",
+    "subtitle": "Kamar-Kamar · 18 Ayat (Madaniyah)",
+    "arabic": "الحجرٰت",
+    "keywords": "Al-Hujurat Kamar-Kamar surat juz 49",
+    "href": "/quran/49/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "50. Qaf",
+    "subtitle": "Qaf · 45 Ayat (Makkiyah)",
+    "arabic": "ق",
+    "keywords": "Qaf Qaf surat juz 50",
+    "href": "/quran/50/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "51. Az-Zariyat",
+    "subtitle": "Angin yang Menerbangkan · 60 Ayat (Makkiyah)",
+    "arabic": "الذّٰريٰت",
+    "keywords": "Az-Zariyat Angin yang Menerbangkan surat juz 51",
+    "href": "/quran/51/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "52. At-Tur",
+    "subtitle": "Bukit Tursina · 49 Ayat (Makkiyah)",
+    "arabic": "الطور",
+    "keywords": "At-Tur Bukit Tursina surat juz 52",
+    "href": "/quran/52/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "53. An-Najm",
+    "subtitle": "Bintang · 62 Ayat (Makkiyah)",
+    "arabic": "النجم",
+    "keywords": "An-Najm Bintang surat juz 53",
+    "href": "/quran/53/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "54. Al-Qamar",
+    "subtitle": "Bulan · 55 Ayat (Makkiyah)",
+    "arabic": "القمر",
+    "keywords": "Al-Qamar Bulan surat juz 54",
+    "href": "/quran/54/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "55. Ar-Rahman",
+    "subtitle": "Maha Pengasih · 78 Ayat (Madaniyah)",
+    "arabic": "الرحمن",
+    "keywords": "Ar-Rahman Maha Pengasih surat juz 55",
+    "href": "/quran/55/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "56. Al-Waqi'ah",
+    "subtitle": "Hari Kiamat · 96 Ayat (Makkiyah)",
+    "arabic": "الواقعة",
+    "keywords": "Al-Waqi'ah Hari Kiamat surat juz 56",
+    "href": "/quran/56/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "57. Al-Hadid",
+    "subtitle": "Besi · 29 Ayat (Madaniyah)",
+    "arabic": "الحديد",
+    "keywords": "Al-Hadid Besi surat juz 57",
+    "href": "/quran/57/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "58. Al-Mujadilah",
+    "subtitle": "Gugatan · 22 Ayat (Madaniyah)",
+    "arabic": "المجادلة",
+    "keywords": "Al-Mujadilah Gugatan surat juz 58",
+    "href": "/quran/58/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "59. Al-Hasyr",
+    "subtitle": "Pengusiran · 24 Ayat (Madaniyah)",
+    "arabic": "الحشر",
+    "keywords": "Al-Hasyr Pengusiran surat juz 59",
+    "href": "/quran/59/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "60. Al-Mumtahanah",
+    "subtitle": "Wanita Yang Diuji · 13 Ayat (Madaniyah)",
+    "arabic": "الممتحنة",
+    "keywords": "Al-Mumtahanah Wanita Yang Diuji surat juz 60",
+    "href": "/quran/60/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "61. As-Saff",
+    "subtitle": "Barisan · 14 Ayat (Madaniyah)",
+    "arabic": "الصّفّ",
+    "keywords": "As-Saff Barisan surat juz 61",
+    "href": "/quran/61/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "62. Al-Jumu'ah",
+    "subtitle": "Jumat · 11 Ayat (Madaniyah)",
+    "arabic": "الجمعة",
+    "keywords": "Al-Jumu'ah Jumat surat juz 62",
+    "href": "/quran/62/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "63. Al-Munafiqun",
+    "subtitle": "Orang-Orang Munafik · 11 Ayat (Madaniyah)",
+    "arabic": "المنٰفقون",
+    "keywords": "Al-Munafiqun Orang-Orang Munafik surat juz 63",
+    "href": "/quran/63/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "64. At-Tagabun",
+    "subtitle": "Pengungkapan Kesalahan · 18 Ayat (Madaniyah)",
+    "arabic": "التغابن",
+    "keywords": "At-Tagabun Pengungkapan Kesalahan surat juz 64",
+    "href": "/quran/64/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "65. At-Talaq",
+    "subtitle": "Talak · 12 Ayat (Madaniyah)",
+    "arabic": "الطلاق",
+    "keywords": "At-Talaq Talak surat juz 65",
+    "href": "/quran/65/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "66. At-Tahrim",
+    "subtitle": "Pengharaman · 12 Ayat (Madaniyah)",
+    "arabic": "التحريم",
+    "keywords": "At-Tahrim Pengharaman surat juz 66",
+    "href": "/quran/66/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "67. Al-Mulk",
+    "subtitle": "Kerajaan · 30 Ayat (Makkiyah)",
+    "arabic": "الملك",
+    "keywords": "Al-Mulk Kerajaan surat juz 67",
+    "href": "/quran/67/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "68. Al-Qalam",
+    "subtitle": "Pena · 52 Ayat (Makkiyah)",
+    "arabic": "القلم",
+    "keywords": "Al-Qalam Pena surat juz 68",
+    "href": "/quran/68/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "69. Al-Haqqah",
+    "subtitle": "Hari Kiamat · 52 Ayat (Makkiyah)",
+    "arabic": "الحاۤقّة",
+    "keywords": "Al-Haqqah Hari Kiamat surat juz 69",
+    "href": "/quran/69/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "70. Al-Ma'arij",
+    "subtitle": "Tempat Naik · 44 Ayat (Makkiyah)",
+    "arabic": "المعارج",
+    "keywords": "Al-Ma'arij Tempat Naik surat juz 70",
+    "href": "/quran/70/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "71. Nuh",
+    "subtitle": "Nuh · 28 Ayat (Makkiyah)",
+    "arabic": "نوح",
+    "keywords": "Nuh Nuh surat juz 71",
+    "href": "/quran/71/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "72. Al-Jinn",
+    "subtitle": "Jin · 28 Ayat (Makkiyah)",
+    "arabic": "الجن",
+    "keywords": "Al-Jinn Jin surat juz 72",
+    "href": "/quran/72/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "73. Al-Muzzammil",
+    "subtitle": "Orang Yang Berselimut · 20 Ayat (Makkiyah)",
+    "arabic": "المزّمّل",
+    "keywords": "Al-Muzzammil Orang Yang Berselimut surat juz 73",
+    "href": "/quran/73/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "74. Al-Muddassir",
+    "subtitle": "Orang Yang Berkemul · 56 Ayat (Makkiyah)",
+    "arabic": "المدّثّر",
+    "keywords": "Al-Muddassir Orang Yang Berkemul surat juz 74",
+    "href": "/quran/74/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "75. Al-Qiyamah",
+    "subtitle": "Hari Kiamat · 40 Ayat (Makkiyah)",
+    "arabic": "القيٰمة",
+    "keywords": "Al-Qiyamah Hari Kiamat surat juz 75",
+    "href": "/quran/75/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "76. Al-Insan",
+    "subtitle": "Manusia · 31 Ayat (Madaniyah)",
+    "arabic": "الانسان",
+    "keywords": "Al-Insan Manusia surat juz 76",
+    "href": "/quran/76/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "77. Al-Mursalat",
+    "subtitle": "Malaikat Yang Diutus · 50 Ayat (Makkiyah)",
+    "arabic": "المرسلٰت",
+    "keywords": "Al-Mursalat Malaikat Yang Diutus surat juz 77",
+    "href": "/quran/77/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "78. An-Naba'",
+    "subtitle": "Berita Besar · 40 Ayat (Makkiyah)",
+    "arabic": "النبأ",
+    "keywords": "An-Naba' Berita Besar surat juz 78",
+    "href": "/quran/78/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "79. An-Nazi'at",
+    "subtitle": "Malaikat Yang Mencabut · 46 Ayat (Makkiyah)",
+    "arabic": "النّٰزعٰت",
+    "keywords": "An-Nazi'at Malaikat Yang Mencabut surat juz 79",
+    "href": "/quran/79/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "80. 'Abasa",
+    "subtitle": "Bermuka Masam · 42 Ayat (Makkiyah)",
+    "arabic": "عبس",
+    "keywords": "'Abasa Bermuka Masam surat juz 80",
+    "href": "/quran/80/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "81. At-Takwir",
+    "subtitle": "Penggulungan · 29 Ayat (Makkiyah)",
+    "arabic": "التكوير",
+    "keywords": "At-Takwir Penggulungan surat juz 81",
+    "href": "/quran/81/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "82. Al-Infitar",
+    "subtitle": "Terbelah · 19 Ayat (Makkiyah)",
+    "arabic": "الانفطار",
+    "keywords": "Al-Infitar Terbelah surat juz 82",
+    "href": "/quran/82/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "83. Al-Mutaffifin",
+    "subtitle": "Orang-Orang Curang · 36 Ayat (Makkiyah)",
+    "arabic": "المطفّفين",
+    "keywords": "Al-Mutaffifin Orang-Orang Curang surat juz 83",
+    "href": "/quran/83/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "84. Al-Insyiqaq",
+    "subtitle": "Terbelah · 25 Ayat (Makkiyah)",
+    "arabic": "الانشقاق",
+    "keywords": "Al-Insyiqaq Terbelah surat juz 84",
+    "href": "/quran/84/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "85. Al-Buruj",
+    "subtitle": "Gugusan Bintang · 22 Ayat (Makkiyah)",
+    "arabic": "البروج",
+    "keywords": "Al-Buruj Gugusan Bintang surat juz 85",
+    "href": "/quran/85/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "86. At-Tariq",
+    "subtitle": "Yang Datang Di Malam Hari · 17 Ayat (Makkiyah)",
+    "arabic": "الطارق",
+    "keywords": "At-Tariq Yang Datang Di Malam Hari surat juz 86",
+    "href": "/quran/86/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "87. Al-A'la",
+    "subtitle": "Maha Tinggi · 19 Ayat (Makkiyah)",
+    "arabic": "الاعلى",
+    "keywords": "Al-A'la Maha Tinggi surat juz 87",
+    "href": "/quran/87/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "88. Al-Gasyiyah",
+    "subtitle": "Hari Kiamat · 26 Ayat (Makkiyah)",
+    "arabic": "الغاشية",
+    "keywords": "Al-Gasyiyah Hari Kiamat surat juz 88",
+    "href": "/quran/88/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "89. Al-Fajr",
+    "subtitle": "Fajar · 30 Ayat (Makkiyah)",
+    "arabic": "الفجر",
+    "keywords": "Al-Fajr Fajar surat juz 89",
+    "href": "/quran/89/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "90. Al-Balad",
+    "subtitle": "Negeri · 20 Ayat (Makkiyah)",
+    "arabic": "البلد",
+    "keywords": "Al-Balad Negeri surat juz 90",
+    "href": "/quran/90/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "91. Asy-Syams",
+    "subtitle": "Matahari · 15 Ayat (Makkiyah)",
+    "arabic": "الشمس",
+    "keywords": "Asy-Syams Matahari surat juz 91",
+    "href": "/quran/91/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "92. Al-Lail",
+    "subtitle": "Malam · 21 Ayat (Makkiyah)",
+    "arabic": "الّيل",
+    "keywords": "Al-Lail Malam surat juz 92",
+    "href": "/quran/92/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "93. Ad-Duha",
+    "subtitle": "Duha · 11 Ayat (Makkiyah)",
+    "arabic": "الضحى",
+    "keywords": "Ad-Duha Duha surat juz 93",
+    "href": "/quran/93/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "94. Al-Insyirah",
+    "subtitle": "Lapang · 8 Ayat (Makkiyah)",
+    "arabic": "الشرح",
+    "keywords": "Al-Insyirah Lapang surat juz 94",
+    "href": "/quran/94/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "95. At-Tin",
+    "subtitle": "Buah Tin · 8 Ayat (Makkiyah)",
+    "arabic": "التين",
+    "keywords": "At-Tin Buah Tin surat juz 95",
+    "href": "/quran/95/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "96. Al-'Alaq",
+    "subtitle": "Segumpal Darah · 19 Ayat (Makkiyah)",
+    "arabic": "العلق",
+    "keywords": "Al-'Alaq Segumpal Darah surat juz 96",
+    "href": "/quran/96/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "97. Al-Qadr",
+    "subtitle": "Kemuliaan · 5 Ayat (Makkiyah)",
+    "arabic": "القدر",
+    "keywords": "Al-Qadr Kemuliaan surat juz 97",
+    "href": "/quran/97/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "98. Al-Bayyinah",
+    "subtitle": "Bukti Nyata · 8 Ayat (Madaniyah)",
+    "arabic": "البيّنة",
+    "keywords": "Al-Bayyinah Bukti Nyata surat juz 98",
+    "href": "/quran/98/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "99. Az-Zalzalah",
+    "subtitle": "Guncangan · 8 Ayat (Madaniyah)",
+    "arabic": "الزلزلة",
+    "keywords": "Az-Zalzalah Guncangan surat juz 99",
+    "href": "/quran/99/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "100. Al-'Adiyat",
+    "subtitle": "Kuda Yang Berlari Kencang · 11 Ayat (Makkiyah)",
+    "arabic": "العٰديٰت",
+    "keywords": "Al-'Adiyat Kuda Yang Berlari Kencang surat juz 100",
+    "href": "/quran/100/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "101. Al-Qari'ah",
+    "subtitle": "Hari Kiamat · 11 Ayat (Makkiyah)",
+    "arabic": "القارعة",
+    "keywords": "Al-Qari'ah Hari Kiamat surat juz 101",
+    "href": "/quran/101/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "102. At-Takasur",
+    "subtitle": "Bermegah-Megahan · 8 Ayat (Makkiyah)",
+    "arabic": "التكاثر",
+    "keywords": "At-Takasur Bermegah-Megahan surat juz 102",
+    "href": "/quran/102/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "103. Al-'Asr",
+    "subtitle": "Masa · 3 Ayat (Makkiyah)",
+    "arabic": "العصر",
+    "keywords": "Al-'Asr Masa surat juz 103",
+    "href": "/quran/103/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "104. Al-Humazah",
+    "subtitle": "Pengumpat · 9 Ayat (Makkiyah)",
+    "arabic": "الهمزة",
+    "keywords": "Al-Humazah Pengumpat surat juz 104",
+    "href": "/quran/104/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "105. Al-Fil",
+    "subtitle": "Gajah · 5 Ayat (Makkiyah)",
+    "arabic": "الفيل",
+    "keywords": "Al-Fil Gajah surat juz 105",
+    "href": "/quran/105/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "106. Quraisy",
+    "subtitle": "Quraisy · 4 Ayat (Makkiyah)",
+    "arabic": "قريش",
+    "keywords": "Quraisy Quraisy surat juz 106",
+    "href": "/quran/106/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "107. Al-Ma'un",
+    "subtitle": "Barang Yang Berguna · 7 Ayat (Makkiyah)",
+    "arabic": "الماعون",
+    "keywords": "Al-Ma'un Barang Yang Berguna surat juz 107",
+    "href": "/quran/107/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "108. Al-Kausar",
+    "subtitle": "Pemberian Yang Banyak · 3 Ayat (Makkiyah)",
+    "arabic": "الكوثر",
+    "keywords": "Al-Kausar Pemberian Yang Banyak surat juz 108",
+    "href": "/quran/108/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "109. Al-Kafirun",
+    "subtitle": "Orang-Orang kafir · 6 Ayat (Makkiyah)",
+    "arabic": "الكٰفرون",
+    "keywords": "Al-Kafirun Orang-Orang kafir surat juz 109",
+    "href": "/quran/109/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "110. An-Nasr",
+    "subtitle": "Pertolongan · 3 Ayat (Madaniyah)",
+    "arabic": "النصر",
+    "keywords": "An-Nasr Pertolongan surat juz 110",
+    "href": "/quran/110/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "111. Al-Lahab",
+    "subtitle": "Api Yang Bergejolak · 5 Ayat (Makkiyah)",
+    "arabic": "اللهب",
+    "keywords": "Al-Lahab Api Yang Bergejolak surat juz 111",
+    "href": "/quran/111/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "112. Al-Ikhlas",
+    "subtitle": "Ikhlas · 4 Ayat (Makkiyah)",
+    "arabic": "الاخلاص",
+    "keywords": "Al-Ikhlas Ikhlas surat juz 112",
+    "href": "/quran/112/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "113. Al-Falaq",
+    "subtitle": "Subuh · 5 Ayat (Madaniyah)",
+    "arabic": "الفلق",
+    "keywords": "Al-Falaq Subuh surat juz 113",
+    "href": "/quran/113/"
+  },
+  {
+    "type": "surah",
+    "badge": "Al-Qur'an",
+    "title": "114. An-Nas",
+    "subtitle": "Manusia · 6 Ayat (Madaniyah)",
+    "arabic": "الناس",
+    "keywords": "An-Nas Manusia surat juz 114",
+    "href": "/quran/114/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "1. Kisah Singkat Nabi Adam AS",
+    "subtitle": "Manusia pertama yang diciptakan Allah SWT dari tanah sebagai khalifah di bumi, bapak ...",
+    "arabic": "آدم عليه السلام",
+    "keywords": "kisah singkat Nabi Adam AS nabi rasul 1 Masa Awal Manusia",
+    "href": "/kisah-nabi/adam/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "2. Kisah Singkat Nabi Idris AS",
+    "subtitle": "Nabi yang dikenal sangat jujur, tekun belajar, nabi pertama yang menulis dengan pena,...",
+    "arabic": "إدريس عليه السلام",
+    "keywords": "kisah singkat Nabi Idris AS nabi rasul 2 ± 4533 - 4188 SM",
+    "href": "/kisah-nabi/idris/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "3. Kisah Singkat Nabi Nuh AS",
+    "subtitle": "Salah satu rasul Ulul Azmi yang berdakwah tanpa kenal lelah selama 950 tahun, membina...",
+    "arabic": "نوح عليه السلام",
+    "keywords": "kisah singkat Nabi Nuh AS nabi rasul 3 ± 3993 - 3043 SM",
+    "href": "/kisah-nabi/nuh/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "4. Kisah Singkat Nabi Hud AS",
+    "subtitle": "Nabi yang diutus kepada kaum 'Ad yang bertubuh raksasa dan ahli membangun menara mega...",
+    "arabic": "هود عليه السلام",
+    "keywords": "kisah singkat Nabi Hud AS nabi rasul 4 ± 2450 - 2320 SM",
+    "href": "/kisah-nabi/hud/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "5. Kisah Singkat Nabi Shalih AS",
+    "subtitle": "Nabi yang diutus kepada kaum Tsamud pemahat gunung batu, yang dianugerahi mukjizat un...",
+    "arabic": "صالح عليه السلام",
+    "keywords": "kisah singkat Nabi Shalih AS nabi rasul 5 ± 2150 - 2080 SM",
+    "href": "/kisah-nabi/shalih/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "6. Kisah Singkat Nabi Ibrahim AS",
+    "subtitle": "Bapak para nabi (Khalilullah) dan rasul Ulul Azmi yang meruntuhkan berhala Raja Namru...",
+    "arabic": "إبراهيم عليه السلام",
+    "keywords": "kisah singkat Nabi Ibrahim AS nabi rasul 6 ± 1997 - 1822 SM",
+    "href": "/kisah-nabi/ibrahim/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "7. Kisah Singkat Nabi Luth AS",
+    "subtitle": "Keponakan Nabi Ibrahim yang diutus membimbing kaum Sodom yang melakukan perbuatan kej...",
+    "arabic": "لوط عليه السلام",
+    "keywords": "kisah singkat Nabi Luth AS nabi rasul 7 ± 1950 - 1870 SM",
+    "href": "/kisah-nabi/luth/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "8. Kisah Singkat Nabi Ismail AS",
+    "subtitle": "Putra sulung Nabi Ibrahim yang sabar dan taat, asal mula memancarnya sumur Zamzam, re...",
+    "arabic": "إسماعيل عليه السلام",
+    "keywords": "kisah singkat Nabi Ismail AS nabi rasul 8 ± 1910 - 1773 SM",
+    "href": "/kisah-nabi/ismail/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "9. Kisah Singkat Nabi Ishaq AS",
+    "subtitle": "Putra kedua Nabi Ibrahim dari Siti Sarah yang kelahirannya dikabarkan oleh para malai...",
+    "arabic": "إسحاق عليه السلام",
+    "keywords": "kisah singkat Nabi Ishaq AS nabi rasul 9 ± 1897 - 1717 SM",
+    "href": "/kisah-nabi/ishaq/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "10. Kisah Singkat Nabi Ya'qub AS",
+    "subtitle": "Putra Nabi Ishaq yang bergelar \"Israil\" (hamba Allah), ayah dari 12 putra termasuk Na...",
+    "arabic": "يعقوب عليه السلام",
+    "keywords": "kisah singkat Nabi Ya'qub AS nabi rasul 10 ± 1837 - 1690 SM",
+    "href": "/kisah-nabi/yaqub/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "11. Kisah Singkat Nabi Yusuf AS",
+    "subtitle": "Nabi yang dikaruniai separuh ketampanan dunia dan kemampuan menakwilkan mimpi; kisahn...",
+    "arabic": "يوسف عليه السلام",
+    "keywords": "kisah singkat Nabi Yusuf AS nabi rasul 11 ± 1745 - 1635 SM",
+    "href": "/kisah-nabi/yusuf/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "12. Kisah Singkat Nabi Ayyub AS",
+    "subtitle": "Simbol kesabaran tiada tara yang diuji dengan lenyapnya seluruh harta kekayaan, wafat...",
+    "arabic": "أيوب عليه السلام",
+    "keywords": "kisah singkat Nabi Ayyub AS nabi rasul 12 ± 1540 - 1420 SM",
+    "href": "/kisah-nabi/ayyub/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "13. Kisah Singkat Nabi Syu'aib AS",
+    "subtitle": "Nabi yang bergelar \"Khatibul Anbiya'\" (Juru Bicara Para Nabi) karena kefasihan tutur ...",
+    "arabic": "شعيب عليه السلام",
+    "keywords": "kisah singkat Nabi Syu'aib AS nabi rasul 13 ± 1600 - 1500 SM",
+    "href": "/kisah-nabi/syuaib/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "14. Kisah Singkat Nabi Musa AS",
+    "subtitle": "Rasul agung Ulul Azmi bergelar Kalimullah yang diajak bicara langsung oleh Allah; nab...",
+    "arabic": "موسى عليه السلام",
+    "keywords": "kisah singkat Nabi Musa AS nabi rasul 14 ± 1527 - 1407 SM",
+    "href": "/kisah-nabi/musa/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "15. Kisah Singkat Nabi Harun AS",
+    "subtitle": "Kakak kandung Nabi Musa yang berucap fasih, berhati lembut, diangkat menjadi nabi ata...",
+    "arabic": "هارون عليه السلام",
+    "keywords": "kisah singkat Nabi Harun AS nabi rasul 15 ± 1530 - 1408 SM",
+    "href": "/kisah-nabi/harun/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "16. Kisah Singkat Nabi Dzulkifli AS",
+    "subtitle": "Nabi yang bergelar \"Pemilik Kesanggupan\" karena selalu menepati janji: berpuasa di si...",
+    "arabic": "ذو الكفل عليه السلام",
+    "keywords": "kisah singkat Nabi Dzulkifli AS nabi rasul 16 ± 1500 - 1425 SM",
+    "href": "/kisah-nabi/dzulkifli/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "17. Kisah Singkat Nabi Dawud AS",
+    "subtitle": "Raja agung sekaligus nabi penerima Kitab Zabur; pemuda yang menewaskan raksasa Jalut,...",
+    "arabic": "داود عليه السلام",
+    "keywords": "kisah singkat Nabi Dawud AS nabi rasul 17 ± 1043 - 973 SM",
+    "href": "/kisah-nabi/dawud/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "18. Kisah Singkat Nabi Sulaiman AS",
+    "subtitle": "Putra Nabi Dawud yang mewarisi kerajaan termegah sepanjang sejarah; memahami bahasa h...",
+    "arabic": "سليمان عليه السلام",
+    "keywords": "kisah singkat Nabi Sulaiman AS nabi rasul 18 ± 985 - 932 SM",
+    "href": "/kisah-nabi/sulaiman/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "19. Kisah Singkat Nabi Ilyas AS",
+    "subtitle": "Nabi yang diutus kepada penduduk Ba'labak yang menyembah berhala raksasa bernama Ba'a...",
+    "arabic": "إلياس عليه السلام",
+    "keywords": "kisah singkat Nabi Ilyas AS nabi rasul 19 ± 910 - 850 SM",
+    "href": "/kisah-nabi/ilyas/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "20. Kisah Singkat Nabi Ilyasa' AS",
+    "subtitle": "Sahabat setia dan penerus Nabi Ilyas yang melanjutkan dakwah tauhid kepada Bani Israi...",
+    "arabic": "اليسع عليه السلام",
+    "keywords": "kisah singkat Nabi Ilyasa' AS nabi rasul 20 ± 885 - 795 SM",
+    "href": "/kisah-nabi/ilyasa/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "21. Kisah Singkat Nabi Yunus AS",
+    "subtitle": "Nabi yang bergelar \"Dzan-Nun\" (pemilik ikan nun); sempat meninggalkan kaumnya dalam k...",
+    "arabic": "يونس عليه السلام",
+    "keywords": "kisah singkat Nabi Yunus AS nabi rasul 21 ± 820 - 750 SM",
+    "href": "/kisah-nabi/yunus/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "22. Kisah Singkat Nabi Zakariya AS",
+    "subtitle": "Nabi yang mengasuh Maryam binti Imran di mihrab Baitul Maqdis; teladan ketulusan doa ...",
+    "arabic": "زكريا عليه السلام",
+    "keywords": "kisah singkat Nabi Zakariya AS nabi rasul 22 ± 100 SM - 20 M",
+    "href": "/kisah-nabi/zakariya/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "23. Kisah Singkat Nabi Yahya AS",
+    "subtitle": "Putra Nabi Zakariya yang dianugerahi hikmah kenabian sejak usia kanak-kanak, berhati ...",
+    "arabic": "يحيى عليه السلام",
+    "keywords": "kisah singkat Nabi Yahya AS nabi rasul 23 ± 1 SM - 32 M",
+    "href": "/kisah-nabi/yahya/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "24. Kisah Singkat Nabi Isa AS",
+    "subtitle": "Rasul Ulul Azmi penerima Kitab Injil yang lahir tanpa ayah dari wanita suci Maryam bi...",
+    "arabic": "عيسى عليه السلام",
+    "keywords": "kisah singkat Nabi Isa AS nabi rasul 24 ± 1 M - 33 M",
+    "href": "/kisah-nabi/isa/"
+  },
+  {
+    "type": "prophet",
+    "badge": "Kisah Singkat",
+    "title": "25. Kisah Singkat Nabi Muhammad ﷺ",
+    "subtitle": "Khatamun Anbiya' (Penutup Para Nabi), pemimpin para rasul Ulul Azmi, dan rahmat bagi ...",
+    "arabic": "محمد صلى الله عليه وسلم",
+    "keywords": "kisah singkat Nabi Muhammad ﷺ nabi rasul 25 571 - 632 M (12 Rabiul Awal 53 SH - 11 H)",
+    "href": "/kisah-nabi/muhammad/"
+  },
+  {
+    "type": "tajwid",
+    "badge": "Tajwid",
+    "title": "Pengantar Makharijul Huruf",
+    "subtitle": "Makharijul Huruf · Level 1",
+    "arabic": "مخارج الحروف العامة",
+    "keywords": "Pengantar Makharijul Huruf Makharijul Huruf hukum bacaan tajwid level 1",
+    "href": "/tajwid/pengantar-makharijul-huruf/"
+  },
+  {
+    "type": "tajwid",
+    "badge": "Tajwid",
+    "title": "Makhraj Al-Halq & Asy-Syafatain",
+    "subtitle": "Makharijul Huruf · Level 1",
+    "arabic": "مخارج الحلق والشفتين",
+    "keywords": "Makhraj Al-Halq & Asy-Syafatain Makharijul Huruf hukum bacaan tajwid level 1",
+    "href": "/tajwid/makhraj-halq-dan-syafatain/"
+  },
+  {
+    "type": "tajwid",
+    "badge": "Tajwid",
+    "title": "Makhraj Al-Lisan (Lidah)",
+    "subtitle": "Makharijul Huruf · Level 1",
+    "arabic": "مخارج اللسان",
+    "keywords": "Makhraj Al-Lisan (Lidah) Makharijul Huruf hukum bacaan tajwid level 1",
+    "href": "/tajwid/makhraj-al-lisan/"
+  },
+  {
+    "type": "tajwid",
+    "badge": "Tajwid",
+    "title": "Sifat-Sifat Huruf Dasar",
+    "subtitle": "Sifat Huruf · Level 1",
+    "arabic": "صفات الحروف الأساسية",
+    "keywords": "Sifat-Sifat Huruf Dasar Sifat Huruf hukum bacaan tajwid level 1",
+    "href": "/tajwid/sifat-huruf-dasar/"
+  },
+  {
+    "type": "tajwid",
+    "badge": "Tajwid",
+    "title": "Hukum Izhar Halqi",
+    "subtitle": "Hukum Nun Sukun & Tanwin · Level 2",
+    "arabic": "الإظهار الحلقي",
+    "keywords": "Hukum Izhar Halqi Hukum Nun Sukun & Tanwin hukum bacaan tajwid level 2",
+    "href": "/tajwid/izhar-halqi/"
+  },
+  {
+    "type": "tajwid",
+    "badge": "Tajwid",
+    "title": "Hukum Idgham Bighunnah",
+    "subtitle": "Hukum Nun Sukun & Tanwin · Level 2",
+    "arabic": "الإدغام بغنة",
+    "keywords": "Hukum Idgham Bighunnah Hukum Nun Sukun & Tanwin hukum bacaan tajwid level 2",
+    "href": "/tajwid/idgham-bighunnah/"
+  },
+  {
+    "type": "tajwid",
+    "badge": "Tajwid",
+    "title": "Hukum Idgham Bilaghunnah",
+    "subtitle": "Hukum Nun Sukun & Tanwin · Level 2",
+    "arabic": "الإدغام بغير غنة",
+    "keywords": "Hukum Idgham Bilaghunnah Hukum Nun Sukun & Tanwin hukum bacaan tajwid level 2",
+    "href": "/tajwid/idgham-bilaghunnah/"
+  },
+  {
+    "type": "tajwid",
+    "badge": "Tajwid",
+    "title": "Hukum Iqlab",
+    "subtitle": "Hukum Nun Sukun & Tanwin · Level 2",
+    "arabic": "الإقلاب",
+    "keywords": "Hukum Iqlab Hukum Nun Sukun & Tanwin hukum bacaan tajwid level 2",
+    "href": "/tajwid/iqlab/"
+  },
+  {
+    "type": "tajwid",
+    "badge": "Tajwid",
+    "title": "Hukum Ikhfa Haqiqi",
+    "subtitle": "Hukum Nun Sukun & Tanwin · Level 2",
+    "arabic": "الإخفاء الحقيقي",
+    "keywords": "Hukum Ikhfa Haqiqi Hukum Nun Sukun & Tanwin hukum bacaan tajwid level 2",
+    "href": "/tajwid/ikhfa-haqiqi/"
+  },
+  {
+    "type": "tajwid",
+    "badge": "Tajwid",
+    "title": "Hukum Ikhfa Syafawi",
+    "subtitle": "Hukum Mim Sukun · Level 3",
+    "arabic": "الإخفاء الشفوي",
+    "keywords": "Hukum Ikhfa Syafawi Hukum Mim Sukun hukum bacaan tajwid level 3",
+    "href": "/tajwid/ikhfa-syafawi/"
+  },
+  {
+    "type": "tajwid",
+    "badge": "Tajwid",
+    "title": "Hukum Idgham Mimi (Mutamatsilain)",
+    "subtitle": "Hukum Mim Sukun · Level 3",
+    "arabic": "إدغام المتماثلين / الميمي",
+    "keywords": "Hukum Idgham Mimi (Mutamatsilain) Hukum Mim Sukun hukum bacaan tajwid level 3",
+    "href": "/tajwid/idgham-mimi/"
+  },
+  {
+    "type": "tajwid",
+    "badge": "Tajwid",
+    "title": "Hukum Izhar Syafawi",
+    "subtitle": "Hukum Mim Sukun · Level 3",
+    "arabic": "الإظهار الشفوي",
+    "keywords": "Hukum Izhar Syafawi Hukum Mim Sukun hukum bacaan tajwid level 3",
+    "href": "/tajwid/izhar-syafawi/"
+  },
+  {
+    "type": "tajwid",
+    "badge": "Tajwid",
+    "title": "Hukum Mad Thabi'i (Mad Asli)",
+    "subtitle": "Hukum Mad · Level 4",
+    "arabic": "المد الطبيعي / الأصلي",
+    "keywords": "Hukum Mad Thabi'i (Mad Asli) Hukum Mad hukum bacaan tajwid level 4",
+    "href": "/tajwid/mad-thabii/"
+  },
+  {
+    "type": "tajwid",
+    "badge": "Tajwid",
+    "title": "Hukum Mad Wajib Muttashil",
+    "subtitle": "Hukum Mad · Level 4",
+    "arabic": "المد الواجب المتصل",
+    "keywords": "Hukum Mad Wajib Muttashil Hukum Mad hukum bacaan tajwid level 4",
+    "href": "/tajwid/mad-wajib-muttashil/"
+  },
+  {
+    "type": "tajwid",
+    "badge": "Tajwid",
+    "title": "Hukum Mad Jaiz Munfashil",
+    "subtitle": "Hukum Mad · Level 4",
+    "arabic": "المد الجائز المنفصل",
+    "keywords": "Hukum Mad Jaiz Munfashil Hukum Mad hukum bacaan tajwid level 4",
+    "href": "/tajwid/mad-jaiz-munfashil/"
+  },
+  {
+    "type": "tajwid",
+    "badge": "Tajwid",
+    "title": "Mad 'Aridh Lissukun & Mad Lin",
+    "subtitle": "Hukum Mad · Level 4",
+    "arabic": "المد العارض للسكون ومد اللين",
+    "keywords": "Mad 'Aridh Lissukun & Mad Lin Hukum Mad hukum bacaan tajwid level 4",
+    "href": "/tajwid/mad-aridh-lissukun-dan-lin/"
+  },
+  {
+    "type": "tajwid",
+    "badge": "Tajwid",
+    "title": "Hukum Mad Lazim (Mutsaqqal & Mukhaffaf)",
+    "subtitle": "Hukum Mad · Level 4",
+    "arabic": "المد اللازم (المثقل والمخفف)",
+    "keywords": "Hukum Mad Lazim (Mutsaqqal & Mukhaffaf) Hukum Mad hukum bacaan tajwid level 4",
+    "href": "/tajwid/mad-lazim/"
+  },
+  {
+    "type": "tajwid",
+    "badge": "Tajwid",
+    "title": "Mad Badal & Mad 'Iwadh",
+    "subtitle": "Hukum Mad · Level 4",
+    "arabic": "مد البدل ومد العوض",
+    "keywords": "Mad Badal & Mad 'Iwadh Hukum Mad hukum bacaan tajwid level 4",
+    "href": "/tajwid/mad-badal-dan-iwadh/"
+  },
+  {
+    "type": "tajwid",
+    "badge": "Tajwid",
+    "title": "Hukum Qalqalah (Sughra & Kubra)",
+    "subtitle": "Qalqalah & Ghunnah · Level 5",
+    "arabic": "أحكام القلقلة (الصغرى والكبرى)",
+    "keywords": "Hukum Qalqalah (Sughra & Kubra) Qalqalah & Ghunnah hukum bacaan tajwid level 5",
+    "href": "/tajwid/hukum-qalqalah/"
+  },
+  {
+    "type": "tajwid",
+    "badge": "Tajwid",
+    "title": "Ghunnah Musyaddadah",
+    "subtitle": "Qalqalah & Ghunnah · Level 5",
+    "arabic": "الغنة المشددة",
+    "keywords": "Ghunnah Musyaddadah Qalqalah & Ghunnah hukum bacaan tajwid level 5",
+    "href": "/tajwid/ghunnah-musyaddadah/"
+  },
+  {
+    "type": "tajwid",
+    "badge": "Tajwid",
+    "title": "Hukum Lam Jalalah & Hukum Ra",
+    "subtitle": "Tafkhim & Tarqiq · Level 5",
+    "arabic": "أحكام لام الجلالة وحرف الراء",
+    "keywords": "Hukum Lam Jalalah & Hukum Ra Tafkhim & Tarqiq hukum bacaan tajwid level 5",
+    "href": "/tajwid/hukum-lam-jalalah-dan-ra/"
+  },
+  {
+    "type": "tajwid",
+    "badge": "Tajwid",
+    "title": "Tanda Waqaf & Ibtida' Standar Kemenag",
+    "subtitle": "Waqaf & Ibtida' · Level 5",
+    "arabic": "علامات الوقف والابتداء",
+    "keywords": "Tanda Waqaf & Ibtida' Standar Kemenag Waqaf & Ibtida' hukum bacaan tajwid level 5",
+    "href": "/tajwid/tanda-waqaf-dan-ibtida/"
+  },
+  {
+    "type": "hadith",
+    "badge": "Hadits",
+    "title": "Kitab Shahih Al-Bukhari",
+    "subtitle": "Koleksi hadits shahih terlengkap disusun Imam Al-Bukhari",
+    "arabic": "صحيح البخاري",
+    "keywords": "shahih bukhari hadis hadits bukhory imam bukhari",
+    "href": "/hadits/baca/?kitab=bukhari"
+  },
+  {
+    "type": "hadith",
+    "badge": "Hadits",
+    "title": "Kitab Shahih Muslim",
+    "subtitle": "Koleksi hadits shahih bersanad kuat disusun Imam Muslim",
+    "arabic": "صحيح مسلم",
+    "keywords": "shahih muslim hadis hadits moslem imam muslim",
+    "href": "/hadits/baca/?kitab=muslim"
+  },
+  {
+    "type": "hadith",
+    "badge": "Hadits",
+    "title": "Hadits: Niat & Keikhlasan",
+    "subtitle": "Innamal a'maalu bin niyyaat - Bukhari No. 1",
+    "arabic": "إنما الأعمال بالنيات",
+    "keywords": "niat ikhlas hadits pertama bukhari 1 amal perbuatan",
+    "href": "/hadits/baca/?kitab=bukhari&no=1"
+  },
+  {
+    "type": "hadith",
+    "badge": "Hadits",
+    "title": "Hadits: Rukun Islam & Iman",
+    "subtitle": "Hadits Jibril AS mengenai Islam, Iman, dan Ihsan - Muslim No. 1",
+    "arabic": "حديث جبريل عليه السلام",
+    "keywords": "rukun islam rukun iman ihsan hadits jibril muslim 1",
+    "href": "/hadits/baca/?kitab=muslim&no=1"
+  }
+]

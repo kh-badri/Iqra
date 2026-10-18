@@ -1,0 +1,201 @@
+/**
+ * Konfigurasi & Kamus i18n Dasar Iqra
+ * Default: Bahasa Indonesia (id)
+ * Disiapkan untuk ekspansi ke Bahasa Inggris (en) dan Bahasa Arab (ar)
+ */
+
+export type Locale = 'id' | 'en' | 'ar';
+
+export const defaultLocale: Locale = 'id';
+
+export const locales: { code: Locale; name: string; dir: 'ltr' | 'rtl' }[] = [
+  { code: 'id', name: 'Bahasa Indonesia', dir: 'ltr' },
+  { code: 'en', name: 'English', dir: 'ltr' },
+  { code: 'ar', name: 'العربية', dir: 'rtl' },
+];
+
+export const dictionaries = {
+  id: {
+    app: {
+      name: 'Iqra',
+      tagline: 'Aplikasi Belajar Agama Islam',
+      description: 'Membaca Al-Qur\'an, hadits, jadwal sholat, masjid terdekat, kajian, kisah nabi, dan tajwid.',
+    },
+    nav: {
+      home: 'Beranda',
+      quran: 'Al-Qur\'an',
+      learn: 'Belajar',
+      prayer: 'Sholat',
+      more: 'Lainnya',
+    },
+    common: {
+      loading: 'Memuat...',
+      error: 'Terjadi kesalahan',
+      retry: 'Coba Lagi',
+      empty: 'Belum ada data',
+      search: 'Cari...',
+      back: 'Kembali',
+      close: 'Tutup',
+      save: 'Simpan',
+      share: 'Bagikan',
+      copy: 'Salin',
+      copied: 'Berhasil disalin!',
+      bookmark: 'Bookmark',
+      bookmarked: 'Tersimpan di bookmark',
+      play: 'Putar',
+      pause: 'Jeda',
+      install: 'Install App',
+      settings: 'Pengaturan',
+      about: 'Tentang & Sumber',
+      offline: 'Anda sedang offline. Beberapa konten tetap bisa dibaca dari cache.',
+    },
+    home: {
+      greetingMorning: 'Selamat Pagi',
+      greetingAfternoon: 'Selamat Siang',
+      greetingEvening: 'Selamat Sore',
+      greetingNight: 'Selamat Malam',
+      nextPrayer: 'Sholat Berikutnya',
+      continueReading: 'Lanjutkan Membaca',
+      features: 'Fitur Utama',
+      dailyVerse: 'Ayat Hari Ini',
+      dailyHadith: 'Hadits Hari Ini',
+      recommendedLectures: 'Kajian Pilihan',
+    },
+    pwa: {
+      installTitle: 'Install Iqra di Layar Utama',
+      installDesc: 'Akses cepat tanpa browser, lebih hemat kuota, dan bisa dibuka saat offline.',
+      installButton: 'Install Sekarang',
+      dismissButton: 'Nanti Saja',
+      updateAvailable: 'Versi baru tersedia!',
+      reload: 'Muat Ulang',
+      iosGuideTitle: 'Cara Install di iPhone/iPad',
+      iosStep1: 'Ketuk tombol Bagikan (Share) di bilah bawah Safari.',
+      iosStep2: 'Gulir ke bawah dan pilih "Tambah ke Layar Utama".',
+      iosStep3: 'Ketuk "Tambah" di pojok kanan atas.',
+    },
+  },
+  en: {
+    app: {
+      name: 'Iqra',
+      tagline: 'Islamic Learning Web App',
+      description: 'Read the Quran, authentic hadiths, prayer times, nearby mosques, lectures, prophet stories, and tajweed.',
+    },
+    nav: {
+      home: 'Home',
+      quran: 'Quran',
+      learn: 'Learn',
+      prayer: 'Prayer',
+      more: 'More',
+    },
+    common: {
+      loading: 'Loading...',
+      error: 'An error occurred',
+      retry: 'Try Again',
+      empty: 'No data available',
+      search: 'Search...',
+      back: 'Back',
+      close: 'Close',
+      save: 'Save',
+      share: 'Share',
+      copy: 'Copy',
+      copied: 'Copied to clipboard!',
+      bookmark: 'Bookmark',
+      bookmarked: 'Saved to bookmark',
+      play: 'Play',
+      pause: 'Pause',
+      install: 'Install App',
+      settings: 'Settings',
+      about: 'About & Sources',
+      offline: 'You are currently offline. Cached contents are still available.',
+    },
+    home: {
+      greetingMorning: 'Good Morning',
+      greetingAfternoon: 'Good Afternoon',
+      greetingEvening: 'Good Evening',
+      greetingNight: 'Good Night',
+      nextPrayer: 'Next Prayer',
+      continueReading: 'Continue Reading',
+      features: 'Main Features',
+      dailyVerse: 'Daily Verse',
+      dailyHadith: 'Daily Hadith',
+      recommendedLectures: 'Featured Lectures',
+    },
+    pwa: {
+      installTitle: 'Install Iqra on Home Screen',
+      installDesc: 'Quick access without browser bar, data saving, and offline support.',
+      installButton: 'Install Now',
+      dismissButton: 'Not Now',
+      updateAvailable: 'A new version is available!',
+      reload: 'Reload',
+      iosGuideTitle: 'How to Install on iPhone/iPad',
+      iosStep1: 'Tap the Share button in Safari navigation bar.',
+      iosStep2: 'Scroll down and select "Add to Home Screen".',
+      iosStep3: 'Tap "Add" at the top right corner.',
+    },
+  },
+  ar: {
+    app: {
+      name: 'اقرأ',
+      tagline: 'تطبيق تعليم العلوم الإسلامية',
+      description: 'قراءة القرآن الكريم، الأحاديث النبوية، مواقيت الصلاة، المساجد، المحاضرات، قصص الأنبياء والتجويد.',
+    },
+    nav: {
+      home: 'الرئيسية',
+      quran: 'القرآن',
+      learn: 'تعلّم',
+      prayer: 'الصلاة',
+      more: 'المزيد',
+    },
+    common: {
+      loading: 'جاري التحميل...',
+      error: 'حدث خطأ',
+      retry: 'إعادة المحاولة',
+      empty: 'لا توجد بيانات',
+      search: 'بحث...',
+      back: 'رجوع',
+      close: 'إغلاق',
+      save: 'حفظ',
+      share: 'مشاركة',
+      copy: 'نسخ',
+      copied: 'تم النسخ بنجاح',
+      bookmark: 'إشارة مرجعية',
+      bookmarked: 'تم الحفظ في المفضلة',
+      play: 'تشغيل',
+      pause: 'إيقاف',
+      install: 'تثبيت التطبيق',
+      settings: 'الإعدادات',
+      about: 'حول والمصادر',
+      offline: 'أنت غير متصل بالإنترنت حالياً.',
+    },
+    home: {
+      greetingMorning: 'صباح الخير',
+      greetingAfternoon: 'مساء الخير',
+      greetingEvening: 'مساء الخير',
+      greetingNight: 'طابت ليلتك',
+      nextPrayer: 'الصلاة القادمة',
+      continueReading: 'متابعة القراءة',
+      features: 'الخدمات الرئيسية',
+      dailyVerse: 'آية اليوم',
+      dailyHadith: 'حديث اليوم',
+      recommendedLectures: 'محاضرات مختارة',
+    },
+    pwa: {
+      installTitle: 'تثبيت تطبيق اقرأ على الشاشة الرئيسية',
+      installDesc: 'وصول أسرع، توفير البيانات، واستخدام التطبيق بدون إنترنت.',
+      installButton: 'تثبيت الآن',
+      dismissButton: 'ليس الآن',
+      updateAvailable: 'تحديث جديد متوفر!',
+      reload: 'إعادة تحميل',
+      iosGuideTitle: 'طريقة التثبيت على الآيفون والآيباد',
+      iosStep1: 'اضغط على زر المشاركة في متصفح سفاري.',
+      iosStep2: 'انزل لأسفل واختر "إضافة إلى الشاشة الرئيسية".',
+      iosStep3: 'اضغط على "إضافة" في الزاوية العلوية.',
+    },
+  },
+};
+
+export type Dictionary = typeof dictionaries.id;
+
+export function getDictionary(locale: Locale = defaultLocale): Dictionary {
+  return dictionaries[locale] || dictionaries[defaultLocale];
+}
