@@ -14,9 +14,11 @@ import {
   Info,
   Search,
   Calendar,
+  NotebookPen,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from './ThemeToggle';
+import { UserProfileCard } from '@/features/auth/components/UserProfileCard';
 
 const mainNavItems = [
   { href: '/',         label: 'Beranda',          icon: Home,          exact: true },
@@ -24,6 +26,7 @@ const mainNavItems = [
   { href: '/sholat/',  label: 'Sholat & Kiblat',  icon: Compass,       badge: 'Hub' },
   { href: '/kalender/',label: 'Kalender Hijriah',  icon: Calendar,      badge: 'Puasa' },
   { href: '/belajar/', label: 'Pusat Belajar',     icon: GraduationCap, badge: 'Hub' },
+  { href: '/catatan/', label: 'Catatan Belajar',   icon: NotebookPen,   badge: 'Baru' },
 ];
 
 const secondaryNavItems = [
@@ -55,6 +58,9 @@ export function Sidebar() {
         pathname.startsWith('/kisah-nabi') ||
         pathname.startsWith('/kajian')
       );
+    }
+    if (itemHref === '/catatan/') {
+      return pathname.startsWith('/catatan');
     }
     return pathname.startsWith(itemHref);
   };
@@ -194,8 +200,13 @@ export function Sidebar() {
         </div>
       </div>
 
+      {/* User Profile Card (Tamu / Google) */}
+      <div className="p-3 border-t border-border">
+        <UserProfileCard variant="compact" />
+      </div>
+
       {/* Footer */}
-      <div className="px-4 py-3.5 border-t border-border">
+      <div className="px-4 py-2.5 border-t border-border">
         <p className="text-[11px] text-text-secondary text-center font-medium">
           Iqra v1.0 · PWA &amp; Modern UI
         </p>

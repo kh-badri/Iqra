@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Plus_Jakarta_Sans, Amiri } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/theme/ThemeProvider';
+import { GoogleAuthProvider } from '@/providers/GoogleAuthProvider';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { ServiceWorkerRegister } from '@/components/pwa/ServiceWorkerRegister';
 
@@ -68,8 +69,10 @@ export default function RootLayout({
       </head>
       <body className="font-sans">
         <ThemeProvider>
-          <ServiceWorkerRegister />
-          <AppLayout>{children}</AppLayout>
+          <GoogleAuthProvider>
+            <ServiceWorkerRegister />
+            <AppLayout>{children}</AppLayout>
+          </GoogleAuthProvider>
         </ThemeProvider>
       </body>
     </html>

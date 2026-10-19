@@ -23,6 +23,7 @@ import { Button } from '@/components/ui/Button';
 import { Chip } from '@/components/ui/Chip';
 import { useWakeLock, isWakeLockSupported } from '@/lib/wakeLock';
 import { exportBookmarksToJson, importBookmarksFromJson } from '@/lib/bookmarkBackup';
+import { UserProfileCard } from '@/features/auth/components/UserProfileCard';
 
 export default function PengaturanPage() {
   const { theme, setTheme } = useTheme();
@@ -131,8 +132,16 @@ export default function PengaturanPage() {
           Pengaturan Aplikasi
         </h1>
         <p className="text-xs sm:text-sm text-text-muted mt-0.5">
-          Sesuaikan tema, ukuran teks Mushaf, dan preferensi kenyamanan ibadah Anda
+          Sesuaikan tema, profil akun, ukuran teks Mushaf, dan preferensi kenyamanan ibadah Anda
         </p>
+      </div>
+
+      {/* Profil & Akun Pengguna (Tamu / Google) */}
+      <div className="space-y-2">
+        <h2 className="text-[11px] font-bold text-text-muted tracking-widest uppercase px-1">
+          Profil &amp; Akun
+        </h2>
+        <UserProfileCard variant="full" />
       </div>
 
       {/* Tema Tampilan */}

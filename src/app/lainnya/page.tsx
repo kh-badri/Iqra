@@ -10,14 +10,24 @@ import {
   ChevronRight,
   ShieldCheck,
   Sparkles,
+  NotebookPen,
 } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
+import { UserProfileCard } from '@/features/auth/components/UserProfileCard';
 
 export default function LainnyaPage() {
   const menuGroups = [
     {
       title: 'Layanan & Konten',
       items: [
+        {
+          href: '/catatan/',
+          label: 'Catatan Belajar & Murid',
+          desc: 'Riwayat pembelajaran diri sendiri & murid, target, dan evaluasi',
+          icon: NotebookPen,
+          color: 'bg-pastel-blue text-[#1E4E8C] border border-pastel-blue/40',
+          badge: 'Baru',
+        },
         {
           href: '/kalender/',
           label: 'Kalender Hijriah & Puasa Sunnah',
@@ -85,9 +95,12 @@ export default function LainnyaPage() {
           Menu Lainnya
         </h1>
         <p className="text-xs sm:text-sm text-text-muted mt-0.5">
-          Fitur pendukung, manajemen aplikasi, dan preferensi pengguna
+          Fitur pendukung, akun pengguna, dan preferensi aplikasi
         </p>
       </div>
+
+      {/* Profil Pengguna (Tamu / Google) */}
+      <UserProfileCard variant="full" />
 
       {/* Menu Groups */}
       <div className="space-y-6">

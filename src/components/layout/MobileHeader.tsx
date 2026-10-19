@@ -4,6 +4,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import { ThemeToggle } from './ThemeToggle';
 import { Bookmark, Search, Bell } from 'lucide-react';
+import { UserAvatarButton } from '@/features/auth/components/UserAvatarButton';
 import { cn } from '@/lib/utils';
 
 export function MobileHeader() {
@@ -68,6 +69,7 @@ export function MobileHeader() {
             >
               <Bookmark className="w-4 h-4" />
             </Link>
+            <UserAvatarButton />
             <ThemeToggle className="w-9 h-9 rounded-button" />
           </div>
         </div>

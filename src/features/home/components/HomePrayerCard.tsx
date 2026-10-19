@@ -26,7 +26,7 @@ export function HomePrayerCard() {
     const fastings = getFastingsForDate(currentDate, h.day, h.month);
     setTodayFastings(fastings.filter((f) => !f.isProhibited));
 
-    const upcoming = getUpcomingFastings(currentDate, 2);
+    const upcoming = getUpcomingFastings(currentDate, 7);
     const nextFasting = upcoming.find((u) => u.daysRemaining > 0) || upcoming[0] || null;
     setUpcomingFasting(nextFasting);
 
@@ -49,172 +49,213 @@ export function HomePrayerCard() {
     return prayerList.filter((p) => validIds.includes(p.id));
   }, [prayerList]);
 
-  const fastingRecommendationText = React.useMemo(() => {
+  // Data rekomendasi puasa sunnah untuk Card 2
+  const activeFasting = React.useMemo(() => {
     if (todayFastings.length > 0) {
-      const name = todayFastings[0].name.replace(/^Puasa\s+/i, '').toLowerCase();
-      return `Rekomendasi puasa sunnah : ${name} (hari ini)`;
+      return {
+        name: todayFastings[0].name,
+        badgeText: 'Hari Ini',
+        isToday: true,
+      };
     }
-    if (upcomingFasting && upcomingFasting.daysRemaining <= 1) {
-      const name = upcomingFasting.fasting.name.replace(/^Puasa\s+/i, '').toLowerCase();
-      const timeLabel = upcomingFasting.daysRemaining === 1 ? 'besok' : `${upcomingFasting.daysRemaining} hari lagi`;
-      return `Rekomendasi puasa sunnah : ${name} (${timeLabel})`;
+    if (upcomingFasting) {
+      const timeLabel =
+        upcomingFasting.daysRemaining === 1
+          ? 'Besok'
+          : `${upcomingFasting.daysRemaining} hari lagi`;
+      return {
+        name: upcomingFasting.fasting.name,
+        badgeText: timeLabel,
+        isToday: false,
+      };
     }
     return null;
   }, [todayFastings, upcomingFasting]);
 
   return (
-    <div className="relative overflow-hidden rounded-card bg-primary-gradient text-[#0D3B13] shadow-elevated p-4 sm:p-5 card-highlight">
-      {/* Dekorasi lingkaran-lingkaran transparan di sudutnya (loop pelan, only transform) */}
-      <div
-        className="absolute -top-12 -right-12 w-44 h-44 rounded-full bg-white/20 pointer-events-none animate-hero-float"
-        aria-hidden
-      />
-      <div
-        className="absolute -bottom-16 -left-16 w-52 h-52 rounded-full bg-white/15 pointer-events-none animate-hero-float delay-200"
-        aria-hidden
-      />
-      <div
-        className="absolute top-1/2 right-1/4 w-24 h-24 rounded-full bg-white/10 pointer-events-none animate-hero-float delay-120"
-        aria-hidden
-      />
+    <div className="space-y-3">
+      {/* ── CARD 1 (DI ATAS): Tanggal Hari Ini & Jadwal Sholat (Lebih Ramping & Kompak) ── */}
+      <div className="relative overflow-hidden rounded-card bg-primary-gradient text-[#0D3B13] shadow-elevated p-3.5 sm:p-4.5 card-highlight">
+        {/* Dekorasi lingkaran-lingkaran transparan di sudutnya (loop pelan, only transform) */}
+        <div
+          className="absolute -top-12 -right-12 w-44 h-44 rounded-full bg-white/20 pointer-events-none animate-hero-float"
+          aria-hidden
+        />
+        <div
+          className="absolute -bottom-16 -left-16 w-52 h-52 rounded-full bg-white/15 pointer-events-none animate-hero-float delay-200"
+          aria-hidden
+        />
+        <div
+          className="absolute top-1/2 right-1/4 w-24 h-24 rounded-full bg-white/10 pointer-events-none animate-hero-float delay-120"
+          aria-hidden
+        />
 
-      <div className="relative z-10">
-        {/* Top Header: Tanggal Masehi & Hijriah + Lokasi Kota */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 border-b border-[#0D3B13]/15 pb-2.5">
-          <Link
-            href="/kalender/"
-            className="group inline-flex items-center gap-2 text-[#0D3B13] hover:opacity-90 transition-opacity"
-            title="Buka Kalender Hijriah Lengkap"
-          >
-            <div className="w-7 h-7 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center flex-shrink-0 text-[#0D3B13] group-hover:scale-105 transition-transform border border-white/40">
-              <Calendar className="w-3.5 h-3.5" />
-            </div>
-            <div>
-              <div className="flex items-center gap-1.5 flex-wrap">
-                <span className="text-xs sm:text-sm font-extrabold tracking-tight text-[#0D3B13]">
-                  {masehiFormatted}
-                </span>
-                <span className="text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded-pill bg-[#0D3B13]/15 text-[#0D3B13] leading-none">
-                  Hari Ini
-                </span>
-              </div>
-              <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-[#0D3B13]/85 font-bold">
-                <span>{hijri ? hijri.formatted : 'Memuat kalender...'}</span>
-                {hijri?.monthNameArabic && (
-                  <span
-                    dir="rtl"
-                    className="font-arabic text-xs font-bold text-[#0D3B13]/80 hidden xs:inline"
-                  >
-                    · {hijri.day} {hijri.monthNameArabic} {hijri.year} هـ
-                  </span>
-                )}
-              </div>
-            </div>
-          </Link>
-
-          <Link
-            href="/sholat/"
-            className="inline-flex items-center gap-1.5 text-xs text-[#0D3B13] bg-white/35 hover:bg-white/45 px-2.5 py-1 rounded-pill border border-white/40 self-start sm:self-auto backdrop-blur-sm transition-all duration-150 active:scale-95 shadow-subtle font-bold"
-            title="Ubah Kota Jadwal Sholat"
-          >
-            <MapPin className="w-3 h-3 text-[#0D3B13] shrink-0" />
-            <span className="truncate max-w-[180px] sm:max-w-none">
-              {city.name}
-            </span>
-          </Link>
-        </div>
-
-        {/* Rekomendasi Puasa Sunnah Pill */}
-        {mounted && fastingRecommendationText && (
-          <div className="mt-2">
+        <div className="relative z-10 space-y-3">
+          {/* Top Header: Tanggal Masehi & Hijriah + Lokasi Kota */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#0D3B13]/15 pb-2.5">
             <Link
               href="/kalender/"
-              className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-bold bg-white/30 hover:bg-white/40 border border-white/40 px-2.5 py-0.5 rounded-pill text-[#0D3B13] transition-all duration-150 backdrop-blur-sm active:scale-95"
+              className="group inline-flex items-center gap-2 text-[#0D3B13] hover:opacity-90 transition-opacity"
+              title="Buka Kalender Hijriah Lengkap"
             >
-              <Sparkles className="w-3 h-3 text-[#0D3B13] flex-shrink-0" />
-              <span>{fastingRecommendationText}</span>
-              <ArrowRight className="w-3 h-3 text-[#0D3B13]/70" />
+              <div className="w-7 h-7 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center flex-shrink-0 text-[#0D3B13] group-hover:scale-105 transition-transform border border-white/40">
+                <Calendar className="w-3.5 h-3.5" />
+              </div>
+              <div>
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <span className="text-xs sm:text-sm font-extrabold tracking-tight text-[#0D3B13]">
+                    {masehiFormatted}
+                  </span>
+                  <span className="text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded-pill bg-[#0D3B13]/15 text-[#0D3B13] leading-none">
+                    Hari Ini
+                  </span>
+                </div>
+                <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-[#0D3B13]/85 font-bold">
+                  <span>{hijri ? hijri.formatted : 'Memuat kalender...'}</span>
+                  {hijri?.monthNameArabic && (
+                    <span
+                      dir="rtl"
+                      className="font-arabic text-xs font-bold text-[#0D3B13]/80 hidden xs:inline"
+                    >
+                      · {hijri.day} {hijri.monthNameArabic} {hijri.year} هـ
+                    </span>
+                  )}
+                </div>
+              </div>
+            </Link>
+
+            <Link
+              href="/sholat/"
+              className="inline-flex items-center gap-1.5 text-xs text-[#0D3B13] bg-white/35 hover:bg-white/45 px-2.5 py-1 rounded-pill border border-white/40 self-start sm:self-auto backdrop-blur-sm transition-all duration-150 active:scale-95 shadow-subtle font-bold"
+              title="Ubah Kota Jadwal Sholat"
+            >
+              <MapPin className="w-3 h-3 text-[#0D3B13] shrink-0" />
+              <span className="truncate max-w-[180px] sm:max-w-none">
+                {city.name}
+              </span>
             </Link>
           </div>
-        )}
 
-        {/* Main Countdown Hero Display */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 py-2.5 sm:py-3">
-          <div>
-            <div className="flex items-center gap-1.5 mb-0.5">
-              <span className="w-2 h-2 rounded-full bg-[#0D3B13] animate-pulse-dot" />
-              <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0D3B13]/85">
-                Sholat Berikutnya
-              </span>
+          {/* Main Countdown Hero Display */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 py-1">
+            <div>
+              <div className="flex items-center gap-1.5 mb-0.5">
+                <span className="w-2 h-2 rounded-full bg-[#0D3B13] animate-pulse-dot" />
+                <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0D3B13]/85">
+                  Sholat Berikutnya
+                </span>
+              </div>
+
+              <div className="flex items-baseline gap-2.5">
+                <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0D3B13]">
+                  {nextPrayer?.name || 'Dzuhur'}
+                </h2>
+                <span className="text-xl sm:text-2xl font-extrabold text-[#0D3B13] font-mono tabular-nums">
+                  {nextPrayer?.timeStr || '--:--'}
+                </span>
+              </div>
+
+              <div className="flex items-center gap-1.5 mt-1">
+                <Clock className="w-3.5 h-3.5 text-[#0D3B13]/75" />
+                <span className="text-[11px] sm:text-xs font-semibold text-[#0D3B13]/85">Menghitung mundur:</span>
+                <span className="font-mono font-extrabold text-[11px] sm:text-xs bg-white/35 text-[#0D3B13] px-2 py-0.5 rounded-button tabular-nums border border-white/40 backdrop-blur-sm">
+                  {countdownFormatted}
+                </span>
+              </div>
             </div>
 
-            <div className="flex items-baseline gap-2.5">
-              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0D3B13]">
-                {nextPrayer?.name || 'Dzuhur'}
-              </h2>
-              <span className="text-xl sm:text-2xl font-extrabold text-[#0D3B13] font-mono tabular-nums">
-                {nextPrayer?.timeStr || '--:--'}
-              </span>
-            </div>
-
-            <div className="flex items-center gap-1.5 mt-1">
-              <Clock className="w-3.5 h-3.5 text-[#0D3B13]/75" />
-              <span className="text-[11px] sm:text-xs font-semibold text-[#0D3B13]/85">Menghitung mundur:</span>
-              <span className="font-mono font-extrabold text-[11px] sm:text-xs bg-white/35 text-[#0D3B13] px-2 py-0.5 rounded-button tabular-nums border border-white/40 backdrop-blur-sm">
-                {countdownFormatted}
-              </span>
+            <div className="flex items-center">
+              <Link href="/sholat/" className="w-full sm:w-auto">
+                <button
+                  type="button"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 bg-white text-[#0D3B13] font-extrabold text-xs h-8.5 sm:h-9 px-4 rounded-pill shadow-elevated hover:bg-white/95 transition-all duration-150 active:scale-95"
+                >
+                  <span>Lihat Semua Jadwal</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-[#0D3B13]" />
+                </button>
+              </Link>
             </div>
           </div>
 
-          <div className="flex items-center">
-            <Link href="/sholat/" className="w-full sm:w-auto">
-              <button
-                type="button"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 bg-white text-[#0D3B13] font-extrabold text-xs h-8.5 sm:h-9 px-4 rounded-pill shadow-elevated hover:bg-white/95 transition-all duration-150 active:scale-95"
-              >
-                <span>Lihat Semua Jadwal</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#0D3B13]" />
-              </button>
-            </Link>
-          </div>
+          {/* 5 Sholat Fardhu Mini Tracker Row */}
+          {fardhuPrayers.length > 0 && (
+            <div className="pt-2 border-t border-[#0D3B13]/15">
+              <div className="grid grid-cols-5 gap-1.5 sm:gap-2">
+                {fardhuPrayers.map((prayer) => {
+                  const isNext = prayer.id === nextPrayer?.id || prayer.name === nextPrayer?.name;
+                  return (
+                    <div
+                      key={prayer.id}
+                      className={`py-1.5 px-1 text-center rounded-button transition-all duration-150 ${
+                        isNext
+                          ? 'bg-white text-[#0D3B13] shadow-card ring-2 ring-[#0D3B13]/25 font-extrabold'
+                          : 'bg-white/20 text-[#0D3B13]/80 hover:bg-white/30 border border-white/25 backdrop-blur-sm'
+                      }`}
+                    >
+                      <div
+                        className={`text-[10px] sm:text-[11px] font-extrabold leading-tight ${
+                          isNext ? 'text-[#0D3B13]' : 'text-[#0D3B13]'
+                        }`}
+                      >
+                        {prayer.name}
+                      </div>
+                      <div
+                        className={`text-[10px] sm:text-[11px] font-mono mt-0.5 leading-tight tabular-nums ${
+                          isNext ? 'text-[#0D3B13] font-extrabold' : 'text-[#0D3B13]/85 font-bold'
+                        }`}
+                      >
+                        {prayer.timeStr}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
+      </div>
 
-        {/* 5 Sholat Fardhu Mini Tracker Row */}
-        {fardhuPrayers.length > 0 && (
-          <div className="pt-2.5 border-t border-[#0D3B13]/15">
-            <div className="grid grid-cols-5 gap-1.5 sm:gap-2">
-              {fardhuPrayers.map((prayer) => {
-                const isNext = prayer.id === nextPrayer?.id || prayer.name === nextPrayer?.name;
-                return (
-                  <div
-                    key={prayer.id}
-                    className={`py-1.5 px-1 text-center rounded-button transition-all duration-150 ${
-                      isNext
-                        ? 'bg-white text-[#0D3B13] shadow-card ring-2 ring-[#0D3B13]/25 font-extrabold'
-                        : 'bg-white/20 text-[#0D3B13]/80 hover:bg-white/30 border border-white/25 backdrop-blur-sm'
+      {/* ── CARD 2 (DI BAWAHNYA): Rekomendasi Puasa Sunnah (Card Mandiri, Ramping & Bersih) ── */}
+      {mounted && activeFasting && (
+        <Link
+          href="/kalender/"
+          className="group block rounded-card bg-surface border border-border hover:border-primary/50 p-3 sm:p-3.5 shadow-card transition-all duration-150 active:scale-[0.99] card-highlight"
+        >
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-pastel-green text-primary-text flex items-center justify-center shrink-0 border border-primary/20 shadow-subtle group-hover:scale-105 transition-transform">
+                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+              </div>
+
+              <div className="min-w-0">
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <span className="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-text-muted">
+                    Rekomendasi Puasa Sunnah
+                  </span>
+                  <span
+                    className={`text-[10px] font-extrabold px-2 py-0.5 rounded-pill leading-none ${
+                      activeFasting.isToday
+                        ? 'bg-pastel-green text-primary-text animate-pulse'
+                        : 'bg-surface-alt border border-border text-text-secondary'
                     }`}
                   >
-                    <div
-                      className={`text-[10px] sm:text-[11px] font-extrabold leading-tight ${
-                        isNext ? 'text-[#0D3B13]' : 'text-[#0D3B13]'
-                      }`}
-                    >
-                      {prayer.name}
-                    </div>
-                    <div
-                      className={`text-[10px] sm:text-[11px] font-mono mt-0.5 leading-tight tabular-nums ${
-                        isNext ? 'text-[#0D3B13] font-extrabold' : 'text-[#0D3B13]/85 font-bold'
-                      }`}
-                    >
-                      {prayer.timeStr}
-                    </div>
-                  </div>
-                );
-              })}
+                    {activeFasting.badgeText}
+                  </span>
+                </div>
+
+                <div className="text-xs sm:text-sm font-extrabold text-text-primary group-hover:text-primary transition-colors truncate mt-0.5">
+                  {activeFasting.name}
+                </div>
+              </div>
+            </div>
+
+            <div className="inline-flex items-center gap-1 text-xs font-bold text-primary group-hover:translate-x-0.5 transition-transform shrink-0 px-2.5 py-1 rounded-pill bg-pastel-green/40">
+              <span className="hidden xs:inline">Lihat Jadwal &amp; Niat</span>
+              <ArrowRight className="w-3.5 h-3.5 text-primary" />
             </div>
           </div>
-        )}
-      </div>
+        </Link>
+      )}
     </div>
   );
 }

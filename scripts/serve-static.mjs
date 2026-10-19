@@ -6,6 +6,21 @@ const PORT = 3000;
 const HOST = '0.0.0.0';
 const OUT_DIR = path.resolve(process.cwd(), 'out');
 
+// Load .env.local if exists
+const envPath = path.resolve(process.cwd(), '.env.local');
+if (fs.existsSync(envPath)) {
+  const envContent = fs.readFileSync(envPath, 'utf-8');
+  for (const line of envContent.split('\n')) {
+    const trimmed = line.trim();
+    if (trimmed && !trimmed.startsWith('#') && trimmed.includes('=')) {
+      const idx = trimmed.indexOf('=');
+      const key = trimmed.slice(0, idx).trim();
+      const val = trimmed.slice(idx + 1).trim();
+      process.env[key] = val;
+    }
+  }
+}
+
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -31,6 +46,61 @@ const server = http.createServer((req, res) => {
   // Strip leading slash
   if (reqPath.startsWith('/')) {
     reqPath = reqPath.slice(1);
+  }
+
+  // Handle API Endpoint: POST /api/auth/google
+  if (req.method === 'POST' && (reqPath === 'api/auth/google' || reqPath === 'api/auth/google/')) {
+    let body = '';
+    req.on('data', (chunk) => {
+      body += chunk;
+    });
+    req.on('end', async () => {
+      try {
+        const { credential } = JSON.parse(body || '{}');
+        if (!credential) {
+          res.writeHead(400, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: 'Missing token' }));
+          return;
+        }
+
+        const { OAuth2Client } = await import('google-auth-library');
+        const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
+        const client = new OAuth2Client(clientId);
+
+        const ticket = await client.verifyIdToken({
+          idToken: credential,
+          audience: clientId || undefined,
+        });
+
+        const payload = ticket.getPayload();
+        if (!payload) {
+          res.writeHead(401, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: 'Invalid token' }));
+          return;
+        }
+
+        const userProfile = {
+          googleId: payload.sub,
+          email: payload.email || '',
+          name: payload.name || payload.given_name || 'Pengguna Google',
+          picture: payload.picture || '',
+          emailVerified: payload.email_verified || false,
+        };
+
+        res.writeHead(200, {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        });
+        res.end(JSON.stringify({ status: 'success', user: userProfile }));
+      } catch (err) {
+        res.writeHead(500, {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        });
+        res.end(JSON.stringify({ error: err?.message || 'Authentication failed' }));
+      }
+    });
+    return;
   }
 
   let filePath = path.join(OUT_DIR, reqPath);

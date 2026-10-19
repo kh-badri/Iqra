@@ -10,6 +10,7 @@ import { GlobalAudioEngine } from '@/features/audio/components/GlobalAudioEngine
 import { PersistentAudioMiniPlayer } from '@/features/audio/components/PersistentAudioMiniPlayer';
 import { AudioPlayerDrawer } from '@/features/audio/components/AudioPlayerDrawer';
 import { GlobalSearchModal } from '@/components/search/GlobalSearchModal';
+import { UserProfileModal } from '@/features/auth/components/UserProfileModal';
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
   const [updateAvailable, setUpdateAvailable] = React.useState(false);
@@ -73,6 +74,9 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
 
       {/* Global Search Modal */}
       <GlobalSearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+
+      {/* Global User Profile & Google Auth Modal */}
+      <UserProfileModal />
 
       {/* Service Worker Update Toast */}
       {updateAvailable && (

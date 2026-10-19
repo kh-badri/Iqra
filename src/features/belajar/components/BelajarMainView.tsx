@@ -12,6 +12,7 @@ import {
   Sparkles,
   Scroll,
   PlayCircle,
+  NotebookPen,
 } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
 import { db } from '@/lib/db';
@@ -52,6 +53,17 @@ export function BelajarMainView({ initialTab = 'modul' }: BelajarMainViewProps =
   );
 
   const modules = [
+    {
+      title: 'Catatan Belajar & Murid',
+      arabic: 'دفتر الملاحظات والمتابعة',
+      desc: 'Pantau progres belajar santri & diri sendiri, posisi terakhir, serta evaluasi bacaan.',
+      href: '/catatan/',
+      icon: NotebookPen,
+      badge: 'Tracking',
+      stats: 'Diri & Murid',
+      bg: 'bg-pastel-blue',
+      textColor: 'text-pastel-blue-text',
+    },
     {
       title: 'Belajar Hadits Shahih',
       arabic: 'الحديث النبوي',

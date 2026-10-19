@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Sparkles, ArrowRight } from 'lucide-react';
+import { Sparkles, ArrowRight, NotebookPen } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Chip } from '@/components/ui/Chip';
@@ -7,6 +7,7 @@ import { SectionHeader } from '@/components/ui/SectionHeader';
 import { InstallPrompt } from '@/components/ui/InstallPrompt';
 import { LastReadCard } from '@/features/home/components/LastReadCard';
 import { HomePrayerCard } from '@/features/home/components/HomePrayerCard';
+import { HomeGreeting } from '@/features/home/components/HomeGreeting';
 import { getDailyHadith } from '@/features/hadith/services/hadithService';
 import { HadithDailyCard } from '@/features/hadith/components/HadithDailyCard';
 import {
@@ -28,6 +29,12 @@ const quickShortcuts = [
     href: '/quran/',
     icon: QuranIcon,
     bg: 'bg-pastel-green',
+  },
+  {
+    title: 'Catatan',
+    href: '/catatan/',
+    icon: NotebookPen,
+    bg: 'bg-pastel-blue',
   },
   {
     title: 'Jadwal Sholat',
@@ -81,6 +88,14 @@ const features = [
     icon: QuranIcon,
     badge: 'Lengkap',
     bg: 'bg-pastel-green',
+  },
+  {
+    title: 'Catatan & Murid',
+    desc: 'Riwayat pembelajaran diri & santri, target & evaluasi',
+    href: '/catatan/',
+    icon: NotebookPen,
+    badge: 'Baru',
+    bg: 'bg-pastel-blue',
   },
   {
     title: 'Jadwal Sholat',
@@ -171,26 +186,8 @@ export default async function HomePage() {
         aria-hidden
       />
 
-      {/* ── 1. Sapaan & Salam Bersih ──────────────────────────────────── */}
-      <div className="border-b border-border/80 pb-3 sm:pb-3.5">
-        <div className="flex items-center justify-between gap-2">
-          <span className="text-xs font-bold px-2.5 py-0.5 rounded-pill bg-pastel-green text-primary-text">
-            Assalamu'alaikum
-          </span>
-          <span
-            dir="rtl"
-            className="font-arabic text-xs sm:text-sm text-primary-text font-bold bg-pastel-green/60 dark:bg-pastel-green/20 px-2.5 py-0.5 rounded-pill border border-primary/20 inline-block shadow-subtle"
-          >
-            بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
-          </span>
-        </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-text-primary tracking-tight mt-1.5">
-          Selamat Datang di Iqra
-        </h1>
-        <p className="text-xs sm:text-sm text-text-secondary mt-0.5 leading-relaxed">
-          Perdalam ilmu Al-Qur'an, hadits, dan jaga waktu ibadah setiap hari.
-        </p>
-      </div>
+      {/* ── 1. Sapaan & Salam Bersih (Dinamis Tamu / Akun Google) ────── */}
+      <HomeGreeting />
 
       {/* ── 2. Hero Card: Jadwal Sholat Berikutnya (Lime Gradient) ───── */}
       <HomePrayerCard />
