@@ -76,17 +76,17 @@ export function HomePrayerCard() {
     <div className="space-y-3">
       {/* ── CARD 1 (DI ATAS): Tanggal Hari Ini & Jadwal Sholat (Lebih Ramping & Kompak) ── */}
       <div className="relative overflow-hidden rounded-card bg-primary-gradient text-[#0D3B13] shadow-elevated p-3.5 sm:p-4.5 card-highlight">
-        {/* Dekorasi lingkaran-lingkaran transparan di sudutnya (loop pelan, only transform) */}
+        {/* Dekorasi lingkaran transparan (statik GPU-friendly untuk performa tinggi di HP spek rendah) */}
         <div
-          className="absolute -top-12 -right-12 w-44 h-44 rounded-full bg-white/20 pointer-events-none animate-hero-float"
+          className="absolute -top-12 -right-12 w-44 h-44 rounded-full bg-white/20 pointer-events-none"
           aria-hidden
         />
         <div
-          className="absolute -bottom-16 -left-16 w-52 h-52 rounded-full bg-white/15 pointer-events-none animate-hero-float delay-200"
+          className="absolute -bottom-16 -left-16 w-52 h-52 rounded-full bg-white/15 pointer-events-none"
           aria-hidden
         />
         <div
-          className="absolute top-1/2 right-1/4 w-24 h-24 rounded-full bg-white/10 pointer-events-none animate-hero-float delay-120"
+          className="absolute top-1/2 right-1/4 w-24 h-24 rounded-full bg-white/10 pointer-events-none"
           aria-hidden
         />
 
@@ -98,7 +98,7 @@ export function HomePrayerCard() {
               className="group inline-flex items-center gap-2 text-[#0D3B13] hover:opacity-90 transition-opacity"
               title="Buka Kalender Hijriah Lengkap"
             >
-              <div className="w-7 h-7 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center flex-shrink-0 text-[#0D3B13] group-hover:scale-105 transition-transform border border-white/40">
+              <div className="w-7 h-7 rounded-full bg-white/35 flex items-center justify-center flex-shrink-0 text-[#0D3B13] group-hover:scale-105 transition-transform border border-white/40 shadow-subtle">
                 <Calendar className="w-3.5 h-3.5" />
               </div>
               <div>
@@ -126,7 +126,7 @@ export function HomePrayerCard() {
 
             <Link
               href="/sholat/"
-              className="inline-flex items-center gap-1.5 text-xs text-[#0D3B13] bg-white/35 hover:bg-white/45 px-2.5 py-1 rounded-pill border border-white/40 self-start sm:self-auto backdrop-blur-sm transition-all duration-150 active:scale-95 shadow-subtle font-bold"
+              className="inline-flex items-center gap-1.5 text-xs text-[#0D3B13] bg-white/40 hover:bg-white/50 px-2.5 py-1 rounded-pill border border-white/40 self-start sm:self-auto transition-all duration-150 active:scale-95 shadow-subtle font-bold"
               title="Ubah Kota Jadwal Sholat"
             >
               <MapPin className="w-3 h-3 text-[#0D3B13] shrink-0" />
@@ -158,7 +158,7 @@ export function HomePrayerCard() {
               <div className="flex items-center gap-1.5 mt-1">
                 <Clock className="w-3.5 h-3.5 text-[#0D3B13]/75" />
                 <span className="text-[11px] sm:text-xs font-semibold text-[#0D3B13]/85">Menghitung mundur:</span>
-                <span className="font-mono font-extrabold text-[11px] sm:text-xs bg-white/35 text-[#0D3B13] px-2 py-0.5 rounded-button tabular-nums border border-white/40 backdrop-blur-sm">
+                <span className="font-mono font-extrabold text-[11px] sm:text-xs bg-white/40 text-[#0D3B13] px-2 py-0.5 rounded-button tabular-nums border border-white/50 shadow-subtle">
                   {countdownFormatted}
                 </span>
               </div>
@@ -189,7 +189,7 @@ export function HomePrayerCard() {
                       className={`py-1.5 px-1 text-center rounded-button transition-all duration-150 ${
                         isNext
                           ? 'bg-white text-[#0D3B13] shadow-card ring-2 ring-[#0D3B13]/25 font-extrabold'
-                          : 'bg-white/20 text-[#0D3B13]/80 hover:bg-white/30 border border-white/25 backdrop-blur-sm'
+                          : 'bg-white/25 text-[#0D3B13]/90 hover:bg-white/35 border border-white/30'
                       }`}
                     >
                       <div

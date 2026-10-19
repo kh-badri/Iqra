@@ -175,16 +175,12 @@ export default async function HomePage() {
   const dailyHadith = await getDailyHadith();
 
   return (
-    <div className="relative space-y-6 sm:space-y-7 animate-fade-in-up pb-6">
-      {/* Organic Blob Background Accent */}
-      <div
-        className="absolute -top-14 -right-12 w-72 h-72 bg-pastel-green opacity-40 organic-blob pointer-events-none -z-10"
-        aria-hidden
-      />
-      <div
-        className="absolute top-96 -left-16 w-64 h-64 bg-pastel-yellow opacity-30 organic-blob pointer-events-none -z-10"
-        aria-hidden
-      />
+    <div className="relative space-y-6 sm:space-y-7 animate-fade-in-up pb-6 overflow-x-hidden max-w-full">
+      {/* Organic Blob Background Accent - Cleanly clipped inside container to eliminate mobile horizontal wobble */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10" aria-hidden>
+        <div className="absolute -top-14 -right-12 w-72 h-72 bg-pastel-green opacity-40 organic-blob" />
+        <div className="absolute top-96 -left-16 w-64 h-64 bg-pastel-yellow opacity-30 organic-blob" />
+      </div>
 
       {/* ── 1. Sapaan & Salam Bersih (Dinamis Tamu / Akun Google) ────── */}
       <HomeGreeting />
@@ -201,7 +197,7 @@ export default async function HomePage() {
           <span className="text-[11px] text-text-muted font-medium">Geser untuk fitur lainnya →</span>
         </div>
 
-        <div className="flex gap-2.5 overflow-x-auto no-scrollbar pb-1 snap-x snap-mandatory">
+        <div className="flex gap-2.5 overflow-x-auto no-scrollbar pb-1 snap-x snap-mandatory overscroll-x-contain touch-pan-x">
           {quickShortcuts.map((item) => {
             const Icon = item.icon;
             return (

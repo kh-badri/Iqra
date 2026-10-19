@@ -47,7 +47,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <div className="min-h-screen min-h-[100dvh] flex flex-col md:flex-row bg-background text-text-primary antialiased">
+    <div className="min-h-screen min-h-[100dvh] flex flex-col md:flex-row bg-background text-text-primary antialiased overflow-x-hidden max-w-full w-full">
       {/* Offline Banner */}
       <OfflineBanner />
 
@@ -58,8 +58,8 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
       <MobileHeader />
 
       {/* Main Content Area */}
-      <main className="flex-1 flex flex-col min-w-0 pb-24 md:pb-8">
-        <div className="w-full max-w-content mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6">
+      <main className="flex-1 flex flex-col min-w-0 pb-24 md:pb-8 overflow-x-hidden max-w-full w-full">
+        <div className="w-full max-w-content mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 overflow-x-hidden">
           {children}
         </div>
       </main>
