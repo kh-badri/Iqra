@@ -94,6 +94,12 @@ try {
 } catch {}
 execSync(`git remote add ${REMOTE_NAME} ${remoteUrl}`, { cwd: OUT_DIR });
 
+// Konfigurasi credential helper store agar push berjalan otomatis dan cepat
+try {
+  execSync('git config credential.helper ""', { cwd: OUT_DIR, stdio: 'ignore' });
+  execSync('git config --add credential.helper store', { cwd: OUT_DIR, stdio: 'ignore' });
+} catch {}
+
 // Buat atau switch ke branch cpanel
 execSync(`git checkout -B ${TARGET_BRANCH}`, { cwd: OUT_DIR, stdio: 'ignore' });
 
