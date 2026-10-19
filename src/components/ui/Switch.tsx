@@ -33,18 +33,20 @@ export function Switch({
         disabled={disabled}
         onClick={() => onChange(!checked)}
         className={cn(
-          'relative inline-flex h-6 w-11 flex-shrink-0 rounded-pill transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
-          checked ? 'bg-primary' : 'bg-surface-alt border border-border'
+          'relative inline-flex h-7 w-12 flex-shrink-0 rounded-pill transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
+          checked
+            ? 'bg-primary-gradient shadow-subtle'
+            : 'bg-surface-alt border border-border'
         )}
       >
         <span
           className={cn(
-            'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-surface shadow-subtle transition duration-200 ease-in-out mt-[2px] ml-[2px]',
-            checked ? 'translate-x-5 bg-white' : 'translate-x-0'
+            'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-md transition-transform duration-200 ease-in-out mt-1 ml-1',
+            checked ? 'translate-x-5' : 'translate-x-0'
           )}
         />
       </button>
-      {label && <span className="text-sm text-text-primary">{label}</span>}
+      {label && <span className="text-sm font-semibold text-text-primary">{label}</span>}
     </label>
   );
 }

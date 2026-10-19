@@ -114,22 +114,22 @@ export const VideoListView: React.FC<VideoListViewProps> = ({ embedded = false }
 
       {/* Channel Resmi Ustadz Section */}
       <section className="space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-surface p-3.5 sm:p-4 rounded-xl border border-border">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-red-600 text-white flex items-center justify-center shrink-0 shadow-subtle">
-              <YouTubeIcon className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-white" />
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-surface p-4 sm:p-5 rounded-card border border-border shadow-card">
+          <div className="flex items-center gap-3.5">
+            <div className="w-11 h-11 rounded-full bg-red-600 text-white flex items-center justify-center shrink-0 shadow-subtle">
+              <YouTubeIcon className="w-5 h-5 text-white" />
             </div>
             <div>
               <div className="flex items-center gap-2 flex-wrap">
                 <h2 className="text-sm sm:text-base font-bold text-text-primary tracking-tight">
                   Channel YouTube Resmi Asatidz
                 </h2>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-600/10 text-red-600 border border-red-200 dark:border-red-900/40 flex items-center gap-1">
+                <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-red-600/10 text-red-600 border border-red-200 dark:border-red-900/40 flex items-center gap-1">
                   <YouTubeIcon className="w-2.5 h-2.5 text-red-600" />
                   <span>Resmi &amp; Terverifikasi</span>
                 </span>
               </div>
-              <p className="text-xs text-text-secondary mt-0.5">
+              <p className="text-xs text-text-muted mt-0.5">
                 Pilih ustadz untuk menyaring kajian di aplikasi, atau buka channel langsung di YouTube.
               </p>
             </div>
@@ -138,7 +138,7 @@ export const VideoListView: React.FC<VideoListViewProps> = ({ embedded = false }
           {selectedChannelId !== 'all' && (
             <button
               onClick={() => setSelectedChannelId('all')}
-              className="text-xs font-bold text-primary hover:underline px-3 py-1.5 rounded-lg bg-primary-soft shrink-0 self-start sm:self-auto transition-colors"
+              className="text-xs font-bold text-primary-text hover:underline px-3.5 py-2 rounded-full bg-surface-2 border border-border shrink-0 self-start sm:self-auto transition-colors min-h-[44px]"
             >
               ✕ Tampilkan Semua Ustadz
             </button>
@@ -146,7 +146,7 @@ export const VideoListView: React.FC<VideoListViewProps> = ({ embedded = false }
         </div>
 
         {/* Responsive Grid: 1 col on mobile, 2 cols on tablet, 3 cols on desktop */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
           {channels.map((ch) => {
             const isSelected = selectedChannelId === ch.id;
             const channelVideosCount = videos.filter((v) => v.channelId === ch.id).length;
@@ -158,10 +158,10 @@ export const VideoListView: React.FC<VideoListViewProps> = ({ embedded = false }
                   setSelectedChannelId(isSelected ? 'all' : ch.id);
                 }}
                 className={cn(
-                  'relative rounded-xl border p-3.5 sm:p-4.5 transition-all duration-200 cursor-pointer flex flex-col justify-between group select-none',
+                  'relative rounded-card border p-4 sm:p-5 transition-all duration-200 cursor-pointer flex flex-col justify-between group select-none shadow-card active:scale-[0.99]',
                   isSelected
-                    ? 'bg-primary-soft/40 border-primary shadow-subtle ring-2 ring-primary/40'
-                    : 'bg-surface border-border hover:border-primary/50 hover:bg-surface-alt'
+                    ? 'bg-pastel-green/25 border-primary ring-2 ring-primary/30'
+                    : 'bg-surface border-border hover:border-primary/40 hover:bg-surface-2'
                 )}
                 role="button"
                 tabIndex={0}
@@ -175,10 +175,10 @@ export const VideoListView: React.FC<VideoListViewProps> = ({ embedded = false }
                       <div className="relative shrink-0">
                         <div
                           className={cn(
-                            'w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center font-bold text-xs sm:text-sm tracking-wider border transition-colors shadow-xs',
+                            'w-12 h-12 rounded-full flex items-center justify-center font-bold text-xs sm:text-sm tracking-wider border transition-colors shadow-xs',
                             isSelected
-                              ? 'bg-primary text-white border-primary shadow-subtle'
-                              : 'bg-primary-soft text-primary border-primary/20 group-hover:border-primary/40'
+                              ? 'bg-primary-gradient text-on-primary border-transparent'
+                              : 'bg-pastel-green text-[#266308] border-pastel-green/40 group-hover:border-primary/40'
                           )}
                         >
                           {ch.initials || ch.name.substring(0, 3).toUpperCase()}
@@ -192,7 +192,7 @@ export const VideoListView: React.FC<VideoListViewProps> = ({ embedded = false }
                       {/* Name & Handle */}
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-1.5">
-                          <h3 className="text-sm font-bold text-text-primary group-hover:text-primary transition-colors truncate">
+                          <h3 className="text-sm font-bold text-text-primary group-hover:text-primary-text transition-colors truncate">
                             {ch.name}
                           </h3>
                           <CheckCircle2
@@ -200,15 +200,15 @@ export const VideoListView: React.FC<VideoListViewProps> = ({ embedded = false }
                             aria-label="Official Verified Channel"
                           />
                         </div>
-                        <p className="text-xs text-text-secondary truncate mt-0.5 font-medium">
+                        <p className="text-xs text-text-muted truncate mt-0.5 font-medium">
                           {ch.ustadz}
                         </p>
                         <div className="flex items-center gap-1.5 mt-1 flex-wrap">
-                          <span className="text-[10px] text-text-secondary font-mono bg-surface-alt px-1.5 py-0.5 rounded border border-border">
+                          <span className="text-[10px] text-text-muted font-mono bg-surface-2 px-2 py-0.5 rounded-full border border-border">
                             {ch.handle}
                           </span>
                           {ch.subscribers && (
-                            <span className="text-[10px] font-semibold text-text-secondary">
+                            <span className="text-[10px] font-semibold text-text-muted">
                               {ch.subscribers} sub
                             </span>
                           )}
@@ -224,7 +224,7 @@ export const VideoListView: React.FC<VideoListViewProps> = ({ embedded = false }
                       onClick={(e) => {
                         e.stopPropagation();
                       }}
-                      className="shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-red-600 hover:bg-red-700 text-white text-xs font-bold transition-all shadow-subtle active:scale-95"
+                      className="shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-full bg-red-600 hover:bg-red-700 text-white text-xs font-bold transition-all shadow-subtle min-h-[44px] active:scale-95"
                       title={`Buka ${ch.name} di YouTube`}
                       aria-label={`Buka channel ${ch.name} di YouTube`}
                     >
@@ -237,30 +237,30 @@ export const VideoListView: React.FC<VideoListViewProps> = ({ embedded = false }
                   {/* Specialty Tag */}
                   {ch.specialty && (
                     <div>
-                      <span className="inline-block text-[10px] sm:text-[11px] font-semibold px-2 py-0.5 rounded-md bg-surface-alt border border-border text-text-secondary">
+                      <span className="inline-block text-[10px] sm:text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-surface-2 border border-border text-text-muted">
                         {ch.specialty}
                       </span>
                     </div>
                   )}
 
-                  <p className="text-xs text-text-secondary line-clamp-2 leading-relaxed">
+                  <p className="text-xs text-text-muted line-clamp-2 leading-relaxed">
                     {ch.description}
                   </p>
                 </div>
 
                 {/* Footer Action Bar */}
                 <div className="mt-3.5 pt-3 border-t border-border/80 flex items-center justify-between text-xs">
-                  <span className="text-text-secondary font-medium text-[11px] flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary/70 inline-block" />
+                  <span className="text-text-muted font-medium text-[11px] flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block" />
                     {channelVideosCount} Kajian di Iqra
                   </span>
 
                   <span
                     className={cn(
-                      'text-[11px] font-bold px-2.5 py-1 rounded-full transition-all flex items-center gap-1',
+                      'text-[11px] font-bold px-3 py-1 rounded-full transition-all flex items-center gap-1',
                       isSelected
-                        ? 'bg-primary text-white shadow-subtle'
-                        : 'bg-primary-soft text-primary group-hover:bg-primary group-hover:text-white'
+                        ? 'bg-primary-gradient text-on-primary shadow-subtle'
+                        : 'bg-surface-2 text-text-muted group-hover:text-primary-text'
                     )}
                   >
                     {isSelected ? '✓ Sedang Dipilih' : 'Filter Kajian →'}
@@ -334,15 +334,15 @@ export const VideoListView: React.FC<VideoListViewProps> = ({ embedded = false }
 
           {/* Active Filter Indicators on mobile/desktop */}
           {(selectedChannelId !== 'all' || selectedCategory !== 'Semua' || searchQuery) && (
-            <div className="flex items-center gap-2 flex-wrap text-xs text-text-secondary pt-1">
-              <span className="font-semibold text-text-primary">Filter Aktif:</span>
+            <div className="flex items-center gap-2 flex-wrap text-xs text-text-muted pt-1">
+              <span className="font-bold text-text-primary">Filter Aktif:</span>
               {selectedChannelId !== 'all' && (
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary text-white font-bold text-[11px] shadow-subtle">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-gradient text-on-primary font-bold text-[11px] shadow-subtle">
                   <span>Ustadz: {channels.find((c) => c.id === selectedChannelId)?.ustadz.split(',')[0]}</span>
                   <button
                     type="button"
                     onClick={() => setSelectedChannelId('all')}
-                    className="hover:text-red-200 text-white font-bold ml-0.5"
+                    className="hover:opacity-75 text-on-primary font-bold ml-1 min-h-[30px]"
                     aria-label="Hapus filter ustadz"
                   >
                     ✕
@@ -350,12 +350,12 @@ export const VideoListView: React.FC<VideoListViewProps> = ({ embedded = false }
                 </span>
               )}
               {selectedCategory !== 'Semua' && (
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-alt border border-border text-text-primary font-semibold text-[11px]">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-2 border border-border text-text-primary font-bold text-[11px]">
                   <span>Kategori: {selectedCategory}</span>
                   <button
                     type="button"
                     onClick={() => setSelectedCategory('Semua')}
-                    className="hover:text-red-500 font-bold ml-0.5"
+                    className="hover:text-danger font-bold ml-1"
                     aria-label="Hapus filter kategori"
                   >
                     ✕
@@ -363,12 +363,12 @@ export const VideoListView: React.FC<VideoListViewProps> = ({ embedded = false }
                 </span>
               )}
               {searchQuery && (
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-alt border border-border text-text-primary font-semibold text-[11px]">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-2 border border-border text-text-primary font-bold text-[11px]">
                   <span>Pencarian: &ldquo;{searchQuery}&rdquo;</span>
                   <button
                     type="button"
                     onClick={() => setSearchQuery('')}
-                    className="hover:text-red-500 font-bold ml-0.5"
+                    className="hover:text-danger font-bold ml-1"
                     aria-label="Hapus pencarian"
                   >
                     ✕

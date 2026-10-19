@@ -3,9 +3,20 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { ThemeToggle } from './ThemeToggle';
-import { Bookmark, Search } from 'lucide-react';
+import { Bookmark, Search, Bell } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export function MobileHeader() {
+  const [scrolled, setScrolled] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 16);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleOpenSearch = () => {
     if (typeof window !== 'undefined') {
       window.dispatchEvent(new CustomEvent('openGlobalSearch'));
@@ -13,38 +24,52 @@ export function MobileHeader() {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-surface border-b border-border md:hidden safe-top">
-      <div className="flex items-center justify-between h-14 px-4">
-        <Link href="/" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-card bg-primary text-white flex items-center justify-center font-bold text-sm shadow-subtle">
-            <span className="font-arabic text-base leading-none">اقرأ</span>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-base font-bold text-text-primary tracking-tight leading-none">
-              Iqra
-            </span>
-            <span className="text-[10px] text-text-secondary leading-none mt-0.5">
-              Belajar Agama Islam
-            </span>
-          </div>
-        </Link>
-
-        <div className="flex items-center gap-2">
-          <button
-            onClick={handleOpenSearch}
-            className="w-9 h-9 rounded-card bg-surface border border-border flex items-center justify-center text-text-secondary hover:text-text-primary hover:bg-surface-alt transition-colors"
-            aria-label="Cari di Iqra"
-          >
-            <Search className="w-4 h-4" />
-          </button>
-          <Link
-            href="/bookmark/"
-            className="w-9 h-9 rounded-card bg-surface border border-border flex items-center justify-center text-text-secondary hover:text-text-primary hover:bg-surface-alt transition-colors"
-            aria-label="Bookmark Tersimpan"
-          >
-            <Bookmark className="w-4 h-4" />
+    <header className="sticky top-0 z-40 md:hidden safe-top transition-all duration-200">
+      <div
+        className={cn(
+          'glass-surface border-b border-border/60 transition-all duration-250',
+          scrolled ? 'py-1 shadow-subtle' : 'py-2'
+        )}
+      >
+        <div className="flex items-center justify-between h-13 px-4 max-w-2xl mx-auto">
+          {/* Sapaan & Brand */}
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <div className="relative">
+              {/* Brand Logo with Lime-green Gradient */}
+              <div className="w-9 h-9 rounded-button bg-primary-gradient text-on-primary flex items-center justify-center shadow-subtle group-active:scale-95 transition-transform duration-150">
+                <span className="font-arabic text-lg font-bold leading-none select-none">اقرأ</span>
+              </div>
+              {/* Subtle accent dot indicator */}
+              <div className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-accent ring-2 ring-surface flex items-center justify-center animate-pulse-dot" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[15px] font-extrabold text-text-primary tracking-tight leading-none group-hover:text-primary transition-colors">
+                Iqra
+              </span>
+              <span className="text-[10px] text-text-secondary leading-none mt-0.5 font-medium">
+                Belajar Agama Islam
+              </span>
+            </div>
           </Link>
-          <ThemeToggle />
+
+          {/* Action Buttons: Search, Bookmark, Theme Toggle */}
+          <div className="flex items-center gap-1.5">
+            <button
+              onClick={handleOpenSearch}
+              className="w-9 h-9 rounded-button bg-surface-alt flex items-center justify-center text-text-secondary hover:text-text-primary hover:bg-border/40 transition-all duration-150 active:scale-90"
+              aria-label="Cari di Iqra"
+            >
+              <Search className="w-4 h-4" />
+            </button>
+            <Link
+              href="/bookmark/"
+              className="w-9 h-9 rounded-button bg-surface-alt flex items-center justify-center text-text-secondary hover:text-text-primary hover:bg-border/40 transition-all duration-150 active:scale-90"
+              aria-label="Bookmark Tersimpan"
+            >
+              <Bookmark className="w-4 h-4" />
+            </Link>
+            <ThemeToggle className="w-9 h-9 rounded-button" />
+          </div>
         </div>
       </div>
     </header>

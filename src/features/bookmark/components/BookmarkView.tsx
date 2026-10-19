@@ -73,10 +73,10 @@ export function BookmarkView() {
       {/* Header Info */}
       <div className="border-b border-border pb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-text-primary tracking-tight">
+          <h1 className="text-xl sm:text-2xl font-extrabold text-text-primary tracking-tight">
             Bookmark Tersimpan
           </h1>
-          <p className="text-xs sm:text-sm text-text-secondary mt-0.5">
+          <p className="text-xs sm:text-sm text-text-muted mt-0.5">
             Koleksi ayat, hadits, kisah nabi, dan materi tajwid yang Anda simpan di perangkat ini
           </p>
         </div>
@@ -94,7 +94,7 @@ export function BookmarkView() {
             variant="secondary"
             size="sm"
             onClick={() => fileInputRef.current?.click()}
-            className="gap-1.5 text-xs"
+            className="gap-1.5 text-xs min-h-[44px] rounded-button font-bold"
           >
             <Upload className="w-3.5 h-3.5" />
             <span>Impor JSON</span>
@@ -103,7 +103,7 @@ export function BookmarkView() {
             variant="secondary"
             size="sm"
             onClick={handleExport}
-            className="gap-1.5 text-xs"
+            className="gap-1.5 text-xs min-h-[44px] rounded-button font-bold"
             disabled={!bookmarks || bookmarks.length === 0}
           >
             <Download className="w-3.5 h-3.5" />
@@ -114,8 +114,8 @@ export function BookmarkView() {
 
       {/* Notification Banner */}
       {notification && (
-        <div className="p-3 bg-primary-soft text-primary border border-primary/20 rounded-card flex items-center gap-2.5 text-xs sm:text-sm font-medium">
-          <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+        <div className="p-3.5 bg-pastel-green/50 text-[#266308] dark:text-[#9BE35B] border border-pastel-green/60 rounded-card flex items-center gap-2.5 text-xs sm:text-sm font-bold shadow-subtle animate-fade-in">
+          <CheckCircle2 className="w-4 h-4 text-success shrink-0" />
           <span>{notification}</span>
         </div>
       )}
@@ -126,6 +126,7 @@ export function BookmarkView() {
           active={filterType === 'all'}
           clickable
           onClick={() => setFilterType('all')}
+          className="text-xs"
         >
           Semua ({bookmarks?.length || 0})
         </Chip>
@@ -133,6 +134,7 @@ export function BookmarkView() {
           active={filterType === 'ayah'}
           clickable
           onClick={() => setFilterType('ayah')}
+          className="text-xs"
         >
           Al-Qur&apos;an ({bookmarks?.filter((b) => b.type === 'ayah').length || 0})
         </Chip>
@@ -140,6 +142,7 @@ export function BookmarkView() {
           active={filterType === 'hadith'}
           clickable
           onClick={() => setFilterType('hadith')}
+          className="text-xs"
         >
           Hadits ({bookmarks?.filter((b) => b.type === 'hadith').length || 0})
         </Chip>
@@ -147,6 +150,7 @@ export function BookmarkView() {
           active={filterType === 'prophet'}
           clickable
           onClick={() => setFilterType('prophet')}
+          className="text-xs"
         >
           Kisah Nabi ({bookmarks?.filter((b) => b.type === 'prophet').length || 0})
         </Chip>
@@ -154,6 +158,7 @@ export function BookmarkView() {
           active={filterType === 'tajwid'}
           clickable
           onClick={() => setFilterType('tajwid')}
+          className="text-xs"
         >
           Tajwid ({bookmarks?.filter((b) => b.type === 'tajwid').length || 0})
         </Chip>
@@ -161,30 +166,30 @@ export function BookmarkView() {
 
       {/* List Bookmark */}
       {filteredBookmarks.length > 0 ? (
-        <div className="space-y-3">
+        <div className="space-y-3.5">
           {filteredBookmarks.map((item) => (
-            <Card key={item.id} className="p-4 flex items-start justify-between gap-3">
-              <div className="space-y-1 min-w-0 flex-1">
+            <Card key={item.id} className="p-5 flex items-start justify-between gap-3 rounded-card shadow-card border-border hover:border-primary/40 transition-all">
+              <div className="space-y-1.5 min-w-0 flex-1">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold text-primary">{item.title}</span>
-                  <Chip variant="secondary" className="text-[10px] py-0 px-2 uppercase">
+                  <span className="text-xs font-bold text-primary-text">{item.title}</span>
+                  <Chip variant="secondary" className="text-[10px] py-0 px-2 uppercase font-bold">
                     {item.type}
                   </Chip>
                 </div>
                 {item.extraData?.arabic && (
-                  <p dir="rtl" className="font-arabic text-base text-text-primary leading-loose pt-1">
+                  <p dir="rtl" className="font-arabic text-base sm:text-lg text-text-primary leading-loose pt-1">
                     {item.extraData.arabic}
                   </p>
                 )}
                 {item.subtitle && (
-                  <p className="text-xs text-text-secondary line-clamp-2 italic">
+                  <p className="text-xs text-text-muted line-clamp-2 italic leading-relaxed">
                     "{item.subtitle}"
                   </p>
                 )}
                 <div className="pt-2">
                   <Link
                     href={getHref(item)}
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-primary-pressed"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-primary-text hover:underline min-h-[44px]"
                   >
                     <span>Buka Rujukan</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -194,7 +199,7 @@ export function BookmarkView() {
 
               <button
                 onClick={() => handleDelete(item.id)}
-                className="p-1.5 rounded-sm text-text-secondary hover:text-danger hover:bg-danger/10 transition-colors"
+                className="w-10 h-10 rounded-full text-text-muted hover:text-danger hover:bg-danger/10 flex items-center justify-center transition-colors active:scale-90"
                 aria-label="Hapus bookmark"
               >
                 <Trash2 className="w-4 h-4" />
@@ -204,9 +209,9 @@ export function BookmarkView() {
         </div>
       ) : (
         <EmptyState
-          icon={<Bookmark className="w-6 h-6 text-accent" />}
+          icon={<Bookmark className="w-7 h-7 text-primary" />}
           title="Belum Ada Bookmark Tersimpan"
-          description="Saat membaca Al-Qur'an, ketuk ayat untuk menyimpannya ke daftar bookmark ini."
+          description="Saat membaca Al-Qur'an, hadits, atau kisah nabi, ketuk tombol simpan untuk menyimpannya ke daftar bookmark ini."
         />
       )}
     </div>

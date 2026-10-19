@@ -23,27 +23,27 @@ export function Toast({ type = 'info', message, onClose, className }: ToastProps
   };
 
   const borders = {
-    success: 'border-success/30',
-    warning: 'border-warning/30',
-    error: 'border-danger/30',
-    info: 'border-primary/30',
+    success: 'border-success/30 bg-surface',
+    warning: 'border-warning/30 bg-surface',
+    error: 'border-danger/30 bg-surface',
+    info: 'border-primary/30 bg-surface',
   };
 
   return (
     <div
       role="status"
       className={cn(
-        'flex items-center gap-3 p-3.5 bg-surface border rounded-card shadow-elevated text-sm text-text-primary max-w-sm w-full transition-all duration-200',
+        'flex items-center gap-3 p-3.5 bg-surface border rounded-card shadow-elevated text-sm text-text-primary max-w-sm w-full transition-all duration-200 card-highlight animate-fade-in-up',
         borders[type],
         className
       )}
     >
       {icons[type]}
-      <div className="flex-1 text-xs sm:text-sm font-medium">{message}</div>
+      <div className="flex-1 text-xs sm:text-sm font-semibold">{message}</div>
       {onClose && (
         <button
           onClick={onClose}
-          className="p-1 rounded-sm text-text-secondary hover:text-text-primary hover:bg-surface-alt transition-colors"
+          className="p-1.5 rounded-full text-text-secondary hover:text-text-primary hover:bg-surface-alt transition-colors active:scale-90"
           aria-label="Tutup pesan"
         >
           <X className="w-4 h-4" />

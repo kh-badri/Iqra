@@ -116,7 +116,7 @@ export function InstallPrompt({ className, forceShow = false }: InstallPromptPro
         )}
       >
         <div className="flex items-start gap-3.5">
-          <div className="w-10 h-10 rounded-card bg-primary-soft text-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+          <div className="w-10 h-10 rounded-card bg-pastel-green text-primary-text flex items-center justify-center flex-shrink-0 mt-0.5">
             <Smartphone className="w-5 h-5" />
           </div>
           <div>

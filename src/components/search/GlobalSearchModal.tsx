@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
-import { Search, X, BookOpen, User, GraduationCap, FileText, ArrowRight } from 'lucide-react';
+import { Search, X, BookOpen, User, GraduationCap, FileText } from 'lucide-react';
 import searchData from '@/features/search/searchIndex.json';
 import { Chip } from '@/components/ui/Chip';
 
@@ -92,7 +92,7 @@ export function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModalProps) {
       case 'surah':
         return <BookOpen className="w-4 h-4 text-primary" />;
       case 'prophet':
-        return <User className="w-4 h-4 text-accent" />;
+        return <User className="w-4 h-4 text-warning" />;
       case 'tajwid':
         return <GraduationCap className="w-4 h-4 text-primary" />;
       case 'hadith':
@@ -103,11 +103,11 @@ export function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center pt-14 sm:pt-20 px-4 bg-black/60 backdrop-blur-none"
+      className="fixed inset-0 z-50 flex items-start justify-center pt-14 sm:pt-20 px-4 bg-black/60 backdrop-blur-sm animate-fade-in"
       onClick={onClose}
     >
       <div
-        className="w-full max-w-xl bg-surface border border-border rounded-card shadow-elevated overflow-hidden flex flex-col max-h-[80vh] sm:max-h-[70vh]"
+        className="w-full max-w-xl bg-surface border border-border rounded-card shadow-elevated overflow-hidden flex flex-col max-h-[80vh] sm:max-h-[70vh] card-highlight animate-scale-in"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
@@ -125,12 +125,12 @@ export function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModalProps) {
               setSelectedIndex(0);
             }}
             placeholder="Cari surah, kisah nabi, hukum tajwid, hadits..."
-            className="flex-1 bg-transparent text-sm sm:text-base text-text-primary placeholder:text-text-secondary outline-none"
+            className="flex-1 bg-transparent text-sm sm:text-base text-text-primary placeholder:text-text-secondary/70 outline-none"
           />
           {query ? (
             <button
               onClick={() => setQuery('')}
-              className="p-1 text-text-secondary hover:text-text-primary rounded-sm"
+              className="p-1 text-text-secondary hover:text-text-primary rounded-full hover:bg-surface-alt active:scale-90"
               aria-label="Hapus kata kunci"
             >
               <X className="w-4 h-4" />
@@ -143,7 +143,7 @@ export function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModalProps) {
         </div>
 
         {/* Results List */}
-        <div className="flex-1 overflow-y-auto divide-y divide-border p-2 space-y-1">
+        <div className="flex-1 overflow-y-auto divide-y divide-border/60 p-2 space-y-1">
           {results.length > 0 ? (
             results.map((item, idx) => {
               const isSelected = idx === selectedIndex;
@@ -152,19 +152,19 @@ export function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModalProps) {
                   key={item.href + idx}
                   onClick={() => handleSelect(item.href)}
                   onMouseEnter={() => setSelectedIndex(idx)}
-                  className={`flex items-center justify-between p-3 rounded-card cursor-pointer transition-colors ${
+                  className={`flex items-center justify-between p-3 rounded-button cursor-pointer transition-all duration-150 ${
                     isSelected
                       ? 'bg-primary-soft text-text-primary'
                       : 'hover:bg-surface-alt text-text-primary'
                   }`}
                 >
                   <div className="flex items-center gap-3 min-w-0 flex-1">
-                    <div className="w-8 h-8 rounded-card bg-surface border border-border flex items-center justify-center shrink-0">
+                    <div className="w-9 h-9 rounded-button bg-surface-alt border border-border flex items-center justify-center shrink-0">
                       {getIcon(item.type)}
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2">
-                        <span className="text-sm font-semibold truncate text-text-primary">
+                        <span className="text-sm font-bold truncate text-text-primary">
                           {item.title}
                         </span>
                         <Chip variant="outline" className="text-[10px] py-0 px-1.5 shrink-0">
@@ -190,7 +190,7 @@ export function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModalProps) {
             })
           ) : (
             <div className="p-8 text-center text-text-secondary">
-              <p className="text-sm">Tidak ditemukan hasil untuk &quot;{query}&quot;</p>
+              <p className="text-sm font-semibold">Tidak ditemukan hasil untuk &quot;{query}&quot;</p>
               <p className="text-xs mt-1 text-text-secondary">
                 Coba kata kunci lain seperti nama surah, nabi, atau hukum tajwid.
               </p>
@@ -206,7 +206,7 @@ export function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModalProps) {
             <kbd className="px-1 bg-surface border border-border rounded font-mono">↓</kbd>
             <kbd className="px-1 bg-surface border border-border rounded font-mono">Enter</kbd>
           </div>
-          <span>Iqra Pencarian Cepat</span>
+          <span className="font-semibold text-primary-text">Iqra Pencarian Cepat</span>
         </div>
       </div>
     </div>

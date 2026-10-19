@@ -75,27 +75,27 @@ export function SirahTimelineView() {
       <div className="flex items-center justify-between border-b border-border pb-3">
         <Link
           href="/belajar/"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primary-hover transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-bold text-primary-text hover:underline min-h-[44px]"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Kembali ke Pusat Belajar</span>
         </Link>
-        <Chip variant="outline" className="text-[11px]">
+        <Chip variant="outline" className="text-[11px] rounded-full">
           17 Bab Kronologis
         </Chip>
       </div>
 
       {/* Header Utama */}
-      <div className="space-y-2">
-        <div className="flex items-center gap-2">
-          <span className="w-9 h-9 rounded-card bg-primary-soft text-primary flex items-center justify-center flex-shrink-0">
+      <div className="space-y-2.5">
+        <div className="flex items-center gap-3">
+          <span className="w-11 h-11 rounded-full bg-pastel-green text-[#266308] border border-pastel-green/40 flex items-center justify-center shrink-0 shadow-subtle">
             <Sparkles className="w-5 h-5" />
           </span>
           <div>
-            <h1 className="text-xl sm:text-2xl font-bold text-text-primary tracking-tight">
+            <h1 className="text-xl sm:text-2xl font-extrabold text-text-primary tracking-tight">
               Sirah Nabawiyyah (السيرة النبوية)
             </h1>
-            <p className="text-xs sm:text-sm text-text-secondary mt-0.5">
+            <p className="text-xs sm:text-sm text-text-muted mt-0.5">
               Kronologi lengkap perjalanan hidup Rasulullah Muhammad ﷺ dari lahir hingga wafat
             </p>
           </div>
@@ -116,16 +116,16 @@ export function SirahTimelineView() {
       </div>
 
       {/* Ringkasan Makna Sirah Card */}
-      <Card className="p-4 sm:p-5 bg-surface border-primary/30 shadow-subtle">
+      <Card className="p-5 sm:p-6 bg-surface border border-border shadow-card rounded-card">
         <div className="flex items-start gap-3.5">
-          <div className="w-10 h-10 rounded-card bg-primary text-white flex items-center justify-center flex-shrink-0 mt-0.5">
+          <div className="w-10 h-10 rounded-full bg-pastel-cyan text-[#0B5C66] border border-pastel-cyan/40 flex items-center justify-center shrink-0 mt-0.5">
             <ShieldCheck className="w-5 h-5" />
           </div>
-          <div className="text-xs sm:text-sm text-text-secondary leading-relaxed">
-            <p className="font-semibold text-text-primary">
+          <div className="text-xs sm:text-sm text-text-muted leading-relaxed">
+            <p className="font-bold text-text-primary text-sm sm:text-base">
               Mengapa Wajib Mempelajari Sirah Nabawiyyah?
             </p>
-            <p className="mt-1">
+            <p className="mt-1 leading-relaxed">
               Mempelajari sirah Nabi ﷺ bukan sekadar membaca kisah sejarah masa lalu, melainkan bagian dari keimanan untuk mengenal uswah hasanah (teladan terbaik), memahami konteks turunnya ayat Al-Qur'an, menumbuhkan rasa cinta sejati kepada Rasulullah, dan mengambil panduan hidup dalam berdakwah, berkeluarga, dan bermasyarakat.
             </p>
           </div>
@@ -135,51 +135,51 @@ export function SirahTimelineView() {
       {/* Filter Kontrol & Pencarian */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
         {/* Phase Buttons */}
-        <div className="inline-flex p-1 bg-surface-alt border border-border rounded-xl gap-1">
+        <div className="inline-flex p-1 bg-surface-2 border border-border rounded-full gap-1 overflow-x-auto no-scrollbar">
           <button
             type="button"
             onClick={() => setActivePhase('semua')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+            className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all min-h-[38px] ${
               activePhase === 'semua'
-                ? 'bg-primary text-white shadow-subtle'
-                : 'text-text-secondary hover:text-text-primary'
+                ? 'bg-primary-gradient text-on-primary shadow-subtle'
+                : 'text-text-muted hover:text-text-primary'
             }`}
           >
-            Semua Fase (17)
+            Semua (17)
           </button>
           <button
             type="button"
             onClick={() => setActivePhase('makkah')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+            className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all min-h-[38px] ${
               activePhase === 'makkah'
-                ? 'bg-primary text-white shadow-subtle'
-                : 'text-text-secondary hover:text-text-primary'
+                ? 'bg-primary-gradient text-on-primary shadow-subtle'
+                : 'text-text-muted hover:text-text-primary'
             }`}
           >
-            Fase Makkah (Bab 1–9)
+            Fase Makkah (1–9)
           </button>
           <button
             type="button"
             onClick={() => setActivePhase('madinah')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+            className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all min-h-[38px] ${
               activePhase === 'madinah'
-                ? 'bg-primary text-white shadow-subtle'
-                : 'text-text-secondary hover:text-text-primary'
+                ? 'bg-primary-gradient text-on-primary shadow-subtle'
+                : 'text-text-muted hover:text-text-primary'
             }`}
           >
-            Fase Madinah (Bab 10–17)
+            Fase Madinah (10–17)
           </button>
         </div>
 
         {/* Pencarian Input */}
         <div className="relative min-w-[220px]">
-          <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary" />
+          <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-text-muted" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Cari peristiwa, perang, tahun..."
-            className="w-full pl-9 pr-3 py-2 text-xs rounded-xl bg-surface border border-border text-text-primary placeholder:text-text-secondary focus:outline-none focus:border-primary"
+            className="w-full pl-10 pr-3.5 py-2.5 text-xs sm:text-sm rounded-button bg-surface border border-border text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary shadow-subtle min-h-[44px]"
           />
         </div>
       </div>
@@ -203,8 +203,8 @@ export function SirahTimelineView() {
               <Card
                 key={ep.id}
                 id={ep.id}
-                className={`p-4 sm:p-5 bg-surface border transition-all duration-150 ${
-                  isExpanded ? 'border-primary/50 shadow-subtle' : 'border-border hover:border-border-hover'
+                className={`p-5 sm:p-6 bg-surface border transition-all duration-200 rounded-card shadow-card ${
+                  isExpanded ? 'border-primary/40 ring-1 ring-primary/20' : 'border-border hover:border-primary/30'
                 }`}
               >
                 {/* Header Episode */}
@@ -212,27 +212,27 @@ export function SirahTimelineView() {
                   onClick={() => toggleExpand(ep.id)}
                   className="cursor-pointer select-none"
                 >
-                  <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                    <div className="flex items-center gap-2">
-                      <span className="w-6 h-6 rounded-full bg-primary-soft text-primary font-bold text-xs flex items-center justify-center">
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-8 h-8 rounded-full bg-pastel-green text-[#266308] border border-pastel-green/40 font-bold text-xs flex items-center justify-center shrink-0 shadow-subtle tabular-nums">
                         {ep.order}
                       </span>
                       <Chip
                         variant={ep.phase === 'makkah' ? 'secondary' : 'primary'}
-                        className="text-[10px] py-0.5 px-2"
+                        className="text-[11px] font-semibold py-0.5 px-2.5"
                       >
                         {ep.phase === 'makkah' ? 'Fase Makkah' : 'Fase Madinah'}
                       </Chip>
                     </div>
 
-                    <div className="flex items-center gap-3 text-[11px] text-text-secondary font-medium">
+                    <div className="flex items-center gap-3 text-xs text-text-muted font-medium tabular-nums">
                       <span className="flex items-center gap-1">
-                        <Calendar className="w-3.5 h-3.5 text-primary" />
+                        <Calendar className="w-3.5 h-3.5 text-primary-text" />
                         <span>{ep.yearMasehi}</span>
                         {ep.yearHijri && <span className="opacity-75">({ep.yearHijri})</span>}
                       </span>
                       <span className="flex items-center gap-1">
-                        <Clock className="w-3.5 h-3.5 text-accent" />
+                        <Clock className="w-3.5 h-3.5 text-amber-500" />
                         <span>Usia: {ep.age}</span>
                       </span>
                     </div>
@@ -241,13 +241,13 @@ export function SirahTimelineView() {
                   {/* Judul & Bahasa Arab */}
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <h3 className="text-base sm:text-lg font-bold text-text-primary">
+                      <h3 className="text-base sm:text-lg font-bold text-text-primary tracking-tight">
                         {ep.title}
                       </h3>
                       {ep.arabicTitle && (
                         <p
                           dir="rtl"
-                          className="font-arabic text-sm text-text-secondary mt-0.5 text-right sm:text-left"
+                          className="font-arabic text-sm text-text-muted mt-1 text-right sm:text-left"
                         >
                           {ep.arabicTitle}
                         </p>
@@ -256,10 +256,10 @@ export function SirahTimelineView() {
                     <button
                       type="button"
                       aria-label={isExpanded ? 'Tutup detail' : 'Buka detail'}
-                      className="p-1 rounded-md text-text-secondary hover:text-text-primary hover:bg-surface-alt transition-colors shrink-0"
+                      className="w-10 h-10 rounded-full text-text-muted hover:text-text-primary hover:bg-surface-2 flex items-center justify-center transition-colors shrink-0 active:scale-90"
                     >
                       {isExpanded ? (
-                        <ChevronUp className="w-5 h-5 text-primary" />
+                        <ChevronUp className="w-5 h-5 text-primary-text" />
                       ) : (
                         <ChevronDown className="w-5 h-5" />
                       )}
@@ -267,12 +267,12 @@ export function SirahTimelineView() {
                   </div>
 
                   {/* Lokasi & Ringkasan Singkat */}
-                  <div className="mt-2 text-xs">
-                    <p className="flex items-center gap-1 text-[11px] text-text-secondary mb-1">
-                      <MapPin className="w-3 h-3 text-accent inline" />
+                  <div className="mt-2 text-xs text-text-muted">
+                    <p className="flex items-center gap-1 text-[11px] text-text-muted mb-1">
+                      <MapPin className="w-3.5 h-3.5 text-primary-text inline shrink-0" />
                       <span>{ep.location}</span>
                     </p>
-                    <p className="text-text-secondary leading-relaxed">
+                    <p className="text-text-muted leading-relaxed">
                       {ep.summary}
                     </p>
                   </div>
@@ -284,7 +284,7 @@ export function SirahTimelineView() {
                     {/* Paragraf Narasi Sejarah */}
                     <div className="space-y-2.5 text-text-primary leading-relaxed">
                       {ep.content.map((p, idx) => (
-                        <p key={idx} className="text-xs sm:text-sm text-text-primary/90">
+                        <p key={idx} className="text-xs sm:text-sm text-text-primary leading-relaxed">
                           {p}
                         </p>
                       ))}
@@ -293,15 +293,15 @@ export function SirahTimelineView() {
                     {/* Dalil Ayat Al-Qur'an (jika ada) */}
                     {ep.verseRefs && ep.verseRefs.length > 0 && (
                       <div className="space-y-2.5 pt-1">
-                        <span className="text-[11px] font-bold uppercase tracking-wider text-accent block">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-primary-text block">
                           Rujukan Firman Allah (Al-Qur'an)
                         </span>
                         {ep.verseRefs.map((v, idx) => (
                           <div
                             key={idx}
-                            className="p-3 bg-surface-alt rounded-card border border-border space-y-1.5"
+                            className="p-4 bg-surface-2 rounded-card border border-border space-y-2"
                           >
-                            <div className="flex items-center justify-between text-[11px] text-accent font-bold">
+                            <div className="flex items-center justify-between text-xs text-primary-text font-bold">
                               <span>{v.surah}</span>
                             </div>
                             <p
@@ -310,8 +310,8 @@ export function SirahTimelineView() {
                             >
                               {v.text}
                             </p>
-                            <p className="text-xs text-text-secondary italic">
-                              "{v.translation}"
+                            <p className="text-xs text-text-muted italic leading-relaxed">
+                              &ldquo;{v.translation}&rdquo;
                             </p>
                           </div>
                         ))}
@@ -320,20 +320,20 @@ export function SirahTimelineView() {
 
                     {/* Hadits Shahih Terkait (jika ada) */}
                     {ep.hadithRefs && ep.hadithRefs.length > 0 && (
-                      <div className="space-y-2 pt-1">
-                        <span className="text-[11px] font-bold uppercase tracking-wider text-primary block">
+                      <div className="space-y-2.5 pt-1">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-primary-text block">
                           Hadits Rujukan Shahih
                         </span>
                         {ep.hadithRefs.map((h, idx) => (
                           <div
                             key={idx}
-                            className="p-3 bg-primary-soft/30 rounded-card border border-primary/20 text-xs leading-relaxed"
+                            className="p-4 bg-pastel-green/30 rounded-card border border-pastel-green/50 text-xs leading-relaxed"
                           >
-                            <span className="font-bold text-primary block mb-0.5">
+                            <span className="font-bold text-[#266308] dark:text-[#9BE35B] block mb-1">
                               {h.source}
                             </span>
-                            <p className="text-text-primary/90 italic">
-                              {h.text}
+                            <p className="text-text-primary leading-relaxed italic">
+                              &ldquo;{h.text}&rdquo;
                             </p>
                           </div>
                         ))}
@@ -342,14 +342,14 @@ export function SirahTimelineView() {
 
                     {/* Hikmah & Pelajaran Berharga */}
                     <div className="space-y-2 pt-1">
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-text-secondary block">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-text-muted block">
                         Hikmah &amp; Pelajaran Kehidupan ('Ibrah)
                       </span>
-                      <ul className="space-y-1 text-xs text-text-secondary">
+                      <ul className="space-y-1.5 text-xs text-text-muted">
                         {ep.lessons.map((lesson, idx) => (
                           <li key={idx} className="flex items-start gap-2">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-success shrink-0 mt-0.5" />
-                            <span>{lesson}</span>
+                            <CheckCircle2 className="w-4 h-4 text-success shrink-0 mt-0.5" />
+                            <span className="leading-relaxed">{lesson}</span>
                           </li>
                         ))}
                       </ul>
@@ -357,16 +357,16 @@ export function SirahTimelineView() {
 
                     {/* Footer Episode: Share Button */}
                     <div className="pt-2 flex items-center justify-between border-t border-border">
-                      <span className="text-[11px] text-text-secondary">
+                      <span className="text-xs text-text-muted">
                         Bab {ep.order} dari 17
                       </span>
                       <Button
                         variant="ghost"
                         size="sm"
                         onClick={() => handleShare(ep)}
-                        className="text-xs gap-1 text-text-secondary hover:text-primary"
+                        className="text-xs gap-1.5 min-h-[44px] rounded-button text-text-muted hover:text-primary-text"
                       >
-                        <Share2 className="w-3 h-3" />
+                        <Share2 className="w-3.5 h-3.5" />
                         <span>{copiedId === ep.id ? 'Tersalin!' : 'Bagikan Bab'}</span>
                       </Button>
                     </div>
@@ -379,17 +379,17 @@ export function SirahTimelineView() {
       </div>
 
       {/* Rujukan Lengkap & Link ke Kisah 25 Nabi */}
-      <Card className="p-5 bg-surface border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <Card className="p-5 sm:p-6 bg-surface border border-border shadow-card rounded-card flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <h4 className="text-sm font-bold text-text-primary">
             Ingin Mempelajari Kisah Nabi Lainnya?
           </h4>
-          <p className="text-xs text-text-secondary mt-0.5">
+          <p className="text-xs text-text-muted mt-1 leading-relaxed">
             Baca ringkasan keteladanan 25 nabi dan rasul dari Nabi Adam AS hingga Isa AS di modul Kisah 25 Nabi.
           </p>
         </div>
-        <Link href="/kisah-nabi/" className="shrink-0">
-          <Button variant="secondary" size="sm" className="text-xs font-semibold">
+        <Link href="/kisah-nabi/" className="shrink-0 w-full sm:w-auto">
+          <Button variant="secondary" size="sm" className="w-full sm:w-auto min-h-[44px] rounded-button text-xs font-bold">
             Buka Kisah 25 Nabi
           </Button>
         </Link>

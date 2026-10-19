@@ -112,14 +112,14 @@ export function PrayerMainView({ initialTab = 'jadwal' }: PrayerMainViewProps = 
       </div>
 
       {/* Segmented Control 3-in-1 Hub: Jadwal | Arah Kiblat | Masjid Terdekat */}
-      <div className="inline-flex p-1 bg-surface-alt border border-border rounded-xl gap-1 w-full sm:w-auto">
+      <div className="inline-flex p-1 bg-surface-alt border border-border rounded-pill gap-1 w-full sm:w-auto">
         <button
           type="button"
           onClick={() => setActiveTab('jadwal')}
-          className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
+          className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-4 py-2 rounded-pill text-xs font-extrabold transition-all duration-150 active:scale-95 ${
             activeTab === 'jadwal'
-              ? 'bg-primary text-white shadow-subtle'
-              : 'text-text-secondary hover:text-text-primary hover:bg-surface'
+              ? 'bg-primary-gradient text-on-primary shadow-subtle'
+              : 'text-text-secondary hover:text-text-primary'
           }`}
         >
           <Clock className="w-3.5 h-3.5" />
@@ -128,10 +128,10 @@ export function PrayerMainView({ initialTab = 'jadwal' }: PrayerMainViewProps = 
         <button
           type="button"
           onClick={() => setActiveTab('kiblat')}
-          className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
+          className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-4 py-2 rounded-pill text-xs font-extrabold transition-all duration-150 active:scale-95 ${
             activeTab === 'kiblat'
-              ? 'bg-primary text-white shadow-subtle'
-              : 'text-text-secondary hover:text-text-primary hover:bg-surface'
+              ? 'bg-primary-gradient text-on-primary shadow-subtle'
+              : 'text-text-secondary hover:text-text-primary'
           }`}
         >
           <Compass className="w-3.5 h-3.5" />
@@ -140,10 +140,10 @@ export function PrayerMainView({ initialTab = 'jadwal' }: PrayerMainViewProps = 
         <button
           type="button"
           onClick={() => setActiveTab('masjid')}
-          className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
+          className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-4 py-2 rounded-pill text-xs font-extrabold transition-all duration-150 active:scale-95 ${
             activeTab === 'masjid'
-              ? 'bg-primary text-white shadow-subtle'
-              : 'text-text-secondary hover:text-text-primary hover:bg-surface'
+              ? 'bg-primary-gradient text-on-primary shadow-subtle'
+              : 'text-text-secondary hover:text-text-primary'
           }`}
         >
           <MapPin className="w-3.5 h-3.5" />

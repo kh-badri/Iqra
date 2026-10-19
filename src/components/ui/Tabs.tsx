@@ -20,7 +20,7 @@ export function Tabs({ items, activeId, onChange, className }: TabsProps) {
   return (
     <div
       className={cn(
-        'inline-flex items-center p-1 bg-surface-alt border border-border rounded-card max-w-full overflow-x-auto no-scrollbar',
+        'inline-flex items-center p-1 bg-surface-alt border border-border rounded-pill max-w-full overflow-x-auto no-scrollbar',
         className
       )}
       role="tablist"
@@ -34,9 +34,9 @@ export function Tabs({ items, activeId, onChange, className }: TabsProps) {
             aria-selected={isActive}
             onClick={() => onChange(tab.id)}
             className={cn(
-              'px-4 py-2 text-xs font-semibold rounded-sm transition-all duration-150 whitespace-nowrap flex items-center gap-1.5 focus:outline-none select-none',
+              'px-4 py-2 text-xs font-bold rounded-pill transition-all duration-150 whitespace-nowrap flex items-center gap-1.5 focus:outline-none select-none active:scale-95',
               isActive
-                ? 'bg-primary text-white shadow-subtle'
+                ? 'bg-primary-gradient text-on-primary shadow-subtle'
                 : 'text-text-secondary hover:text-text-primary'
             )}
           >
@@ -44,8 +44,10 @@ export function Tabs({ items, activeId, onChange, className }: TabsProps) {
             {tab.count !== undefined && (
               <span
                 className={cn(
-                  'text-[10px] px-1.5 py-0.5 rounded-pill font-mono',
-                  isActive ? 'bg-white/20 text-white' : 'bg-border text-text-secondary'
+                  'text-[10px] px-1.5 py-0.2 rounded-pill font-mono font-bold',
+                  isActive
+                    ? 'bg-on-primary/20 text-on-primary'
+                    : 'bg-border text-text-secondary'
                 )}
               >
                 {tab.count}

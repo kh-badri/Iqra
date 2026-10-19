@@ -86,44 +86,44 @@ export function AyahActionSheet({
         )}
 
         {/* Menu Aksi Grid */}
-        <div className="grid grid-cols-2 gap-2 pt-2">
+        <div className="grid grid-cols-2 gap-2.5 pt-2">
           {onPlayAudio && (
             <Button
               variant="secondary"
-              className="gap-2 text-xs"
+              className="gap-2 text-xs min-h-[44px] font-bold"
               onClick={() => {
                 onPlayAudio();
                 onClose();
               }}
             >
-              <Play className="w-4 h-4 text-primary" />
+              <Play className="w-4 h-4 text-primary-text" />
               <span>Putar Ayat</span>
             </Button>
           )}
 
           <Button
             variant="secondary"
-            className="gap-2 text-xs"
+            className="gap-2 text-xs min-h-[44px] font-bold"
             onClick={onToggleBookmark}
           >
             <Bookmark
-              className={`w-4 h-4 ${isBookmarked ? 'fill-accent text-accent' : 'text-text-secondary'}`}
+              className={`w-4 h-4 ${isBookmarked ? 'fill-warning text-warning' : 'text-text-secondary'}`}
             />
             <span>{isBookmarked ? 'Hapus Bookmark' : 'Simpan Bookmark'}</span>
           </Button>
 
           <Button
             variant="secondary"
-            className="gap-2 text-xs"
+            className="gap-2 text-xs min-h-[44px] font-bold"
             onClick={() => setShowTafsir(!showTafsir)}
           >
-            <BookOpen className="w-4 h-4 text-primary" />
+            <BookOpen className="w-4 h-4 text-primary-text" />
             <span>{showTafsir ? 'Tutup Tafsir' : 'Lihat Tafsir'}</span>
           </Button>
 
           <Button
             variant="secondary"
-            className="gap-2 text-xs"
+            className="gap-2 text-xs min-h-[44px] font-bold"
             onClick={handleCopy}
           >
             {copied ? (
@@ -136,11 +136,11 @@ export function AyahActionSheet({
 
           <Button
             variant="primary"
-            className="gap-2 text-xs col-span-2"
+            className="gap-2 text-xs col-span-2 min-h-[48px] font-extrabold shadow-subtle"
             onClick={handleShare}
           >
             <Share2 className="w-4 h-4" />
-            <span>Bagikan Ayat & Terjemahan</span>
+            <span>Bagikan Ayat &amp; Terjemahan</span>
           </Button>
         </div>
       </div>

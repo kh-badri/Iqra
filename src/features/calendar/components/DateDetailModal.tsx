@@ -13,7 +13,16 @@ export interface DateDetailModalProps {
 }
 
 export function DateDetailModal({ isOpen, onClose, cell }: DateDetailModalProps) {
-  if (!cell) return null;
+  const [cachedCell, setCachedCell] = React.useState<CalendarDayCell | null>(cell);
+
+  React.useEffect(() => {
+    if (cell) {
+      setCachedCell(cell);
+    }
+  }, [cell]);
+
+  const activeCell = cell || cachedCell;
+  if (!activeCell) return null;
 
   const masehiFormatter = new Intl.DateTimeFormat('id-ID', {
     weekday: 'long',
@@ -22,7 +31,7 @@ export function DateDetailModal({ isOpen, onClose, cell }: DateDetailModalProps)
     year: 'numeric',
   });
 
-  const fullMasehi = masehiFormatter.format(cell.date);
+  const fullMasehi = masehiFormatter.format(activeCell.date);
 
   return (
     <BottomSheet
@@ -30,7 +39,7 @@ export function DateDetailModal({ isOpen, onClose, cell }: DateDetailModalProps)
       onClose={onClose}
       title={
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-primary-soft text-primary flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-pastel-green text-primary-text flex items-center justify-center">
             <Calendar className="w-4 h-4" />
           </div>
           <div>
@@ -46,46 +55,46 @@ export function DateDetailModal({ isOpen, onClose, cell }: DateDetailModalProps)
         {/* Banner Tanggal Hijriah Utama */}
         <div className="p-4 rounded-card bg-surface-alt border border-border text-center space-y-1">
           <div className="flex items-center justify-center gap-2">
-            {cell.isToday && (
+            {activeCell.isToday && (
               <Chip variant="primary" className="text-[10px] py-0 px-2 h-5">
                 Hari Ini
               </Chip>
             )}
             <Chip variant="secondary" className="text-[10px] py-0 px-2 h-5">
-              Tahun {cell.hijri.year} H
+              Tahun {activeCell.hijri.year} H
             </Chip>
           </div>
-          <div className="font-arabic text-2xl sm:text-3xl text-primary font-bold my-1">
-            {cell.hijri.day} {cell.hijri.monthNameArabic || cell.hijri.monthName}
+          <div className="font-arabic text-2xl sm:text-3xl text-primary-text font-bold my-1">
+            {activeCell.hijri.day} {activeCell.hijri.monthNameArabic || activeCell.hijri.monthName}
           </div>
           <div className="text-sm sm:text-base font-bold text-text-primary">
-            {cell.hijri.formatted}
+            {activeCell.hijri.formatted}
           </div>
           <div className="text-xs text-text-secondary">{fullMasehi}</div>
         </div>
 
         {/* Jika ada Peringatan Hari Dilarang Puasa */}
-        {cell.prohibitedReason && (
+        {activeCell.prohibitedReason && (
           <div className="p-3.5 rounded-card bg-danger/10 border border-danger/30 space-y-1.5">
             <div className="flex items-center gap-2 text-danger font-bold text-xs">
               <AlertTriangle className="w-4 h-4 shrink-0" />
               <span>Hari Diharamkan Berpuasa</span>
             </div>
             <p className="text-xs text-text-primary leading-relaxed">
-              {cell.prohibitedReason}. Umat Islam dilarang berpuasa pada hari raya dan hari Tasyrik berdasarkan hadits shahih riwayat Bukhari & Muslim.
+              {activeCell.prohibitedReason}. Umat Islam dilarang berpuasa pada hari raya dan hari Tasyrik berdasarkan hadits shahih riwayat Bukhari & Muslim.
             </p>
           </div>
         )}
 
         {/* Jika ada Peristiwa / Hari Besar Islam */}
-        {cell.events.length > 0 && (
+        {activeCell.events.length > 0 && (
           <div className="space-y-2">
             <h4 className="text-xs font-bold uppercase tracking-wider text-text-secondary flex items-center gap-1.5">
               <Star className="w-3.5 h-3.5 text-accent" />
               <span>Hari Besar & Peristiwa Islam:</span>
             </h4>
             <div className="space-y-2">
-              {cell.events.map((ev, idx) => (
+              {activeCell.events.map((ev, idx) => (
                 <div
                   key={idx}
                   className="p-3.5 rounded-card bg-surface border border-accent/40 shadow-subtle space-y-1"
@@ -110,14 +119,14 @@ export function DateDetailModal({ isOpen, onClose, cell }: DateDetailModalProps)
         )}
 
         {/* Jika ada Jadwal Puasa Sunnah */}
-        {cell.fastings.filter((f) => !f.isProhibited).length > 0 && (
+        {activeCell.fastings.filter((f) => !f.isProhibited).length > 0 && (
           <div className="space-y-2.5">
             <h4 className="text-xs font-bold uppercase tracking-wider text-text-secondary flex items-center gap-1.5">
               <Moon className="w-3.5 h-3.5 text-primary" />
               <span>Jadwal Puasa Sunnah Hari Ini:</span>
             </h4>
             <div className="space-y-3">
-              {cell.fastings
+              {activeCell.fastings
                 .filter((f) => !f.isProhibited)
                 .map((fasting) => (
                   <div
@@ -173,7 +182,7 @@ export function DateDetailModal({ isOpen, onClose, cell }: DateDetailModalProps)
         )}
 
         {/* Jika hari biasa tanpa puasa spesifik */}
-        {cell.fastings.length === 0 && cell.events.length === 0 && !cell.prohibitedReason && (
+        {activeCell.fastings.length === 0 && activeCell.events.length === 0 && !activeCell.prohibitedReason && (
           <div className="p-3.5 bg-surface-alt rounded-card border border-border text-xs text-text-secondary leading-relaxed flex items-start gap-2">
             <BookOpen className="w-4 h-4 text-primary shrink-0 mt-0.5" />
             <span>

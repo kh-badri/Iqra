@@ -67,32 +67,32 @@ export function HadithReaderView({ book, initialChunk }: HadithReaderViewProps) 
         <div className="flex items-center gap-3">
           <Link
             href="/hadits/"
-            className="p-2 rounded-card bg-surface border border-border hover:bg-surface-alt transition-colors"
+            className="w-10 h-10 rounded-full bg-surface border border-border hover:bg-surface-2 flex items-center justify-center transition-colors min-h-[44px] min-w-[44px] active:scale-95 shadow-subtle"
             aria-label="Kembali ke Daftar Kitab"
           >
-            <ArrowLeft className="w-4 h-4 text-text-primary" />
+            <ArrowLeft className="w-5 h-5 text-text-primary" />
           </Link>
           <div>
-            <h1 className="text-lg sm:text-xl font-bold text-text-primary flex items-center gap-2">
+            <h1 className="text-lg sm:text-xl font-extrabold text-text-primary flex items-center gap-2 tracking-tight">
               <span>{book.name}</span>
-              <span className="font-arabic text-accent font-normal text-sm sm:text-base">
+              <span className="font-arabic text-primary font-normal text-sm sm:text-base">
                 ({book.arabicName})
               </span>
             </h1>
-            <p className="text-[11px] text-text-secondary mt-0.5">
+            <p className="text-xs text-text-muted mt-0.5">
               {book.author} · {book.totalHadiths} Hadits Shahih
             </p>
           </div>
         </div>
 
-        <Chip variant="primary" className="bg-success text-white border-transparent text-xs py-0.5">
+        <Chip variant="primary" className="bg-pastel-green text-[#266308] border border-pastel-green/40 text-xs py-1 px-3 font-bold rounded-full">
           {book.grade}
         </Chip>
       </div>
 
-      {/* Hero Kitab Flat Card */}
-      <Card className="p-4 sm:p-5 bg-surface border-border">
-        <p className="text-xs sm:text-sm text-text-secondary leading-relaxed">
+      {/* Hero Kitab Card */}
+      <Card className="p-5 sm:p-6 bg-surface border border-border shadow-card rounded-card">
+        <p className="text-xs sm:text-sm text-text-muted leading-relaxed">
           {book.description}
         </p>
       </Card>

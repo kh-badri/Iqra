@@ -1,4 +1,4 @@
-import type { CityLocation, PrayerName, PrayerSettings } from './types';
+import type { CityLocation, PrayerName, PrayerSettings, AdhanMuadhin } from './types';
 
 export const PRAYER_LABELS: Record<PrayerName, { id: PrayerName; name: string; arabic: string }> = {
   imsak: { id: 'imsak', name: 'Imsak', arabic: 'الإمساك' },
@@ -10,9 +10,83 @@ export const PRAYER_LABELS: Record<PrayerName, { id: PrayerName; name: string; a
   isha: { id: 'isha', name: 'Isya', arabic: 'العشاء' },
 };
 
+export const ADHAN_MUADHIN_LIST: AdhanMuadhin[] = [
+  {
+    id: 'makkah',
+    name: 'Syaikh Ali Ahmad Mulla',
+    arabicName: 'علي بن أحمد ملا',
+    origin: 'Masjidil Haram, Makkah',
+    description: 'Muadzin legendaris Masjidil Haram. Lantunan lantang, megah, dan berwibawa (Studio HD).',
+    badge: 'Masjidil Haram (HD)',
+    audioStandard: '/audio/adhan/makkah-standard.mp3?v=2',
+    audioFajr: '/audio/adhan/makkah-fajr.mp3?v=2',
+  },
+  {
+    id: 'madinah',
+    name: 'Syaikh Abdul Majid Al-Surayhi',
+    arabicName: 'الحرم المدني الشريف',
+    origin: 'Masjid Nabawi, Madinah',
+    description: 'Lantunan adzan khas kota Madinah yang teduh, syahdu, dan menyejukkan hati (Studio HD).',
+    badge: 'Masjid Nabawi (HD)',
+    audioStandard: '/audio/adhan/madinah-standard.mp3?v=2',
+    audioFajr: '/audio/adhan/madinah-fajr.mp3?v=2',
+  },
+  {
+    id: 'alafasy',
+    name: 'Syaikh Misyari Rasyid Al-Afasy',
+    arabicName: 'مشاري راشد العفاسي',
+    origin: 'Kuwait',
+    description: 'Lantunan sangat merdu, syahdu mendayu-dayu dengan nafas panjang & tajwid presisi (Studio 320kbps).',
+    badge: 'Ultra HD 320kbps',
+    audioStandard: '/audio/adhan/alafasy-standard.mp3?v=2',
+    audioFajr: '/audio/adhan/alafasy-fajr.mp3?v=2',
+  },
+  {
+    id: 'nafees',
+    name: 'Syaikh Ahmad Al-Nafees',
+    arabicName: 'أحمد النفيس',
+    origin: 'Kuwait',
+    description: 'Imam & Qari ternama dengan karakter suara jernih, modern, dan sangat menenangkan (Studio HD).',
+    badge: 'Sangat Jernih (HD)',
+    audioStandard: '/audio/adhan/nafees-standard.mp3?v=2',
+    audioFajr: '/audio/adhan/alafasy-fajr.mp3?v=2',
+  },
+  {
+    id: 'zahrani',
+    name: 'Syaikh Mansoor Al-Zahrani',
+    arabicName: 'منصور الزهراني',
+    origin: 'Arab Saudi',
+    description: 'Lantunan syahdu dengan nada khas jazirah yang menyentuh kalbu (Studio HD).',
+    badge: 'Syahdu (HD)',
+    audioStandard: '/audio/adhan/zahrani-standard.mp3?v=2',
+    audioFajr: '/audio/adhan/makkah-fajr.mp3?v=2',
+  },
+  {
+    id: 'egypt',
+    name: 'Syaikh Abdul Basit Abdus Samad',
+    arabicName: 'عبد الباسط عبد الصمد',
+    origin: 'Kairo, Mesir',
+    description: 'Qari legendaris dunia Islam dengan nafas panjang dan maqam klasik Mesir yang bergetar megah (Studio HD).',
+    badge: 'Legendaris Mesir (HD)',
+    audioStandard: '/audio/adhan/egypt-standard.mp3?v=2',
+    audioFajr: '/audio/adhan/egypt-fajr.mp3?v=2',
+  },
+  {
+    id: 'alaqsa',
+    name: 'Masjid Al-Aqsha (Al-Quds)',
+    arabicName: 'المسجد الأقصى - القدس',
+    origin: 'Yerusalem, Palestina',
+    description: 'Lantunan syahdu bersejarah dari kiblat pertama umat Islam di Baitul Maqdis (Studio HD).',
+    badge: 'Baitul Maqdis (HD)',
+    audioStandard: '/audio/adhan/alaqsa-standard.mp3?v=2',
+    audioFajr: '/audio/adhan/makkah-fajr.mp3?v=2',
+  },
+];
+
 export const DEFAULT_PRAYER_SETTINGS: PrayerSettings = {
   reminderMinutesBefore: 0,
   soundType: 'chime',
+  adhanMuadhin: 'makkah',
   adjustments: {
     imsak: 0,
     fajr: 0,

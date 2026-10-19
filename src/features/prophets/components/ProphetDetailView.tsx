@@ -113,9 +113,9 @@ export const ProphetDetailView: React.FC<ProphetDetailViewProps> = ({
   return (
     <div className="max-w-3xl mx-auto space-y-8 pb-16">
       {/* Top sticky reading progress bar */}
-      <div className="fixed top-0 left-0 right-0 h-1 bg-border/40 z-50">
+      <div className="fixed top-0 left-0 right-0 h-1.5 bg-surface-2 z-50">
         <div
-          className="h-full bg-primary transition-all duration-150 ease-out"
+          className="h-full bg-primary-gradient transition-all duration-150 ease-out"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
@@ -124,7 +124,7 @@ export const ProphetDetailView: React.FC<ProphetDetailViewProps> = ({
       <div className="flex items-center justify-between gap-3 pt-2">
         <Link
           href="/kisah-nabi/"
-          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-primary hover:underline"
+          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-primary-text hover:underline min-h-[44px]"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Daftar Kisah Singkat 25 Nabi</span>
@@ -135,7 +135,7 @@ export const ProphetDetailView: React.FC<ProphetDetailViewProps> = ({
             variant="ghost"
             size="sm"
             onClick={handleShare}
-            className="text-xs flex items-center gap-1.5"
+            className="text-xs flex items-center gap-1.5 min-h-[44px] rounded-button"
             aria-label="Bagikan kisah nabi"
           >
             {isCopied ? <Check className="w-4 h-4 text-success" /> : <Share2 className="w-4 h-4" />}
@@ -146,11 +146,11 @@ export const ProphetDetailView: React.FC<ProphetDetailViewProps> = ({
             variant={isBookmarked ? 'secondary' : 'ghost'}
             size="sm"
             onClick={toggleBookmark}
-            className="text-xs flex items-center gap-1.5"
+            className="text-xs flex items-center gap-1.5 min-h-[44px] rounded-button"
             aria-label="Bookmark kisah nabi"
           >
             <Bookmark
-              className={`w-4 h-4 ${isBookmarked ? 'fill-accent text-accent' : ''}`}
+              className={`w-4 h-4 ${isBookmarked ? 'fill-warning text-warning' : ''}`}
             />
             <span className="hidden sm:inline">
               {isBookmarked ? 'Tersimpan' : 'Simpan'}
@@ -160,19 +160,21 @@ export const ProphetDetailView: React.FC<ProphetDetailViewProps> = ({
       </div>
 
       {/* Hero Header Card */}
-      <Card className="p-6 sm:p-8 border border-border bg-surface">
+      <Card className="p-6 sm:p-8 border border-border bg-surface shadow-card rounded-card relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl pointer-events-none" />
+
         <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-2">
-            <span className="w-8 h-8 rounded-full bg-accent/15 text-accent border border-accent/30 font-bold text-sm flex items-center justify-center">
+          <div className="flex items-center gap-2.5">
+            <span className="w-9 h-9 rounded-full bg-pastel-pink text-[#8A1846] border border-pastel-pink/40 font-bold text-xs flex items-center justify-center shrink-0 shadow-subtle tabular-nums">
               {prophet.order}
             </span>
             <Chip variant="secondary" className="text-xs font-semibold">
-              Nabi & Rasul ke-{prophet.order}
+              Nabi &amp; Rasul ke-{prophet.order}
             </Chip>
           </div>
 
-          <div className="flex items-center gap-2 text-xs text-text-secondary">
-            <Clock className="w-4 h-4" />
+          <div className="flex items-center gap-2 text-xs text-text-muted tabular-nums">
+            <Clock className="w-4 h-4 text-text-muted" />
             <span>Estimasi {prophet.readingTimeMinutes} menit baca</span>
           </div>
         </div>
@@ -182,17 +184,17 @@ export const ProphetDetailView: React.FC<ProphetDetailViewProps> = ({
             <h1 className="text-2xl sm:text-3xl font-extrabold text-text-primary tracking-tight">
               Kisah Singkat {prophet.name}
             </h1>
-            <div className="flex flex-wrap items-center gap-4 mt-2 text-xs sm:text-sm text-text-secondary">
-              <span className="inline-flex items-center gap-1">
-                <Calendar className="w-4 h-4 text-text-secondary" />
+            <div className="flex flex-wrap items-center gap-4 mt-2 text-xs sm:text-sm text-text-muted">
+              <span className="inline-flex items-center gap-1.5">
+                <Calendar className="w-4 h-4 text-text-muted" />
                 {prophet.era}
               </span>
-              <span className="inline-flex items-center gap-1">
-                <MapPin className="w-4 h-4 text-text-secondary" />
+              <span className="inline-flex items-center gap-1.5">
+                <MapPin className="w-4 h-4 text-primary-text" />
                 {prophet.place}
               </span>
-              <span className="inline-flex items-center gap-1">
-                <BookOpen className="w-4 h-4 text-text-secondary" />
+              <span className="inline-flex items-center gap-1.5">
+                <BookOpen className="w-4 h-4 text-text-muted" />
                 Disebut {prophet.mentionCount} kali di Al-Qur&apos;an
               </span>
             </div>
@@ -212,10 +214,10 @@ export const ProphetDetailView: React.FC<ProphetDetailViewProps> = ({
           <button
             onClick={toggleCompleted}
             type="button"
-            className={`inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full border transition-colors ${
+            className={`inline-flex items-center gap-2 text-xs font-bold px-4 py-2.5 rounded-full border transition-all min-h-[44px] active:scale-95 ${
               progressRecord?.read
-                ? 'bg-success/15 text-success border-success/30'
-                : 'bg-surface-alt text-text-secondary border-border hover:text-text-primary'
+                ? 'bg-pastel-green text-[#266308] dark:text-[#9BE35B] border-pastel-green/40'
+                : 'bg-surface-2 text-text-muted border-border hover:text-text-primary'
             }`}
           >
             <CheckCircle2 className="w-4 h-4" />
@@ -229,12 +231,12 @@ export const ProphetDetailView: React.FC<ProphetDetailViewProps> = ({
       {/* Story Sections */}
       <div className="space-y-6">
         {prophet.sections.map((section, idx) => (
-          <Card key={section.id} className="p-6 sm:p-7 border border-border">
-            <div className="flex items-center gap-2.5 mb-3.5">
-              <span className="w-6 h-6 rounded-full bg-primary-soft text-primary font-bold text-xs flex items-center justify-center shrink-0">
+          <Card key={section.id} className="p-6 sm:p-8 border border-border bg-surface shadow-card rounded-card space-y-4">
+            <div className="flex items-center gap-3">
+              <span className="w-8 h-8 rounded-full bg-pastel-green text-[#266308] border border-pastel-green/40 font-bold text-xs flex items-center justify-center shrink-0 tabular-nums">
                 {idx + 1}
               </span>
-              <h2 className="text-lg sm:text-xl font-bold text-text-primary">
+              <h2 className="text-lg sm:text-xl font-bold text-text-primary tracking-tight">
                 {section.title}
               </h2>
             </div>
@@ -247,8 +249,8 @@ export const ProphetDetailView: React.FC<ProphetDetailViewProps> = ({
 
       {/* Quran Verse References */}
       {prophet.verseRefs && prophet.verseRefs.length > 0 && (
-        <Card className="p-6 border border-border bg-surface">
-          <div className="flex items-center gap-2 mb-4">
+        <Card className="p-6 sm:p-8 border border-border bg-surface shadow-card rounded-card">
+          <div className="flex items-center gap-2.5 mb-4">
             <BookOpen className="w-5 h-5 text-primary" />
             <h2 className="text-base sm:text-lg font-bold text-text-primary">
               Rujukan Ayat Al-Qur&apos;an
@@ -259,22 +261,22 @@ export const ProphetDetailView: React.FC<ProphetDetailViewProps> = ({
             {prophet.verseRefs.map((v, i) => (
               <div
                 key={i}
-                className="p-4 rounded-card bg-surface-alt border border-border/70 flex flex-col sm:flex-row sm:items-start justify-between gap-3"
+                className="p-4 sm:p-5 rounded-button bg-surface-2 border border-border/80 flex flex-col sm:flex-row sm:items-start justify-between gap-3"
               >
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-primary">
+                    <span className="text-xs font-bold text-primary-text">
                       QS. {v.surahName} [{v.surahNumber}]: {v.ayahNumber}
                     </span>
                   </div>
-                  <p className="text-xs sm:text-sm text-text-secondary italic leading-relaxed">
+                  <p className="text-xs sm:text-sm text-text-muted italic leading-relaxed">
                     &ldquo;{v.text}&rdquo;
                   </p>
                 </div>
 
                 <Link
                   href={`/quran/${v.surahNumber}/`}
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline shrink-0"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-primary-text hover:underline shrink-0 min-h-[44px]"
                 >
                   <span>Buka Surah</span>
                   <ExternalLink className="w-3.5 h-3.5" />
@@ -286,18 +288,18 @@ export const ProphetDetailView: React.FC<ProphetDetailViewProps> = ({
       )}
 
       {/* Lessons Learned Box (Kotak Hikmah) */}
-      <Card className="p-6 sm:p-7 border border-accent/40 bg-accent/5">
-        <div className="flex items-center gap-2 mb-4">
-          <Sparkles className="w-5 h-5 text-accent" />
+      <Card className="p-6 sm:p-8 border border-pastel-yellow/60 bg-pastel-yellow/20 rounded-card shadow-card">
+        <div className="flex items-center gap-2.5 mb-4">
+          <Sparkles className="w-5 h-5 text-amber-500" />
           <h2 className="text-base sm:text-lg font-bold text-text-primary">
-            Kotak Hikmah & Pelajaran Berharga
+            Kotak Hikmah &amp; Pelajaran Berharga
           </h2>
         </div>
 
-        <ul className="space-y-2.5">
+        <ul className="space-y-3">
           {prophet.lessons.map((lesson, i) => (
             <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-text-primary">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
+              <span className="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0" />
               <span className="leading-relaxed">{lesson}</span>
             </li>
           ))}
@@ -305,11 +307,11 @@ export const ProphetDetailView: React.FC<ProphetDetailViewProps> = ({
       </Card>
 
       {/* Sources / References (Wajib Sesuai PRD) */}
-      <Card className="p-5 border border-border bg-surface text-xs text-text-secondary">
-        <h3 className="font-bold text-text-primary mb-2 uppercase tracking-wider text-[11px]">
-          Sumber & Referensi Mu&apos;tabar
+      <Card className="p-5 sm:p-6 border border-border bg-surface rounded-card text-xs text-text-muted shadow-card">
+        <h3 className="font-bold text-text-primary mb-2.5 uppercase tracking-wider text-[11px]">
+          Sumber &amp; Referensi Mu&apos;tabar
         </h3>
-        <ul className="space-y-1 list-disc list-inside">
+        <ul className="space-y-1.5 list-disc list-inside">
           {prophet.sources.map((src, i) => (
             <li key={i} className="leading-relaxed">
               {src}
@@ -322,11 +324,11 @@ export const ProphetDetailView: React.FC<ProphetDetailViewProps> = ({
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
         {prevProphet ? (
           <Link href={`/kisah-nabi/${prevProphet.slug}/`} className="block group">
-            <Card className="p-4 border border-border hover:border-primary transition-colors flex items-center gap-3">
-              <ArrowLeft className="w-5 h-5 text-primary shrink-0 group-hover:-translate-x-1 transition-transform" />
+            <Card className="p-4 border border-border hover:border-primary/40 hover:shadow-subtle transition-all flex items-center gap-3 rounded-card min-h-[56px] active:scale-[0.98]">
+              <ArrowLeft className="w-5 h-5 text-primary-text shrink-0 group-hover:-translate-x-1 transition-transform" />
               <div className="truncate">
-                <span className="text-[11px] text-text-secondary block">Nabi Sebelumnya</span>
-                <span className="text-sm font-bold text-text-primary group-hover:text-primary">
+                <span className="text-[11px] text-text-muted block">Nabi Sebelumnya</span>
+                <span className="text-sm font-bold text-text-primary group-hover:text-primary-text transition-colors">
                   {prevProphet.name}
                 </span>
               </div>
@@ -338,14 +340,14 @@ export const ProphetDetailView: React.FC<ProphetDetailViewProps> = ({
 
         {nextProphet ? (
           <Link href={`/kisah-nabi/${nextProphet.slug}/`} className="block group text-right">
-            <Card className="p-4 border border-border hover:border-primary transition-colors flex items-center justify-end gap-3">
+            <Card className="p-4 border border-border hover:border-primary/40 hover:shadow-subtle transition-all flex items-center justify-end gap-3 rounded-card min-h-[56px] active:scale-[0.98]">
               <div className="truncate">
-                <span className="text-[11px] text-text-secondary block">Nabi Selanjutnya</span>
-                <span className="text-sm font-bold text-text-primary group-hover:text-primary">
+                <span className="text-[11px] text-text-muted block">Nabi Selanjutnya</span>
+                <span className="text-sm font-bold text-text-primary group-hover:text-primary-text transition-colors">
                   {nextProphet.name}
                 </span>
               </div>
-              <ArrowRight className="w-5 h-5 text-primary shrink-0 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-5 h-5 text-primary-text shrink-0 group-hover:translate-x-1 transition-transform" />
             </Card>
           </Link>
         ) : (

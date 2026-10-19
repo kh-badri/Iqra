@@ -15,7 +15,7 @@ export function ThemeToggle({ className }: { className?: string }) {
 
   if (!mounted) {
     return (
-      <div className={cn('w-9 h-9 rounded-card bg-surface-alt border border-border animate-pulse', className)} />
+      <div className={cn('w-9 h-9 rounded-button bg-surface-alt border border-border animate-shimmer-wave', className)} />
     );
   }
 
@@ -29,7 +29,7 @@ export function ThemeToggle({ className }: { className?: string }) {
     <button
       onClick={cycleTheme}
       className={cn(
-        'w-9 h-9 rounded-card bg-surface border border-border flex items-center justify-center text-text-secondary hover:text-text-primary hover:bg-surface-alt transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+        'w-9 h-9 rounded-button bg-surface-alt border border-border flex items-center justify-center text-text-secondary hover:text-text-primary hover:bg-border/40 transition-all duration-150 active:scale-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary',
         className
       )}
       aria-label={`Ganti tema. Saat ini: ${theme || 'sistem'}`}
@@ -38,7 +38,7 @@ export function ThemeToggle({ className }: { className?: string }) {
       {theme === 'dark' ? (
         <Moon className="w-4 h-4 text-primary" />
       ) : theme === 'light' ? (
-        <Sun className="w-4 h-4 text-accent" />
+        <Sun className="w-4 h-4 text-warning" />
       ) : (
         <Laptop className="w-4 h-4 text-text-secondary" />
       )}

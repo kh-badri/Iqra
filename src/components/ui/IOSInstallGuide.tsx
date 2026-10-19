@@ -22,7 +22,7 @@ export function IOSInstallGuide({ isOpen, onClose }: IOSInstallGuideProps) {
         <div className="space-y-3">
           {/* Step 1 */}
           <div className="flex items-start gap-3 p-3 bg-surface-alt rounded-card">
-            <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs flex-shrink-0">
+            <div className="w-8 h-8 rounded-full bg-primary-gradient text-on-primary flex items-center justify-center font-bold text-xs flex-shrink-0">
               1
             </div>
             <div className="text-xs sm:text-sm">
@@ -37,7 +37,7 @@ export function IOSInstallGuide({ isOpen, onClose }: IOSInstallGuideProps) {
 
           {/* Step 2 */}
           <div className="flex items-start gap-3 p-3 bg-surface-alt rounded-card">
-            <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs flex-shrink-0">
+            <div className="w-8 h-8 rounded-full bg-primary-gradient text-on-primary flex items-center justify-center font-bold text-xs flex-shrink-0">
               2
             </div>
             <div className="text-xs sm:text-sm">
@@ -52,7 +52,7 @@ export function IOSInstallGuide({ isOpen, onClose }: IOSInstallGuideProps) {
 
           {/* Step 3 */}
           <div className="flex items-start gap-3 p-3 bg-surface-alt rounded-card">
-            <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs flex-shrink-0">
+            <div className="w-8 h-8 rounded-full bg-primary-gradient text-on-primary flex items-center justify-center font-bold text-xs flex-shrink-0">
               3
             </div>
             <div className="text-xs sm:text-sm">

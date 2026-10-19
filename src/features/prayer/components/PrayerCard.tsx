@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
-import { Chip } from '@/components/ui/Chip';
-import { MapPin, Navigation, Settings2 } from 'lucide-react';
+import { MapPin, Navigation, Settings2, Clock } from 'lucide-react';
 import type { CityLocation, PrayerTimeItem } from '../types';
 
 export interface PrayerCardProps {
@@ -29,72 +28,84 @@ export function PrayerCard({
   onRequestGeolocation,
 }: PrayerCardProps) {
   return (
-    <Card className="bg-primary text-white border-transparent p-5 sm:p-6 shadow-elevated space-y-4">
-      {/* Baris Lokasi & Tanggal */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/15 pb-3">
-        <div className="flex items-center gap-2">
-          <button
-            onClick={onOpenCitySelector}
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-white hover:text-white/80 transition-colors bg-white/10 px-2.5 py-1 rounded-card border border-white/20"
-          >
-            <MapPin className="w-3.5 h-3.5 text-accent" />
-            <span>{city.name}</span>
-          </button>
+    <div className="relative overflow-hidden rounded-card bg-primary-gradient text-[#0D3B13] shadow-elevated p-5 sm:p-6 card-highlight">
+      {/* Decorative floating transparent circles */}
+      <div
+        className="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-white/20 pointer-events-none animate-hero-float"
+        aria-hidden
+      />
+      <div
+        className="absolute -bottom-16 -left-16 w-56 h-56 rounded-full bg-white/15 pointer-events-none animate-hero-float delay-200"
+        aria-hidden
+      />
 
-          <button
-            onClick={onRequestGeolocation}
-            disabled={isLocating}
-            className="p-1.5 rounded-card bg-white/10 hover:bg-white/20 text-white transition-colors"
-            title="Deteksi Lokasi GPS Otomatis"
-            aria-label="Deteksi Lokasi GPS"
-          >
-            <Navigation className={`w-3.5 h-3.5 ${isLocating ? 'animate-spin' : ''}`} />
-          </button>
-        </div>
-
-        <div className="text-right text-[11px] text-white/80">
-          <div>{masehiDateStr}</div>
-          <div className="text-accent font-semibold">{hijriDateStr}</div>
-        </div>
-      </div>
-
-      {/* Konten Waktu Sholat Berikutnya */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-1">
-        <div>
+      <div className="relative z-10 text-[#0D3B13]">
+        {/* Baris Lokasi & Tanggal */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 border-b border-[#0D3B13]/15 pb-3.5">
           <div className="flex items-center gap-2">
-            <span className="text-xs uppercase tracking-wider text-white/80 font-medium">
-              Sholat Berikutnya
-            </span>
-            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+            <button
+              onClick={onOpenCitySelector}
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold text-[#0D3B13] hover:bg-white/45 transition-all bg-white/35 px-3 py-1.5 rounded-pill border border-white/40 active:scale-95 shadow-subtle backdrop-blur-sm"
+            >
+              <MapPin className="w-3.5 h-3.5 text-[#0D3B13]" />
+              <span>{city.name}</span>
+            </button>
+
+            <button
+              onClick={onRequestGeolocation}
+              disabled={isLocating}
+              className="p-2 rounded-full bg-white/30 hover:bg-white/40 text-[#0D3B13] transition-all active:scale-95 border border-white/40"
+              title="Deteksi Lokasi GPS Otomatis"
+              aria-label="Deteksi Lokasi GPS"
+            >
+              <Navigation className={`w-3.5 h-3.5 ${isLocating ? 'animate-spin' : ''}`} />
+            </button>
           </div>
 
-          <div className="text-3xl sm:text-4xl font-extrabold tracking-tight mt-1">
-            {nextPrayer?.name || 'Subuh'}{' '}
-            <span className="text-accent font-semibold font-mono">
-              {nextPrayer?.timeStr || '--:--'}
-            </span>
+          <div className="text-left sm:text-right text-[11px] text-[#0D3B13]/85">
+            <div className="font-semibold">{masehiDateStr}</div>
+            <div className="text-[#0D3B13] font-extrabold mt-0.5">{hijriDateStr}</div>
           </div>
-
-          <p className="text-xs text-white/80 mt-1.5">
-            Menghitung mundur:{' '}
-            <span className="font-mono font-bold text-white bg-white/15 px-2 py-0.5 rounded-sm">
-              {countdownFormatted}
-            </span>
-          </p>
         </div>
 
-        <div className="flex items-center gap-2 flex-shrink-0">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={onOpenSettings}
-            className="text-white hover:bg-white/15 border border-white/20 text-xs gap-1.5"
-          >
-            <Settings2 className="w-3.5 h-3.5" />
-            <span>Pengaturan</span>
-          </Button>
+        {/* Konten Waktu Sholat Berikutnya */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-3">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#0D3B13] animate-pulse-dot" />
+              <span className="text-xs uppercase tracking-wider text-[#0D3B13]/85 font-extrabold">
+                Sholat Berikutnya
+              </span>
+            </div>
+
+            <div className="text-3xl sm:text-4xl font-extrabold tracking-tight mt-1.5 flex items-baseline gap-3 text-[#0D3B13]">
+              <span>{nextPrayer?.name || 'Subuh'}</span>
+              <span className="text-[#0D3B13] font-black font-mono text-2xl sm:text-3xl tabular-nums">
+                {nextPrayer?.timeStr || '--:--'}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2 mt-2">
+              <Clock className="w-3.5 h-3.5 text-[#0D3B13]/75" />
+              <span className="text-xs text-[#0D3B13]/85 font-medium">Menghitung mundur:</span>
+              <span className="font-mono font-extrabold text-xs bg-white/35 text-[#0D3B13] px-2.5 py-0.5 rounded-button tabular-nums border border-white/40 backdrop-blur-sm">
+                {countdownFormatted}
+              </span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 flex-shrink-0 self-end sm:self-center">
+            <button
+              type="button"
+              onClick={onOpenSettings}
+              className="inline-flex items-center gap-1.5 bg-white text-[#0D3B13] font-extrabold text-xs h-10 px-4 rounded-pill shadow-elevated hover:bg-white/95 transition-all duration-150 active:scale-95"
+            >
+              <Settings2 className="w-3.5 h-3.5 text-[#0D3B13]" />
+              <span>Pengaturan</span>
+            </button>
+          </div>
         </div>
       </div>
-    </Card>
+    </div>
   );
 }

@@ -9,7 +9,7 @@ import {
   getMasehiDateFormatted,
   sync30DaysScheduleToDb,
 } from '../services/prayerService';
-import { DEFAULT_CITY, DEFAULT_PRAYER_SETTINGS, PRAYER_LABELS } from '../constants';
+import { DEFAULT_CITY, DEFAULT_PRAYER_SETTINGS, PRAYER_LABELS, ADHAN_MUADHIN_LIST } from '../constants';
 
 export function usePrayerTimes() {
   const [city, setCity] = React.useState<CityLocation>(DEFAULT_CITY);
@@ -18,6 +18,26 @@ export function usePrayerTimes() {
   const [isGeolocationActive, setIsGeolocationActive] = React.useState<boolean>(false);
   const [isLocating, setIsLocating] = React.useState<boolean>(false);
   const [notificationPermission, setNotificationPermission] = React.useState<NotificationPermission>('default');
+
+  // Active audio reference & trigger control
+  const activeAudioRef = React.useRef<HTMLAudioElement | null>(null);
+  const lastTriggeredKeyRef = React.useRef<string | null>(null);
+
+  // Stop adhan audio helper
+  const stopAdhanAudio = React.useCallback(() => {
+    if (activeAudioRef.current) {
+      activeAudioRef.current.pause();
+      activeAudioRef.current.currentTime = 0;
+      activeAudioRef.current = null;
+    }
+  }, []);
+
+  // Cleanup active audio on unmount
+  React.useEffect(() => {
+    return () => {
+      stopAdhanAudio();
+    };
+  }, [stopAdhanAudio]);
 
   // Load preferences from localStorage on client
   React.useEffect(() => {
@@ -32,7 +52,12 @@ export function usePrayerTimes() {
       const savedSettings = localStorage.getItem('iqra_prayer_settings');
       if (savedSettings) {
         try {
-          setSettings(JSON.parse(savedSettings));
+          const parsed = JSON.parse(savedSettings);
+          setSettings({
+            ...DEFAULT_PRAYER_SETTINGS,
+            ...parsed,
+            adhanMuadhin: parsed.adhanMuadhin || DEFAULT_PRAYER_SETTINGS.adhanMuadhin || 'makkah',
+          });
         } catch (e) {}
       }
 
@@ -208,32 +233,97 @@ export function usePrayerTimes() {
     return parts.join(' ');
   }, [countdownSeconds]);
 
-  // Play gentle web audio chime for adhan reminder when time hits 0
+  // Play adhan / chime when countdown hits 0 (once per prayer time)
   React.useEffect(() => {
-    if (countdownSeconds === 0 && settings.soundType !== 'silent') {
-      try {
-        const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(440, audioCtx.currentTime); // 440 Hz
-        gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.5);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 1.5);
-      } catch (e) {}
+    if (!nextPrayer) return;
+
+    // Unique trigger key per prayer occurrence (e.g. "fajr_04:32_Sun Oct 18 2026")
+    const triggerKey = `${nextPrayer.id}_${nextPrayer.timeStr}_${now.toDateString()}`;
+
+    if (countdownSeconds === 0 && lastTriggeredKeyRef.current !== triggerKey) {
+      lastTriggeredKeyRef.current = triggerKey;
+
+      if (settings.soundType !== 'silent') {
+        if (settings.soundType === 'chime') {
+          // Play gentle web audio chime
+          try {
+            const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
+            if (AudioCtx) {
+              const audioCtx = new AudioCtx();
+              const osc = audioCtx.createOscillator();
+              const gain = audioCtx.createGain();
+              osc.connect(gain);
+              gain.connect(audioCtx.destination);
+              osc.type = 'sine';
+              osc.frequency.setValueAtTime(440, audioCtx.currentTime); // 440 Hz
+              gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+              gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.8);
+              osc.start();
+              osc.stop(audioCtx.currentTime + 1.8);
+            }
+          } catch (e) {}
+        } else if (settings.soundType === 'full' || settings.soundType === 'short') {
+          // Find selected Muadzin
+          const muadhinId = settings.adhanMuadhin || 'makkah';
+          const muadhin =
+            ADHAN_MUADHIN_LIST.find((m) => m.id === muadhinId) || ADHAN_MUADHIN_LIST[0];
+
+          // Subuh vs Other Prayers:
+          // Subuh specifically uses audioFajr (incorporating "Ash-shalatu khairum-minan-naum")
+          const isFajr = nextPrayer.id === 'fajr';
+          const audioSrc = isFajr ? muadhin.audioFajr : muadhin.audioStandard;
+
+          try {
+            stopAdhanAudio();
+            const audio = new Audio(audioSrc);
+            activeAudioRef.current = audio;
+
+            audio.play().catch(() => {
+              // Browser autoplay policy blocked or network failed -> fallback to gentle Web Audio chime
+              try {
+                const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
+                if (AudioCtx) {
+                  const audioCtx = new AudioCtx();
+                  const osc = audioCtx.createOscillator();
+                  const gain = audioCtx.createGain();
+                  osc.connect(gain);
+                  gain.connect(audioCtx.destination);
+                  osc.type = 'sine';
+                  osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+                  gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                  gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.5);
+                  osc.start();
+                  osc.stop(audioCtx.currentTime + 1.5);
+                }
+              } catch (err) {}
+            });
+
+            // If short mode, stop after 35 seconds (takbir awal)
+            if (settings.soundType === 'short') {
+              setTimeout(() => {
+                if (activeAudioRef.current === audio) {
+                  stopAdhanAudio();
+                }
+              }, 35000);
+            }
+          } catch (e) {}
+        }
+      }
 
       // Tampilkan web notification jika izin diberikan
       if (typeof window !== 'undefined' && 'Notification' in window && Notification.permission === 'granted') {
-        new Notification(`Waktu ${nextPrayer?.name} Telah Tiba`, {
-          body: `Waktu sholat ${nextPrayer?.name} untuk wilayah ${city.name} telah masuk (${nextPrayer?.timeStr} WIB/WITA/WIT).`,
+        const isFajr = nextPrayer.id === 'fajr';
+        const bodyText = isFajr
+          ? `الصَّلَاةُ خَيْرٌ مِنَ النَّوْمِ. Waktu sholat Subuh untuk wilayah ${city.name} telah masuk (${nextPrayer.timeStr} WIB/WITA/WIT). Mari raih keberkahan fajar.`
+          : `Waktu sholat ${nextPrayer.name} untuk wilayah ${city.name} telah masuk (${nextPrayer.timeStr} WIB/WITA/WIT). Hayya 'alash Shalah.`;
+
+        new Notification(`Waktu ${nextPrayer.name} Telah Tiba`, {
+          body: bodyText,
           icon: '/icons/icon-192.png',
         });
       }
     }
-  }, [countdownSeconds, settings.soundType, nextPrayer, city]);
+  }, [countdownSeconds, nextPrayer, now, settings, city, stopAdhanAudio]);
 
   return {
     city,
@@ -252,6 +342,7 @@ export function usePrayerTimes() {
     requestGeolocation,
     changeCity,
     updateSettings,
+    stopAdhanAudio,
     requestNotification,
     masehiDateStr: getMasehiDateFormatted(now),
     hijriDateStr: getHijriDateFormatted(now),

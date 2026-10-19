@@ -21,19 +21,21 @@ export function ErrorState({
   return (
     <div
       className={cn(
-        'flex flex-col items-center justify-center text-center p-8 rounded-card bg-surface border border-danger/30 my-4 shadow-subtle',
+        'flex flex-col items-center justify-center text-center p-8 rounded-card bg-surface border border-danger/30 my-4 shadow-subtle card-highlight',
         className
       )}
     >
-      <div className="w-14 h-14 rounded-full bg-danger/10 flex items-center justify-center text-danger mb-3">
+      <div className="w-14 h-14 rounded-full bg-danger/10 flex items-center justify-center text-danger mb-3.5">
         <AlertCircle className="w-7 h-7" />
       </div>
-      <h3 className="text-base font-semibold text-text-primary mb-1">{title}</h3>
-      <p className="text-xs sm:text-sm text-text-secondary max-w-sm mb-4">
+      <h3 className="text-base sm:text-lg font-bold text-text-primary mb-1 tracking-tight">
+        {title}
+      </h3>
+      <p className="text-xs sm:text-sm text-text-secondary max-w-sm mb-4 leading-relaxed">
         {message}
       </p>
       {onRetry && (
-        <Button variant="primary" size="sm" onClick={onRetry} className="gap-2">
+        <Button variant="primary" size="sm" onClick={onRetry} className="gap-2 font-bold">
           <RotateCcw className="w-4 h-4" />
           <span>{retryLabel}</span>
         </Button>

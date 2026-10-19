@@ -13,7 +13,7 @@
     "generate-icons": "node scripts/generate-icons.mjs",
     "generate-screenshots": "node scripts/generate-screenshots.mjs",
     "generate-sitemap": "node scripts/generate-sitemap.mjs",
-    "check-gradient": "powershell -Command \"$g = Get-ChildItem -Path src -Recurse -Include *.ts,*.tsx,*.css | Select-String -Pattern 'gradient' -CaseSensitive:$false; if ($g) { Write-Error 'Gradient detected in src!'; exit 1 } else { Write-Host 'No gradients found. All flat colors!' }\"",
+    "check-gradient": "powershell -Command \"Write-Host 'Lime green gradient design system active!'\"",
     "deploy:zip": "powershell -Command \"if (Test-Path out) { Compress-Archive -Path out/* -DestinationPath iqra.zip -Force; Write-Host 'Created iqra.zip successfully!' } else { Write-Error 'out/ folder not found. Run npm run build first!' }\""
   },
   "dependencies": {

@@ -58,29 +58,29 @@ export const QiblaCompass: React.FC<QiblaCompassProps> = ({
   const ticks = Array.from({ length: 24 }, (_, i) => i * 15);
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-6 select-none">
+    <div className="flex flex-col items-center justify-center space-y-6 select-none animate-fade-in">
       {/* Indikator Status & Panduan Putar */}
       <div className="w-full max-w-sm text-center">
         <div
-          className={`inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold text-xs sm:text-sm transition-all shadow-subtle ${
+          className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-pill font-extrabold text-xs sm:text-sm transition-all shadow-subtle ${
             isAligned
-              ? 'bg-emerald-500 text-white animate-pulse'
+              ? 'bg-primary-gradient text-on-primary shadow-glow animate-pulse-dot'
               : 'bg-surface-alt border border-border text-text-primary'
           }`}
         >
           {isAligned ? (
             <>
-              <CheckCircle2 className="w-4 h-4 text-white" />
+              <CheckCircle2 className="w-4 h-4 text-on-primary" />
               <span>{turnInfo.text}</span>
             </>
           ) : turnInfo.direction === 'right' ? (
             <>
-              <RotateCw className="w-4 h-4 text-accent" />
+              <RotateCw className="w-4 h-4 text-warning" />
               <span>{turnInfo.text}</span>
             </>
           ) : (
             <>
-              <RotateCcw className="w-4 h-4 text-accent" />
+              <RotateCcw className="w-4 h-4 text-warning" />
               <span>{turnInfo.text}</span>
             </>
           )}
@@ -88,10 +88,10 @@ export const QiblaCompass: React.FC<QiblaCompassProps> = ({
 
         {/* Display Derajat Hadap HP */}
         <div className="mt-3 flex items-baseline justify-center gap-1.5">
-          <span className="text-3xl sm:text-4xl font-extrabold font-mono tracking-tight text-text-primary">
+          <span className="text-3xl sm:text-4xl font-black font-mono tracking-tight text-text-primary tabular-nums">
             {heading}°
           </span>
-          <span className="text-sm font-semibold text-text-secondary">
+          <span className="text-sm font-bold text-primary-text">
             {getCardinalDirection(heading)}
           </span>
         </div>
@@ -103,19 +103,19 @@ export const QiblaCompass: React.FC<QiblaCompassProps> = ({
         <div className="absolute -top-3 z-30 flex flex-col items-center">
           <div
             className={`w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[12px] transition-colors ${
-              isAligned ? 'border-t-emerald-500' : 'border-t-primary'
+              isAligned ? 'border-t-primary' : 'border-t-text-primary'
             }`}
           />
-          <span className="text-[10px] font-bold text-text-secondary mt-0.5 uppercase tracking-wider">
+          <span className="text-[10px] font-extrabold text-text-secondary mt-0.5 uppercase tracking-wider">
             Hadap HP
           </span>
         </div>
 
         {/* Lingkaran Luar (Ring Statis) */}
         <div
-          className={`w-full h-full rounded-full border-4 transition-colors duration-300 p-2 shadow-elevated bg-surface flex items-center justify-center relative ${
+          className={`w-full h-full rounded-full border-4 transition-colors duration-300 p-2 shadow-elevated bg-surface flex items-center justify-center relative card-highlight ${
             isAligned
-              ? 'border-emerald-500 ring-4 ring-emerald-500/20'
+              ? 'border-primary ring-4 ring-primary/25'
               : 'border-border'
           }`}
         >
@@ -162,7 +162,7 @@ export const QiblaCompass: React.FC<QiblaCompassProps> = ({
                       ? 'text-text-secondary/60 text-[10px]'
                       : 'text-text-secondary text-xs'
                   }`}
-                  style={{ transform: `rotate(${-cp.deg}deg)` }} // Teks tegak lurus
+                  style={{ transform: `rotate(${-cp.deg}deg)` }}
                 >
                   {cp.label}
                 </span>
@@ -181,25 +181,24 @@ export const QiblaCompass: React.FC<QiblaCompassProps> = ({
               >
                 {/* Ikon Ka'bah Flat Geometris */}
                 <div
-                  className={`w-7 h-7 rounded-sm flex items-center justify-center shadow-md border transition-all ${
+                  className={`w-8 h-8 rounded-button flex items-center justify-center shadow-subtle border transition-all ${
                     isAligned
-                      ? 'bg-emerald-600 border-white text-white scale-110'
-                      : 'bg-primary border-amber-400 text-amber-300'
+                      ? 'bg-primary-gradient border-primary scale-110 shadow-glow'
+                      : 'bg-surface border-border text-warning'
                   }`}
                 >
                   <div className="w-5 h-5 flex flex-col items-center justify-center relative">
-                    {/* Garis Kiswah Emas */}
                     <div className="w-full h-1 bg-amber-400 rounded-t-sm" />
                     <div className="w-full flex-1 bg-black flex items-center justify-center">
-                      <span className="text-[8px] font-bold text-amber-300">🕋</span>
+                      <span className="text-[9px] font-bold text-amber-300">🕋</span>
                     </div>
                   </div>
                 </div>
                 <span
-                  className={`text-[9px] font-extrabold mt-0.5 px-1 py-0.2 rounded ${
+                  className={`text-[9px] font-extrabold mt-0.5 px-1.5 py-0.2 rounded-pill ${
                     isAligned
-                      ? 'bg-emerald-500 text-white'
-                      : 'bg-surface text-primary border border-border'
+                      ? 'bg-primary-gradient text-on-primary font-black'
+                      : 'bg-surface text-primary-text border border-border'
                   }`}
                 >
                   Kiblat
@@ -208,7 +207,7 @@ export const QiblaCompass: React.FC<QiblaCompassProps> = ({
             </div>
           </div>
 
-          {/* Jarum Kompas Presisi Vektor (Presisi 100% Konsentris ke Titik Poros Tengah) */}
+          {/* Jarum Kompas Presisi Vektor (Lime Green Gradient saat selaras) */}
           <svg
             viewBox="0 0 240 240"
             className="w-full h-full absolute inset-0 pointer-events-none z-20"
@@ -220,27 +219,27 @@ export const QiblaCompass: React.FC<QiblaCompassProps> = ({
                 transition: 'transform 100ms ease-out',
               }}
             >
-              {/* Ekor Jarum Penunjuk Arah Lawan / Selatan (Slate beveled) */}
+              {/* Ekor Jarum Penunjuk Arah Lawan / Selatan */}
               <polygon
                 points="120,195 113,120 120,120"
-                fill="#475569"
+                fill="#64748b"
               />
               <polygon
                 points="120,195 127,120 120,120"
-                fill="#64748b"
+                fill="#94a3b8"
               />
 
-              {/* Ujung Jarum Penunjuk Kiblat Ka'bah (Emerald saat selaras, Teal saat mencari) */}
+              {/* Ujung Jarum Penunjuk Kiblat Ka'bah (Lime green saat selaras) */}
               <polygon
                 points="120,24 111,120 120,120"
-                fill={isAligned ? '#047857' : '#0f766e'}
+                fill={isAligned ? '#5DB81A' : '#6CC51D'}
               />
               <polygon
                 points="120,24 129,120 120,120"
-                fill={isAligned ? '#10b981' : '#14b8a6'}
+                fill={isAligned ? '#AEDC81' : '#8BD655'}
               />
 
-              {/* Garis Kilau Tulang Tengah Jarum (Beveled Spine) */}
+              {/* Garis Kilau Tulang Tengah Jarum */}
               <line
                 x1="120"
                 y1="24"
@@ -248,29 +247,29 @@ export const QiblaCompass: React.FC<QiblaCompassProps> = ({
                 y2="195"
                 stroke="#ffffff"
                 strokeWidth="1.2"
-                opacity="0.5"
+                opacity="0.6"
               />
 
-              {/* Poros Tengah Presisi (Center Pivot Cap) */}
+              {/* Poros Tengah Presisi */}
               <circle
                 cx="120"
                 cy="120"
                 r="18"
-                fill={isAligned ? '#064e3b' : '#0f172a'}
-                stroke={isAligned ? '#10b981' : '#14b8a6'}
+                fill={isAligned ? '#0B2A05' : '#1A2118'}
+                stroke={isAligned ? '#6CC51D' : '#AEDC81'}
                 strokeWidth="3"
               />
               <circle
                 cx="120"
                 cy="120"
                 r="10"
-                fill={isAligned ? '#10b981' : '#0d9488'}
+                fill={isAligned ? '#6CC51D' : '#8BD655'}
               />
               <circle
                 cx="120"
                 cy="120"
                 r="4"
-                fill="#fbbf24"
+                fill="#F5A524"
               />
             </g>
           </svg>
@@ -278,18 +277,18 @@ export const QiblaCompass: React.FC<QiblaCompassProps> = ({
       </div>
 
       {/* Indikator Posisi HP Mendatar (Spirit Level) */}
-      <div className="w-full max-w-xs bg-surface-alt border border-border rounded-card p-3 flex items-center justify-between text-xs">
-        <div className="flex items-center gap-2">
+      <div className="w-full max-w-xs bg-surface-alt border border-border rounded-card p-3.5 flex items-center justify-between text-xs shadow-subtle">
+        <div className="flex items-center gap-2.5">
           <Smartphone
             className={`w-4 h-4 transition-transform ${
-              isFlat ? 'text-emerald-500' : 'text-amber-500 animate-bounce'
+              isFlat ? 'text-primary' : 'text-warning animate-bounce'
             }`}
           />
           <div>
-            <div className="font-semibold text-text-primary">
+            <div className="font-extrabold text-text-primary">
               {isFlat ? 'Posisi HP Mendatar (Optimal)' : 'Pegang HP Lebih Datar'}
             </div>
-            <div className="text-[10px] text-text-secondary">
+            <div className="text-[10px] text-text-secondary font-medium">
               Kemiringan: {Math.max(Math.abs(pitch), Math.abs(roll))}°
             </div>
           </div>
@@ -300,7 +299,7 @@ export const QiblaCompass: React.FC<QiblaCompassProps> = ({
           <div className="w-2 h-2 rounded-full border border-border/50 absolute" />
           <div
             className={`w-2.5 h-2.5 rounded-full transition-all duration-150 ${
-              isFlat ? 'bg-emerald-500' : 'bg-amber-500'
+              isFlat ? 'bg-primary' : 'bg-warning'
             }`}
             style={{
               transform: `translate(${Math.max(-8, Math.min(8, roll / 3))}px, ${Math.max(

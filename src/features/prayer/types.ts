@@ -27,8 +27,21 @@ export interface CityLocation {
 
 export type AdhanSoundType = 'full' | 'short' | 'chime' | 'silent';
 
+export interface AdhanMuadhin {
+  id: string;
+  name: string;
+  arabicName: string;
+  origin: string;
+  description: string;
+  badge?: string;
+  audioStandard: string;
+  audioFajr: string;
+}
+
 export interface PrayerSettings {
   reminderMinutesBefore: number; // 0, 5, 10, 15
   soundType: AdhanSoundType;
+  adhanMuadhin?: string; // id from ADHAN_MUADHIN_LIST (default: 'makkah')
   adjustments: Record<PrayerName, number>; // minute offsets (-5 to +5)
 }
+

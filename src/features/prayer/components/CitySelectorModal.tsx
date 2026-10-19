@@ -4,7 +4,7 @@ import * as React from 'react';
 import { BottomSheet } from '@/components/ui/BottomSheet';
 import { SearchBar } from '@/components/ui/SearchBar';
 import { Button } from '@/components/ui/Button';
-import { MapPin, Navigation, Check } from 'lucide-react';
+import { Navigation, Check } from 'lucide-react';
 import { INDONESIAN_CITIES } from '../constants';
 import type { CityLocation } from '../types';
 
@@ -38,15 +38,15 @@ export function CitySelectorModal({
   return (
     <BottomSheet isOpen={isOpen} onClose={onClose} title="Pilih Kota & Wilayah Sholat">
       <div className="space-y-4 py-2">
-        {/* Tombol Deteksi Lokasi Otomatis */}
+        {/* Tombol Deteksi Lokasi Otomatis (Gradient Lime) */}
         <Button
-          variant="secondary"
+          variant="primary"
           onClick={() => {
             onRequestGeolocation();
             onClose();
           }}
           disabled={isLocating}
-          className="w-full gap-2 text-xs h-11 border-primary/30 text-primary"
+          className="w-full gap-2 text-xs h-11 font-extrabold shadow-subtle"
         >
           <Navigation className={`w-4 h-4 ${isLocating ? 'animate-spin' : ''}`} />
           <span>{isLocating ? 'Mendeteksi Lokasi...' : 'Gunakan Lokasi GPS Otomatis'}</span>
@@ -71,17 +71,17 @@ export function CitySelectorModal({
                   onSelectCity(c);
                   onClose();
                 }}
-                className={`w-full p-3 rounded-card text-left flex items-center justify-between transition-colors border ${
+                className={`w-full p-3 rounded-button text-left flex items-center justify-between transition-colors border ${
                   isSelected
-                    ? 'bg-primary-soft border-primary text-primary font-semibold'
+                    ? 'bg-pastel-green border-primary text-primary-text font-bold shadow-subtle'
                     : 'bg-surface border-border text-text-primary hover:bg-surface-alt'
                 }`}
               >
                 <div>
-                  <div className="text-xs sm:text-sm font-semibold">{c.name}</div>
+                  <div className="text-xs sm:text-sm font-bold tracking-tight">{c.name}</div>
                   <div className="text-[11px] text-text-secondary mt-0.5">{c.province}</div>
                 </div>
-                {isSelected && <Check className="w-4 h-4 text-primary" />}
+                {isSelected && <Check className="w-4 h-4 text-primary-text" />}
               </button>
             );
           })}

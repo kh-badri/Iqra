@@ -66,20 +66,22 @@ export function HadithDailyCard({ hadith }: { hadith: HadithItem | null }) {
   };
 
   return (
-    <Card className="p-5 space-y-4 bg-surface border-border shadow-subtle">
+    <Card className="p-5 sm:p-6 space-y-4 bg-surface border-border shadow-card">
       {/* Header Hadits Harian */}
       <div className="flex items-center justify-between border-b border-border pb-3">
         <div className="flex items-center gap-2">
-          <Sparkles className="w-4 h-4 text-accent" />
-          <span className="text-xs font-bold uppercase tracking-wider text-accent">
+          <div className="w-8 h-8 rounded-full bg-pastel-yellow flex items-center justify-center text-warning">
+            <Sparkles className="w-4 h-4 fill-warning" />
+          </div>
+          <span className="text-xs font-extrabold uppercase tracking-wider text-warning">
             Hadits Hari Ini
           </span>
         </div>
         <div className="flex items-center gap-1.5">
-          <Chip variant="primary" className="text-[10px] py-0.5 px-2 bg-success text-white border-transparent">
+          <Chip variant="pastel-green" className="text-[10px] py-0.5 px-2 font-bold">
             {hadith.grade}
           </Chip>
-          <Chip variant="outline" className="text-[10px] py-0.5 px-2">
+          <Chip variant="outline" className="text-[10px] py-0.5 px-2 font-bold">
             {hadith.sourceRef}
           </Chip>
         </div>
@@ -87,15 +89,15 @@ export function HadithDailyCard({ hadith }: { hadith: HadithItem | null }) {
 
       {/* Perawi */}
       <div className="flex items-center gap-1.5 text-xs text-text-secondary">
-        <User className="w-3.5 h-3.5 text-primary" />
-        <span className="font-semibold text-text-primary">Perawi:</span>
-        <span>{hadith.narrator}</span>
+        <User className="w-3.5 h-3.5 text-primary-text" />
+        <span className="font-bold text-text-primary">Perawi:</span>
+        <span className="font-medium">{hadith.narrator}</span>
       </div>
 
       {/* Teks Arab Hadits */}
       <p
         dir="rtl"
-        className="font-arabic text-xl sm:text-2xl text-right leading-loose text-text-primary select-text"
+        className="font-arabic text-xl sm:text-2xl text-right leading-loose text-text-primary select-text font-medium"
       >
         {hadith.arabic}
       </p>
@@ -105,50 +107,47 @@ export function HadithDailyCard({ hadith }: { hadith: HadithItem | null }) {
         "{hadith.translation}"
       </p>
 
-      {/* Footer Aksi */}
+      {/* Footer Aksi (min 44px touch targets) */}
       <div className="pt-3 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-center gap-1">
-          <Button
-            variant="ghost"
-            size="sm"
+          <button
+            type="button"
             onClick={handleToggleBookmark}
-            className="h-8 px-2 text-xs gap-1"
+            className="min-h-[44px] min-w-[44px] px-3 rounded-button text-xs font-semibold flex items-center gap-1.5 text-text-secondary hover:text-text-primary hover:bg-surface-alt active:scale-95 transition-all"
           >
             <Bookmark
-              className={`w-3.5 h-3.5 ${
-                isBookmarked ? 'fill-accent text-accent' : 'text-text-secondary'
+              className={`w-4 h-4 ${
+                isBookmarked ? 'fill-warning text-warning' : 'text-text-secondary'
               }`}
             />
             <span>{isBookmarked ? 'Tersimpan' : 'Bookmark'}</span>
-          </Button>
+          </button>
 
-          <Button
-            variant="ghost"
-            size="sm"
+          <button
+            type="button"
             onClick={handleCopy}
-            className="h-8 px-2 text-xs gap-1"
+            className="min-h-[44px] min-w-[44px] px-3 rounded-button text-xs font-semibold flex items-center gap-1.5 text-text-secondary hover:text-text-primary hover:bg-surface-alt active:scale-95 transition-all"
           >
             {copied ? (
-              <Check className="w-3.5 h-3.5 text-success" />
+              <Check className="w-4 h-4 text-success" />
             ) : (
-              <Copy className="w-3.5 h-3.5 text-text-secondary" />
+              <Copy className="w-4 h-4 text-text-secondary" />
             )}
             <span>{copied ? 'Tersalin' : 'Salin'}</span>
-          </Button>
+          </button>
 
-          <Button
-            variant="ghost"
-            size="sm"
+          <button
+            type="button"
             onClick={handleShare}
-            className="h-8 px-2 text-xs gap-1 text-primary"
+            className="min-h-[44px] min-w-[44px] px-3 rounded-button text-xs font-semibold flex items-center gap-1.5 text-primary-text hover:bg-surface-alt active:scale-95 transition-all"
           >
-            <Share2 className="w-3.5 h-3.5" />
+            <Share2 className="w-4 h-4" />
             <span>Bagikan</span>
-          </Button>
+          </button>
         </div>
 
         <Link href={`/hadits/${hadith.book}/`}>
-          <Button variant="ghost" size="sm" className="text-xs text-primary gap-1">
+          <Button variant="ghost" size="sm" className="text-xs font-bold text-primary-text gap-1 rounded-pill">
             <span>Pelajari Lebih Lanjut</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Button>

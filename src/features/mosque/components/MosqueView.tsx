@@ -33,7 +33,7 @@ import {
 const MosqueMap = dynamic(() => import('./MosqueMap'), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-full min-h-[380px] bg-surface-alt flex items-center justify-center rounded-card border border-border">
+    <div className="w-full h-[210px] sm:h-[260px] md:h-[320px] lg:h-[480px] bg-surface-alt flex items-center justify-center rounded-card border border-border">
       <div className="flex flex-col items-center gap-2 text-text-secondary text-xs">
         <Compass className="w-8 h-8 animate-spin text-primary" />
         <span>Memuat Google Maps resmi...</span>
@@ -384,8 +384,8 @@ export const MosqueView: React.FC<MosqueViewProps> = ({ embedded = false }) => {
           </span>
         </div>
 
-        {/* Google Maps Info Box */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 bg-surface rounded-card border border-border text-xs text-text-secondary">
+        {/* Google Maps Info Box (ditampilkan di desktop/tablet, di mobile sudah terintegrasi rapi di kontrol peta) */}
+        <div className="hidden sm:flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 bg-surface rounded-card border border-border text-xs text-text-secondary">
           <div className="flex items-center gap-2">
             <span className="text-base shrink-0">✨</span>
             <span>
@@ -422,7 +422,7 @@ export const MosqueView: React.FC<MosqueViewProps> = ({ embedded = false }) => {
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           {/* Map Column (lg: 7 cols) with Satellite Mode */}
-          <div className="lg:col-span-7 h-[420px] lg:h-[640px] sticky top-20">
+          <div className="lg:col-span-7 lg:sticky lg:top-20 space-y-3">
             <MosqueMap
               userLocation={coords}
               mosques={displayedMosques}
@@ -433,7 +433,7 @@ export const MosqueView: React.FC<MosqueViewProps> = ({ embedded = false }) => {
           </div>
 
           {/* List Column (lg: 5 cols) */}
-          <div className="lg:col-span-5 space-y-3.5 max-h-[640px] overflow-y-auto no-scrollbar pr-1">
+          <div className="lg:col-span-5 space-y-3 lg:max-h-[520px] lg:overflow-y-auto no-scrollbar pr-0.5">
             {loading ? (
               <div className="space-y-3">
                 {Array.from({ length: 4 }).map((_, i) => (

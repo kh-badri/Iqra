@@ -35,21 +35,21 @@ export function AyahCard({
       id={`ayah-${ayah.numberInSurah}`}
       onClick={onSelectAyah}
       className={cn(
-        'p-4 sm:p-5 rounded-card border transition-all duration-150 cursor-pointer select-none',
+        'p-4 sm:p-5 rounded-card border transition-all duration-200 cursor-pointer select-none card-highlight',
         isActiveAudio
-          ? 'bg-primary-soft/60 border-primary shadow-subtle'
-          : 'bg-surface border-border hover:border-primary/40 hover:bg-surface-alt/50'
+          ? 'bg-pastel-green/40 border-primary shadow-glow ring-2 ring-primary/25'
+          : 'bg-surface border-border hover:border-primary/40 hover:bg-surface-alt/40 shadow-card'
       )}
     >
-      {/* Baris Atas: Nomor Ayat Beraksen Emas & Tombol Aksi Cepat */}
-      <div className="flex items-center justify-between pb-3 mb-3 border-b border-border/70">
+      {/* Baris Atas: Nomor Ayat & Tombol Aksi Cepat (min 44x44px touch targets) */}
+      <div className="flex items-center justify-between pb-3 mb-3 border-b border-border/80">
         <div className="flex items-center gap-2">
-          {/* Nomor Ayat Lingkaran Beraksen Emas */}
-          <div className="w-8 h-8 rounded-full border border-accent bg-accent/10 text-accent font-bold text-xs flex items-center justify-center font-mono">
+          {/* Nomor Ayat Lingkaran Pastel */}
+          <div className="w-9 h-9 rounded-full bg-pastel-yellow text-[#8A5E06] dark:text-[#FFE082] font-extrabold text-xs flex items-center justify-center font-mono shadow-subtle">
             {ayah.numberInSurah}
           </div>
           {isBookmarked && (
-            <Bookmark className="w-4 h-4 fill-accent text-accent" />
+            <Bookmark className="w-4 h-4 fill-warning text-warning" />
           )}
         </div>
 
@@ -60,7 +60,7 @@ export function AyahCard({
                 e.stopPropagation();
                 onPlayAudio();
               }}
-              className="p-1.5 rounded-sm text-text-secondary hover:text-primary hover:bg-surface-alt transition-colors"
+              className="w-10 h-10 rounded-button flex items-center justify-center text-text-secondary hover:text-primary-text hover:bg-surface-alt active:scale-90 transition-all"
               aria-label={`Putar audio ayat ${ayah.numberInSurah}`}
             >
               <Play className="w-4 h-4" />
@@ -72,7 +72,7 @@ export function AyahCard({
               e.stopPropagation();
               onSelectAyah();
             }}
-            className="p-1.5 rounded-sm text-text-secondary hover:text-text-primary hover:bg-surface-alt transition-colors"
+            className="w-10 h-10 rounded-button flex items-center justify-center text-text-secondary hover:text-text-primary hover:bg-surface-alt active:scale-90 transition-all"
             aria-label="Menu aksi ayat"
           >
             <MoreVertical className="w-4 h-4" />
@@ -84,7 +84,7 @@ export function AyahCard({
       <div className="w-full text-right my-2">
         <p
           dir="rtl"
-          className="font-arabic text-text-primary leading-[2.2] tracking-wide select-text"
+          className="font-arabic text-text-primary leading-[2.2] tracking-wide select-text font-medium"
           style={{ fontSize: `${fontSizeArabic}px` }}
         >
           {ayah.arabic}
@@ -94,7 +94,7 @@ export function AyahCard({
       {/* Transliterasi Latin */}
       {showTransliteration && (
         <div className="mt-3 text-left">
-          <p className="text-xs text-primary font-medium select-text leading-relaxed">
+          <p className="text-xs text-primary-text font-semibold select-text leading-relaxed">
             {ayah.transliteration}
           </p>
         </div>
@@ -104,7 +104,7 @@ export function AyahCard({
       {showTranslation && (
         <div className="mt-2 text-left">
           <p
-            className="text-text-secondary select-text leading-relaxed"
+            className="text-text-secondary select-text leading-relaxed font-normal"
             style={{ fontSize: `${fontSizeTranslation}px` }}
           >
             {ayah.translation}

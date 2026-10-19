@@ -1,17 +1,5 @@
 import Link from 'next/link';
-import {
-  BookOpen,
-  GraduationCap,
-  Clock,
-  Compass,
-  Tv,
-  Users,
-  Sparkles,
-  ArrowRight,
-  Bookmark,
-  Share2,
-  Calendar,
-} from 'lucide-react';
+import { Sparkles, ArrowRight } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Chip } from '@/components/ui/Chip';
@@ -19,147 +7,271 @@ import { SectionHeader } from '@/components/ui/SectionHeader';
 import { InstallPrompt } from '@/components/ui/InstallPrompt';
 import { LastReadCard } from '@/features/home/components/LastReadCard';
 import { HomePrayerCard } from '@/features/home/components/HomePrayerCard';
-import { TodayCalendarCard } from '@/features/home/components/TodayCalendarCard';
 import { getDailyHadith } from '@/features/hadith/services/hadithService';
 import { HadithDailyCard } from '@/features/hadith/components/HadithDailyCard';
+import {
+  QuranIcon,
+  KaabaIcon,
+  PrayerClockIcon,
+  CalendarIcon,
+  HadithBookIcon,
+  TajwidIcon,
+  SirahScrollIcon,
+  ProphetsStarIcon,
+  MasjidIcon,
+  KajianIcon,
+} from '@/components/icons/IslamicIcons';
+
+const quickShortcuts = [
+  {
+    title: "Al-Qur'an",
+    href: '/quran/',
+    icon: QuranIcon,
+    bg: 'bg-pastel-green',
+  },
+  {
+    title: 'Jadwal Sholat',
+    href: '/sholat/',
+    icon: PrayerClockIcon,
+    bg: 'bg-pastel-blue',
+  },
+  {
+    title: 'Arah Kiblat',
+    href: '/kiblat/',
+    icon: KaabaIcon,
+    bg: 'bg-pastel-cyan',
+  },
+  {
+    title: 'Kalender',
+    href: '/kalender/',
+    icon: CalendarIcon,
+    bg: 'bg-pastel-yellow',
+  },
+  {
+    title: 'Hadits',
+    href: '/hadits/',
+    icon: HadithBookIcon,
+    bg: 'bg-pastel-purple',
+  },
+  {
+    title: 'Tajwid',
+    href: '/tajwid/',
+    icon: TajwidIcon,
+    bg: 'bg-pastel-green',
+  },
+  {
+    title: 'Sirah',
+    href: '/sirah/',
+    icon: SirahScrollIcon,
+    bg: 'bg-pastel-orange',
+  },
+  {
+    title: '25 Nabi',
+    href: '/kisah-nabi/',
+    icon: ProphetsStarIcon,
+    bg: 'bg-pastel-pink',
+  },
+];
+
+const features = [
+  {
+    title: "Al-Qur'an 30 Juz",
+    desc: '114 Surah, audio tilawah & tafsir ringkas Kemenag RI',
+    href: '/quran/',
+    icon: QuranIcon,
+    badge: 'Lengkap',
+    bg: 'bg-pastel-green',
+  },
+  {
+    title: 'Jadwal Sholat',
+    desc: 'Hitung mundur real-time & hisab Kemenag RI',
+    href: '/sholat/',
+    icon: PrayerClockIcon,
+    badge: 'Presisi',
+    bg: 'bg-pastel-blue',
+  },
+  {
+    title: 'Arah Kiblat',
+    desc: 'Kompas dinamis akurat hadap Ka\'bah di Makkah',
+    href: '/kiblat/',
+    icon: KaabaIcon,
+    badge: 'Sensor HP',
+    bg: 'bg-pastel-cyan',
+  },
+  {
+    title: 'Kalender Hijriah',
+    desc: 'Penanggalan Umm al-Qura & jadwal puasa sunnah',
+    href: '/kalender/',
+    icon: CalendarIcon,
+    badge: 'Puasa',
+    bg: 'bg-pastel-yellow',
+  },
+  {
+    title: 'Koleksi Hadits',
+    desc: '600+ hadits shahih dari Bukhari & Muslim',
+    href: '/hadits/',
+    icon: HadithBookIcon,
+    badge: 'Shahihain',
+    bg: 'bg-pastel-purple',
+  },
+  {
+    title: 'Belajar Tajwid',
+    desc: '5 Level materi bertahap & kuis interaktif',
+    href: '/tajwid/',
+    icon: TajwidIcon,
+    badge: '5 Level',
+    bg: 'bg-pastel-green',
+  },
+  {
+    title: 'Sirah Nabawiyyah',
+    desc: 'Kronologi 17 bab perjalanan Rasulullah ﷺ',
+    href: '/sirah/',
+    icon: SirahScrollIcon,
+    badge: '17 Bab',
+    bg: 'bg-pastel-orange',
+  },
+  {
+    title: 'Kisah 25 Nabi',
+    desc: 'Hikmah & rujukan ayat Al-Qur\'an shahih',
+    href: '/kisah-nabi/',
+    icon: ProphetsStarIcon,
+    badge: '25 Kisah',
+    bg: 'bg-pastel-pink',
+  },
+  {
+    title: 'Masjid Terdekat',
+    desc: 'Peta & rute navigasi tempat ibadah muslim',
+    href: '/masjid/',
+    icon: MasjidIcon,
+    badge: 'Peta',
+    bg: 'bg-pastel-blue',
+  },
+  {
+    title: 'Kajian YouTube',
+    desc: 'Video ceramah asatidz Ahlussunnah terverifikasi',
+    href: '/kajian/',
+    icon: KajianIcon,
+    badge: 'Streaming',
+    bg: 'bg-pastel-orange',
+  },
+];
 
 export default async function HomePage() {
   const dailyHadith = await getDailyHadith();
-  const features = [
-    {
-      title: "Al-Qur'an",
-      desc: '114 Surah & audio tilawah',
-      href: '/quran/',
-      icon: BookOpen,
-      badge: 'Lengkap',
-    },
-    {
-      title: 'Jadwal Sholat',
-      desc: 'Hitung mundur & pengingat',
-      href: '/sholat/',
-      icon: Clock,
-      badge: 'Lokasi',
-    },
-    {
-      title: 'Arah Kiblat',
-      desc: 'Kompas dinamis hadap Ka\'bah',
-      href: '/kiblat/',
-      icon: Compass,
-      badge: 'Kompas HP',
-    },
-    {
-      title: 'Kalender Hijriah',
-      desc: 'Penanggalan Islam & puasa sunnah',
-      href: '/kalender/',
-      icon: Calendar,
-      badge: 'Puasa',
-    },
-    {
-      title: 'Belajar Hadits',
-      desc: 'Shahih Bukhari & Muslim',
-      href: '/hadits/',
-      icon: Bookmark,
-      badge: 'Shahih',
-    },
-    {
-      title: 'Belajar Tajwid',
-      desc: 'Materi bertahap & kuis',
-      href: '/tajwid/',
-      icon: GraduationCap,
-      badge: '5 Level',
-    },
-    {
-      title: 'Sirah Nabawiyyah',
-      desc: 'Kronologi hidup Rasulullah ﷺ',
-      href: '/sirah/',
-      icon: Sparkles,
-      badge: 'Sirah Nabi',
-    },
-    {
-      title: 'Kisah 25 Nabi',
-      desc: 'Hikmah & rujukan ayat',
-      href: '/kisah-nabi/',
-      icon: Users,
-      badge: '25 Nabi',
-    },
-    {
-      title: 'Masjid Terdekat',
-      desc: 'Peta & rute OpenStreetMap',
-      href: '/masjid/',
-      icon: Compass,
-      badge: 'Peta',
-    },
-    {
-      title: 'Kajian YouTube',
-      desc: 'Video ustadz terpopuler',
-      href: '/kajian/',
-      icon: Tv,
-      badge: 'Kajian',
-    },
-  ];
 
   return (
-    <div className="space-y-6 animate-in fade-in duration-200">
-      {/* Salam & Header Tanggal */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border pb-4">
-        <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-text-primary tracking-tight">
+    <div className="relative space-y-6 sm:space-y-7 animate-fade-in-up pb-6">
+      {/* Organic Blob Background Accent */}
+      <div
+        className="absolute -top-14 -right-12 w-72 h-72 bg-pastel-green opacity-40 organic-blob pointer-events-none -z-10"
+        aria-hidden
+      />
+      <div
+        className="absolute top-96 -left-16 w-64 h-64 bg-pastel-yellow opacity-30 organic-blob pointer-events-none -z-10"
+        aria-hidden
+      />
+
+      {/* ── 1. Sapaan & Salam Bersih ──────────────────────────────────── */}
+      <div className="border-b border-border/80 pb-3 sm:pb-3.5">
+        <div className="flex items-center justify-between gap-2">
+          <span className="text-xs font-bold px-2.5 py-0.5 rounded-pill bg-pastel-green text-primary-text">
             Assalamu'alaikum
-          </h1>
-          <p className="text-xs sm:text-sm text-text-secondary mt-0.5">
-            Selamat datang di Iqra. Mari terus memperdalam ilmu agama Islam hari ini.
-          </p>
+          </span>
+          <span
+            dir="rtl"
+            className="font-arabic text-xs sm:text-sm text-primary-text font-bold bg-pastel-green/60 dark:bg-pastel-green/20 px-2.5 py-0.5 rounded-pill border border-primary/20 inline-block shadow-subtle"
+          >
+            بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+          </span>
         </div>
-        <div className="flex items-center gap-2">
-          <Chip variant="primary" active>
-            Fase 6 · Masjid &amp; Kajian Siap
-          </Chip>
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-text-primary tracking-tight mt-1.5">
+          Selamat Datang di Iqra
+        </h1>
+        <p className="text-xs sm:text-sm text-text-secondary mt-0.5 leading-relaxed">
+          Perdalam ilmu Al-Qur'an, hadits, dan jaga waktu ibadah setiap hari.
+        </p>
+      </div>
+
+      {/* ── 2. Hero Card: Jadwal Sholat Berikutnya (Lime Gradient) ───── */}
+      <HomePrayerCard />
+
+      {/* ── 3. Quick Actions: Baris Ikon Pastel (Scroll-Snap Horizontal) ─ */}
+      <div>
+        <div className="flex items-center justify-between mb-2.5 px-0.5">
+          <h2 className="text-sm font-extrabold text-text-primary tracking-tight">
+            Akses Cepat
+          </h2>
+          <span className="text-[11px] text-text-muted font-medium">Geser untuk fitur lainnya →</span>
+        </div>
+
+        <div className="flex gap-2.5 overflow-x-auto no-scrollbar pb-1 snap-x snap-mandatory">
+          {quickShortcuts.map((item) => {
+            const Icon = item.icon;
+            return (
+              <Link
+                key={item.title}
+                href={item.href}
+                className="snap-start flex-shrink-0 flex flex-col items-center justify-center w-[74px] p-2 rounded-card bg-surface border border-border hover:border-primary/40 transition-all duration-150 active:scale-95 group shadow-card"
+              >
+                <div
+                  className={`w-12 h-12 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:scale-105 shadow-subtle border border-black/5 dark:border-white/10 ${item.bg}`}
+                >
+                  <Icon size={30} className="w-7.5 h-7.5 drop-shadow-sm transition-transform duration-200 group-hover:scale-110" />
+                </div>
+                <span className="text-[11px] font-bold text-text-primary group-hover:text-primary-text transition-colors mt-2 text-center leading-tight truncate w-full">
+                  {item.title}
+                </span>
+              </Link>
+            );
+          })}
         </div>
       </div>
 
-      {/* Kartu Waktu Sholat Real-Time */}
-      <HomePrayerCard />
-
-      {/* Kalender Hijriah & Puasa Sunnah Hari Ini */}
-      <TodayCalendarCard />
-
-      {/* Lanjutkan Membaca Terakhir (Dexie IndexedDB) */}
+      {/* ── 4. Lanjutkan Membaca Terakhir (IndexedDB) ─────────────────── */}
       <LastReadCard />
 
-      {/* Pintasan 7 Fitur Utama */}
+      {/* ── 5. Katalog 10 Fitur Utama (Fresh Rounded Cards) ─────────── */}
       <div>
         <SectionHeader
-          title="Layanan & Fitur Utama"
-          subtitle="Pilih materi atau panduan ibadah yang ingin Anda pelajari"
+          title="Layanan &amp; Fitur Lengkap"
+          subtitle="Pilih panduan ibadah atau modul syar'i yang ingin Anda pelajari"
+          accent
         />
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
           {features.map((item) => {
             const Icon = item.icon;
             return (
-              <Link key={item.title} href={item.href} className="group">
+              <Link
+                key={item.title}
+                href={item.href}
+                className="group block select-none"
+              >
                 <Card
                   hoverable
-                  className="h-full flex flex-col justify-between p-4 bg-surface"
+                  className="h-full flex flex-col justify-between p-4 bg-surface border border-border hover:border-primary/40 transition-all duration-200 shadow-card"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-3">
-                      <div className="w-10 h-10 rounded-card bg-primary-soft text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors duration-150">
-                        <Icon className="w-5 h-5" />
+                      {/* Circular icon with pastel background & realistic Islamic icon */}
+                      <div
+                        className={`w-12 h-12 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:scale-105 shadow-subtle border border-black/5 dark:border-white/10 ${item.bg}`}
+                      >
+                        <Icon size={28} className="w-7 h-7 drop-shadow-sm transition-transform duration-200 group-hover:scale-110" />
                       </div>
-                      <Chip variant="secondary" className="text-[10px] py-0.5 px-2">
+                      <span className="text-[10px] font-extrabold text-text-secondary bg-surface-alt px-2 py-0.5 rounded-pill border border-border">
                         {item.badge}
-                      </Chip>
+                      </span>
                     </div>
-                    <h3 className="text-sm font-bold text-text-primary group-hover:text-primary transition-colors">
+                    <h3 className="text-sm font-extrabold text-text-primary group-hover:text-primary-text transition-colors duration-150 leading-snug">
                       {item.title}
                     </h3>
-                    <p className="text-xs text-text-secondary mt-1 line-clamp-2">
+                    <p className="text-[11px] text-text-secondary mt-1 leading-relaxed line-clamp-2">
                       {item.desc}
                     </p>
                   </div>
-                  <div className="mt-4 pt-3 border-t border-border flex items-center justify-between text-[11px] font-semibold text-primary">
-                    <span>Buka</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  <div className="mt-3 pt-3 border-t border-border flex items-center justify-between">
+                    <span className="text-[11px] font-extrabold text-primary-text">Buka</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-primary-text group-hover:translate-x-1 transition-transform duration-150" />
                   </div>
                 </Card>
               </Link>
@@ -168,56 +280,63 @@ export default async function HomePage() {
         </div>
       </div>
 
-      {/* Ayat / Hadits Harian Preview */}
+      {/* ── 6. Inspirasi Firman & Sabda Hari Ini ──────────────────────── */}
       <div>
         <SectionHeader
           title="Inspirasi Hari Ini"
-          subtitle="Renungan firman Allah dan sabda Rasulullah ﷺ"
+          subtitle="Renungan firman Allah dan hadits shahih Rasulullah ﷺ"
+          accent
         />
-        <Card className="p-5 space-y-4">
+
+        {/* Ayat Al-Qur'an Card */}
+        <Card className="p-5 sm:p-6 space-y-4 bg-surface border-border shadow-card">
           <div className="flex items-center justify-between border-b border-border pb-3">
             <div className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-accent" />
-              <span className="text-xs font-bold uppercase tracking-wider text-accent">
+              <div className="w-8 h-8 rounded-full bg-pastel-yellow text-warning flex items-center justify-center shadow-subtle">
+                <Sparkles className="w-4 h-4 fill-warning" />
+              </div>
+              <span className="text-xs font-extrabold text-warning uppercase tracking-wider">
                 QS. Al-Baqarah : 185
               </span>
             </div>
-            <Chip variant="outline" className="text-[11px]">
+            <Chip variant="pastel-green" className="text-[10px] py-0.5 px-2.5 font-bold">
               Al-Qur'an
             </Chip>
           </div>
 
           <p
             dir="rtl"
-            className="font-arabic text-xl sm:text-2xl text-right leading-loose text-text-primary"
+            className="font-arabic text-xl sm:text-2xl text-right leading-loose text-text-primary select-text font-medium"
           >
             شَهْرُ رَمَضَانَ الَّذِي أُنْزِلَ فِيهِ الْقُرْآنُ هُدًى لِلنَّاسِ وَبَيِّنَاتٍ مِنَ الْهُدَىٰ وَالْفُرْقَانِ
           </p>
 
-          <p className="text-xs sm:text-sm text-text-secondary italic leading-relaxed">
-            "Bulan Ramadan adalah (bulan) yang di dalamnya diturunkan Al-Qur'an, sebagai petunjuk bagi manusia dan penjelasan-penjelasan mengenai petunjuk itu dan pembeda (antara yang benar dan yang batil)."
+          <p className="text-xs sm:text-sm text-text-secondary italic leading-relaxed select-text">
+            &ldquo;Bulan Ramadan adalah (bulan) yang di dalamnya diturunkan Al-Qur'an, sebagai
+            petunjuk bagi manusia dan penjelasan-penjelasan mengenai petunjuk itu dan
+            pembeda (antara yang benar dan yang batil).&rdquo;
           </p>
 
           <div className="pt-2 flex items-center justify-between border-t border-border">
-            <span className="text-[11px] text-text-secondary">
-              Sumber: Mushaf Standar Indonesia (Kemenag RI)
+            <span className="text-[11px] text-text-muted">
+              Mushaf Standar RI · Kemenag
             </span>
             <Link href="/quran/">
-              <Button variant="ghost" size="sm" className="text-xs text-primary gap-1">
+              <Button variant="ghost" size="sm" className="text-xs font-bold text-primary-text gap-1 group rounded-pill">
                 <span>Baca Surah</span>
-                <ArrowRight className="w-3 h-3" />
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
               </Button>
             </Link>
           </div>
         </Card>
 
-        {/* Hadits Harian Shahih */}
+        {/* Hadits Harian */}
         <div className="mt-4">
           <HadithDailyCard hadith={dailyHadith} />
         </div>
       </div>
 
-      {/* Ajakan Install App */}
+      {/* ── 8. Install PWA Prompt ────────────────────────────────────── */}
       <InstallPrompt />
     </div>
   );

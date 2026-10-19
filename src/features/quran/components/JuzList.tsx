@@ -21,24 +21,24 @@ export function JuzList({
         <Link
           key={j.juz}
           href={`/quran/${j.startSurah}/#ayah-${j.startAyat}`}
-          className="group block"
+          className="group block select-none"
         >
-          <Card hoverable className="p-4 flex items-center justify-between">
+          <Card hoverable className="p-4 flex items-center justify-between bg-surface border border-border shadow-card hover:border-primary/40 transition-all duration-200">
             <div className="flex items-center gap-3.5 min-w-0">
-              <div className="w-10 h-10 rounded-card bg-primary-soft text-primary font-bold text-xs flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
+              <div className="w-11 h-11 rounded-full bg-pastel-cyan text-pastel-cyan-text font-extrabold text-xs flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform shadow-subtle font-mono">
                 {j.juz}
               </div>
               <div className="min-w-0">
-                <h4 className="text-sm font-bold text-text-primary group-hover:text-primary transition-colors">
+                <h4 className="text-sm font-extrabold text-text-primary group-hover:text-primary-text transition-colors tracking-tight">
                   {j.name}
                 </h4>
-                <p className="text-xs text-text-secondary mt-0.5 truncate">
+                <p className="text-xs text-text-secondary mt-0.5 truncate font-medium">
                   Mulai dari {getSurahName(j.startSurah)}: {j.startAyat} s.d.{' '}
                   {getSurahName(j.endSurah)}: {j.endAyat}
                 </p>
               </div>
             </div>
-            <ChevronRight className="w-4 h-4 text-text-secondary group-hover:text-primary flex-shrink-0" />
+            <ChevronRight className="w-4 h-4 text-text-secondary group-hover:text-primary-text group-hover:translate-x-0.5 transition-all flex-shrink-0" />
           </Card>
         </Link>
       ))}

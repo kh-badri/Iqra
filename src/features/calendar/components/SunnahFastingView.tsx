@@ -21,6 +21,15 @@ import type { SunnahFastingInfo, UpcomingFastingItem } from '../types';
 export function SunnahFastingView() {
   const [selectedFilter, setSelectedFilter] = React.useState<string>('all');
   const [selectedNiatModal, setSelectedNiatModal] = React.useState<SunnahFastingInfo | null>(null);
+  const [cachedFasting, setCachedFasting] = React.useState<SunnahFastingInfo | null>(null);
+
+  React.useEffect(() => {
+    if (selectedNiatModal) {
+      setCachedFasting(selectedNiatModal);
+    }
+  }, [selectedNiatModal]);
+
+  const activeFastingModal = selectedNiatModal || cachedFasting;
 
   const upcomingFasts = React.useMemo(() => {
     return getUpcomingFastings(new Date(), 10);
@@ -89,12 +98,13 @@ export function SunnahFastingView() {
             return (
               <Card
                 key={idx}
+                hoverable
                 onClick={() => setSelectedNiatModal(item.fasting)}
                 className="p-3.5 bg-surface border border-border hover:border-primary/50 transition-all flex flex-col justify-between gap-2.5 cursor-pointer group"
               >
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex items-start gap-2.5 min-w-0">
-                    <div className="w-10 h-10 rounded-card bg-primary-soft text-primary flex flex-col items-center justify-center shrink-0 font-mono font-bold text-xs">
+                    <div className="w-10 h-10 rounded-card bg-pastel-green text-primary-text flex flex-col items-center justify-center shrink-0 font-mono font-bold text-xs shadow-subtle">
                       <span>{item.dayName.slice(0, 3)}</span>
                       <span className="text-sm leading-none mt-0.5">
                         {item.date.getDate()}
@@ -120,7 +130,7 @@ export function SunnahFastingView() {
                         Hari Ini
                       </Chip>
                     ) : isTomorrow ? (
-                      <Chip variant="secondary" className="text-[10px] font-bold py-0.5 px-2 text-primary">
+                      <Chip variant="secondary" className="text-[10px] font-bold py-0.5 px-2 text-primary-text">
                         Besok
                       </Chip>
                     ) : (
@@ -132,15 +142,18 @@ export function SunnahFastingView() {
                 </div>
 
                 <div className="pt-2 border-t border-border flex items-center justify-between text-xs">
-                  <span className="text-[11px] text-text-secondary truncate">
+                  <span className="text-[11px] text-text-secondary truncate font-medium">
                     {item.fasting.badge}
                   </span>
                   <button
                     type="button"
-                    onClick={() => setSelectedNiatModal(item.fasting)}
-                    className="text-primary hover:text-primary-pressed font-bold text-[11px] flex items-center gap-1 hover:underline"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedNiatModal(item.fasting);
+                    }}
+                    className="text-primary-text hover:text-primary font-extrabold text-[11px] flex items-center gap-1 hover:underline"
                   >
-                    <span>Lihat Niat & Dalil</span>
+                    <span>Lihat Niat &amp; Dalil</span>
                     <span>→</span>
                   </button>
                 </div>
@@ -171,9 +184,9 @@ export function SunnahFastingView() {
                 key={tab.id}
                 type="button"
                 onClick={() => setSelectedFilter(tab.id)}
-                className={`px-2.5 py-1 rounded-card text-xs font-semibold transition-colors ${
+                className={`px-3 py-1.5 rounded-pill text-xs font-bold transition-all duration-150 active:scale-95 ${
                   selectedFilter === tab.id
-                    ? 'bg-primary text-white shadow-subtle'
+                    ? 'bg-primary-gradient text-on-primary shadow-subtle'
                     : 'bg-surface-alt border border-border text-text-secondary hover:text-text-primary'
                 }`}
               >
@@ -308,12 +321,12 @@ export function SunnahFastingView() {
         onClose={() => setSelectedNiatModal(null)}
         title={
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-primary-soft text-primary flex items-center justify-center">
+            <div className="w-8 h-8 rounded-full bg-pastel-green text-primary-text flex items-center justify-center shadow-subtle">
               <Moon className="w-4 h-4" />
             </div>
             <div>
               <h3 className="text-sm sm:text-base font-bold text-text-primary">
-                {selectedNiatModal?.name}
+                {activeFastingModal?.name || 'Niat Puasa Sunnah'}
               </h3>
               <p className="text-[11px] text-text-secondary">
                 Lafadz Niat, Terjemahan &amp; Dalil Hadits
@@ -322,7 +335,7 @@ export function SunnahFastingView() {
           </div>
         }
       >
-        {selectedNiatModal && (
+        {activeFastingModal && (
           <div className="space-y-4 py-2 select-none">
             {/* Header Info Pelaksanaan */}
             <div className="p-3.5 rounded-card bg-surface-alt border border-border flex items-center justify-between gap-2">
@@ -331,23 +344,23 @@ export function SunnahFastingView() {
                   Jadwal Pelaksanaan:
                 </span>
                 <span className="text-xs font-bold text-text-primary">
-                  {selectedNiatModal.scheduleDescription}
+                  {activeFastingModal.scheduleDescription}
                 </span>
               </div>
               <Chip variant="primary" className="text-[10px] py-0 px-2 h-5 shrink-0">
-                {selectedNiatModal.badge}
+                {activeFastingModal.badge}
               </Chip>
             </div>
 
             {/* Kotak Niat Utama */}
             <div className="p-4 rounded-card bg-surface border border-primary/40 shadow-subtle space-y-3">
               <div className="flex items-center justify-between border-b border-border/70 pb-2">
-                <span className="text-xs font-bold text-primary flex items-center gap-1.5">
+                <span className="text-xs font-bold text-primary-text flex items-center gap-1.5">
                   <Sparkles className="w-4 h-4" />
                   <span>Lafadz Niat Puasa:</span>
                 </span>
-                <span className="text-[11px] text-accent font-arabic">
-                  {selectedNiatModal.arabicName}
+                <span className="text-[11px] text-accent font-arabic font-bold">
+                  {activeFastingModal.arabicName}
                 </span>
               </div>
 
@@ -357,21 +370,21 @@ export function SunnahFastingView() {
                   dir="rtl"
                   className="font-arabic text-xl sm:text-2xl text-text-primary leading-[2.2] select-text"
                 >
-                  {selectedNiatModal.niatArabic}
+                  {activeFastingModal.niatArabic}
                 </p>
               </div>
 
               {/* Transliterasi Latin */}
               <div className="pt-2 border-t border-border/70">
-                <p className="text-xs sm:text-sm text-primary font-medium italic select-text leading-relaxed">
-                  "{selectedNiatModal.niatLatin}"
+                <p className="text-xs sm:text-sm text-primary-text font-medium italic select-text leading-relaxed">
+                  "{activeFastingModal.niatLatin}"
                 </p>
               </div>
 
               {/* Terjemahan Arti */}
               <div className="pt-1">
                 <p className="text-xs text-text-secondary leading-relaxed select-text">
-                  <strong className="text-text-primary">Artinya:</strong> {selectedNiatModal.niatArti}
+                  <strong className="text-text-primary">Artinya:</strong> {activeFastingModal.niatArti}
                 </p>
               </div>
             </div>
@@ -383,7 +396,7 @@ export function SunnahFastingView() {
                 <span>Keutamaan Puasa:</span>
               </div>
               <p className="text-xs text-text-secondary leading-relaxed">
-                {selectedNiatModal.keutamaan}
+                {activeFastingModal.keutamaan}
               </p>
             </div>
 
@@ -394,7 +407,7 @@ export function SunnahFastingView() {
                 <span>Dalil Hadits Shahih:</span>
               </div>
               <p className="text-xs text-text-secondary italic leading-relaxed">
-                {selectedNiatModal.dalil}
+                {activeFastingModal.dalil}
               </p>
             </div>
           </div>

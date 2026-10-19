@@ -22,11 +22,11 @@ export function HadithCard({ hadith }: HadithCardProps) {
     () => db.bookmarks.where('refId').equals(`hadith-${hadith.id}`).toArray(),
     [hadith.id]
   );
-  const isBookmarked = bookmarks && bookmarks.length > 0;
+  const isBookmarked = Boolean(bookmarks && bookmarks.length > 0);
 
   const handleToggleBookmark = async () => {
     const ref = `hadith-${hadith.id}`;
-    if (isBookmarked && bookmarks[0].id) {
+    if (isBookmarked && bookmarks && bookmarks[0]?.id) {
       await db.bookmarks.delete(bookmarks[0].id);
     } else {
       await db.bookmarks.add({
@@ -69,26 +69,26 @@ export function HadithCard({ hadith }: HadithCardProps) {
   };
 
   return (
-    <Card id={`hadith-${hadith.number}`} className="p-5 space-y-4 bg-surface border-border">
+    <Card id={`hadith-${hadith.number}`} className="p-5 sm:p-6 space-y-4 bg-surface border-border shadow-card">
       {/* Header Hadits: Nomor, Derajat & Perawi */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border/80 pb-3">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full border border-accent bg-accent/10 text-accent font-bold text-xs flex items-center justify-center font-mono">
+        <div className="flex items-center gap-2.5">
+          <div className="w-9 h-9 rounded-full bg-pastel-purple text-pastel-purple-text font-black text-xs flex items-center justify-center font-mono shadow-subtle">
             {hadith.number}
           </div>
           <div>
-            <span className="text-xs font-bold text-text-primary">
+            <span className="text-xs sm:text-sm font-extrabold text-text-primary tracking-tight">
               {hadith.bookName} No. {hadith.number}
             </span>
-            <div className="text-[11px] text-text-secondary flex items-center gap-1 mt-0.5">
-              <User className="w-3 h-3 text-primary inline" />
+            <div className="text-[11px] text-text-secondary flex items-center gap-1 mt-0.5 font-medium">
+              <User className="w-3.5 h-3.5 text-primary-text inline" />
               <span>Perawi: {hadith.narrator}</span>
             </div>
           </div>
         </div>
 
         <div className="flex items-center gap-2">
-          <Chip variant="primary" className="text-[10px] py-0.5 px-2 bg-success text-white border-transparent">
+          <Chip variant="pastel-green" className="text-[10px] py-0.5 px-2 font-bold">
             {hadith.grade}
           </Chip>
         </div>
@@ -98,7 +98,7 @@ export function HadithCard({ hadith }: HadithCardProps) {
       <div className="text-right py-2">
         <p
           dir="rtl"
-          className="font-arabic text-xl sm:text-2xl text-text-primary leading-[2.2] select-text"
+          className="font-arabic text-xl sm:text-2xl text-text-primary leading-[2.2] select-text font-medium"
         >
           {hadith.arabic}
         </p>
@@ -107,54 +107,51 @@ export function HadithCard({ hadith }: HadithCardProps) {
       {/* Terjemahan Bahasa Indonesia */}
       <div className="text-left">
         <p className="text-xs sm:text-sm text-text-secondary leading-relaxed select-text italic">
-          "{hadith.translation}"
+          &ldquo;{hadith.translation}&rdquo;
         </p>
       </div>
 
-      {/* Footer Aksi & Atribusi Sumber Resmi */}
+      {/* Footer Aksi (min 44x44px touch targets) */}
       <div className="pt-3 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-        <span className="text-[11px] text-text-secondary font-medium">
+        <span className="text-[11px] text-text-muted font-medium">
           Sumber rujukan: {hadith.sourceRef} (Kitab Induk)
         </span>
 
-        <div className="flex items-center gap-1.5 self-end sm:self-auto">
-          <Button
-            variant="ghost"
-            size="sm"
+        <div className="flex items-center gap-1 self-end sm:self-auto">
+          <button
+            type="button"
             onClick={handleToggleBookmark}
-            className="h-8 px-2.5 text-xs gap-1.5"
+            className="min-h-[44px] min-w-[44px] px-3 rounded-button text-xs font-semibold flex items-center gap-1.5 text-text-secondary hover:text-text-primary hover:bg-surface-alt active:scale-95 transition-all"
           >
             <Bookmark
-              className={`w-3.5 h-3.5 ${
-                isBookmarked ? 'fill-accent text-accent' : 'text-text-secondary'
+              className={`w-4 h-4 ${
+                isBookmarked ? 'fill-warning text-warning' : 'text-text-secondary'
               }`}
             />
             <span>{isBookmarked ? 'Tersimpan' : 'Bookmark'}</span>
-          </Button>
+          </button>
 
-          <Button
-            variant="ghost"
-            size="sm"
+          <button
+            type="button"
             onClick={handleCopy}
-            className="h-8 px-2.5 text-xs gap-1.5"
+            className="min-h-[44px] min-w-[44px] px-3 rounded-button text-xs font-semibold flex items-center gap-1.5 text-text-secondary hover:text-text-primary hover:bg-surface-alt active:scale-95 transition-all"
           >
             {copied ? (
-              <Check className="w-3.5 h-3.5 text-success" />
+              <Check className="w-4 h-4 text-success" />
             ) : (
-              <Copy className="w-3.5 h-3.5 text-text-secondary" />
+              <Copy className="w-4 h-4 text-text-secondary" />
             )}
             <span>{copied ? 'Tersalin' : 'Salin'}</span>
-          </Button>
+          </button>
 
-          <Button
-            variant="ghost"
-            size="sm"
+          <button
+            type="button"
             onClick={handleShare}
-            className="h-8 px-2.5 text-xs gap-1.5 text-primary"
+            className="min-h-[44px] min-w-[44px] px-3 rounded-button text-xs font-semibold flex items-center gap-1.5 text-primary-text hover:bg-surface-alt active:scale-95 transition-all"
           >
-            <Share2 className="w-3.5 h-3.5" />
+            <Share2 className="w-4 h-4" />
             <span>Bagikan</span>
-          </Button>
+          </button>
         </div>
       </div>
     </Card>

@@ -117,7 +117,7 @@ export function AudioPlayerDrawer() {
     >
       <div className="space-y-6 py-2">
         {/* Tampilan Ayat Aktif (Card Flat) */}
-        <div className="p-5 bg-surface-alt rounded-card text-center space-y-3">
+        <div className="p-5 sm:p-6 bg-surface-2 border border-border rounded-card text-center space-y-3.5 shadow-subtle">
           <div className="flex items-center justify-center gap-2">
             <Chip variant="primary" className="text-xs">
               Ayat {currentAyah.numberInSurah} dari {track.totalAyahs}
@@ -134,13 +134,13 @@ export function AudioPlayerDrawer() {
             {currentAyah.arabic}
           </p>
 
-          <p className="text-xs text-text-secondary italic line-clamp-3">
-            "{currentAyah.translation}"
+          <p className="text-xs text-text-muted italic line-clamp-3 leading-relaxed">
+            &ldquo;{currentAyah.translation}&rdquo;
           </p>
         </div>
 
         {/* Progress Slider Waktu */}
-        <div className="space-y-1">
+        <div className="space-y-1.5">
           <Slider
             min={0}
             max={duration || 100}
@@ -148,7 +148,7 @@ export function AudioPlayerDrawer() {
             onChange={() => {}}
             disabled
           />
-          <div className="flex justify-between text-[11px] text-text-secondary font-mono">
+          <div className="flex justify-between text-xs text-text-muted font-mono tabular-nums">
             <span>{formatTime(currentTime)}</span>
             <span>{formatTime(duration)}</span>
           </div>
@@ -159,7 +159,7 @@ export function AudioPlayerDrawer() {
           <button
             onClick={prevAyah}
             disabled={track.currentAyahNumber <= 1}
-            className="p-3 rounded-full text-text-secondary hover:text-text-primary hover:bg-surface-alt disabled:opacity-30 transition-colors"
+            className="w-12 h-12 rounded-full text-text-muted hover:text-text-primary hover:bg-surface-2 flex items-center justify-center disabled:opacity-30 transition-colors active:scale-90"
             aria-label="Ayat sebelumnya"
           >
             <SkipBack className="w-6 h-6" />
@@ -167,20 +167,20 @@ export function AudioPlayerDrawer() {
 
           <button
             onClick={togglePlay}
-            className="w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary-pressed shadow-elevated transition-transform active:scale-95"
+            className="w-16 h-16 rounded-full bg-primary-gradient text-on-primary flex items-center justify-center shadow-card hover:brightness-105 transition-transform active:scale-95"
             aria-label={isPlaying ? 'Jeda' : 'Putar'}
           >
             {isPlaying ? (
-              <Pause className="w-6 h-6 fill-current" />
+              <Pause className="w-7 h-7 fill-current" />
             ) : (
-              <Play className="w-6 h-6 fill-current ml-1" />
+              <Play className="w-7 h-7 fill-current ml-1" />
             )}
           </button>
 
           <button
             onClick={nextAyah}
             disabled={track.currentAyahNumber >= track.totalAyahs}
-            className="p-3 rounded-full text-text-secondary hover:text-text-primary hover:bg-surface-alt disabled:opacity-30 transition-colors"
+            className="w-12 h-12 rounded-full text-text-muted hover:text-text-primary hover:bg-surface-2 flex items-center justify-center disabled:opacity-30 transition-colors active:scale-90"
             aria-label="Ayat berikutnya"
           >
             <SkipForward className="w-6 h-6" />
@@ -188,21 +188,21 @@ export function AudioPlayerDrawer() {
         </div>
 
         {/* Tombol Fitur Tambahan (Repeat, Speed, Timer, Qari) */}
-        <div className="grid grid-cols-4 gap-2 pt-2 border-t border-border">
+        <div className="grid grid-cols-4 gap-2 pt-3 border-t border-border">
           {/* Repeat */}
           <button
             onClick={cycleRepeat}
-            className="p-2.5 rounded-card border border-border bg-surface hover:bg-surface-alt flex flex-col items-center gap-1 text-[11px] font-medium text-text-secondary hover:text-text-primary transition-colors"
+            className="p-3 rounded-button border border-border bg-surface-2 hover:bg-surface flex flex-col items-center gap-1.5 text-xs font-semibold text-text-muted hover:text-text-primary transition-all active:scale-95 min-h-[56px]"
             title="Ulangi"
           >
             {repeatMode === 'ayah' ? (
-              <Repeat1 className="w-4 h-4 text-primary" />
+              <Repeat1 className="w-4 h-4 text-primary-text" />
             ) : (
               <Repeat
-                className={`w-4 h-4 ${repeatMode === 'surah' ? 'text-primary' : ''}`}
+                className={`w-4 h-4 ${repeatMode === 'surah' ? 'text-primary-text' : ''}`}
               />
             )}
-            <span className="capitalize">
+            <span className="capitalize text-[11px]">
               {repeatMode === 'none' ? 'Loop Off' : repeatMode === 'ayah' ? 'Ulang Ayat' : 'Ulang Surah'}
             </span>
           </button>
@@ -210,23 +210,23 @@ export function AudioPlayerDrawer() {
           {/* Speed */}
           <button
             onClick={cycleSpeed}
-            className="p-2.5 rounded-card border border-border bg-surface hover:bg-surface-alt flex flex-col items-center gap-1 text-[11px] font-medium text-text-secondary hover:text-text-primary transition-colors"
+            className="p-3 rounded-button border border-border bg-surface-2 hover:bg-surface flex flex-col items-center gap-1.5 text-xs font-semibold text-text-muted hover:text-text-primary transition-all active:scale-95 min-h-[56px]"
             title="Kecepatan"
           >
-            <Gauge className="w-4 h-4 text-primary" />
-            <span>{playbackRate}x</span>
+            <Gauge className="w-4 h-4 text-primary-text" />
+            <span className="text-[11px] tabular-nums">{playbackRate}x</span>
           </button>
 
           {/* Timer */}
           <button
             onClick={cycleSleepTimer}
-            className="p-2.5 rounded-card border border-border bg-surface hover:bg-surface-alt flex flex-col items-center gap-1 text-[11px] font-medium text-text-secondary hover:text-text-primary transition-colors"
+            className="p-3 rounded-button border border-border bg-surface-2 hover:bg-surface flex flex-col items-center gap-1.5 text-xs font-semibold text-text-muted hover:text-text-primary transition-all active:scale-95 min-h-[56px]"
             title="Timer Tidur"
           >
             <Timer
-              className={`w-4 h-4 ${sleepTimerMinutes > 0 ? 'text-warning' : 'text-primary'}`}
+              className={`w-4 h-4 ${sleepTimerMinutes > 0 ? 'text-warning' : 'text-primary-text'}`}
             />
-            <span>
+            <span className="text-[11px] tabular-nums">
               {sleepTimerRemainingSec !== null
                 ? `${Math.ceil(sleepTimerRemainingSec / 60)} mnt`
                 : 'Timer Off'}
@@ -236,28 +236,28 @@ export function AudioPlayerDrawer() {
           {/* Qari Selector */}
           <button
             onClick={() => setShowQariModal(true)}
-            className="p-2.5 rounded-card border border-border bg-surface hover:bg-surface-alt flex flex-col items-center gap-1 text-[11px] font-medium text-text-secondary hover:text-text-primary transition-colors"
+            className="p-3 rounded-button border border-border bg-surface-2 hover:bg-surface flex flex-col items-center gap-1.5 text-xs font-semibold text-text-muted hover:text-text-primary transition-all active:scale-95 min-h-[56px]"
             title="Pilih Qori"
           >
-            <User className="w-4 h-4 text-primary" />
-            <span className="truncate max-w-[60px]">Qori</span>
+            <User className="w-4 h-4 text-primary-text" />
+            <span className="truncate max-w-[60px] text-[11px]">Qori</span>
           </button>
         </div>
 
         {/* Simpan Offline Status & Download */}
-        <div className="p-3.5 bg-surface border border-border rounded-card flex items-center justify-between gap-3">
+        <div className="p-4 bg-surface-2 border border-border rounded-card flex items-center justify-between gap-3 shadow-subtle">
           <div>
             <div className="text-xs font-bold text-text-primary">
               Audio Surah Offline
             </div>
-            <div className="text-[11px] text-text-secondary mt-0.5">
+            <div className="text-[11px] text-text-muted mt-0.5">
               Ukuran estimasi: {formatEstimatedAudioSize(track.totalAyahs)}
             </div>
           </div>
 
           {downloadProgress !== null ? (
             <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-semibold text-primary">
+              <span className="text-xs font-mono font-semibold text-primary-text">
                 {downloadProgress}%
               </span>
               <div className="w-16 h-2 bg-surface-alt rounded-pill overflow-hidden">
