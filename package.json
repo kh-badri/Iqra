@@ -16,7 +16,8 @@
     "check-gradient": "powershell -Command \"Write-Host 'Lime green gradient design system active!'\"",
     "check-users": "node scripts/check-users.mjs",
     "check-db": "node scripts/check-db.mjs",
-    "deploy:zip": "powershell -Command \"if (Test-Path out) { Compress-Archive -Path out/* -DestinationPath iqra.zip -Force; Write-Host 'Created iqra.zip successfully!' } else { Write-Error 'out/ folder not found. Run npm run build first!' }\""
+    "deploy:zip": "powershell -Command \"if (Test-Path out) { Compress-Archive -Path out/* -DestinationPath iqra.zip -Force; Write-Host 'Created iqra.zip successfully!' } else { Write-Error 'out/ folder not found. Run npm run build first!' }\"",
+    "deploy:cpanel": "node scripts/deploy-cpanel.mjs"
   },
   "dependencies": {
     "@react-oauth/google": "^0.13.5",
