@@ -1,4 +1,9 @@
+# Matikan Directory Browsing & Tetapkan Index Utama
+Options -Indexes +FollowSymLinks
+DirectoryIndex index.html index.php
+
 RewriteEngine On
+RewriteBase /
 
 # Paksa HTTPS
 RewriteCond %{HTTPS} off
