@@ -38,7 +38,12 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     title: 'Iqra',
-    statusBarStyle: 'default',
+    statusBarStyle: 'black-translucent',
+  },
+  other: {
+    'mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'black-translucent',
   },
   icons: {
     icon: [

@@ -25,9 +25,10 @@ export function InstallPrompt({ className, forceShow = false }: InstallPromptPro
     setMounted(true);
     if (typeof window === 'undefined') return;
 
-    // Check standalone mode
+    // Check standalone or fullscreen PWA mode
     const standalone =
       window.matchMedia('(display-mode: standalone)').matches ||
+      window.matchMedia('(display-mode: fullscreen)').matches ||
       (window.navigator as any).standalone === true;
     setIsStandalone(standalone);
 

@@ -4,12 +4,13 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { ThemeToggle } from './ThemeToggle';
-import { Bookmark, Search, Bell } from 'lucide-react';
+import { Bookmark, Search, Bell, Maximize2, Minimize2 } from 'lucide-react';
 import { UserAvatarButton } from '@/features/auth/components/UserAvatarButton';
 import { cn } from '@/lib/utils';
 
 export function MobileHeader() {
   const [scrolled, setScrolled] = React.useState(false);
+  const [isFullscreen, setIsFullscreen] = React.useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +19,34 @@ export function MobileHeader() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  React.useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  }, []);
+
+  const toggleFullscreen = async () => {
+    try {
+      if (!document.fullscreenElement) {
+        if (document.documentElement.requestFullscreen) {
+          await document.documentElement.requestFullscreen();
+        } else if ((document.documentElement as any).webkitRequestFullscreen) {
+          await (document.documentElement as any).webkitRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          await document.exitFullscreen();
+        } else if ((document as any).webkitExitFullscreen) {
+          await (document as any).webkitExitFullscreen();
+        }
+      }
+    } catch (err) {
+      console.warn('Fullscreen toggle not supported or blocked:', err);
+    }
+  };
 
   const handleOpenSearch = () => {
     if (typeof window !== 'undefined') {
@@ -72,6 +101,18 @@ export function MobileHeader() {
             >
               <Bookmark className="w-4 h-4" />
             </Link>
+            <button
+              onClick={toggleFullscreen}
+              className="w-9 h-9 rounded-button bg-surface-alt flex items-center justify-center text-text-secondary hover:text-text-primary hover:bg-border/40 transition-all duration-150 active:scale-90"
+              aria-label={isFullscreen ? 'Keluar Layar Penuh' : 'Layar Penuh (Fullscreen)'}
+              title={isFullscreen ? 'Keluar Layar Penuh' : 'Layar Penuh (Fullscreen)'}
+            >
+              {isFullscreen ? (
+                <Minimize2 className="w-4 h-4 text-primary" />
+              ) : (
+                <Maximize2 className="w-4 h-4" />
+              )}
+            </button>
             <UserAvatarButton />
             <ThemeToggle className="w-9 h-9 rounded-button" />
           </div>
