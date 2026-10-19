@@ -87,7 +87,7 @@ export function BottomNav() {
       aria-label="Navigasi Utama HP"
     >
       {/* Floating glass/surface container with 24px radius & soft shadow */}
-      <div className="bg-surface/95 backdrop-blur-lg border border-border/80 shadow-elevated rounded-[24px] px-2 py-1.5 pointer-events-auto card-highlight">
+      <div className="bg-surface/98 backdrop-blur-md border border-border/80 shadow-elevated rounded-[24px] px-2 py-1.5 pointer-events-auto card-highlight transform-gpu">
         <div className="grid grid-cols-5 h-[58px] items-center">
           {navItems.map((item) => {
             const Icon = item.icon;

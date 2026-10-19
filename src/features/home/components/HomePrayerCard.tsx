@@ -3,6 +3,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { usePrayerTimes } from '@/features/prayer/hooks/usePrayerTimes';
+import { PrayerCountdown } from '@/features/prayer/components/PrayerCountdown';
 import {
   getHijriDetails,
   getFastingsForDate,
@@ -12,7 +13,7 @@ import type { HijriDetails, UpcomingFastingItem, SunnahFastingInfo } from '@/fea
 import { MapPin, Clock, ArrowRight, Calendar, Sparkles } from 'lucide-react';
 
 export function HomePrayerCard() {
-  const { city, nextPrayer, countdownFormatted, prayerList, now } = usePrayerTimes();
+  const { city, nextPrayer, prayerList, now } = usePrayerTimes();
   const [mounted, setMounted] = React.useState(false);
   const [hijri, setHijri] = React.useState<HijriDetails | null>(null);
   const [todayFastings, setTodayFastings] = React.useState<SunnahFastingInfo[]>([]);
@@ -40,7 +41,7 @@ export function HomePrayerCard() {
       month: 'long',
       year: 'numeric',
     }).format(now || new Date());
-  }, [now]);
+  }, [now?.toDateString()]);
 
   // Ambil hanya 5 sholat fardhu utama: Subuh, Dzuhur, Ashar, Maghrib, Isya
   const fardhuPrayers = React.useMemo(() => {
@@ -159,7 +160,7 @@ export function HomePrayerCard() {
                 <Clock className="w-3.5 h-3.5 text-[#0D3B13]/75" />
                 <span className="text-[11px] sm:text-xs font-semibold text-[#0D3B13]/85">Menghitung mundur:</span>
                 <span className="font-mono font-extrabold text-[11px] sm:text-xs bg-white/40 text-[#0D3B13] px-2 py-0.5 rounded-button tabular-nums border border-white/50 shadow-subtle">
-                  {countdownFormatted}
+                  <PrayerCountdown targetDate={nextPrayer?.date} />
                 </span>
               </div>
             </div>

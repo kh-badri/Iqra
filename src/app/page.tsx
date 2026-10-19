@@ -209,7 +209,7 @@ export default async function HomePage() {
                 <div
                   className={`w-12 h-12 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:scale-105 shadow-subtle border border-black/5 dark:border-white/10 ${item.bg}`}
                 >
-                  <Icon size={30} className="w-7.5 h-7.5 drop-shadow-sm transition-transform duration-200 group-hover:scale-110" />
+                  <Icon size={30} className="w-7.5 h-7.5 transition-transform duration-200 group-hover:scale-110" />
                 </div>
                 <span className="text-[11px] font-bold text-text-primary group-hover:text-primary-text transition-colors mt-2 text-center leading-tight truncate w-full">
                   {item.title}
@@ -249,7 +249,7 @@ export default async function HomePage() {
                       <div
                         className={`w-12 h-12 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:scale-105 shadow-subtle border border-black/5 dark:border-white/10 ${item.bg}`}
                       >
-                        <Icon size={28} className="w-7 h-7 drop-shadow-sm transition-transform duration-200 group-hover:scale-110" />
+                        <Icon size={28} className="w-7 h-7 transition-transform duration-200 group-hover:scale-110" />
                       </div>
                       <span className="text-[10px] font-extrabold text-text-secondary bg-surface-alt px-2 py-0.5 rounded-pill border border-border">
                         {item.badge}
