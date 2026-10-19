@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import * as React from 'react';
@@ -36,10 +37,12 @@ export function MobileHeader() {
           {/* Sapaan & Brand */}
           <Link href="/" className="flex items-center gap-2.5 group">
             <div className="relative">
-              {/* Brand Logo with Lime-green Gradient */}
-              <div className="w-9 h-9 rounded-button bg-primary-gradient text-on-primary flex items-center justify-center shadow-subtle group-active:scale-95 transition-transform duration-150">
-                <span className="font-arabic text-lg font-bold leading-none select-none">اقرأ</span>
-              </div>
+              {/* Brand Modern App Icon */}
+              <img
+                src="/icons/icon-192.png?v=lime"
+                alt="Logo Iqra"
+                className="w-9 h-9 rounded-xl shadow-subtle group-active:scale-95 transition-transform duration-150 object-cover ring-1 ring-border/50"
+              />
               {/* Subtle accent dot indicator */}
               <div className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-accent ring-2 ring-surface flex items-center justify-center animate-pulse-dot" />
             </div>

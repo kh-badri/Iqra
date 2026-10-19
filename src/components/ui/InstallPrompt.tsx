@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import * as React from 'react';
@@ -116,9 +117,11 @@ export function InstallPrompt({ className, forceShow = false }: InstallPromptPro
         )}
       >
         <div className="flex items-start gap-3.5">
-          <div className="w-10 h-10 rounded-card bg-pastel-green text-primary-text flex items-center justify-center flex-shrink-0 mt-0.5">
-            <Smartphone className="w-5 h-5" />
-          </div>
+          <img
+            src="/icons/icon-192.png?v=lime"
+            alt="Logo Iqra"
+            className="w-11 h-11 rounded-xl shadow-subtle flex-shrink-0 object-cover ring-1 ring-border/60"
+          />
           <div>
             <h4 className="text-sm font-bold text-text-primary">
               Install App Iqra

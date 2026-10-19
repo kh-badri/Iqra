@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import * as React from 'react';
@@ -74,9 +75,11 @@ export function Sidebar() {
       <div className="p-5 border-b border-border flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3 group">
           <div className="relative">
-            <div className="w-10 h-10 rounded-card bg-primary-gradient text-on-primary flex items-center justify-center shadow-subtle group-hover:scale-105 transition-transform duration-200">
-              <span className="font-arabic text-xl font-bold leading-none">اقرأ</span>
-            </div>
+            <img
+              src="/icons/icon-192.png?v=lime"
+              alt="Logo Iqra"
+              className="w-10 h-10 rounded-xl shadow-subtle group-hover:scale-105 transition-transform duration-200 object-cover ring-1 ring-border/50"
+            />
             <div className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-accent ring-2 ring-surface flex items-center justify-center animate-pulse-dot" />
           </div>
           <div>

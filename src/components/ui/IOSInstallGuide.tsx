@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import * as React from 'react';
@@ -15,6 +16,21 @@ export function IOSInstallGuide({ isOpen, onClose }: IOSInstallGuideProps) {
   return (
     <BottomSheet isOpen={isOpen} onClose={onClose} title="Install di iPhone / iPad">
       <div className="space-y-4 py-2">
+        {/* App Icon Preview */}
+        <div className="flex items-center gap-3.5 p-3.5 bg-surface-alt/70 border border-border/80 rounded-2xl">
+          <img
+            src="/icons/icon-192.png?v=lime"
+            alt="Logo Iqra"
+            className="w-12 h-12 rounded-2xl shadow-elevated shrink-0 object-cover ring-1 ring-border/50"
+          />
+          <div>
+            <h4 className="font-extrabold text-sm text-text-primary">Iqra: Belajar Agama Islam</h4>
+            <p className="text-xs text-text-secondary mt-0.5">
+              Ikon elegan ini akan langsung muncul di Layar Utama HP Anda
+            </p>
+          </div>
+        </div>
+
         <p className="text-xs sm:text-sm text-text-secondary leading-relaxed">
           Ikuti langkah mudah berikut di peramban <strong>Safari</strong> untuk menginstall Iqra ke Layar Utama iPhone/iPad Anda:
         </p>
