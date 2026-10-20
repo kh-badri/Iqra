@@ -1,0 +1,74 @@
+[
+  {
+    "level": 1,
+    "title": "Makharijul Huruf & Sifat Huruf",
+    "arabicTitle": "مخارج الحروف وصفاتها",
+    "description": "Mengenal tempat keluarnya huruf hijaiyah dari rongga mulut hingga tenggorokan serta karakteristik sifat suara setiap huruf.",
+    "icon": "volume-2",
+    "color": "primary",
+    "lessonSlugs": [
+      "pengantar-makharijul-huruf",
+      "makhraj-halq-dan-syafatain",
+      "makhraj-al-lisan",
+      "sifat-huruf-dasar"
+    ]
+  },
+  {
+    "level": 2,
+    "title": "Hukum Nun Sukun & Tanwin",
+    "arabicTitle": "أحكام النون الساكنة والتنوين",
+    "description": "Kaidah mendasar membaca nun mati dan tanwin: Izhar, Idgham Bighunnah, Idgham Bilaghunnah, Iqlab, dan Ikhfa Haqiqi.",
+    "icon": "book-open",
+    "color": "success",
+    "lessonSlugs": [
+      "izhar-halqi",
+      "idgham-bighunnah",
+      "idgham-bilaghunnah",
+      "iqlab",
+      "ikhfa-haqiqi"
+    ]
+  },
+  {
+    "level": 3,
+    "title": "Hukum Mim Sukun",
+    "arabicTitle": "أحكام الميم الساكنة",
+    "description": "Kaidah membaca mim sukun yang bertemu huruf hijaiyah: Ikhfa Syafawi, Idgham Mimi, dan Izhar Syafawi.",
+    "icon": "layers",
+    "color": "warning",
+    "lessonSlugs": [
+      "ikhfa-syafawi",
+      "idgham-mimi",
+      "izhar-syafawi"
+    ]
+  },
+  {
+    "level": 4,
+    "title": "Hukum Mad (Panjang Suara)",
+    "arabicTitle": "أحكام المد والقصر",
+    "description": "Kaidah memanjangkan bacaan dari 2 hingga 6 harakat: Mad Asli (Thabi'i), Muttashil, Munfashil, 'Aridh Lissukun, Lin, hingga Mad Lazim.",
+    "icon": "maximize-2",
+    "color": "accent",
+    "lessonSlugs": [
+      "mad-thabii",
+      "mad-wajib-muttashil",
+      "mad-jaiz-munfashil",
+      "mad-aridh-lissukun-dan-lin",
+      "mad-lazim",
+      "mad-badal-dan-iwadh"
+    ]
+  },
+  {
+    "level": 5,
+    "title": "Qalqalah, Ghunnah, & Tanda Waqaf",
+    "arabicTitle": "القلقلة والوقف والابتداء",
+    "description": "Kaidah pantulan huruf qalqalah, dengung tasydid, ketebalan lafaz Allah & Ra, serta panduan berhenti (waqaf) standar Mushaf Kemenag RI.",
+    "icon": "check-circle-2",
+    "color": "danger",
+    "lessonSlugs": [
+      "hukum-qalqalah",
+      "ghunnah-musyaddadah",
+      "hukum-lam-jalalah-dan-ra",
+      "tanda-waqaf-dan-ibtida"
+    ]
+  }
+]

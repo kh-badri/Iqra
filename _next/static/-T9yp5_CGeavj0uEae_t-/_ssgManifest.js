@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002Fhadits\u002F[kitab]","\u002Fkisah-nabi\u002F[slug]","\u002Fquran\u002F[number]","\u002Ftajwid\u002F[slug]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()
