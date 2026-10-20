@@ -13,7 +13,9 @@ import {
   ShieldCheck,
   Flame,
   Info,
+  CheckCircle2,
 } from 'lucide-react';
+import { PrayerPostureIllustration } from './PrayerPostureIllustration';
 
 export function PrayerMeaningView() {
   const [activeFilter, setActiveFilter] = React.useState<'all' | 'rukun' | 'sunnah'>('all');
@@ -205,10 +207,47 @@ export function PrayerMeaningView() {
                   </div>
                 </div>
 
-                {/* Deskripsi Gerakan Fisik */}
-                <div className="p-3 bg-surface-alt/70 rounded-button text-xs text-text-secondary leading-relaxed border border-border/80">
-                  <span className="font-bold text-text-primary">Panduan Gerakan: </span>
-                  {step.movementDescription}
+                {/* Visual Gerakan & Panduan Sesuai Sunnah (Responsive Mobile & Desktop) */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center p-3.5 sm:p-4 rounded-card bg-surface-alt/70 border border-border/80">
+                  {/* Kolom Contoh Ilustrasi Gerakan */}
+                  <div className="md:col-span-4 flex flex-col items-center">
+                    <PrayerPostureIllustration
+                      posture={step.postureId}
+                      className="w-full max-w-[260px] mx-auto shadow-xs"
+                    />
+                    <span className="text-[10px] sm:text-[11px] font-bold text-text-muted mt-2 text-center">
+                      Posisi: {step.movementName}
+                    </span>
+                  </div>
+
+                  {/* Kolom Panduan Fisik & Poin Kunci Sunnah */}
+                  <div className="md:col-span-8 space-y-2.5">
+                    <div className="text-xs text-text-secondary leading-relaxed">
+                      <span className="font-bold text-text-primary">Panduan Gerakan: </span>
+                      {step.movementDescription}
+                    </div>
+
+                    {/* Poin Kunci Posisi Sesuai Sunnah */}
+                    {step.keyPoints && step.keyPoints.length > 0 && (
+                      <div className="p-3 rounded-button bg-primary-soft/20 border border-primary/20 space-y-1.5">
+                        <div className="text-[11px] font-extrabold text-primary flex items-center gap-1.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-success flex-shrink-0" />
+                          <span>Poin Kunci Posisi Sesuai Sunnah:</span>
+                        </div>
+                        <ul className="space-y-1">
+                          {step.keyPoints.map((point, idx) => (
+                            <li
+                              key={idx}
+                              className="text-[11px] text-text-secondary flex items-start gap-1.5 leading-snug"
+                            >
+                              <span className="text-primary font-bold leading-none mt-0.5">•</span>
+                              <span>{point}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 {/* Kotak Lafadz Bacaan Arab */}
