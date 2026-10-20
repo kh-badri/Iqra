@@ -12,6 +12,18 @@ header('Content-Type: application/json; charset=utf-8');
 
 require_once __DIR__ . '/config.php';
 
+// ── Cegah Eksekusi Ganda Bersamaan (Race Condition Mutex Lock) ───────────────
+$lockFile = __DIR__ . '/../data/cron.lock';
+$lockFp = @fopen($lockFile, 'c+');
+if ($lockFp && !@flock($lockFp, LOCK_EX | LOCK_NB)) {
+    echo json_encode([
+        'status' => 'busy',
+        'message' => 'Proses cron adzan lain sedang berjalan pada detik yang sama (mencegah notifikasi dobel).',
+        'timestamp' => date('Y-m-d H:i:s')
+    ]);
+    exit;
+}
+
 // Pastikan file subscription ada
 if (!file_exists(SUBSCRIPTIONS_FILE)) {
     echo json_encode([
@@ -199,6 +211,11 @@ if (!empty($expiredSubscriptions)) {
 
 // Simpan pembaharuan status
 file_put_contents(SUBSCRIPTIONS_FILE, json_encode($subscriptions, JSON_PRETTY_PRINT));
+
+if ($lockFp) {
+    @flock($lockFp, LOCK_UN);
+    @fclose($lockFp);
+}
 
 echo json_encode([
     'status' => 'success',
