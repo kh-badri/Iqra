@@ -148,8 +148,8 @@ export function PrayerPostureIllustration({
   const [imageLoaded, setImageLoaded] = React.useState(false);
   const meta = POSTURE_METAS[posture] || POSTURE_METAS.qiyam;
 
-  const imageSrcWebp = `/images/prayer/${posture}.webp`;
-  const imageSrcJpg = `/images/prayer/${posture}.jpg`;
+  const imageSrcWebp = `/images/prayer/${posture}.webp?v=1.4.1`;
+  const imageSrcJpg = `/images/prayer/${posture}.jpg?v=1.4.1`;
 
   return (
     <>

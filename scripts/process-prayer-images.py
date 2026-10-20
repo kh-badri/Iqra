@@ -16,8 +16,8 @@ MAPPINGS = {
     "ruku": os.path.join(BRAIN_DIR, "ruku_prayer_posture_perfect_1792507143016.jpg"),
     "itidal": os.path.join(BRAIN_DIR, "itidal_prayer_posture_1792507044348.jpg"),
     "sujud": os.path.join(BRAIN_DIR, "muslim_man_sujud_1792507191518.jpg"),
-    # Tasyahud: hand and index finger resting on top of the knee (not raised up in the air!)
-    "tasyahud": os.path.join(BRAIN_DIR, "sholat_tasyahud_tauhid_v2_1792507234048.jpg"),
+    # Master Tasyahud: hand and finger resting directly on top of knee, pointing horizontally forward
+    "tasyahud": os.path.join(DEST_DIR, "tasyahud_master.jpg"),
     "salam": os.path.join(BRAIN_DIR, "muslim_man_salam_prayer_v2_1792507234361.jpg"),
 }
 
