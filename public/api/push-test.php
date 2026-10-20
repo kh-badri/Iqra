@@ -47,13 +47,16 @@ $payload = json_encode([
 ]);
 
 $res = sendWebPushMessage($targetSub['endpoint'], $payload);
+$isApple = (strpos($targetSub['endpoint'], 'push.apple.com') !== false);
 
 echo json_encode([
     'success' => $res['success'],
     'status_code' => $res['status'],
     'endpoint' => substr($targetSub['endpoint'], 0, 35) . '...',
     'message' => $res['success'] 
-        ? 'Sinyal Web Push berhasil dikirim ke HP Anda via Google FCM!'
+        ? ($isApple 
+            ? 'Sinyal Web Push berhasil dikirim ke iPhone Anda via Apple APNs!' 
+            : 'Sinyal Web Push berhasil dikirim ke HP Android Anda via Google FCM!')
         : 'Gagal mengirim Web Push: ' . ($res['error'] ?: $res['response']),
     'raw_response' => $res['response']
 ]);

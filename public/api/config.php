@@ -72,10 +72,18 @@ function createVapidJwt($endpointAudience) {
     return $data . '.' . base64UrlEncode($rawSig);
 }
 
-// Kirim sinyal Web Push ke Google FCM / Browser Push Service
+// Kirim sinyal Web Push ke Google FCM / Apple APNs / Browser Push Service
 function sendWebPushMessage($endpoint, $payloadJson = null) {
     $parsedUrl = parse_url($endpoint);
-    $audience = $parsedUrl['scheme'] . '://' . $parsedUrl['host'];
+    $host = isset($parsedUrl['host']) ? $parsedUrl['host'] : '';
+    $isApple = (strpos($host, 'push.apple.com') !== false);
+
+    // Apple APNs mewajibkan aud: "https://web.push.apple.com"
+    if ($isApple) {
+        $audience = 'https://web.push.apple.com';
+    } else {
+        $audience = $parsedUrl['scheme'] . '://' . $host;
+    }
 
     $jwt = createVapidJwt($audience);
 
@@ -91,10 +99,23 @@ function sendWebPushMessage($endpoint, $payloadJson = null) {
     curl_setopt($ch, CURLOPT_TIMEOUT, 10);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
 
-    if ($payloadJson !== null && is_string($payloadJson)) {
+    // Apple APNs mewajibkan koneksi HTTP/2
+    if (defined('CURL_HTTP_VERSION_2_0')) {
+        curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_2_0);
+    }
+
+    if ($isApple) {
+        // Apple APNs menolak plaintext JSON (BadWebPushRequest).
+        // Body 0-byte (Content-Length: 0 tanpa Content-Type) didukung resmi oleh Apple
+        // sebagai sinyal "tickle" untuk membangunkan Service Worker di iPhone / iPad / Safari.
+        $headers[] = 'Content-Type:'; // Hapus Content-Type default cURL
+        $headers[] = 'Content-Length: 0';
+        curl_setopt($ch, CURLOPT_POSTFIELDS, '');
+    } else if ($payloadJson !== null && is_string($payloadJson)) {
         $headers[] = 'Content-Type: application/json';
         curl_setopt($ch, CURLOPT_POSTFIELDS, $payloadJson);
     } else {
+        $headers[] = 'Content-Type:';
         $headers[] = 'Content-Length: 0';
         curl_setopt($ch, CURLOPT_POSTFIELDS, '');
     }

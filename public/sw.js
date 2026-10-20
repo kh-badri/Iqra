@@ -8,7 +8,7 @@
  * - Audio Qori: Range Request handler untuk Safari/iOS dari Cache Storage
  */
 
-const CACHE_NAME = 'iqra-static-v1.3.0';
+const CACHE_NAME = 'iqra-static-v1.3.1';
 const DATA_CACHE_NAME = 'iqra-data-v1.3.0';
 const AUDIO_CACHE_NAME = 'iqra-audio-cache-v1';
 
@@ -69,6 +69,37 @@ self.addEventListener('push', (event) => {
       if (json.prayerId) prayerId = json.prayerId;
     } catch (e) {
       body = event.data.text() || body;
+    }
+  }
+
+  // Jika payload kosong (standar Web Push Apple iOS tickle push), deteksi waktu sholat dari jam lokal HP
+  if (!event.data || prayerId === 'sholat') {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const timeTotal = hours * 60 + minutes;
+
+    // Subuh (03:45 - 05:45), Dzuhur (11:45 - 14:30), Ashar (14:30 - 17:30), Maghrib (17:30 - 18:45), Isya (18:45 - 23:59 & 00:00 - 03:45)
+    if (timeTotal >= 225 && timeTotal < 345) {
+      prayerId = 'fajr';
+      title = '🕌 Waktu Sholat Subuh Telah Masuk!';
+      body = 'الصَّلَاةُ خَيْرٌ مِنَ النَّوْمِ. Waktu Subuh telah tiba. Mari raih keberkahan fajar.';
+    } else if (timeTotal >= 705 && timeTotal < 870) {
+      prayerId = 'dhuhr';
+      title = '🕌 Waktu Sholat Dzuhur Telah Masuk!';
+      body = "Waktu sholat Dzuhur telah tiba. Hayya 'alash Shalah.";
+    } else if (timeTotal >= 870 && timeTotal < 1050) {
+      prayerId = 'asr';
+      title = '🕌 Waktu Sholat Ashar Telah Masuk!';
+      body = "Waktu sholat Ashar telah tiba. Hayya 'alash Shalah.";
+    } else if (timeTotal >= 1050 && timeTotal < 1125) {
+      prayerId = 'maghrib';
+      title = '🕌 Waktu Sholat Maghrib Telah Masuk!';
+      body = "Waktu sholat Maghrib telah tiba. Hayya 'alash Shalah.";
+    } else {
+      prayerId = 'isha';
+      title = '🕌 Waktu Sholat Isya Telah Masuk!';
+      body = "Waktu sholat Isya telah tiba. Hayya 'alash Shalah.";
     }
   }
 
