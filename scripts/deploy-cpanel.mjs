@@ -27,8 +27,8 @@ for (const file of filesToSync) {
   }
 }
 
-// 3. Salin folder penting (icons, api, audio, data)
-const dirsToSync = ['icons', 'api', 'audio', 'data'];
+// 3. Salin folder penting (icons, api, audio, data, images)
+const dirsToSync = ['icons', 'api', 'audio', 'data', 'images'];
 for (const dir of dirsToSync) {
   const srcDir = path.join(ROOT_DIR, 'public', dir);
   const destDir = path.join(OUT_DIR, dir);
