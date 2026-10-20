@@ -41,7 +41,7 @@ export function HomePrayerCard() {
       month: 'long',
       year: 'numeric',
     }).format(now || new Date());
-  }, [now?.toDateString()]);
+  }, [now]);
 
   // Ambil hanya 5 sholat fardhu utama: Subuh, Dzuhur, Ashar, Maghrib, Isya
   const fardhuPrayers = React.useMemo(() => {
