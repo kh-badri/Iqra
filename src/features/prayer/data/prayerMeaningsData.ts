@@ -264,11 +264,11 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
     postureId: 'tasyahud',
     movementName: 'Duduk Tawarruk/Iftirasy & Berisyarat Jari Telunjuk',
     movementDescription:
-      'Duduk bersimpuh dan meletakkan tangan di atas paha. Jari telunjuk tangan kanan diacungkan saat melafadzkan kalimat syahadat sebagai lambang ketauhidan.',
+      'Duduk bersimpuh dan meletakkan tangan di atas paha/lutut. Jari telunjuk tangan kanan diacungkan di atas lutut saat melafadzkan kalimat syahadat sebagai lambang ketauhidan.',
     keyPoints: [
       'Duduk iftirasy pada tasyahud awal, dan tawarruk pada tasyahud akhir',
       'Tangan kiri terbentang di atas lutut kiri',
-      'Tangan kanan menggenggam dan telunjuk diacungkan saat kalimat tauhid',
+      'Tangan kanan bertumpu di atas lutut dan telunjuk diacungkan saat kalimat tauhid (tidak diangkat melayang)',
       'Pandangan mata diarahkan ke jari telunjuk',
     ],
     arabic: 'التَّحِيَّاتُ الْمُبَارَكَاتُ الصَّلَوَاتُ الطَّيِّبَاتُ لِلَّهِ، السَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ، السَّلَامُ عَلَيْنَا وَعَلَى عِبَادِ اللهِ الصَّالِحِينَ، أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللهِ',

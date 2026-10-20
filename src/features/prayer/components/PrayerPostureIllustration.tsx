@@ -115,13 +115,14 @@ const POSTURE_METAS: Record<PostureType, PostureMeta> = {
   },
   tasyahud: {
     title: 'Tasyahud & Isyarat Tauhid',
-    badge: 'Telunjuk Tegak ke Kiblat',
+    badge: 'Telunjuk di Atas Lutut',
     badgeColor: 'bg-emerald-600/90 text-white border-emerald-400/30',
     description:
-      'Duduk khusyuk seraya mengacungkan jari telunjuk kanan ke arah kiblat sebagai persaksian tauhid kepada Allah SWT.',
+      'Duduk bersimpuh dengan kedua tangan bertumpu di atas lutut. Jari telunjuk tangan kanan diacungkan di atas lutut ke arah kiblat sebagai persaksian tauhid kepada Allah SWT.',
     keyPoints: [
-      'Tangan kiri dihamparkan di atas lutut kiri',
-      'Jari tangan kanan digenggam dan telunjuk kanan diacungkan',
+      'Tangan kiri dihamparkan tenang di atas lutut kiri',
+      'Tangan kanan diletakkan bertumpu di atas paha/lutut kanan (tidak diangkat melayang)',
+      'Jari telunjuk kanan diacungkan di atas lutut mengarah ke kiblat',
       'Pandangan mata tertuju pada isyarat jari telunjuk',
     ],
   },
