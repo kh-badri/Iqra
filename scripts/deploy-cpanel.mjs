@@ -4,6 +4,7 @@ import path from 'path';
 
 const ROOT_DIR = process.cwd();
 const OUT_DIR = path.join(ROOT_DIR, 'out');
+const CPANEL_REPO_DIR = path.join(ROOT_DIR, '.cpanel-repo');
 const REMOTE_NAME = 'origin';
 const TARGET_BRANCH = 'cpanel';
 
@@ -36,46 +37,7 @@ for (const dir of dirsToSync) {
   }
 }
 
-// 4. Tambahkan README.md panduan cPanel di folder out
-const cpanelReadme = `# Iqra - Production Build for cPanel
-
-Branch ini (\`${TARGET_BRANCH}\`) dikhususkan untuk deployment hosting cPanel / Apache.
-Semua file di branch ini adalah hasil kompilasi statis (Static Export) yang siap saji dan langsung dapat dijalankan di \`public_html\`.
-
-## Cara Pasang di cPanel:
-
-### Opsi 1: Lewat cPanel Terminal / SSH
-\`\`\`bash
-# 1. Masuk ke direktori public_html atau subdomain
-cd ~/public_html/iqra.kbtech.id
-
-# 2. Sinkronkan dengan branch cpanel
-git fetch origin ${TARGET_BRANCH}
-git reset --hard origin/${TARGET_BRANCH}
-\`\`\`
-
-### Opsi 2: Lewat Menu "Git™ Version Control" di cPanel
-1. Masuk ke cPanel -> Buka menu **Git™ Version Control**.
-2. Klik **Manage** -> **Pull or Deploy** -> **Update from Remote**.
-
-## ⏰ Pengaturan Cron Job Adzan Otomatis di cPanel (* * * * *):
-Agar notifikasi adzan otomatis masuk ke HP pengguna meski aplikasi/browser ditutup total:
-1. Masuk ke cPanel Anda -> Buka menu **Cron Jobs** (Tugas Cron).
-2. Pada bagian **Common Settings**, pilih **Once Per Minute (* * * * *)**.
-3. Pada kolom **Command**, masukkan perintah:
-\`\`\`bash
-/usr/local/bin/php /home/kbtechid/public_html/iqra.kbtech.id/api/cron-adhan.php >/dev/null 2>&1
-\`\`\`
-*(Atau bila menggunakan URL)*:
-\`\`\`bash
-curl -s https://iqra.kbtech.id/api/cron-adhan.php >/dev/null 2>&1
-\`\`\`
-4. Klik **Add New Cron Job**.
-Selesai! Server cPanel sekarang akan mengecek jadwal sholat setiap menit dan mengirim sinyal Web Push ke HP pengguna tepat saat adzan tiba.
-`;
-fs.writeFileSync(path.join(OUT_DIR, 'README.md'), cpanelReadme, 'utf8');
-
-// 5. Dapatkan remote URL dari git utama
+// 4. Dapatkan remote URL dari git utama
 let remoteUrl = '';
 try {
   remoteUrl = execSync(`git config --get remote.${REMOTE_NAME}.url`, { encoding: 'utf8' }).trim();
@@ -87,59 +49,62 @@ try {
 console.log(`🔗 Git Remote: ${remoteUrl}`);
 console.log(`🌿 Target Branch: ${TARGET_BRANCH}`);
 
-// 6. Inisialisasi git di dalam out jika belum ada
-const outGitDir = path.join(OUT_DIR, '.git');
-if (!fs.existsSync(outGitDir)) {
-  execSync('git init', { cwd: OUT_DIR, stdio: 'ignore' });
+// 5. Pastikan folder persisten .cpanel-repo tersedia dan tersinkronisasi
+if (!fs.existsSync(path.join(CPANEL_REPO_DIR, '.git'))) {
+  console.log(`📥 Melakukan clone awal branch '${TARGET_BRANCH}' ke .cpanel-repo...`);
+  if (fs.existsSync(CPANEL_REPO_DIR)) {
+    fs.rmSync(CPANEL_REPO_DIR, { recursive: true, force: true });
+  }
+  execSync(`git clone --branch ${TARGET_BRANCH} --single-branch ${remoteUrl} "${CPANEL_REPO_DIR}"`, { stdio: 'inherit' });
+} else {
+  console.log(`🔄 Menarik riwayat terbaru dari remote origin/${TARGET_BRANCH}...`);
+  try {
+    execSync(`git fetch ${REMOTE_NAME} ${TARGET_BRANCH}`, { cwd: CPANEL_REPO_DIR, stdio: 'inherit' });
+    execSync(`git reset --hard ${REMOTE_NAME}/${TARGET_BRANCH}`, { cwd: CPANEL_REPO_DIR, stdio: 'inherit' });
+  } catch (err) {
+    console.warn('⚠️ Gagal sinkronisasi remote repo, melanjutkan...', err.message);
+  }
 }
 
 // Ambil identitas git dari repo utama
 try {
   const userName = execSync('git config user.name', { encoding: 'utf8' }).trim();
   const userEmail = execSync('git config user.email', { encoding: 'utf8' }).trim();
-  if (userName) execSync(`git config user.name "${userName}"`, { cwd: OUT_DIR });
-  if (userEmail) execSync(`git config user.email "${userEmail}"`, { cwd: OUT_DIR });
+  if (userName) execSync(`git config user.name "${userName}"`, { cwd: CPANEL_REPO_DIR });
+  if (userEmail) execSync(`git config user.email "${userEmail}"`, { cwd: CPANEL_REPO_DIR });
 } catch {}
 
-// Set remote URL
-try {
-  execSync(`git remote remove ${REMOTE_NAME}`, { cwd: OUT_DIR, stdio: 'ignore' });
-} catch {}
-execSync(`git remote add ${REMOTE_NAME} ${remoteUrl}`, { cwd: OUT_DIR });
-
-// Konfigurasi credential helper store agar push berjalan otomatis dan cepat
-try {
-  execSync('git config credential.helper ""', { cwd: OUT_DIR, stdio: 'ignore' });
-  execSync('git config --add credential.helper store', { cwd: OUT_DIR, stdio: 'ignore' });
-} catch {}
-
-// Tarik history dari remote agar commit berkesinambungan (mencegah konflik fast-forward / diverging di cPanel)
-try {
-  console.log(`📥 Mengambil history branch '${TARGET_BRANCH}' dari remote...`);
-  execSync(`git fetch ${REMOTE_NAME} ${TARGET_BRANCH}`, { cwd: OUT_DIR, stdio: 'ignore' });
-  execSync(`git checkout -B ${TARGET_BRANCH} ${REMOTE_NAME}/${TARGET_BRANCH}`, { cwd: OUT_DIR, stdio: 'ignore' });
-} catch {
-  execSync(`git checkout -B ${TARGET_BRANCH}`, { cwd: OUT_DIR, stdio: 'ignore' });
+// 6. Bersihkan isi .cpanel-repo (kecuali folder .git) lalu salin semua file dari out/
+console.log('📦 Menyinkronkan file produksi ke branch cpanel...');
+const existingItems = fs.readdirSync(CPANEL_REPO_DIR);
+for (const item of existingItems) {
+  if (item === '.git') continue;
+  fs.rmSync(path.join(CPANEL_REPO_DIR, item), { recursive: true, force: true });
 }
 
-// Add all files
-execSync('git add -A', { cwd: OUT_DIR, stdio: 'inherit' });
+// Salin semua file dari out ke .cpanel-repo
+fs.cpSync(OUT_DIR, CPANEL_REPO_DIR, { recursive: true });
 
-// Commit
+// 7. Commit dan Push secara linier (mencegah konflik diverging / non-fast-forward selamanya)
+execSync('git add -A', { cwd: CPANEL_REPO_DIR, stdio: 'inherit' });
+
 const timestamp = new Date().toISOString().replace('T', ' ').substring(0, 19);
+let hasChanges = false;
 try {
-  execSync(`git commit -m "cPanel Production Build (Web Push & Cron Enabled) - ${timestamp}"`, { cwd: OUT_DIR, stdio: 'inherit' });
-} catch {
-  console.log('ℹ️ Tidak ada perubahan baru di folder out.');
+  const status = execSync('git status --porcelain', { cwd: CPANEL_REPO_DIR, encoding: 'utf8' }).trim();
+  if (status.length > 0) {
+    hasChanges = true;
+    execSync(`git commit -m "cPanel Production Build (Web Push & Cron Enabled) - ${timestamp}"`, { cwd: CPANEL_REPO_DIR, stdio: 'inherit' });
+  } else {
+    console.log('ℹ️ Tidak ada perubahan file pada build produksi.');
+  }
+} catch (e) {
+  console.log('ℹ️ Tidak ada perubahan yang perlu di-commit.');
 }
 
-// Push ke origin cpanel
-console.log(`📤 Mendorong (push) build ke branch '${TARGET_BRANCH}' di GitHub...`);
-try {
-  execSync(`git push ${REMOTE_NAME} ${TARGET_BRANCH}`, { cwd: OUT_DIR, stdio: 'inherit' });
-} catch {
-  console.log('⚠️ Fast-forward push gagal, mencoba dengan --force...');
-  execSync(`git push ${REMOTE_NAME} ${TARGET_BRANCH} --force`, { cwd: OUT_DIR, stdio: 'inherit' });
+if (hasChanges) {
+  console.log(`📤 Mendorong (push) build linier ke branch '${TARGET_BRANCH}' di GitHub...`);
+  execSync(`git push ${REMOTE_NAME} ${TARGET_BRANCH}`, { cwd: CPANEL_REPO_DIR, stdio: 'inherit' });
 }
 
-console.log('✨ BERHASIL! Branch cPanel telah diperbarui di GitHub.');
+console.log('✨ BERHASIL! Branch cPanel telah diperbarui secara linier (Fast-Forward aman di cPanel).');
