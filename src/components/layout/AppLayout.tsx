@@ -11,6 +11,7 @@ import { PersistentAudioMiniPlayer } from '@/features/audio/components/Persisten
 import { AudioPlayerDrawer } from '@/features/audio/components/AudioPlayerDrawer';
 import { GlobalSearchModal } from '@/components/search/GlobalSearchModal';
 import { UserProfileModal } from '@/features/auth/components/UserProfileModal';
+import { GlobalPrayerNotifier } from '@/features/prayer/components/GlobalPrayerNotifier';
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
   const [updateAvailable, setUpdateAvailable] = React.useState(false);
@@ -71,6 +72,9 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
       <GlobalAudioEngine />
       <PersistentAudioMiniPlayer />
       <AudioPlayerDrawer />
+
+      {/* Global Prayer Adhan & Notification System */}
+      <GlobalPrayerNotifier />
 
       {/* Global Search Modal */}
       <GlobalSearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />

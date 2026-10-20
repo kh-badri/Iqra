@@ -8,8 +8,8 @@
  * - Audio Qori: Range Request handler untuk Safari/iOS dari Cache Storage
  */
 
-const CACHE_NAME = 'iqra-static-v1.2.0';
-const DATA_CACHE_NAME = 'iqra-data-v1.2.0';
+const CACHE_NAME = 'iqra-static-v1.3.0';
+const DATA_CACHE_NAME = 'iqra-data-v1.3.0';
 const AUDIO_CACHE_NAME = 'iqra-audio-cache-v1';
 
 const PRECACHE_ASSETS = [
@@ -53,6 +53,65 @@ self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
   }
+});
+
+// Push event listener: menerima sinyal Web Push dari server cPanel via Google FCM saat aplikasi ditutup
+self.addEventListener('push', (event) => {
+  let title = '🕌 Waktu Sholat Telah Masuk!';
+  let body = 'Mari bersiap dan segera menunaikan ibadah sholat.';
+  let prayerId = 'sholat';
+
+  if (event.data) {
+    try {
+      const json = event.data.json();
+      if (json.title) title = json.title;
+      if (json.body) body = json.body;
+      if (json.prayerId) prayerId = json.prayerId;
+    } catch (e) {
+      body = event.data.text() || body;
+    }
+  }
+
+  const options = {
+    body,
+    icon: '/icons/icon-192.png',
+    badge: '/icons/icon-192.png',
+    vibrate: [500, 250, 500, 250, 500],
+    tag: 'iqra-adhan-' + prayerId + '-' + new Date().toISOString().slice(0, 10),
+    renotify: true,
+    requireInteraction: true,
+    data: {
+      url: '/sholat/?adzan=' + prayerId,
+      prayerId,
+    },
+  };
+
+  event.waitUntil(
+    self.registration.showNotification(title, options)
+  );
+});
+
+// Notification click listener: buka / fokuskan aplikasi ketika user mengetuk notifikasi di HP
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  const urlToOpen = (event.notification.data && event.notification.data.url) || '/sholat/';
+
+  event.waitUntil(
+    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((windowClients) => {
+      for (const client of windowClients) {
+        if (client.url.includes(self.location.origin) && 'focus' in client) {
+          client.postMessage({
+            type: 'NOTIFICATION_CLICKED',
+            data: event.notification.data,
+          });
+          return client.focus();
+        }
+      }
+      if (self.clients.openWindow) {
+        return self.clients.openWindow(urlToOpen);
+      }
+    })
+  );
 });
 
 // Helper: Handle Range Request untuk Audio Safari / iOS

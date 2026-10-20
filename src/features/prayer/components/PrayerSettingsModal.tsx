@@ -3,9 +3,10 @@
 import * as React from 'react';
 import { BottomSheet } from '@/components/ui/BottomSheet';
 import { Button } from '@/components/ui/Button';
-import { Check, Play, Square, Sparkles } from 'lucide-react';
+import { Check, Play, Square, Sparkles, Bell, Volume2 } from 'lucide-react';
 import type { AdhanSoundType, PrayerName, PrayerSettings } from '../types';
 import { DEFAULT_PRAYER_SETTINGS, ADHAN_MUADHIN_LIST } from '../constants';
+import { testAdhanNotification } from '../services/prayerNotifierService';
 
 export interface PrayerSettingsModalProps {
   isOpen: boolean;
@@ -28,6 +29,24 @@ export function PrayerSettingsModal({
     type: 'standard' | 'fajr';
   } | null>(null);
   const previewAudioRef = React.useRef<HTMLAudioElement | null>(null);
+
+  // Uji coba notifikasi & suara
+  const [isTesting, setIsTesting] = React.useState(false);
+  const [testResult, setTestResult] = React.useState<string | null>(null);
+
+  const handleTestNotification = async () => {
+    stopPreview();
+    setIsTesting(true);
+    setTestResult(null);
+    try {
+      const res = await testAdhanNotification();
+      setTestResult(res.message);
+    } catch (err: any) {
+      setTestResult(err.message || 'Gagal tes.');
+    } finally {
+      setIsTesting(false);
+    }
+  };
 
   React.useEffect(() => {
     setLocalSettings(settings);
@@ -385,7 +404,33 @@ export function PrayerSettingsModal({
           </div>
         </div>
 
-        {/* 5. Aksi Simpan & Reset */}
+        {/* 5. Uji Coba Pengingat & Suara Adzan Langsung */}
+        <div className="p-3 bg-pastel-green/40 rounded-card border border-primary/25 space-y-2">
+          <div className="flex items-center justify-between gap-2">
+            <div>
+              <div className="text-xs font-extrabold text-text-primary">Uji Coba Pengingat HP</div>
+              <div className="text-[10px] text-text-muted">Kirim notifikasi & bunyikan adzan sekarang</div>
+            </div>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={handleTestNotification}
+              disabled={isTesting}
+              className="gap-1.5 text-xs rounded-pill font-bold border-primary/40 text-primary-text hover:bg-pastel-green active:scale-95 shadow-xs shrink-0"
+            >
+              <Volume2 className="w-3.5 h-3.5" />
+              <span>{isTesting ? 'Menguji...' : 'Tes Notifikasi'}</span>
+            </Button>
+          </div>
+          {testResult && (
+            <div className="text-[11px] font-medium text-primary-text bg-white/70 dark:bg-black/20 p-2 rounded border border-primary/20">
+              {testResult}
+            </div>
+          )}
+        </div>
+
+        {/* 6. Aksi Simpan & Reset */}
         <div className="flex items-center justify-between gap-3 pt-3 border-t border-border">
           <Button variant="ghost" size="sm" onClick={handleReset} className="text-xs">
             Reset Default

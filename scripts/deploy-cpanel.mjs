@@ -26,11 +26,14 @@ for (const file of filesToSync) {
   }
 }
 
-// 3. Salin folder icons
-const srcIcons = path.join(ROOT_DIR, 'public', 'icons');
-const destIcons = path.join(OUT_DIR, 'icons');
-if (fs.existsSync(srcIcons)) {
-  fs.cpSync(srcIcons, destIcons, { recursive: true });
+// 3. Salin folder penting (icons, api, audio, data)
+const dirsToSync = ['icons', 'api', 'audio', 'data'];
+for (const dir of dirsToSync) {
+  const srcDir = path.join(ROOT_DIR, 'public', dir);
+  const destDir = path.join(OUT_DIR, dir);
+  if (fs.existsSync(srcDir)) {
+    fs.cpSync(srcDir, destDir, { recursive: true });
+  }
 }
 
 // 4. Tambahkan README.md panduan cPanel di folder out
@@ -43,8 +46,8 @@ Semua file di branch ini adalah hasil kompilasi statis (Static Export) yang siap
 
 ### Opsi 1: Lewat cPanel Terminal / SSH
 \`\`\`bash
-# 1. Masuk ke direktori public_html
-cd ~/public_html
+# 1. Masuk ke direktori public_html atau subdomain
+cd ~/public_html/iqra.kbtech.id
 
 # 2. Clone branch cpanel langsung ke folder ini
 git clone -b ${TARGET_BRANCH} https://github.com/kh-badri/Iqra.git .
@@ -55,10 +58,23 @@ git clone -b ${TARGET_BRANCH} https://github.com/kh-badri/Iqra.git .
 2. Klik **Create**.
 3. **Clone URL**: \`https://github.com/kh-badri/Iqra.git\`
 4. **Branch**: \`${TARGET_BRANCH}\`
-5. **Repository Path**: \`public_html\` (atau subdomain Anda)
+5. **Repository Path**: \`public_html/iqra.kbtech.id\`
 6. Klik **Create** / **Deploy**.
 
-Setiap kali ada pembaruan di masa depan, Anda cukup klik tombol **Update from Remote** di cPanel Git Version Control!
+## ⏰ Pengaturan Cron Job Adzan Otomatis di cPanel (* * * * *):
+Agar notifikasi adzan otomatis masuk ke HP pengguna meski aplikasi/browser ditutup total:
+1. Masuk ke cPanel Anda -> Buka menu **Cron Jobs** (Tugas Cron).
+2. Pada bagian **Common Settings**, pilih **Once Per Minute (* * * * *)**.
+3. Pada kolom **Command**, masukkan perintah:
+\`\`\`bash
+/usr/local/bin/php /home/kbtechid/public_html/iqra.kbtech.id/api/cron-adhan.php >/dev/null 2>&1
+\`\`\`
+*(Atau bila menggunakan URL)*:
+\`\`\`bash
+curl -s https://iqra.kbtech.id/api/cron-adhan.php >/dev/null 2>&1
+\`\`\`
+4. Klik **Add New Cron Job**.
+Selesai! Server cPanel sekarang akan mengecek jadwal sholat setiap menit dan mengirim sinyal Web Push ke HP pengguna tepat saat adzan tiba.
 `;
 fs.writeFileSync(path.join(OUT_DIR, 'README.md'), cpanelReadme, 'utf8');
 
@@ -109,7 +125,7 @@ execSync('git add -A', { cwd: OUT_DIR, stdio: 'inherit' });
 // Commit
 const timestamp = new Date().toISOString().replace('T', ' ').substring(0, 19);
 try {
-  execSync(`git commit -m "cPanel Production Build - ${timestamp}"`, { cwd: OUT_DIR, stdio: 'inherit' });
+  execSync(`git commit -m "cPanel Production Build (Web Push & Cron Enabled) - ${timestamp}"`, { cwd: OUT_DIR, stdio: 'inherit' });
 } catch {
   console.log('ℹ️ Tidak ada perubahan baru di folder out.');
 }

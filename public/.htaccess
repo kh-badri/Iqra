@@ -60,3 +60,9 @@ AddType audio/mpeg .mp3
 <Files "sw.js">
   Header set Service-Worker-Allowed "/"
 </Files>
+
+# Lindungi file data push subscription dari akses publik langsung
+<FilesMatch "push_subscriptions\.json$">
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>
