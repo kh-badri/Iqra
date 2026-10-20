@@ -8,7 +8,7 @@
  * - Audio Qori: Range Request handler untuk Safari/iOS dari Cache Storage
  */
 
-const CACHE_NAME = 'iqra-static-v1.3.1';
+const CACHE_NAME = 'iqra-static-v1.4.1';
 const DATA_CACHE_NAME = 'iqra-data-v1.3.0';
 const AUDIO_CACHE_NAME = 'iqra-audio-cache-v1';
 
