@@ -7,6 +7,8 @@
 define('VAPID_PUBLIC_KEY', 'BPEumoDK1izI0grVyqkZhRrm2FEDluvC_lLQVz2XlpE7CbzH6_FvS_nRoQavBDZbIw0fPb9jcSkFiR5O9fMIy6A');
 define('VAPID_SUBJECT', 'mailto:admin@kbtech.id');
 define('SUBSCRIPTIONS_FILE', __DIR__ . '/../data/push_subscriptions.json');
+define('FEEDBACKS_FILE', __DIR__ . '/../data/feedbacks.json');
+define('ADMIN_SECRET_PIN', '11223344');
 
 const VAPID_PRIVATE_KEY_PEM = <<<PEM
 -----BEGIN PRIVATE KEY-----
