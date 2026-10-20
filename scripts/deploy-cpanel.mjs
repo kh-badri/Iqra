@@ -49,17 +49,14 @@ Semua file di branch ini adalah hasil kompilasi statis (Static Export) yang siap
 # 1. Masuk ke direktori public_html atau subdomain
 cd ~/public_html/iqra.kbtech.id
 
-# 2. Clone branch cpanel langsung ke folder ini
-git clone -b ${TARGET_BRANCH} https://github.com/kh-badri/Iqra.git .
+# 2. Sinkronkan dengan branch cpanel
+git fetch origin ${TARGET_BRANCH}
+git reset --hard origin/${TARGET_BRANCH}
 \`\`\`
 
 ### Opsi 2: Lewat Menu "Git™ Version Control" di cPanel
 1. Masuk ke cPanel -> Buka menu **Git™ Version Control**.
-2. Klik **Create**.
-3. **Clone URL**: \`https://github.com/kh-badri/Iqra.git\`
-4. **Branch**: \`${TARGET_BRANCH}\`
-5. **Repository Path**: \`public_html/iqra.kbtech.id\`
-6. Klik **Create** / **Deploy**.
+2. Klik **Manage** -> **Pull or Deploy** -> **Update from Remote**.
 
 ## ⏰ Pengaturan Cron Job Adzan Otomatis di cPanel (* * * * *):
 Agar notifikasi adzan otomatis masuk ke HP pengguna meski aplikasi/browser ditutup total:
@@ -116,8 +113,14 @@ try {
   execSync('git config --add credential.helper store', { cwd: OUT_DIR, stdio: 'ignore' });
 } catch {}
 
-// Buat atau switch ke branch cpanel
-execSync(`git checkout -B ${TARGET_BRANCH}`, { cwd: OUT_DIR, stdio: 'ignore' });
+// Tarik history dari remote agar commit berkesinambungan (mencegah konflik fast-forward / diverging di cPanel)
+try {
+  console.log(`📥 Mengambil history branch '${TARGET_BRANCH}' dari remote...`);
+  execSync(`git fetch ${REMOTE_NAME} ${TARGET_BRANCH}`, { cwd: OUT_DIR, stdio: 'ignore' });
+  execSync(`git checkout -B ${TARGET_BRANCH} ${REMOTE_NAME}/${TARGET_BRANCH}`, { cwd: OUT_DIR, stdio: 'ignore' });
+} catch {
+  execSync(`git checkout -B ${TARGET_BRANCH}`, { cwd: OUT_DIR, stdio: 'ignore' });
+}
 
 // Add all files
 execSync('git add -A', { cwd: OUT_DIR, stdio: 'inherit' });
@@ -132,6 +135,11 @@ try {
 
 // Push ke origin cpanel
 console.log(`📤 Mendorong (push) build ke branch '${TARGET_BRANCH}' di GitHub...`);
-execSync(`git push ${REMOTE_NAME} ${TARGET_BRANCH} --force`, { cwd: OUT_DIR, stdio: 'inherit' });
+try {
+  execSync(`git push ${REMOTE_NAME} ${TARGET_BRANCH}`, { cwd: OUT_DIR, stdio: 'inherit' });
+} catch {
+  console.log('⚠️ Fast-forward push gagal, mencoba dengan --force...');
+  execSync(`git push ${REMOTE_NAME} ${TARGET_BRANCH} --force`, { cwd: OUT_DIR, stdio: 'inherit' });
+}
 
 console.log('✨ BERHASIL! Branch cPanel telah diperbarui di GitHub.');
