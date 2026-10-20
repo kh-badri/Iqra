@@ -47,6 +47,14 @@ export default function TentangPage() {
         "Perhitungan waktu sholat mengacu pada parameter resmi Kemenag RI (sudut Subuh 20°, sudut Isya 18°, serta koreksi waktu ihtiyath 2-3 menit). Dihitung berdasarkan koordinat garis lintang dan bujur lokasi perangkat Anda secara akurat.",
     },
     {
+      feature: "Makna Bacaan & Gerakan Sholat",
+      icon: Sparkles,
+      source: "Hadits Shahihain (Bukhari-Muslim), Al-Fiqh Al-Manhaji, & Asrarus Shalah",
+      badge: "Shahih & Mu'tamad",
+      description:
+        "Tuntunan makna filosofis, tadabbur khusyuk, dan lafadz doa dari 13 gerakan rukun & sunnah sholat (mulai dari Takbiratul Ihram hingga Salam). Disusun secara terverifikasi dari Kitab Shahih Al-Bukhari, Shahih Muslim (Bab Sifat Shalat Nabi ﷺ), Kitab Al-Fiqh Al-Manhaji 'ala Madzhab Al-Imam Asy-Syafi'i (Dr. Musthafa Al-Khin & Dr. Musthafa Al-Bugha), Kitab Asrar Ash-Salah (Imam Ibnul Qayyim Al-Jauziyyah), serta Buku Tuntunan Shalat Lengkap Kementerian Agama RI.",
+    },
+    {
       feature: "Arah Kiblat",
       icon: Compass,
       source: "Perhitungan Trigonometri Bola (Great Circle Distance) ke Ka'bah",

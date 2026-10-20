@@ -10,8 +10,9 @@ import { CitySelectorModal } from './CitySelectorModal';
 import { PrayerSettingsModal } from './PrayerSettingsModal';
 import { GpsPromptModal } from '@/components/ui/GpsPromptModal';
 import { Card } from '@/components/ui/Card';
-import { Compass, ShieldCheck, Clock, MapPin } from 'lucide-react';
+import { Compass, ShieldCheck, Clock, MapPin, BookOpen } from 'lucide-react';
 import { Coordinates, Qibla } from 'adhan';
+import { PrayerMeaningView } from './PrayerMeaningView';
 
 // Dynamic import with SSR disabled for QiblaView and MosqueView
 const QiblaView = dynamic(
@@ -44,7 +45,7 @@ const MosqueView = dynamic(
   }
 );
 
-export type PrayerHubTab = 'jadwal' | 'kiblat' | 'masjid';
+export type PrayerHubTab = 'jadwal' | 'kiblat' | 'masjid' | 'makna';
 
 interface PrayerMainViewProps {
   initialTab?: PrayerHubTab;
@@ -94,11 +95,13 @@ export function PrayerMainView({ initialTab = 'jadwal' }: PrayerMainViewProps = 
             {activeTab === 'jadwal' && <Clock className="w-4 h-4" />}
             {activeTab === 'kiblat' && <Compass className="w-4 h-4" />}
             {activeTab === 'masjid' && <MapPin className="w-4 h-4" />}
+            {activeTab === 'makna' && <BookOpen className="w-4 h-4" />}
           </span>
           <h1 className="text-xl sm:text-2xl font-bold text-text-primary tracking-tight">
             {activeTab === 'jadwal' && 'Jadwal Sholat & Pengingat'}
             {activeTab === 'kiblat' && 'Arah Kiblat Dinamis'}
             {activeTab === 'masjid' && 'Masjid & Musholla Terdekat'}
+            {activeTab === 'makna' && 'Makna Bacaan & Gerakan Sholat'}
           </h1>
         </div>
         <p className="text-xs sm:text-sm text-text-secondary">
@@ -108,15 +111,17 @@ export function PrayerMainView({ initialTab = 'jadwal' }: PrayerMainViewProps = 
             'Kompas digital real-time yang bergerak otomatis mengikuti putaran smartphone Anda menuju Ka\'bah.'}
           {activeTab === 'masjid' &&
             'Peta Google Maps resmi untuk menemukan masjid & musholla terdekat dengan panduan navigasi rute.'}
+          {activeTab === 'makna' &&
+            'Tuntunan khusyuk, tadabbur ruhani, serta rahasia filosofis di balik setiap gerakan dan bacaan sholat.'}
         </p>
       </div>
 
-      {/* Segmented Control 3-in-1 Hub: Jadwal | Arah Kiblat | Masjid Terdekat */}
-      <div className="inline-flex p-1 bg-surface-alt border border-border rounded-pill gap-1 w-full sm:w-auto">
+      {/* Segmented Control 4-in-1 Hub: Jadwal | Arah Kiblat | Masjid Terdekat | Makna Sholat */}
+      <div className="inline-flex p-1 bg-surface-alt border border-border rounded-pill gap-1 w-full sm:w-auto overflow-x-auto max-w-full">
         <button
           type="button"
           onClick={() => setActiveTab('jadwal')}
-          className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-4 py-2 rounded-pill text-xs font-extrabold transition-all duration-150 active:scale-95 ${
+          className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-pill text-xs font-extrabold whitespace-nowrap transition-all duration-150 active:scale-95 ${
             activeTab === 'jadwal'
               ? 'bg-primary-gradient text-on-primary shadow-subtle'
               : 'text-text-secondary hover:text-text-primary'
@@ -128,7 +133,7 @@ export function PrayerMainView({ initialTab = 'jadwal' }: PrayerMainViewProps = 
         <button
           type="button"
           onClick={() => setActiveTab('kiblat')}
-          className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-4 py-2 rounded-pill text-xs font-extrabold transition-all duration-150 active:scale-95 ${
+          className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-pill text-xs font-extrabold whitespace-nowrap transition-all duration-150 active:scale-95 ${
             activeTab === 'kiblat'
               ? 'bg-primary-gradient text-on-primary shadow-subtle'
               : 'text-text-secondary hover:text-text-primary'
@@ -140,7 +145,7 @@ export function PrayerMainView({ initialTab = 'jadwal' }: PrayerMainViewProps = 
         <button
           type="button"
           onClick={() => setActiveTab('masjid')}
-          className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-4 py-2 rounded-pill text-xs font-extrabold transition-all duration-150 active:scale-95 ${
+          className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-pill text-xs font-extrabold whitespace-nowrap transition-all duration-150 active:scale-95 ${
             activeTab === 'masjid'
               ? 'bg-primary-gradient text-on-primary shadow-subtle'
               : 'text-text-secondary hover:text-text-primary'
@@ -148,6 +153,18 @@ export function PrayerMainView({ initialTab = 'jadwal' }: PrayerMainViewProps = 
         >
           <MapPin className="w-3.5 h-3.5" />
           <span>Masjid Terdekat</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => setActiveTab('makna')}
+          className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-pill text-xs font-extrabold whitespace-nowrap transition-all duration-150 active:scale-95 ${
+            activeTab === 'makna'
+              ? 'bg-primary-gradient text-on-primary shadow-subtle'
+              : 'text-text-secondary hover:text-text-primary'
+          }`}
+        >
+          <BookOpen className="w-3.5 h-3.5" />
+          <span>Makna Sholat</span>
         </button>
       </div>
 
@@ -176,33 +193,30 @@ export function PrayerMainView({ initialTab = 'jadwal' }: PrayerMainViewProps = 
             onRequestPermission={requestNotification}
           />
 
-          {/* Quick Access Card ke Kiblat & Masjid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+          {/* Quick Access Card ke Kiblat, Masjid & Makna Sholat */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
             <button
               type="button"
               onClick={() => setActiveTab('kiblat')}
               className="text-left group w-full"
             >
-              <Card hoverable className="p-4 flex items-center justify-between transition-all">
+              <Card hoverable className="p-4 flex items-center justify-between transition-all h-full">
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-card bg-primary-soft text-primary flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
                     <Compass className="w-5 h-5" />
                   </div>
                   <div>
                     <div className="text-xs font-bold text-text-primary group-hover:text-primary transition-colors flex items-center gap-1.5">
-                      <span>Arah Kiblat dari {city.name}</span>
+                      <span>Arah Kiblat</span>
                       <span className="text-[10px] bg-primary-soft text-primary px-1.5 py-0.5 rounded font-bold">
-                        Buka Kompas HP →
+                        {qiblaDirection}°
                       </span>
                     </div>
                     <div className="text-[11px] text-text-secondary mt-0.5">
-                      {qiblaDirection}° dari arah Utara (Barat Laut)
+                      Kompas putar dinamis
                     </div>
                   </div>
                 </div>
-                <span className="font-mono font-bold text-sm text-accent">
-                  {qiblaDirection}°
-                </span>
               </Card>
             </button>
 
@@ -211,20 +225,45 @@ export function PrayerMainView({ initialTab = 'jadwal' }: PrayerMainViewProps = 
               onClick={() => setActiveTab('masjid')}
               className="text-left group w-full"
             >
-              <Card hoverable className="p-4 flex items-center justify-between transition-all">
+              <Card hoverable className="p-4 flex items-center justify-between transition-all h-full">
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-card bg-primary-soft text-primary flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
                     <div className="text-xs font-bold text-text-primary group-hover:text-primary transition-colors flex items-center gap-1.5">
-                      <span>Masjid &amp; Musholla Terdekat</span>
+                      <span>Masjid Terdekat</span>
                       <span className="text-[10px] bg-primary-soft text-primary px-1.5 py-0.5 rounded font-bold">
-                        Buka Peta →
+                        Peta →
                       </span>
                     </div>
                     <div className="text-[11px] text-text-secondary mt-0.5">
-                      Cari masjid di sekitar lokasi Anda
+                      Navigasi tempat ibadah
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setActiveTab('makna')}
+              className="text-left group w-full"
+            >
+              <Card hoverable className="p-4 flex items-center justify-between transition-all h-full border-primary/30 bg-primary-soft/10">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-card bg-primary-soft text-primary flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
+                    <BookOpen className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-text-primary group-hover:text-primary transition-colors flex items-center gap-1.5">
+                      <span>Makna Sholat</span>
+                      <span className="text-[10px] bg-accent/20 text-accent font-extrabold px-1.5 py-0.5 rounded">
+                        Khusyuk
+                      </span>
+                    </div>
+                    <div className="text-[11px] text-text-secondary mt-0.5">
+                      Tadabbur bacaan &amp; gerakan
                     </div>
                   </div>
                 </div>
@@ -258,6 +297,12 @@ export function PrayerMainView({ initialTab = 'jadwal' }: PrayerMainViewProps = 
       {activeTab === 'masjid' && (
         <div className="animate-in fade-in duration-200">
           <MosqueView embedded />
+        </div>
+      )}
+
+      {activeTab === 'makna' && (
+        <div className="animate-in fade-in duration-200">
+          <PrayerMeaningView />
         </div>
       )}
 
