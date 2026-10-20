@@ -18,7 +18,7 @@ import {
 import { PrayerPostureIllustration } from './PrayerPostureIllustration';
 
 export function PrayerMeaningView() {
-  const [activeFilter, setActiveFilter] = React.useState<'all' | 'rukun' | 'sunnah'>('all');
+  const [activeFilter, setActiveFilter] = React.useState<'all' | 'rukun' | 'sunnah'>('rukun');
   const [searchQuery, setSearchQuery] = React.useState('');
   const [copiedId, setCopiedId] = React.useState<string | null>(null);
 
@@ -83,19 +83,8 @@ export function PrayerMeaningView() {
 
         {/* Search & Filter Controls */}
         <div className="mt-6 pt-5 border-t border-border flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-          {/* Filter Chips */}
-          <div className="inline-flex p-1 bg-surface-alt border border-border rounded-pill gap-1 self-start sm:self-auto">
-            <button
-              type="button"
-              onClick={() => setActiveFilter('all')}
-              className={`px-3 py-1.5 rounded-pill text-xs font-bold transition-all duration-150 ${
-                activeFilter === 'all'
-                  ? 'bg-primary-gradient text-on-primary shadow-subtle'
-                  : 'text-text-secondary hover:text-text-primary'
-              }`}
-            >
-              Semua (13)
-            </button>
+          {/* Filter Chips: Default Rukun Wajib, Opsi Sunnah Penyempurna & Semua */}
+          <div className="inline-flex p-1 bg-surface-alt border border-border rounded-pill gap-1 self-start sm:self-auto flex-wrap">
             <button
               type="button"
               onClick={() => setActiveFilter('rukun')}
@@ -117,6 +106,17 @@ export function PrayerMeaningView() {
               }`}
             >
               Sunnah Penyempurna
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveFilter('all')}
+              className={`px-3 py-1.5 rounded-pill text-xs font-bold transition-all duration-150 ${
+                activeFilter === 'all'
+                  ? 'bg-primary-gradient text-on-primary shadow-subtle'
+                  : 'text-text-secondary hover:text-text-primary'
+              }`}
+            >
+              Semua (13)
             </button>
           </div>
 

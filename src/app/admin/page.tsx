@@ -21,9 +21,13 @@ import {
   ChevronUp,
   CheckCircle2,
   Database,
+  MessageSquare,
+  Star,
+  Trash2,
+  HeartHandshake,
 } from 'lucide-react';
 import Link from 'next/link';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, doc, deleteDoc } from 'firebase/firestore';
 import { getFirebaseFirestore, isFirebaseReady } from '@/lib/firebase';
 import { Button } from '@/components/ui/Button';
 
@@ -59,13 +63,28 @@ export interface RegisteredUser {
   studyNotes: FirestoreNote[];
 }
 
+export interface UserFeedback {
+  id: string;
+  userId?: string;
+  name: string;
+  email: string;
+  picture?: string;
+  category: 'saran' | 'kritik' | 'koreksi' | 'lainnya';
+  rating?: number;
+  message: string;
+  createdAt: string;
+  timestamp: number;
+}
+
 export default function AdminUsersPage() {
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [pinInput, setPinInput] = useState('');
   const [pinError, setPinError] = useState<string | null>(null);
 
-  const [activeTab, setActiveTab] = useState<'users' | 'students' | 'notes'>('users');
+  const [activeTab, setActiveTab] = useState<'users' | 'students' | 'notes' | 'feedbacks'>('users');
   const [users, setUsers] = useState<RegisteredUser[]>([]);
+  const [feedbacks, setFeedbacks] = useState<UserFeedback[]>([]);
+  const [isDeletingFeedback, setIsDeletingFeedback] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [lastFetched, setLastFetched] = useState<string | null>(null);
@@ -162,9 +181,101 @@ export default function AdminUsersPage() {
     }
   };
 
+  // Ambil data kritik & saran dari server cPanel API dan Firestore
+  const fetchFeedbacks = async () => {
+    const list: UserFeedback[] = [];
+
+    // 1. Ambil dari API cPanel (/api/feedback.php)
+    try {
+      const res = await fetch(`/api/feedback.php?pin=${ADMIN_SECRET_CODE}`);
+      if (res.ok) {
+        const json = await res.json();
+        if (json?.success && Array.isArray(json.feedbacks)) {
+          list.push(...json.feedbacks);
+        }
+      }
+    } catch (err) {
+      console.warn('Gagal memuat feedback dari cPanel API:', err);
+    }
+
+    // 2. Ambil dari Firestore ('feedbacks')
+    try {
+      const firestore = getFirebaseFirestore();
+      if (firestore) {
+        const snap = await getDocs(collection(firestore, 'feedbacks'));
+        snap.forEach((dDoc) => {
+          const d = dDoc.data();
+          list.push({
+            id: dDoc.id,
+            userId: d.userId || '',
+            name: d.name || 'Pengguna Iqra',
+            email: d.email || '',
+            picture: d.picture || '',
+            category: d.category || 'saran',
+            rating: d.rating || 5,
+            message: d.message || '',
+            createdAt: d.createdAt || new Date().toISOString(),
+            timestamp: d.timestamp || Date.now(),
+          });
+        });
+      }
+    } catch (err) {
+      console.warn('Gagal memuat feedback dari Firestore:', err);
+    }
+
+    // Deduplikasi berdasarkan ID
+    const seen = new Set<string>();
+    const deduplicated = list.filter((item) => {
+      const key = item.id || `${item.email}_${item.message.slice(0, 30)}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+
+    // Urutkan paling baru di paling atas
+    deduplicated.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+    setFeedbacks(deduplicated);
+  };
+
+  const refreshAllData = async () => {
+    setIsLoading(true);
+    await Promise.all([fetchUsers(), fetchFeedbacks()]);
+    setIsLoading(false);
+  };
+
+  const handleDeleteFeedback = async (id: string) => {
+    if (!confirm('Apakah Anda yakin ingin menghapus masukan/kritik ini?')) {
+      return;
+    }
+    setIsDeletingFeedback(id);
+
+    // 1. Hapus dari cPanel API
+    try {
+      await fetch(`/api/feedback.php?pin=${ADMIN_SECRET_CODE}&id=${encodeURIComponent(id)}`, {
+        method: 'DELETE',
+      });
+    } catch (err) {
+      console.warn('Gagal hapus feedback dari cPanel API:', err);
+    }
+
+    // 2. Hapus dari Firestore jika tersimpan di sana
+    try {
+      const firestore = getFirebaseFirestore();
+      if (firestore) {
+        await deleteDoc(doc(firestore, 'feedbacks', id));
+      }
+    } catch (err) {
+      // Abaikan jika bukan firestore doc
+    }
+
+    setFeedbacks((prev) => prev.filter((f) => f.id !== id));
+    setIsDeletingFeedback(null);
+  };
+
   useEffect(() => {
     if (isUnlocked) {
       fetchUsers();
+      fetchFeedbacks();
     }
   }, [isUnlocked]);
 
@@ -238,6 +349,16 @@ export default function AdminUsersPage() {
       n.category.toLowerCase().includes(q) ||
       (n.notes && n.notes.toLowerCase().includes(q)) ||
       n.userOwner.toLowerCase().includes(q)
+    );
+  });
+
+  const filteredFeedbacks = feedbacks.filter((f) => {
+    const q = searchTerm.toLowerCase();
+    return (
+      f.name.toLowerCase().includes(q) ||
+      f.email.toLowerCase().includes(q) ||
+      f.message.toLowerCase().includes(q) ||
+      f.category.toLowerCase().includes(q)
     );
   });
 
@@ -330,12 +451,12 @@ export default function AdminUsersPage() {
           <Button
             variant="outline"
             size="sm"
-            onClick={fetchUsers}
+            onClick={refreshAllData}
             disabled={isLoading}
             className="flex-1 sm:flex-none text-xs font-semibold h-9"
           >
             <RefreshCw className={`w-3.5 h-3.5 mr-1.5 ${isLoading ? 'animate-spin' : ''}`} />
-            <span>Segarkan Firebase</span>
+            <span>Segarkan Data</span>
           </Button>
 
           <Button
@@ -351,8 +472,8 @@ export default function AdminUsersPage() {
         </div>
       </div>
 
-      {/* 4 Summary Metrics Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+      {/* 5 Summary Metrics Cards */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
         {/* Card 1: Total Pengguna Terdaftar */}
         <div className="p-4 sm:p-5 bg-surface border border-border rounded-card shadow-subtle flex flex-col justify-between">
           <div>
@@ -393,8 +514,29 @@ export default function AdminUsersPage() {
           </div>
         </div>
 
-        {/* Card 4: Status Koneksi */}
-        <div className="p-4 sm:p-5 bg-surface border border-border rounded-card shadow-subtle flex flex-col justify-between">
+        {/* Card 4: Kritik & Saran */}
+        <div
+          onClick={() => setActiveTab('feedbacks')}
+          className={`p-4 sm:p-5 bg-surface border rounded-card shadow-subtle flex flex-col justify-between cursor-pointer transition-all hover:border-primary/50 ${
+            activeTab === 'feedbacks'
+              ? 'border-primary ring-2 ring-primary/20 bg-primary/5'
+              : 'border-border'
+          }`}
+        >
+          <div>
+            <p className="text-xs font-semibold text-text-secondary">Kritik & Saran</p>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-primary-text mt-1">
+              {feedbacks.length} <span className="text-xs font-semibold text-text-muted">Pesan</span>
+            </h2>
+          </div>
+          <div className="text-[11px] text-primary font-bold mt-2 flex items-center gap-1">
+            <MessageSquare className="w-3 h-3" />
+            <span>Google Login</span>
+          </div>
+        </div>
+
+        {/* Card 5: Status Koneksi */}
+        <div className="p-4 sm:p-5 bg-surface border border-border rounded-card shadow-subtle flex flex-col justify-between col-span-2 sm:col-span-1">
           <div>
             <p className="text-xs font-semibold text-text-secondary">Koneksi Database</p>
             <h2 className="text-sm sm:text-base font-extrabold text-text-primary mt-1 flex items-center gap-1.5">
@@ -448,6 +590,19 @@ export default function AdminUsersPage() {
           <BookOpen className="w-3.5 h-3.5" />
           <span>Data Catatan di Cloud ({totalNotes})</span>
         </button>
+
+        <button
+          type="button"
+          onClick={() => setActiveTab('feedbacks')}
+          className={`px-4 py-2 rounded-button text-xs font-bold transition-all shrink-0 flex items-center gap-2 ${
+            activeTab === 'feedbacks'
+              ? 'bg-primary-gradient text-on-primary shadow-subtle'
+              : 'bg-surface border border-border text-text-secondary hover:text-text-primary hover:bg-surface-alt'
+          }`}
+        >
+          <MessageSquare className="w-3.5 h-3.5" />
+          <span>Kritik & Saran ({feedbacks.length})</span>
+        </button>
       </div>
 
       {/* Main Container */}
@@ -460,7 +615,7 @@ export default function AdminUsersPage() {
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Cari nama, email, murid, atau judul catatan..."
+              placeholder="Cari nama, email, murid, catatan, kritik & saran..."
               className="w-full text-xs pl-9 pr-3.5 py-2.5 rounded-input bg-surface border border-border focus:outline-none focus:ring-1 focus:ring-primary text-text-primary"
             />
           </div>
@@ -469,6 +624,7 @@ export default function AdminUsersPage() {
             {activeTab === 'users' && `Menampilkan ${filteredUsers.length} pengguna`}
             {activeTab === 'students' && `Menampilkan ${filteredStudents.length} murid di Firebase`}
             {activeTab === 'notes' && `Menampilkan ${filteredNotes.length} catatan di Firebase`}
+            {activeTab === 'feedbacks' && `Menampilkan ${filteredFeedbacks.length} masukan / kritik`}
           </span>
         </div>
 
@@ -739,6 +895,123 @@ export default function AdminUsersPage() {
                       <CheckCircle2 className="w-3.5 h-3.5" />
                       <span>Firebase</span>
                     </span>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        )}
+
+        {/* ── TAB 4: KRITIK & SARAN PENGGUNA ── */}
+        {!isLoading && activeTab === 'feedbacks' && (
+          <div className="divide-y divide-border">
+            {filteredFeedbacks.length === 0 ? (
+              <div className="p-12 text-center text-xs text-text-muted space-y-2">
+                <MessageSquare className="w-8 h-8 text-text-muted/40 mx-auto" />
+                <p>Belum ada kritik atau saran yang masuk dari pengguna.</p>
+              </div>
+            ) : (
+              filteredFeedbacks.map((fb) => (
+                <div
+                  key={fb.id}
+                  className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-start justify-between gap-4 hover:bg-surface-alt/50 transition-colors"
+                >
+                  <div className="flex items-start gap-3.5 flex-1 min-w-0">
+                    {/* User Avatar */}
+                    {fb.picture ? (
+                      <img
+                        src={fb.picture}
+                        alt={fb.name}
+                        className="w-10 h-10 rounded-full object-cover border border-border shrink-0"
+                        referrerPolicy="no-referrer"
+                      />
+                    ) : (
+                      <div className="w-10 h-10 rounded-full bg-pastel-green text-primary font-bold text-sm flex items-center justify-center shrink-0 border border-primary/20">
+                        {fb.name.slice(0, 2).toUpperCase()}
+                      </div>
+                    )}
+
+                    {/* Feedback content */}
+                    <div className="space-y-1.5 flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="text-sm font-extrabold text-text-primary">
+                          {fb.name}
+                        </span>
+                        <span className="text-xs text-text-muted">({fb.email})</span>
+
+                        {/* Category Badge */}
+                        <span
+                          className={`text-[10px] font-bold px-2 py-0.5 rounded-button uppercase tracking-wide ${
+                            fb.category === 'saran'
+                              ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
+                              : fb.category === 'kritik'
+                              ? 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300'
+                              : fb.category === 'koreksi'
+                              ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300'
+                              : 'bg-primary-soft text-primary'
+                          }`}
+                        >
+                          {fb.category}
+                        </span>
+
+                        {/* Star Rating if present */}
+                        {fb.rating && (
+                          <div className="flex items-center gap-0.5 text-amber-500">
+                            {[1, 2, 3, 4, 5].map((star) => (
+                              <Star
+                                key={star}
+                                className={`w-3 h-3 ${
+                                  star <= (fb.rating || 5)
+                                    ? 'fill-amber-400 text-amber-400'
+                                    : 'text-border'
+                                }`}
+                              />
+                            ))}
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Message body */}
+                      <div className="p-3 bg-surface-alt/70 border border-border/80 rounded-card text-xs text-text-primary whitespace-pre-wrap leading-relaxed">
+                        {fb.message}
+                      </div>
+
+                      {/* Timestamp & ID info */}
+                      <div className="flex items-center gap-3 text-[11px] text-text-muted pt-0.5">
+                        <span className="flex items-center gap-1">
+                          <Calendar className="w-3 h-3" />
+                          {new Date(fb.createdAt).toLocaleDateString('id-ID', {
+                            day: 'numeric',
+                            month: 'short',
+                            year: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                          })}
+                        </span>
+                        <span className="font-mono text-[10px] text-text-muted/70">
+                          ID: {fb.id}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Actions */}
+                  <div className="flex items-center gap-2 self-end sm:self-start shrink-0">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => handleDeleteFeedback(fb.id)}
+                      disabled={isDeletingFeedback === fb.id}
+                      className="text-xs text-danger hover:bg-danger/10 hover:text-danger h-8 px-2.5"
+                      title="Hapus kritik/saran ini"
+                    >
+                      <Trash2
+                        className={`w-3.5 h-3.5 mr-1 ${
+                          isDeletingFeedback === fb.id ? 'animate-spin' : ''
+                        }`}
+                      />
+                      <span>Hapus</span>
+                    </Button>
                   </div>
                 </div>
               ))

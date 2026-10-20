@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
 import { Chip } from '@/components/ui/Chip';
+import { FeedbackForm } from '@/features/feedback/components/FeedbackForm';
 
 export default function TentangPage() {
   const verifiedSources = [
@@ -221,6 +222,9 @@ export default function TentangPage() {
           })}
         </div>
       </div>
+
+      {/* Kolom Kritik & Saran Pengguna (Wajib Login Google) */}
+      <FeedbackForm />
 
       {/* Komitmen Privasi & Independensi */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
