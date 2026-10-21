@@ -183,7 +183,7 @@ export function PrayerMeaningView() {
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <span className="font-arabic text-lg text-text-secondary" dir="rtl">
+                    <span className="font-arabic text-xl sm:text-2xl text-primary font-bold" dir="rtl">
                       {step.arabicName}
                     </span>
                     <button
@@ -253,7 +253,7 @@ export function PrayerMeaningView() {
                 {/* Kotak Lafadz Bacaan Arab */}
                 <div className="p-4 sm:p-5 rounded-card bg-surface-alt border border-border/80 space-y-3">
                   <div
-                    className="font-arabic text-xl sm:text-2xl text-text-primary leading-loose tracking-wide text-right selection:bg-primary/20"
+                    className="font-arabic text-2xl sm:text-3xl text-text-primary leading-[2.4] tracking-wide text-right selection:bg-primary/20"
                     dir="rtl"
                   >
                     {step.arabic}

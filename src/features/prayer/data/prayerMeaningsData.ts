@@ -23,7 +23,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
     stepNumber: 1,
     category: 'rukun',
     title: 'Niat & Berdiri Tegak (Qiyam)',
-    arabicName: 'النِّيَّةُ وَالْقِيَامُ',
+    arabicName: 'اَلنِّيَّةُ وَالْقِيَامُ',
     postureId: 'qiyam',
     movementName: 'Berdiri Menghadap Kiblat dengan Khusyuk',
     movementDescription:
@@ -33,7 +33,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
       'Kedua kaki dibuka wajar sejajar selebar bahu',
       'Pandangan mata terfokus tertunduk ke arah tempat sujud',
     ],
-    arabic: 'إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى',
+    arabic: 'اِنَّمَا الْاَعْمَالُ بِالنِّيَّاتِ، وَاِنَّمَا لِكُلِّ امْرِئٍ مَّا نَوٰى',
     transliteration: "Innamal a'maalu bin-niyyaati, wa innamaa likullim-ri'in maa nawaa.",
     translation:
       'Sesungguhnya setiap amal perbuatan tergantung pada niatnya, dan sesungguhnya setiap orang akan mendapatkan sesuai dengan apa yang ia niatkan.',
@@ -49,7 +49,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
     stepNumber: 2,
     category: 'rukun',
     title: 'Takbiratul Ihram',
-    arabicName: 'تَكْبِيرَةُ الْإِحْرَامِ',
+    arabicName: 'تَكْبِيْرَةُ الْاِحْرَامِ',
     postureId: 'takbir',
     movementName: 'Mengangkat Kedua Tangan Sejajar Pundak / Telinga',
     movementDescription:
@@ -59,7 +59,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
       'Jari-jemari dibuka secara wajar (tidak terlalu rapat atau meregang)',
       'Telapak tangan diarahkan menghadap kiblat',
     ],
-    arabic: 'اللهُ أَكْبَرُ',
+    arabic: 'اَللّٰهُ اَكْبَرُ',
     transliteration: 'Allāhu Akbar',
     translation: 'Allah Maha Besar.',
     spiritualMeaning:
@@ -74,7 +74,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
     stepNumber: 3,
     category: 'sunnah',
     title: 'Meletakkan Tangan di Dada (Sedekap)',
-    arabicName: 'وَضْعُ الْيُمْنَى عَلَى الْيُسْرَى',
+    arabicName: 'وَضْعُ الْيُمْنٰى عَلَى الْيُسْرٰى',
     postureId: 'sedekap',
     movementName: 'Tangan Kanan Memegang/Menutupi Tangan Kiri',
     movementDescription:
@@ -84,7 +84,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
       'Posisi diletakkan di atas dada atau ulu hati',
       'Kedua siku tidak terlalu mengepak lebar ke samping',
     ],
-    arabic: 'كَانَ النَّاسُ يُؤْمَرُونَ أَنْ يَضَعَ الرَّجُلُ الْيَدَ الْيُمْنَى عَلَى ذِرَاعِهِ الْيُسْرَى فِي الصَّلَاةِ',
+    arabic: 'كَانَ النَّاسُ يُؤْمَرُوْنَ اَنْ يَّضَعَ الرَّجُلُ الْيَدَ الْيُمْنٰى عَلٰى ذِرَاعِهِ الْيُسْرٰى فِى الصَّلَاةِ',
     transliteration: 'Kaana an-naasu yu\'maruuna an yadha\'ar rajulu al-yadal yumnaa \'alaa dziraa\'ihil yusraa fish-shalaah.',
     translation:
       'Dahulu manusia diperintahkan agar seseorang meletakkan tangan kanannya di atas lengan kirinya dalam sholat.',
@@ -100,7 +100,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
     stepNumber: 4,
     category: 'sunnah',
     title: 'Doa Iftitah (Istiftah)',
-    arabicName: 'دُعَاءُ الِاسْتِفْتَاحِ',
+    arabicName: 'دُعَاۤءُ الِاسْتِفْتَاحِ',
     postureId: 'sedekap',
     movementName: 'Berdiri Khidmat Membaca Pembuka Sholat',
     movementDescription:
@@ -110,7 +110,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
       'Dibaca secara lirih (sirr) setelah takbiratul ihram',
       'Hati mengikrarkan penyerahan hidup dan mati kepada Allah',
     ],
-    arabic: 'وَجَّهْتُ وَجْهِيَ لِلَّذِي فَطَرَ السَّمَاوَاتِ وَالْأَرْضَ حَنِيفًا مُسْلِمًا وَمَا أَنَا مِنَ الْمُشْرِكِينَ، إِنَّ صَلَاتِي وَنُسُكِي وَمَحْيَايَ وَمَمَاتِي لِلَّهِ رَبِّ الْعَالَمِينَ، لَا شَرِيكَ لَهُ وَبِذَٰلِكَ أُمِرْتُ وَأَنَا مِنَ الْمُسْلِمِينَ',
+    arabic: 'وَجَّهْتُ وَجْهِيَ لِلَّذِيْ فَطَرَ السَّمٰوٰتِ وَالْاَرْضَ حَنِيْفًا مُّسْلِمًا وَّمَآ اَنَا مِنَ الْمُشْرِكِيْنَ، اِنَّ صَلَاتِيْ وَنُسُكِيْ وَمَحْيَايَ وَمَمَاتِيْ لِلّٰهِ رَبِّ الْعٰلَمِيْنَ، لَا شَرِيْكَ لَهٗ وَبِذٰلِكَ اُمِرْتُ وَاَنَا مِنَ الْمُسْلِمِيْنَ',
     transliteration:
       'Wajjahtu wajhiya lilladzii fatharas-samaawaati wal-ardha haniifam-muslimaw-wa maa ana minal-musyrikiin. Inna shalaatii wa nusukii wa mahyaaya wa mamaatii lillaahi rabbil-\'aalamiin. Laa syariika lahu wa bidzaalika umirtu wa ana minal-muslimiin.',
     translation:
@@ -127,7 +127,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
     stepNumber: 5,
     category: 'rukun',
     title: "Membaca Surah Al-Fatihah (Ummul Qur'an)",
-    arabicName: 'قِرَاءَةُ سُورَةِ الْفَاتِحَةِ',
+    arabicName: 'قِرَاۤءَةُ سُوْرَةِ الْفَاتِحَةِ',
     postureId: 'sedekap',
     movementName: 'Membaca Ayat demi Ayat dengan Tartil',
     movementDescription:
@@ -137,7 +137,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
       'Berhenti sejenak di setiap akhir ayat (waqaf)',
       'Memahami bahwa setiap ayat dijawab langsung oleh Allah',
     ],
-    arabic: 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ۝ الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ۝ الرَّحْمَٰنِ الرَّحِيمِ ۝ مَالِكِ يَوْمِ الدِّينِ ۝ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ۝ اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ۝ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ',
+    arabic: 'بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ ۝ اَلْحَمْدُ لِلّٰهِ رَبِّ الْعٰلَمِيْنَۙ ۝ الرَّحْمٰنِ الرَّحِيْمِۙ ۝ مٰلِكِ يَوْمِ الدِّيْنِۗ ۝ اِيَّاكَ نَعْبُدُ وَاِيَّاكَ نَسْتَعِيْنُۗ ۝ اِهْدِنَا الصِّرَاطَ الْمُسْتَقِيْمَۙ ۝ صِرَاطَ الَّذِيْنَ اَنْعَمْتَ عَلَيْهِمْ ەۙ غَيْرِ الْمَغْضُوْبِ عَلَيْهِمْ وَلَا الضَّاۤلِّيْنَ ࣖ',
     transliteration:
       "Bismillaahir-rahmaanir-rahiim. Al-hamdu lillaahi rabbil-'aalamiin. Ar-rahmaanir-rahiim. Maaliki yawmid-diin. Iyyaaka na'budu wa iyyaaka nasta'iin. Ihdinas-shiraathal-mustaqiim. Shiraathal-ladziina an'amta 'alayhim ghayril-maghdhuubi 'alayhim waladh-dhaalliin.",
     translation:
@@ -154,7 +154,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
     stepNumber: 6,
     category: 'rukun',
     title: "Ruku' & Thuma'ninah",
-    arabicName: 'الرُّكُوعُ وَالطُّمَأْنِينَةُ',
+    arabicName: 'الرُّكُوْعُ وَالطُّمَأْنِيْنَةُ',
     postureId: 'ruku',
     movementName: 'Membungkukkan Punggung Rata Sejajar Kepala',
     movementDescription:
@@ -165,7 +165,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
       'Kepala sejajar lurus dengan tulang belakang (tidak menunduk/mendongak)',
       'Wajib thuma\'ninah (berhenti tenang sejenak)',
     ],
-    arabic: 'سُبْحَانَ رَبِّيَ الْعَظِيمِ وَبِحَمْدِهِ',
+    arabic: 'سُبْحَانَ رَبِّيَ الْعَظِيْمِ وَبِحَمْدِهٖ',
     transliteration: "Subhaana rabbiyal 'azhiimi wa bihamdih (3x)",
     translation: 'Maha Suci Rabbku Yang Maha Agung dan dengan memuji-Nya.',
     spiritualMeaning:
@@ -180,7 +180,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
     stepNumber: 7,
     category: 'rukun',
     title: "I'tidal (Bangkit dari Ruku')",
-    arabicName: 'الِاعْتِدَالُ وَالطُّمَأْنِينَةُ',
+    arabicName: 'الِاعْتِدَالُ وَالطُّمَأْنِيْنَةُ',
     postureId: 'itidal',
     movementName: 'Berdiri Tegak Sejenak dengan Ketenangan',
     movementDescription:
@@ -190,7 +190,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
       'Berdiri tegak lurus hingga seluruh persendian tenang kembali',
       'Wajib thuma\'ninah sebelum turun ke posisi sujud',
     ],
-    arabic: 'سَمِعَ اللهُ لِمَنْ حَمِدَهُ ۝ رَبَّنَا لَكَ الْحَمْدُ مِلْءَ السَّمَاوَاتِ وَمِلْءَ الْأَرْضِ وَمِلْءَ مَا شِئْتَ مِنْ شَيْءٍ بَعْدُ',
+    arabic: 'سَمِعَ اللّٰهُ لِمَنْ حَمِدَهٗ ۝ رَبَّنَا لَكَ الْحَمْدُ مِلْءَ السَّمٰوٰتِ وَمِلْءَ الْاَرْضِ وَمِلْءَ مَا شِئْتَ مِنْ شَيْءٍ بَعْدُ',
     transliteration:
       "Sami'allaahu liman hamidah. Rabbanaa lakal hamdu mil'as-samaawaati wa mil'al-ardhi wa mil'a maa syi'ta min syai'im-ba'd.",
     translation:
@@ -207,7 +207,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
     stepNumber: 8,
     category: 'rukun',
     title: 'Sujud (Puncak Kedekatan dengan Allah)',
-    arabicName: 'السُّجُودُ وَالطُّمَأْنِينَةُ',
+    arabicName: 'السُّجُوْدُ وَالطُّمَأْنِيْنَةُ',
     postureId: 'sujud',
     movementName: 'Menempelkan 7 Anggota Sujud ke Tanah',
     movementDescription:
@@ -218,7 +218,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
       'Kedua telapak tangan diletakkan sejajar pundak atau telinga',
       'Ujung jari-jemari kaki ditekuk menghadap kiblat',
     ],
-    arabic: 'سُبْحَانَ رَبِّيَ الْأَعْلَى وَبِحَمْدِهِ',
+    arabic: 'سُبْحَانَ رَبِّيَ الْاَعْلٰى وَبِحَمْدِهٖ',
     transliteration: "Subhaana rabbiyal a'laa wa bihamdih (3x)",
     translation: 'Maha Suci Rabbku Yang Maha Tinggi dan dengan memuji-Nya.',
     spiritualMeaning:
@@ -233,7 +233,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
     stepNumber: 9,
     category: 'rukun',
     title: 'Duduk di Antara Dua Sujud (Iftirasy)',
-    arabicName: 'الْجُلُوسُ بَيْنَ السَّجْدَتَيْنِ',
+    arabicName: 'الْجُلُوْسُ بَيْنَ السَّجْدَتَيْنِ',
     postureId: 'iftirasy',
     movementName: 'Duduk di Atas Kaki Kiri & Menegakkan Kaki Kanan',
     movementDescription:
@@ -243,7 +243,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
       'Telapak kaki kanan ditegakkan dengan jari ditekuk menghadap kiblat',
       'Kedua telapak tangan diletakkan di atas ujung paha mendekati lutut',
     ],
-    arabic: 'رَبِّ اغْفِرْ لِي، وَارْحَمْنِي، وَاجْبُرْنِي، وَارْفَعْنِي، وَارْزُقْنِي، وَاهْدِنِي، وَعَافِنِي، وَاعْفُ عَنِّي',
+    arabic: 'رَبِّ اغْفِرْ لِيْ وَارْحَمْنِيْ وَاجْبُرْنِيْ وَارْفَعْنِيْ وَارْزُقْنِيْ وَاهْدِنِيْ وَعَافِنِيْ وَاعْفُ عَنِّيْ',
     transliteration:
       "Rabbighfir lii, warhamnii, wajburnii, warfa'nii, warzuqnii, wahdinii, wa 'aafinii, wa'fu 'annii.",
     translation:
@@ -260,7 +260,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
     stepNumber: 10,
     category: 'rukun',
     title: 'Tasyahud Awal & Akhir (Tahiyyat)',
-    arabicName: 'التَّشَهُّدُ وَالصَّلَاةُ عَلَى النَّبِيِّ',
+    arabicName: 'التَّشَهُّدُ وَالصَّلَاةُ عَلَى النَّبِيِّ',
     postureId: 'tasyahud',
     movementName: 'Duduk Tawarruk/Iftirasy & Berisyarat Jari Telunjuk',
     movementDescription:
@@ -271,7 +271,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
       'Tangan kanan bertumpu di atas lutut dan telunjuk diacungkan saat kalimat tauhid (tidak diangkat melayang)',
       'Pandangan mata diarahkan ke jari telunjuk',
     ],
-    arabic: 'التَّحِيَّاتُ الْمُبَارَكَاتُ الصَّلَوَاتُ الطَّيِّبَاتُ لِلَّهِ، السَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ، السَّلَامُ عَلَيْنَا وَعَلَى عِبَادِ اللهِ الصَّالِحِينَ، أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللهِ',
+    arabic: 'التَّحِيَّاتُ الْمُبَارَكَاتُ الصَّلَوَاتُ الطَّيِّبَاتُ لِلّٰهِ، اَلسَّلَامُ عَلَيْكَ اَيُّهَا النَّبِيُّ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهُ، اَلسَّلَامُ عَلَيْنَا وَعَلٰى عِبَادِ اللّٰهِ الصَّالِحِيْنَ، اَشْهَدُ اَنْ لَا اِلٰهَ اِلَّا اللّٰهُ، وَاَشْهَدُ اَنَّ مُحَمَّدًا رَسُوْلُ اللّٰهِ',
     transliteration:
       "At-tahiyyaatul-mubaarakaatus-shalawaatut-thayyibaatu lillaah. As-salaamu 'alayka ayyuhan-nabiyyu wa rahmatullaahi wa barakaatuh. As-salaamu 'alaynaa wa 'alaa 'ibaadillaahis-shaalihiin. Asyhadu allaa ilaaha illallaah, wa asyhadu anna Muhammadar-rasuulullaah.",
     translation:
@@ -288,7 +288,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
     stepNumber: 11,
     category: 'rukun',
     title: 'Shalawat Ibrahimiyyah',
-    arabicName: 'الصَّلَاةُ الْإِبْرَاهِيمِيَّةُ',
+    arabicName: 'الصَّلَاةُ الْاِبْرَاهِيْمِيَّةُ',
     postureId: 'tasyahud',
     movementName: 'Melafadzkan Shalawat Sempurna di Tasyahud Akhir',
     movementDescription:
@@ -298,7 +298,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
       'Jari telunjuk tetap dalam posisi isyarat tauhid',
       'Melafadzkan shalawat dengan penuh cinta dan takzim kepada Rasulullah ﷺ',
     ],
-    arabic: 'اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ. اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ، كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ',
+    arabic: 'اَللّٰهُمَّ صَلِّ عَلٰى مُحَمَّدٍ وَّعَلٰى اٰلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلٰى اِبْرَاهِيْمَ وَعَلٰى اٰلِ اِبْرَاهِيْمَ، اِنَّكَ حَمِيْدٌ مَّجِيْدٌ. اَللّٰهُمَّ بَارِكْ عَلٰى مُحَمَّدٍ وَّعَلٰى اٰلِ مُحَمَّدٍ، كَمَا بَارَكْتَ عَلٰى اِبْرَاهِيْمَ وَعَلٰى اٰلِ اِبْرَاهِيْمَ، اِنَّكَ حَمِيْدٌ مَّجِيْدٌ',
     transliteration:
       "Allaahumma shalli 'alaa Muhammadiw-wa 'alaa aali Muhammad, kamaa shallayta 'alaa Ibraahiima wa 'alaa aali Ibraahiim, innaka hamiidum-majiid. Allaahumma baarik 'alaa Muhammadiw-wa 'alaa aali Muhammad, kamaa baarakta 'alaa Ibraahiima wa 'alaa aali Ibraahiim, innaka hamiidum-majiid.",
     translation:
@@ -315,7 +315,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
     stepNumber: 12,
     category: 'sunnah',
     title: 'Doa Perlindungan 4 Perkara Sebelum Salam',
-    arabicName: 'الدُّعَاءُ قَبْلَ السَّلَامِ',
+    arabicName: 'الدُّعَاۤءُ قَبْلَ السَّلَامِ',
     postureId: 'tasyahud',
     movementName: 'Memohon Perlindungan Terakhir Sebelum Menutup Sholat',
     movementDescription:
@@ -325,7 +325,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
       'Memohon perlindungan dari 4 fitnah paling dahsyat dalam hidup',
       'Dilafadzkan secara lirih sebelum salam penutup',
     ],
-    arabic: 'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ جَهَنَّمَ، وَمِنْ عَذَابِ الْقَبْرِ، وَمِنْ فِتْنَةِ الْمَحْيَا وَالْمَمَاتِ، وَمِنْ شَرِّ فِتْنَةِ الْمَسِيحِ الدَّجَّالِ',
+    arabic: 'اَللّٰهُمَّ اِنِّيْ اَعُوْذُ بِكَ مِنْ عَذَابِ جَهَنَّمَ، وَمِنْ عَذَابِ الْقَبْرِ، وَمِنْ فِتْنَةِ الْمَحْيَا وَالْمَمَاتِ، وَمِنْ شَرِّ فِتْنَةِ الْمَسِيْحِ الدَّجَّالِ',
     transliteration:
       "Allaahumma innii a'uudzu bika min 'adzaabi jahannam, wa min 'adzaabil-qabr, wa min fitnatil-mahyaa wal-mamaat, wa min syarri fitnatil-masiihid-dajjaal.",
     translation:
@@ -342,7 +342,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
     stepNumber: 13,
     category: 'rukun',
     title: 'Salam (Penutup Sholat)',
-    arabicName: 'التَّسْلِيمُ (خِتَامُ الصَّلَاةِ)',
+    arabicName: 'التَّسْلِيْمُ (خِتَامُ الصَّلَاةِ)',
     postureId: 'salam',
     movementName: 'Menoleh ke Kanan Lalu ke Kiri',
     movementDescription:
@@ -352,7 +352,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
       'Menoleh ke kiri hingga pipi kiri terlihat (salam kedua / sunnah)',
       'Badan dan dada tetap tegap menghadap kiblat saat kepala menoleh',
     ],
-    arabic: 'السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ',
+    arabic: 'اَلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهُ',
     transliteration: "As-salaamu 'alaykum wa rahmatullaah.",
     translation: 'Semoga keselamatan dan rahmat Allah senantiasa tercurah kepada kalian.',
     spiritualMeaning:

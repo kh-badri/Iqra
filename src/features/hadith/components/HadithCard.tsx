@@ -98,7 +98,7 @@ export function HadithCard({ hadith }: HadithCardProps) {
       <div className="text-right py-2">
         <p
           dir="rtl"
-          className="font-arabic text-xl sm:text-2xl text-text-primary leading-[2.2] select-text font-medium"
+          className="font-arabic text-xl sm:text-2xl md:text-3xl text-text-primary leading-[2.4] tracking-wide select-text font-medium"
         >
           {hadith.arabic}
         </p>

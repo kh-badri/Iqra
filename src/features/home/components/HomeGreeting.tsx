@@ -46,9 +46,10 @@ export function HomeGreeting() {
 
         <span
           dir="rtl"
-          className="font-arabic text-xs sm:text-sm text-primary-text font-bold bg-pastel-green/60 dark:bg-pastel-green/20 px-2.5 py-0.5 rounded-pill border border-primary/20 inline-block shadow-subtle"
+          className="font-arabic text-sm sm:text-base text-primary-text font-bold bg-pastel-green/70 dark:bg-pastel-green/20 px-3 py-1 rounded-pill border border-primary/20 inline-block shadow-subtle tracking-wide leading-relaxed"
+          title="Bismillaahir-rahmaanir-rahiim"
         >
-          بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+          بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
         </span>
       </div>
 

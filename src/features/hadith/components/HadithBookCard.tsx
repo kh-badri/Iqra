@@ -23,7 +23,7 @@ export function HadithBookCard({ book }: { book: HadithBook }) {
             </div>
           </div>
 
-          <div className="font-arabic text-xl sm:text-2xl font-bold text-text-primary group-hover:text-primary-text transition-colors text-right my-1">
+          <div dir="rtl" className="font-arabic text-xl sm:text-2xl font-bold text-text-primary group-hover:text-primary-text transition-colors text-right my-1 leading-relaxed">
             {book.arabicName}
           </div>
 

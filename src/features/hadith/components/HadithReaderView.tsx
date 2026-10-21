@@ -75,7 +75,7 @@ export function HadithReaderView({ book, initialChunk }: HadithReaderViewProps) 
           <div>
             <h1 className="text-lg sm:text-xl font-extrabold text-text-primary flex items-center gap-2 tracking-tight">
               <span>{book.name}</span>
-              <span className="font-arabic text-primary font-normal text-sm sm:text-base">
+              <span dir="rtl" className="font-arabic text-primary font-bold text-base sm:text-lg leading-relaxed">
                 ({book.arabicName})
               </span>
             </h1>

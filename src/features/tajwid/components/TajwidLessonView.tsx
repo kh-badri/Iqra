@@ -214,7 +214,7 @@ export const TajwidLessonView: React.FC<TajwidLessonViewProps> = ({
             </p>
           </div>
 
-          <span className="font-arabic text-3xl sm:text-4xl text-primary font-normal self-start sm:self-auto shrink-0">
+          <span dir="rtl" className="font-arabic text-3xl sm:text-4xl text-primary font-bold self-start sm:self-auto shrink-0 leading-relaxed">
             {lesson.arabicTitle}
           </span>
         </div>
@@ -306,7 +306,7 @@ export const TajwidLessonView: React.FC<TajwidLessonViewProps> = ({
                     : 'border-border bg-surface-alt'
                 }`}
               >
-                <p className="font-arabic text-2xl sm:text-3xl leading-[2.2] text-text-primary">
+                <p dir="rtl" className="font-arabic text-2xl sm:text-3xl leading-[2.4] tracking-wide text-text-primary">
                   {ex.segments.map((seg, sIdx) => {
                     if (seg.isHighlighted) {
                       const colorRule = TAJWID_COLOR_RULES.find((r) => r.id === seg.ruleId);

@@ -75,7 +75,7 @@ export const TajwidGlossary: React.FC<TajwidGlossaryProps> = ({ terms }) => {
                 <Chip variant="secondary" className="text-[10px]">
                   {item.category}
                 </Chip>
-                <span className="font-arabic text-lg text-primary font-normal">
+                <span dir="rtl" className="font-arabic text-xl text-primary font-bold leading-relaxed">
                   {item.arabic}
                 </span>
               </div>

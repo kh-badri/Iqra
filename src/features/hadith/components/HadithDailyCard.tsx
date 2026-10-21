@@ -97,7 +97,7 @@ export function HadithDailyCard({ hadith }: { hadith: HadithItem | null }) {
       {/* Teks Arab Hadits */}
       <p
         dir="rtl"
-        className="font-arabic text-xl sm:text-2xl text-right leading-loose text-text-primary select-text font-medium"
+        className="font-arabic text-xl sm:text-2xl md:text-3xl text-right leading-[2.4] tracking-wide text-text-primary select-text font-medium"
       >
         {hadith.arabic}
       </p>

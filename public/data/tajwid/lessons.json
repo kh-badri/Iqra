@@ -3,7 +3,7 @@
     "slug": "pengantar-makharijul-huruf",
     "level": 1,
     "title": "Pengantar Makharijul Huruf",
-    "arabicTitle": "مخارج الحروف العامة",
+    "arabicTitle": "مَخَارِجُ الْحُرُوْفِ الْعَامَّةُ",
     "category": "Makharijul Huruf",
     "ruleId": "makhraj",
     "colorToken": "primary",
@@ -43,7 +43,7 @@
         "surahNumber": 1,
         "surahName": "Al-Fatihah",
         "ayahNumber": 1,
-        "arabic": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+        "arabic": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ",
         "translation": "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang.",
         "ruleName": "Asy-Syafatain (Ba & Mim) dan Al-Halq (Ha)",
         "note": "Huruf Ba dan Mim keluar dari kedua bibir (Asy-Syafatain), sedangkan Ha pada Ar-Rahman keluar dari tengah tenggorokan (Al-Halq).",
@@ -54,11 +54,7 @@
             "ruleId": "syafatain"
           },
           {
-            "text": "ـسْـ",
-            "isHighlighted": false
-          },
-          {
-            "text": "ـمِ اللَّهِ الرَّ",
+            "text": "ـسْمِ اللّٰهِ الرَّ",
             "isHighlighted": false
           },
           {
@@ -67,7 +63,7 @@
             "ruleId": "halq"
           },
           {
-            "text": "ـمَٰنِ الرَّحِيمِ",
+            "text": "ـمٰنِ الرَّحِيْمِ",
             "isHighlighted": false
           }
         ]
@@ -123,7 +119,7 @@
     "slug": "makhraj-halq-dan-syafatain",
     "level": 1,
     "title": "Makhraj Al-Halq & Asy-Syafatain",
-    "arabicTitle": "مخارج الحلق والشفتين",
+    "arabicTitle": "مَخَارِجُ الْحَلْقِ وَالشَّفَتَيْنِ",
     "category": "Makharijul Huruf",
     "ruleId": "halq",
     "colorToken": "primary",
@@ -168,7 +164,7 @@
         "surahNumber": 112,
         "surahName": "Al-Ikhlas",
         "ayahNumber": 1,
-        "arabic": "قُلْ هُوَ اللَّهُ أَحَدٌ",
+        "arabic": "قُلْ هُوَ اللّٰهُ اَحَدٌۚ",
         "translation": "Katakanlah (Muhammad): \"Dialah Allah, Yang Maha Esa.\"",
         "ruleName": "Huruf Ha (هـ), Hamzah (أ), dan Ha (ح)",
         "note": "Ha (هُوَ) keluar dari pangkal tenggorokan, Hamzah (أَ) dari pangkal tenggorokan, dan Ha (حَدٌ) dari tengah tenggorokan.",
@@ -180,21 +176,21 @@
           {
             "text": "هُـ",
             "isHighlighted": true,
-            "ruleId": "halq"
+            "ruleId": "halq-pangkal"
           },
           {
-            "text": "ـوَ اللَّهُ ",
+            "text": "ـوَ اللّٰهُ ",
             "isHighlighted": false
           },
           {
-            "text": "أَ",
+            "text": "اَ",
             "isHighlighted": true,
-            "ruleId": "halq"
+            "ruleId": "halq-pangkal"
           },
           {
             "text": "حَـ",
             "isHighlighted": true,
-            "ruleId": "halq"
+            "ruleId": "halq-tengah"
           },
           {
             "text": "ـدٌ",
@@ -242,7 +238,7 @@
     "slug": "makhraj-al-lisan",
     "level": 1,
     "title": "Makhraj Al-Lisan (Lidah)",
-    "arabicTitle": "مخارج اللسان",
+    "arabicTitle": "مَخَارِجُ اللِّسَانِ",
     "category": "Makharijul Huruf",
     "ruleId": "lisan",
     "colorToken": "primary",
@@ -291,28 +287,28 @@
         "surahNumber": 114,
         "surahName": "An-Nas",
         "ayahNumber": 4,
-        "arabic": "مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ",
+        "arabic": "مِنْ شَرِّ الْوَسْوَاسِ ەۙ الْخَنَّاسِۖ",
         "translation": "Dari kejahatan (bisikan) setan yang bersembunyi.",
         "ruleName": "Huruf Syin (ش), Sin (س), dan Ra (ر)",
         "note": "Syin keluar dari tengah lidah, Sin dari ujung lidah bertemu rongga gigi seri, dan Ra dari punggung ujung lidah ke gusi atas.",
         "segments": [
           {
-            "text": "مِن ",
+            "text": "مِنْ ",
             "isHighlighted": false
           },
           {
             "text": "شَـ",
             "isHighlighted": true,
-            "ruleId": "lisan"
+            "ruleId": "lisan-tengah"
           },
           {
-            "text": "ـرِّ الْوَ",
+            "text": "ـرِّ الْوَ",
             "isHighlighted": false
           },
           {
             "text": "سْـ",
             "isHighlighted": true,
-            "ruleId": "lisan"
+            "ruleId": "lisan-ujung"
           },
           {
             "text": "ـوَا",
@@ -321,7 +317,7 @@
           {
             "text": "سِ",
             "isHighlighted": true,
-            "ruleId": "lisan"
+            "ruleId": "lisan-ujung"
           }
         ]
       }
@@ -365,7 +361,7 @@
     "slug": "sifat-huruf-dasar",
     "level": 1,
     "title": "Sifat-Sifat Huruf Dasar",
-    "arabicTitle": "صفات الحروف الأساسية",
+    "arabicTitle": "صِفَاتُ الْحُرُوْفِ الْاَسَاسِيَّةُ",
     "category": "Sifat Huruf",
     "ruleId": "sifat",
     "colorToken": "primary",
@@ -398,19 +394,19 @@
         "surahNumber": 113,
         "surahName": "Al-Falaq",
         "ayahNumber": 2,
-        "arabic": "مِن شَرِّ مَا خَلَقَ",
+        "arabic": "مِنْ شَرِّ مَا خَلَقَۙ",
         "translation": "Dari kejahatan (makhluk yang) Dia ciptakan.",
         "ruleName": "Isti'la pada Kha (خ) dan Qaf (ق)",
         "note": "Kha dan Qaf terangkat pangkal lidahnya sehingga suaranya tebal dan berwibawa.",
         "segments": [
           {
-            "text": "مِن شَرِّ مَا ",
+            "text": "مِنْ شَرِّ مَا ",
             "isHighlighted": false
           },
           {
             "text": "خَـ",
             "isHighlighted": true,
-            "ruleId": "istila"
+            "ruleId": "hams"
           },
           {
             "text": "ـلَـ",
@@ -419,7 +415,7 @@
           {
             "text": "ـقَ",
             "isHighlighted": true,
-            "ruleId": "istila"
+            "ruleId": "jahr-qalqalah"
           }
         ]
       }
@@ -450,7 +446,7 @@
     "slug": "izhar-halqi",
     "level": 2,
     "title": "Hukum Izhar Halqi",
-    "arabicTitle": "الإظهار الحلقي",
+    "arabicTitle": "اَلْاِظْهَارُ الْحَلْقِيُّ",
     "category": "Hukum Nun Sukun & Tanwin",
     "ruleId": "izhar",
     "colorToken": "success",
@@ -475,13 +471,13 @@
         "surahNumber": 112,
         "surahName": "Al-Ikhlas",
         "ayahNumber": 4,
-        "arabic": "وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ",
+        "arabic": "وَلَمْ يَكُنْ لَّهٗ كُفُوًا اَحَدٌ ࣖ",
         "translation": "Dan tidak ada seorang pun yang setara dengan Dia.",
         "ruleName": "Tanwin bertemu Hamzah (كُفُوًا أَحَدٌ)",
         "note": "Fathatain pada kata كُفُوًا bertemu huruf Hamzah أَ dibaca jelas: \"kufuwan ahad\".",
         "segments": [
           {
-            "text": "وَلَمْ يَكُن لَّهُ ",
+            "text": "وَلَمْ يَكُنْ لَّهٗ ",
             "isHighlighted": false
           },
           {
@@ -490,7 +486,7 @@
             "ruleId": "izhar"
           },
           {
-            "text": "أَحَدٌ",
+            "text": "اَحَدٌ",
             "isHighlighted": true,
             "ruleId": "izhar"
           }
@@ -500,17 +496,17 @@
         "surahNumber": 1,
         "surahName": "Al-Fatihah",
         "ayahNumber": 7,
-        "arabic": "صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ",
+        "arabic": "صِرَاطَ الَّذِيْنَ اَنْعَمْتَ عَلَيْهِمْ",
         "translation": "Yaitu jalan orang-orang yang telah Engkau anugerahkan nikmat kepada mereka.",
         "ruleName": "Nun Sukun bertemu 'Ain (أَنْعَمْتَ)",
         "note": "Nun mati bertemu huruf 'Ain dalam satu kata dibaca tegas \"an'amta\".",
         "segments": [
           {
-            "text": "صِرَاطَ الَّذِينَ ",
+            "text": "صِرَاطَ الَّذِيْنَ ",
             "isHighlighted": false
           },
           {
-            "text": "أَنْـ",
+            "text": "اَنْـ",
             "isHighlighted": true,
             "ruleId": "izhar"
           },
@@ -558,7 +554,7 @@
     "slug": "idgham-bighunnah",
     "level": 2,
     "title": "Hukum Idgham Bighunnah",
-    "arabicTitle": "الإدغام بغنة",
+    "arabicTitle": "اَلْاِدْغَامُ بِغُنَّةٍ",
     "category": "Hukum Nun Sukun & Tanwin",
     "ruleId": "idgham_bighunnah",
     "colorToken": "warning",
@@ -585,22 +581,22 @@
         "surahNumber": 111,
         "surahName": "Al-Lahab",
         "ayahNumber": 1,
-        "arabic": "تَبَّتْ يَدَا أَبِي لَهَبٍ وَتَبَّ",
+        "arabic": "تَبَّتْ يَدَآ اَبِيْ لَهَبٍ وَّتَبَّۗ",
         "translation": "Binasalah kedua tangan Abu Lahab dan benar-benar binasa dia!",
         "ruleName": "Kasratain bertemu Wau (لَهَبٍ وَتَبَّ)",
         "note": "Kasratain pada lahabin melebur ke huruf wau dengan dengung 2 harakat: \"lahabiww-watabb\".",
         "segments": [
           {
-            "text": "تَبَّتْ يَدَا أَبِي ",
+            "text": "تَبَّتْ يَدَآ اَبِيْ ",
             "isHighlighted": false
           },
           {
-            "text": "لَهَبٍ وَ",
+            "text": "لَهَبٍ وَّ",
             "isHighlighted": true,
-            "ruleId": "idgham_bighunnah"
+            "ruleId": "idgham-bighunnah"
           },
           {
-            "text": "ـتَبَّ",
+            "text": "تَبَّ",
             "isHighlighted": false
           }
         ]
@@ -609,7 +605,7 @@
         "surahNumber": 99,
         "surahName": "Az-Zalzalah",
         "ayahNumber": 7,
-        "arabic": "فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُ",
+        "arabic": "فَمَنْ يَّعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَّرَهٗۚ",
         "translation": "Maka barangsiapa mengerjakan kebaikan seberat zarrah, niscaya dia akan melihat (balasan)nya.",
         "ruleName": "Nun Sukun bertemu Ya (فَمَن يَعْمَلْ)",
         "note": "Nun sukun bertemu ya dibaca melebur: \"famayy-ya'mal\" dengan dengung lembut.",
@@ -619,12 +615,12 @@
             "isHighlighted": false
           },
           {
-            "text": "ـمَن يَّـ",
+            "text": "ـمَنْ يَّـ",
             "isHighlighted": true,
-            "ruleId": "idgham_bighunnah"
+            "ruleId": "idgham-bighunnah"
           },
           {
-            "text": "ـعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُ",
+            "text": "ـعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَّرَهٗ",
             "isHighlighted": false
           }
         ]
@@ -669,7 +665,7 @@
     "slug": "idgham-bilaghunnah",
     "level": 2,
     "title": "Hukum Idgham Bilaghunnah",
-    "arabicTitle": "الإدغام بغير غنة",
+    "arabicTitle": "اَلْاِدْغَامُ بِغَيْرِ غُنَّةٍ",
     "category": "Hukum Nun Sukun & Tanwin",
     "ruleId": "idgham_bilaghunnah",
     "colorToken": "warning",
@@ -690,7 +686,7 @@
         "surahNumber": 112,
         "surahName": "Al-Ikhlas",
         "ayahNumber": 4,
-        "arabic": "وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ",
+        "arabic": "وَلَمْ يَكُنْ لَّهٗ كُفُوًا اَحَدٌ ࣖ",
         "translation": "Dan tidak ada seorang pun yang setara dengan Dia.",
         "ruleName": "Nun Sukun bertemu Lam (يَكُن لَّهُ)",
         "note": "Nun sukun melebur langsung ke Lam tanpa dengung: \"yakullahu\".",
@@ -700,12 +696,12 @@
             "isHighlighted": false
           },
           {
-            "text": "يَكُن لَّـ",
+            "text": "يَكُنْ لَّـ",
             "isHighlighted": true,
-            "ruleId": "idgham_bilaghunnah"
+            "ruleId": "idgham-bilaghunnah"
           },
           {
-            "text": "ـهُ كُفُوًا أَحَدٌ",
+            "text": "ـهٗ كُفُوًا اَحَدٌ",
             "isHighlighted": false
           }
         ]
@@ -714,18 +710,18 @@
         "surahNumber": 104,
         "surahName": "Al-Humazah",
         "ayahNumber": 1,
-        "arabic": "وَيْلٌ لِّكُلِّ هُمَزَةٍ لُّمَزَةٍ",
+        "arabic": "وَيْلٌ لِّكُلِّ هُمَزَةٍ لُّمَزَةٍۙ",
         "translation": "Celakalah bagi setiap pengumpat dan pencela.",
         "ruleName": "Dhammatain bertemu Lam (وَيْلٌ لِّكُلِّ)",
         "note": "Dhammatain pada wailun langsung melebur ke Lam: \"waillul-likulli\".",
         "segments": [
           {
-            "text": "وَيْلٌ لِّـ",
+            "text": "وَيْلٌ لِّـ",
             "isHighlighted": true,
-            "ruleId": "idgham_bilaghunnah"
+            "ruleId": "idgham-bilaghunnah"
           },
           {
-            "text": "ـكُلِّ هُمَزَةٍ لُّمَزَةٍ",
+            "text": "ـكُلِّ هُمَزَةٍ لُّمَزَةٍ",
             "isHighlighted": false
           }
         ]
@@ -756,7 +752,7 @@
     "slug": "iqlab",
     "level": 2,
     "title": "Hukum Iqlab",
-    "arabicTitle": "الإقلاب",
+    "arabicTitle": "اَلْاِقْلَابُ",
     "category": "Hukum Nun Sukun & Tanwin",
     "ruleId": "iqlab",
     "colorToken": "accent",
@@ -776,22 +772,22 @@
         "surahNumber": 96,
         "surahName": "Al-'Alaq",
         "ayahNumber": 15,
-        "arabic": "كَلَّا لَئِن لَّمْ يَنتَهِ لَنَسْفَعًا بِالنَّاصِيَةِ",
+        "arabic": "كَلَّا لَىِٕنْ لَّمْ يَنْتَهِ ەۙ لَنَسْفَعًاۢ بِالنَّاصِيَةِۙ",
         "translation": "Ketahuilah, sungguh jika dia tidak berhenti niscaya Kami tarik ubun-ubunnya.",
         "ruleName": "Tanwin bertemu Ba (لَنَسْفَعًا بِالنَّاصِيَةِ)",
         "note": "Fathatain bertemu Ba dibaca \"lanasfa'am-bin-nashiyah\" dengan dengung mim.",
         "segments": [
           {
-            "text": "كَلَّا لَئِن لَّمْ يَنتَهِ ",
+            "text": "كَلَّا لَىِٕنْ لَّمْ يَنْتَهِ ",
             "isHighlighted": false
           },
           {
-            "text": "لَنَسْفَعًا بِـ",
+            "text": "لَنَسْفَعًاۢ بِـ",
             "isHighlighted": true,
             "ruleId": "iqlab"
           },
           {
-            "text": "ـالنَّاصِيَةِ",
+            "text": "ـالنَّاصِيَةِ",
             "isHighlighted": false
           }
         ]
@@ -800,18 +796,18 @@
         "surahNumber": 2,
         "surahName": "Al-Baqarah",
         "ayahNumber": 18,
-        "arabic": "صُمٌّ بُكْمٌ عُمْيٌ فَهُمْ لَا يَرْجِعُونَ",
+        "arabic": "صُمٌّ ۢ بُكْمٌ عُمْيٌ فَهُمْ لَا يَرْجِعُوْنَۙ",
         "translation": "Mereka tuli, bisu dan buta, maka tidaklah mereka akan kembali.",
         "ruleName": "Dhammatain bertemu Ba (صُمٌّ بُكْمٌ)",
         "note": "Dhammatain bertemu huruf Ba dibaca \"shummum-bukmun\".",
         "segments": [
           {
-            "text": "صُمٌّ بُـ",
+            "text": "صُمٌّ ۢ بُـ",
             "isHighlighted": true,
             "ruleId": "iqlab"
           },
           {
-            "text": "ـكْمٌ عُمْيٌ فَهُمْ لَا يَرْجِعُونَ",
+            "text": "ـكْمٌ عُمْيٌ فَهُمْ لَا يَرْجِعُوْنَ",
             "isHighlighted": false
           }
         ]
@@ -842,7 +838,7 @@
     "slug": "ikhfa-haqiqi",
     "level": 2,
     "title": "Hukum Ikhfa Haqiqi",
-    "arabicTitle": "الإخفاء الحقيقي",
+    "arabicTitle": "اَلْاِخْفَاءُ الْحَقِيْقِيُّ",
     "category": "Hukum Nun Sukun & Tanwin",
     "ruleId": "ikhfa",
     "colorToken": "primary",
@@ -880,18 +876,18 @@
         "surahNumber": 113,
         "surahName": "Al-Falaq",
         "ayahNumber": 2,
-        "arabic": "مِن شَرِّ مَا خَلَقَ",
+        "arabic": "مِنْ شَرِّ مَا خَلَقَۙ",
         "translation": "Dari kejahatan (makhluk yang) Dia ciptakan.",
         "ruleName": "Nun Sukun bertemu Syin (مِن شَرِّ)",
         "note": "Nun sukun bertemu huruf Syin disamarkan dengan dengung tipis: \"ming-syarri\".",
         "segments": [
           {
-            "text": "مِن شَـ",
+            "text": "مِنْ شَـ",
             "isHighlighted": true,
             "ruleId": "ikhfa"
           },
           {
-            "text": "ـرِّ مَا خَلَقَ",
+            "text": "ـرِّ مَا خَلَقَ",
             "isHighlighted": false
           }
         ]
@@ -900,18 +896,18 @@
         "surahNumber": 114,
         "surahName": "An-Nas",
         "ayahNumber": 4,
-        "arabic": "مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ",
+        "arabic": "مِنْ شَرِّ الْوَسْوَاسِ ەۙ الْخَنَّاسِۖ",
         "translation": "Dari kejahatan bisikan (setan) yang bersembunyi.",
         "ruleName": "Ikhfa pada Syin",
         "note": "Dengung 2 harakat dengan posisi mulut menuju makhraj Syin.",
         "segments": [
           {
-            "text": "مِن شَـ",
+            "text": "مِنْ شَـ",
             "isHighlighted": true,
             "ruleId": "ikhfa"
           },
           {
-            "text": "ـرِّ الْوَسْوَاسِ الْخَنَّاسِ",
+            "text": "ـرِّ الْوَسْوَاسِ الْخَنَّاسِ",
             "isHighlighted": false
           }
         ]
@@ -942,7 +938,7 @@
     "slug": "ikhfa-syafawi",
     "level": 3,
     "title": "Hukum Ikhfa Syafawi",
-    "arabicTitle": "الإخفاء الشفوي",
+    "arabicTitle": "اَلْاِخْفَاءُ الشَّفَوِيُّ",
     "category": "Hukum Mim Sukun",
     "ruleId": "ikhfa",
     "colorToken": "primary",
@@ -962,22 +958,22 @@
         "surahNumber": 105,
         "surahName": "Al-Fil",
         "ayahNumber": 4,
-        "arabic": "تَرْمِيهِم بِحِجَارَةٍ مِّن سِجِّيلٍ",
+        "arabic": "تَرْمِيْهِمْ بِحِجَارَةٍ مِّنْ سِجِّيْلٍۙ",
         "translation": "Yang melempari mereka dengan batu dari tanah liat yang dibakar.",
         "ruleName": "Mim Sukun bertemu Ba (تَرْمِيهِم بِحِجَارَةٍ)",
         "note": "Mim sukun pada tarmihim bertemu huruf Ba dibaca samar dan berdengung: \"tarmihim-bihijarah\".",
         "segments": [
           {
-            "text": "تَرْمِيهِـ",
+            "text": "تَرْمِيْهِـ",
             "isHighlighted": false
           },
           {
-            "text": "ـم بِـ",
+            "text": "ـمْ بِـ",
             "isHighlighted": true,
-            "ruleId": "ikhfa"
+            "ruleId": "ikhfa-syafawi"
           },
           {
-            "text": "ـحِجَارَةٍ مِّن سِجِّيلٍ",
+            "text": "ـحِجَارَةٍ مِّنْ سِجِّيْلٍ",
             "isHighlighted": false
           }
         ]
@@ -1008,7 +1004,7 @@
     "slug": "idgham-mimi",
     "level": 3,
     "title": "Hukum Idgham Mimi (Mutamatsilain)",
-    "arabicTitle": "إدغام المتماثلين / الميمي",
+    "arabicTitle": "اِدْغَامُ الْمِثْلَيْنِ الصَّغِيْرِ (الْمِيْمِيُّ)",
     "category": "Hukum Mim Sukun",
     "ruleId": "idgham_bighunnah",
     "colorToken": "warning",
@@ -1028,22 +1024,22 @@
         "surahNumber": 106,
         "surahName": "Quraisy",
         "ayahNumber": 4,
-        "arabic": "الَّذِي أَطْعَمَهُم مِّن جُوعٍ وَآمَنَهُم مِّنْ خَوْفٍ",
+        "arabic": "الَّذِيْٓ اَطْعَمَهُمْ مِّنْ جُوْعٍ ەۙ وَّاٰمَنَهُمْ مِّنْ خَوْفٍ ࣖ",
         "translation": "Yang telah memberi makanan kepada mereka untuk menghilangkan lapar dan mengamankan mereka dari rasa takut.",
         "ruleName": "Mim Sukun bertemu Mim (أَطْعَمَهُم مِّن)",
         "note": "Mim sukun melebur sempurna ke huruf mim berharakat kasrah dengan dengung mantap.",
         "segments": [
           {
-            "text": "الَّذِي أَطْعَمَهُـ",
+            "text": "الَّذِيْٓ اَطْعَمَهُـ",
             "isHighlighted": false
           },
           {
-            "text": "ـم مِّـ",
+            "text": "ـمْ مِّنْ ",
             "isHighlighted": true,
-            "ruleId": "idgham_bighunnah"
+            "ruleId": "idgham-mimi"
           },
           {
-            "text": "ـن جُوعٍ",
+            "text": "جُوْعٍ",
             "isHighlighted": false
           }
         ]
@@ -1074,7 +1070,7 @@
     "slug": "izhar-syafawi",
     "level": 3,
     "title": "Hukum Izhar Syafawi",
-    "arabicTitle": "الإظهار الشفوي",
+    "arabicTitle": "اَلْاِظْهَارُ الشَّفَوِيُّ",
     "category": "Hukum Mim Sukun",
     "ruleId": "izhar",
     "colorToken": "success",
@@ -1098,22 +1094,22 @@
         "surahNumber": 1,
         "surahName": "Al-Fatihah",
         "ayahNumber": 7,
-        "arabic": "غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ",
+        "arabic": "غَيْرِ الْمَغْضُوْبِ عَلَيْهِمْ وَلَا الضَّاۤلِّيْنَ ࣖ",
         "translation": "Bukan (jalan) mereka yang dimurkai dan bukan (pula jalan) mereka yang sesat.",
         "ruleName": "Mim Sukun bertemu Wau (عَلَيْهِمْ وَلَا)",
         "note": "Mim sukun bertemu wau wajib dibaca jelas dan tegas tanpa dengung: \"'alaihim wa ladh-dhaalliin\".",
         "segments": [
           {
-            "text": "غَيْرِ الْمَغْضُوبِ ",
+            "text": "غَيْرِ الْمَغْضُوْبِ ",
             "isHighlighted": false
           },
           {
             "text": "عَلَيْهِمْ ",
             "isHighlighted": true,
-            "ruleId": "izhar"
+            "ruleId": "izhar-syafawi"
           },
           {
-            "text": "وَلَا الضَّالِّينَ",
+            "text": "وَلَا الضَّاۤلِّيْنَ",
             "isHighlighted": false
           }
         ]
@@ -1144,7 +1140,7 @@
     "slug": "mad-thabii",
     "level": 4,
     "title": "Hukum Mad Thabi'i (Mad Asli)",
-    "arabicTitle": "المد الطبيعي / الأصلي",
+    "arabicTitle": "اَلْمَدُّ الطَّبِيْعِيُّ (الْاَصْلِيُّ)",
     "category": "Hukum Mad",
     "ruleId": "mad",
     "colorToken": "accent",
@@ -1166,13 +1162,13 @@
         "surahNumber": 109,
         "surahName": "Al-Kafirun",
         "ayahNumber": 2,
-        "arabic": "لَا أَعْبُدُ مَا تَعْبُدُونَ",
+        "arabic": "لَآ اَعْبُدُ مَا تَعْبُدُوْنَۙ",
         "translation": "Aku tidak akan menyembah apa yang kamu sembah.",
         "ruleName": "Mad Thabi'i pada Maa (مَا)",
         "note": "Huruf Mim berharakat fathah bertemu alif dibaca panjang 2 harakat.",
         "segments": [
           {
-            "text": "لَا أَعْبُدُ ",
+            "text": "لَآ اَعْبُدُ ",
             "isHighlighted": false
           },
           {
@@ -1181,7 +1177,7 @@
             "ruleId": "mad"
           },
           {
-            "text": "تَعْبُدُونَ",
+            "text": "تَعْبُدُوْنَ",
             "isHighlighted": false
           }
         ]
@@ -1212,7 +1208,7 @@
     "slug": "mad-wajib-muttashil",
     "level": 4,
     "title": "Hukum Mad Wajib Muttashil",
-    "arabicTitle": "المد الواجب المتصل",
+    "arabicTitle": "اَلْمَدُّ الْوَاجِبُ الْمُتَّصِلُ",
     "category": "Hukum Mad",
     "ruleId": "mad",
     "colorToken": "accent",
@@ -1232,22 +1228,22 @@
         "surahNumber": 110,
         "surahName": "An-Nashr",
         "ayahNumber": 1,
-        "arabic": "إِذَا جَاءَ نَصْرُ اللَّهِ وَالْفَتْحُ",
+        "arabic": "اِذَا جَاۤءَ نَصْرُ اللّٰهِ وَالْفَتْحُۙ",
         "translation": "Apabila telah datang pertolongan Allah dan kemenangan.",
         "ruleName": "Mad Wajib Muttashil pada Jaa-a (جَاءَ)",
         "note": "Huruf mad alif bertemu hamzah dalam kata tunggal جَاءَ dipanjangkan 4-5 harakat.",
         "segments": [
           {
-            "text": "إِذَا ",
+            "text": "اِذَا ",
             "isHighlighted": false
           },
           {
-            "text": "جَآءَ ",
+            "text": "جَاۤءَ ",
             "isHighlighted": true,
-            "ruleId": "mad"
+            "ruleId": "mad-wajib"
           },
           {
-            "text": "نَصْرُ اللَّهِ وَالْفَتْحُ",
+            "text": "نَصْرُ اللّٰهِ وَالْفَتْحُ",
             "isHighlighted": false
           }
         ]
@@ -1278,7 +1274,7 @@
     "slug": "mad-jaiz-munfashil",
     "level": 4,
     "title": "Hukum Mad Jaiz Munfashil",
-    "arabicTitle": "المد الجائز المنفصل",
+    "arabicTitle": "اَلْمَدُّ الْجَائِزُ الْمُنْفَصِلُ",
     "category": "Hukum Mad",
     "ruleId": "mad",
     "colorToken": "accent",
@@ -1298,18 +1294,18 @@
         "surahNumber": 108,
         "surahName": "Al-Kautsar",
         "ayahNumber": 1,
-        "arabic": "إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ",
+        "arabic": "اِنَّآ اَعْطَيْنٰكَ الْكَوْثَرَۗ",
         "translation": "Sungguh, Kami telah memberimu telaga Kautsar.",
         "ruleName": "Mad Jaiz Munfashil pada Innaa A'thaynaak (إِنَّا أَعْطَيْنَاكَ)",
         "note": "Kata إِنَّا berakhiran mad alif, bertemu kata أَعْطَيْنَاكَ yang diawali hamzah.",
         "segments": [
           {
-            "text": "إِنَّآ ",
+            "text": "اِنَّآ ",
             "isHighlighted": true,
-            "ruleId": "mad"
+            "ruleId": "mad-jaiz"
           },
           {
-            "text": "أَعْطَيْنَاكَ الْكَوْثَرَ",
+            "text": "اَعْطَيْنٰكَ الْكَوْثَرَ",
             "isHighlighted": false
           }
         ]
@@ -1340,7 +1336,7 @@
     "slug": "mad-aridh-lissukun-dan-lin",
     "level": 4,
     "title": "Mad 'Aridh Lissukun & Mad Lin",
-    "arabicTitle": "المد العارض للسكون ومد اللين",
+    "arabicTitle": "مَدُّ الْعَارِضِ لِلسُّكُوْنِ وَمَدُّ اللِّيْنِ",
     "category": "Hukum Mad",
     "ruleId": "mad",
     "colorToken": "accent",
@@ -1360,17 +1356,17 @@
         "surahNumber": 1,
         "surahName": "Al-Fatihah",
         "ayahNumber": 2,
-        "arabic": "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
+        "arabic": "اَلْحَمْدُ لِلّٰهِ رَبِّ الْعٰلَمِيْنَۙ",
         "translation": "Segala puji bagi Allah, Tuhan seluruh alam.",
         "ruleName": "Mad 'Aridh Lissukun pada Al-'Aalamiin (الْعَالَمِينَ)",
         "note": "Ya sukun bertemu Nun berharakat fathah yang dimatikan karena waqaf di akhir ayat.",
         "segments": [
           {
-            "text": "الْحَمْدُ لِلَّهِ رَبِّ ",
+            "text": "اَلْحَمْدُ لِلّٰهِ رَبِّ ",
             "isHighlighted": false
           },
           {
-            "text": "الْعَالَمِينَ",
+            "text": "الْعٰلَمِيْنَ",
             "isHighlighted": true,
             "ruleId": "mad"
           }
@@ -1380,19 +1376,19 @@
         "surahNumber": 106,
         "surahName": "Quraisy",
         "ayahNumber": 1,
-        "arabic": "لِإِيلَافِ قُرَيْشٍ",
+        "arabic": "لِاِيْلٰفِ قُرَيْشٍۙ",
         "translation": "Karena kebiasaan orang-orang Quraisy.",
         "ruleName": "Mad Lin pada Quraisy (قُرَيْشٍ)",
         "note": "Ya sukun didahului Ra fathah lalu diwaqafkan pada huruf Syin.",
         "segments": [
           {
-            "text": "لِإِيلَافِ ",
+            "text": "لِاِيْلٰفِ ",
             "isHighlighted": false
           },
           {
             "text": "قُرَيْشٍ",
             "isHighlighted": true,
-            "ruleId": "mad"
+            "ruleId": "mad-lin"
           }
         ]
       }
@@ -1422,7 +1418,7 @@
     "slug": "mad-lazim",
     "level": 4,
     "title": "Hukum Mad Lazim (Mutsaqqal & Mukhaffaf)",
-    "arabicTitle": "المد اللازم (المثقل والمخفف)",
+    "arabicTitle": "اَلْمَدُّ اللَّازِمُ (الْمُثَقَّلُ وَالْمُخَفَّفُ)",
     "category": "Hukum Mad",
     "ruleId": "mad",
     "colorToken": "accent",
@@ -1442,19 +1438,19 @@
         "surahNumber": 1,
         "surahName": "Al-Fatihah",
         "ayahNumber": 7,
-        "arabic": "غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ",
+        "arabic": "غَيْرِ الْمَغْضُوْبِ عَلَيْهِمْ وَلَا الضَّاۤلِّيْنَ ࣖ",
         "translation": "Bukan jalan mereka yang dimurkai dan bukan (pula jalan) mereka yang sesat.",
         "ruleName": "Mad Lazim Kilmi Mutsaqqal pada Adh-Dhaalliin (الضَّالِّينَ)",
         "note": "Mad alif bertemu Lam bertasydid dalam satu kata dipanjangkan 6 harakat mantap.",
         "segments": [
           {
-            "text": "غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا ",
+            "text": "غَيْرِ الْمَغْضُوْبِ عَلَيْهِمْ وَلَا ",
             "isHighlighted": false
           },
           {
-            "text": "الضَّآلِّينَ",
+            "text": "الضَّاۤلِّيْنَ",
             "isHighlighted": true,
-            "ruleId": "mad"
+            "ruleId": "mad-lazim"
           }
         ]
       }
@@ -1484,7 +1480,7 @@
     "slug": "mad-badal-dan-iwadh",
     "level": 4,
     "title": "Mad Badal & Mad 'Iwadh",
-    "arabicTitle": "مد البدل ومد العوض",
+    "arabicTitle": "مَدُّ الْبَدَلِ وَمَدُّ الْعِوَضِ",
     "category": "Hukum Mad",
     "ruleId": "mad",
     "colorToken": "accent",
@@ -1504,19 +1500,19 @@
         "surahNumber": 100,
         "surahName": "Al-'Adiyat",
         "ayahNumber": 1,
-        "arabic": "وَالْعَادِيَاتِ ضَبْحًا",
+        "arabic": "وَالْعٰدِيٰتِ ضَبْحًاۙ",
         "translation": "Demi kuda perang yang berlari kencang terengah-engah.",
         "ruleName": "Mad 'Iwadh pada Dhab-haa (ضَبْحًا)",
         "note": "Fathatain pada dhabhan berubah menjadi dhab-haa sepanjang 2 harakat saat waqaf.",
         "segments": [
           {
-            "text": "وَالْعَادِيَاتِ ",
+            "text": "وَالْعٰدِيٰتِ ",
             "isHighlighted": false
           },
           {
             "text": "ضَبْحًا",
             "isHighlighted": true,
-            "ruleId": "mad"
+            "ruleId": "mad-iwadh"
           }
         ]
       }
@@ -1546,7 +1542,7 @@
     "slug": "hukum-qalqalah",
     "level": 5,
     "title": "Hukum Qalqalah (Sughra & Kubra)",
-    "arabicTitle": "أحكام القلقلة (الصغرى والكبرى)",
+    "arabicTitle": "اَحْكَامُ الْقَلْقَلَةِ (الصُّغْرٰى وَالْكُبْرٰى)",
     "category": "Qalqalah & Ghunnah",
     "ruleId": "qalqalah",
     "colorToken": "danger",
@@ -1578,17 +1574,17 @@
         "surahNumber": 112,
         "surahName": "Al-Ikhlas",
         "ayahNumber": 1,
-        "arabic": "قُلْ هُوَ اللَّهُ أَحَدٌ",
+        "arabic": "قُلْ هُوَ اللّٰهُ اَحَدٌۚ",
         "translation": "Katakanlah: \"Dialah Allah, Yang Maha Esa.\"",
         "ruleName": "Qalqalah Kubra pada Dal (أَحَدٌ)",
         "note": "Huruf Dal di akhir ayat diwaqafkan sehingga memantul kuat: \"ahad(e)\".",
         "segments": [
           {
-            "text": "قُلْ هُوَ اللَّهُ ",
+            "text": "قُلْ هُوَ اللّٰهُ ",
             "isHighlighted": false
           },
           {
-            "text": "أَحَـ",
+            "text": "اَحَـ",
             "isHighlighted": false
           },
           {
@@ -1602,13 +1598,13 @@
         "surahNumber": 113,
         "surahName": "Al-Falaq",
         "ayahNumber": 1,
-        "arabic": "قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ",
+        "arabic": "قُلْ اَعُوْذُ بِرَبِّ الْفَلَقِۙ",
         "translation": "Katakanlah: \"Aku berlindung kepada Tuhan Yang Menguasai subuh.\"",
         "ruleName": "Qalqalah Kubra pada Qaf (الْفَلَقِ)",
         "note": "Huruf Qaf di akhir ayat memantul tebal dan mantap: \"al-falaq(e)\".",
         "segments": [
           {
-            "text": "قُلْ أَعُوذُ بِرَبِّ ",
+            "text": "قُلْ اَعُوْذُ بِرَبِّ ",
             "isHighlighted": false
           },
           {
@@ -1661,7 +1657,7 @@
     "slug": "ghunnah-musyaddadah",
     "level": 5,
     "title": "Ghunnah Musyaddadah",
-    "arabicTitle": "الغنة المشددة",
+    "arabicTitle": "اَلْغُنَّةُ الْمُشَدَّدَةُ",
     "category": "Qalqalah & Ghunnah",
     "ruleId": "ghunnah",
     "colorToken": "primary",
@@ -1682,13 +1678,13 @@
         "surahNumber": 114,
         "surahName": "An-Nas",
         "ayahNumber": 1,
-        "arabic": "قُلْ أَعُوذُ بِرَبِّ النَّاسِ",
+        "arabic": "قُلْ اَعُوْذُ بِرَبِّ النَّاسِۙ",
         "translation": "Katakanlah: \"Aku berlindung kepada Tuhannya manusia.\"",
         "ruleName": "Nun Bertasydid pada An-Naas (النَّاسِ)",
         "note": "Nun bertasydid ditahan dengungnya selama 2 harakat penuh sebelum melanjutkan ke huruf mad.",
         "segments": [
           {
-            "text": "قُلْ أَعُوذُ بِرَبِّ ",
+            "text": "قُلْ اَعُوْذُ بِرَبِّ ",
             "isHighlighted": false
           },
           {
@@ -1696,7 +1692,7 @@
             "isHighlighted": false
           },
           {
-            "text": "ـنَّـ",
+            "text": "ـنَّـ",
             "isHighlighted": true,
             "ruleId": "ghunnah"
           },
@@ -1732,7 +1728,7 @@
     "slug": "hukum-lam-jalalah-dan-ra",
     "level": 5,
     "title": "Hukum Lam Jalalah & Hukum Ra",
-    "arabicTitle": "أحكام لام الجلالة وحرف الراء",
+    "arabicTitle": "اَحْكَامُ لَامِ الْجَلَالَةِ وَحَرْفِ الرَّاءِ",
     "category": "Tafkhim & Tarqiq",
     "ruleId": "tebal_tipis",
     "colorToken": "primary",
@@ -1765,18 +1761,18 @@
         "surahNumber": 112,
         "surahName": "Al-Ikhlas",
         "ayahNumber": 2,
-        "arabic": "اللَّهُ الصَّمَدُ",
+        "arabic": "اَللّٰهُ الصَّمَدُۚ",
         "translation": "Allah tempat meminta segala sesuatu.",
         "ruleName": "Lam Jalalah Tebal (Tafkhim)",
         "note": "Di awal bacaan, huruf Lam Jalalah dibaca tebal dan agung.",
         "segments": [
           {
-            "text": "اللَّهُ ",
+            "text": "اَللّٰهُ ",
             "isHighlighted": true,
-            "ruleId": "tebal_tipis"
+            "ruleId": "lam-tafkhim"
           },
           {
-            "text": "الصَّمَدُ",
+            "text": "الصَّمَدُ",
             "isHighlighted": false
           }
         ]
@@ -1785,7 +1781,7 @@
         "surahNumber": 1,
         "surahName": "Al-Fatihah",
         "ayahNumber": 1,
-        "arabic": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+        "arabic": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ",
         "translation": "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang.",
         "ruleName": "Lam Jalalah Tipis (Tarqiq)",
         "note": "Didahului huruf Mim berharakat kasrah sehingga dibaca tipis: \"Bismillahi\".",
@@ -1795,12 +1791,12 @@
             "isHighlighted": false
           },
           {
-            "text": "اللَّهِ ",
+            "text": "اللّٰهِ ",
             "isHighlighted": true,
-            "ruleId": "tebal_tipis"
+            "ruleId": "lam-tarqiq"
           },
           {
-            "text": "الرَّحْمَٰنِ الرَّحِيمِ",
+            "text": "الرَّحْمٰنِ الرَّحِيْمِ",
             "isHighlighted": false
           }
         ]
@@ -1831,7 +1827,7 @@
     "slug": "tanda-waqaf-dan-ibtida",
     "level": 5,
     "title": "Tanda Waqaf & Ibtida' Standar Kemenag",
-    "arabicTitle": "علامات الوقف والابتداء",
+    "arabicTitle": "عَلَامَاتُ الْوَقْفِ وَالِابْتِدَاءِ",
     "category": "Waqaf & Ibtida'",
     "ruleId": "waqaf",
     "colorToken": "primary",
@@ -1876,18 +1872,18 @@
         "surahNumber": 2,
         "surahName": "Al-Baqarah",
         "ayahNumber": 2,
-        "arabic": "ذَٰلِكَ الْكِتَابُ لَا رَيْبَ ۛ فِيهِ ۛ هُدًى لِّلْمُتَّقِينَ",
+        "arabic": "ذٰلِكَ الْكِتٰبُ لَا رَيْبَ ۛ فِيْهِ ۛ هُدًى لِّلْمُتَّقِيْنَۙ",
         "translation": "Kitab (Al-Qur'an) ini tidak ada keraguan padanya; petunjuk bagi mereka yang bertakwa.",
         "ruleName": "Waqaf Mu'anaqah (ۛ ... ۛ)",
         "note": "Jika berhenti di kata رَيْبَ, maka teruskan kata فِيهِ tanpa berhenti lagi.",
         "segments": [
           {
-            "text": "ذَٰلِكَ الْكِتَابُ لَا رَيْبَ ",
+            "text": "ذٰلِكَ الْكِتٰبُ لَا رَيْبَ ۛ ",
             "isHighlighted": true,
-            "ruleId": "waqaf"
+            "ruleId": "waqaf-muanaqah"
           },
           {
-            "text": "فِيهِ هُدًى لِّلْمُتَّقِينَ",
+            "text": "فِيْهِ ۛ هُدًى لِّلْمُتَّقِيْنَ",
             "isHighlighted": false
           }
         ]
