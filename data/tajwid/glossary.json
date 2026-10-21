@@ -1,112 +1,112 @@
 [
   {
     "term": "Tajwid",
-    "arabic": "تَجْوِيد",
+    "arabic": "تَجْوِيْدٌ",
     "category": "Dasar",
     "definition": "Mengeluarkan setiap huruf hijaiyah dari tempat keluarnya (makhraj) dengan memberikan hak dan mustahaknya.",
     "example": "Membaca Al-Qur'an secara tartil."
   },
   {
     "term": "Makhraj",
-    "arabic": "مَخْرَج",
+    "arabic": "مَخْرَجٌ",
     "category": "Makharijul Huruf",
     "definition": "Titik artikulasi atau tempat keluarnya bunyi huruf hijaiyah saat diucapkan.",
     "example": "Tenggorokan, lidah, dua bibir."
   },
   {
     "term": "Ghunnah",
-    "arabic": "غُنَّة",
+    "arabic": "غُنَّةٌ",
     "category": "Sifat Huruf",
     "definition": "Suara dengung merdu yang berhembus keluar dari rongga pangkal hidung (Al-Khaisyum).",
     "example": "Dengung pada Nun dan Mim bertasydid."
   },
   {
     "term": "Hams",
-    "arabic": "هَمْس",
+    "arabic": "هَمْسٌ",
     "category": "Sifat Huruf",
     "definition": "Mengalirnya nafas desis saat membunyikan huruf karena terbukanya pita suara.",
     "example": "Huruf Ta (ت), Sin (س), Fa (ف)."
   },
   {
     "term": "Jahr",
-    "arabic": "جَهْر",
+    "arabic": "جَهْرٌ",
     "category": "Sifat Huruf",
     "definition": "Tertahannya hembusan nafas saat huruf dilafalkan karena kuatnya tekanan pada makhraj.",
     "example": "Huruf Hamzah (ء), Ba (ب)."
   },
   {
     "term": "Isti'la",
-    "arabic": "اسْتِعْلَاء",
+    "arabic": "اِسْتِعْلَاۤءٌ",
     "category": "Sifat Huruf",
     "definition": "Terangkatnya pangkal lidah ke langit-langit mulut saat melafalkan huruf sehingga terdengar tebal (Tafkhim).",
     "example": "Huruf Shad (ص), Dhad (ض), Tha (ط)."
   },
   {
     "term": "Istifal",
-    "arabic": "اسْتِفَال",
+    "arabic": "اِسْتِفَالٌ",
     "category": "Sifat Huruf",
     "definition": "Merendahnya lidah dari langit-langit mulut saat melafalkan huruf sehingga terdengar tipis (Tarqiq).",
     "example": "Huruf Dal (د), Sin (س)."
   },
   {
     "term": "Tafkhim",
-    "arabic": "تَفْخِيم",
+    "arabic": "تَفْخِيْمٌ",
     "category": "Karakter Suara",
     "definition": "Menebalkan suara huruf dengan memenuhi rongga mulut oleh gema suaranya.",
     "example": "Lafaz Allah didahului fathah."
   },
   {
     "term": "Tarqiq",
-    "arabic": "تَرْقِيق",
+    "arabic": "تَرْقِيْقٌ",
     "category": "Karakter Suara",
     "definition": "Menipiskan suara huruf tanpa membusungkan gema di dalam rongga mulut.",
     "example": "Lafaz Allah didahului kasrah."
   },
   {
     "term": "Izhar",
-    "arabic": "إِظْهَار",
+    "arabic": "اِظْهَارٌ",
     "category": "Nun/Mim Sukun",
     "definition": "Mengucapkan bunyi huruf secara terang, jelas, dan tanpa dengung.",
     "example": "Nun sukun bertemu huruf Hamzah."
   },
   {
     "term": "Idgham",
-    "arabic": "إِدْغَام",
+    "arabic": "اِدْغَامٌ",
     "category": "Nun/Mim Sukun",
     "definition": "Memasukkan atau meleburkan huruf pertama yang sukun ke dalam huruf berikutnya yang berharakat.",
     "example": "Nun sukun bertemu Ya."
   },
   {
     "term": "Iqlab",
-    "arabic": "إِقْلَاب",
+    "arabic": "اِقْلَابٌ",
     "category": "Nun/Mim Sukun",
     "definition": "Mengubah bunyi nun sukun atau tanwin menjadi suara mim yang disamarkan dengan dengung.",
     "example": "Nun sukun bertemu Ba."
   },
   {
     "term": "Ikhfa",
-    "arabic": "إِخْفَاء",
+    "arabic": "اِخْفَاۤءٌ",
     "category": "Nun/Mim Sukun",
     "definition": "Menyamarkan bacaan antara izhar dan idgham disertai dengung yang ditahan.",
     "example": "Nun sukun bertemu Dal."
   },
   {
     "term": "Qalqalah",
-    "arabic": "قَلْقَلَة",
+    "arabic": "قَلْقَلَةٌ",
     "category": "Sifat Huruf",
     "definition": "Getaran atau pantulan suara yang kuat saat melafalkan huruf sukun karena tertutupnya makhraj secara sempurna.",
     "example": "Pantulan pada huruf Qaf, Tha, Ba, Jim, Dal."
   },
   {
     "term": "Mad",
-    "arabic": "مَدّ",
+    "arabic": "مَدٌّ",
     "category": "Hukum Mad",
     "definition": "Memanjangkan suara bacaan pada huruf-huruf mad (Alif, Wau, Ya).",
     "example": "Mad Thabi'i sepanjang 2 harakat."
   },
   {
     "term": "Qashr",
-    "arabic": "قَصْر",
+    "arabic": "قَصْرٌ",
     "category": "Hukum Mad",
     "definition": "Membaca huruf mad dengan panjang asli minimal (2 harakat) tanpa penambahan.",
     "example": "Membaca mad thabi'i 2 harakat."
@@ -127,14 +127,14 @@
   },
   {
     "term": "Waqaf",
-    "arabic": "وَقْف",
+    "arabic": "وَقْفٌ",
     "category": "Waqaf & Ibtida'",
     "definition": "Menghentikan bacaan sejenak di akhir kata seraya mengambil nafas baru dengan niat melanjutkan kembali.",
     "example": "Berhenti di akhir ayat."
   },
   {
     "term": "Ibtida'",
-    "arabic": "ابْتِدَاء",
+    "arabic": "اِبْتِدَاۤءٌ",
     "category": "Waqaf & Ibtida'",
     "definition": "Memulai kembali bacaan Al-Qur'an setelah berhenti (waqaf).",
     "example": "Memulai dari kata yang memiliki makna sempurna."

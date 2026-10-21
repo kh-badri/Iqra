@@ -2,7 +2,7 @@
   {
     "id": "bukhari",
     "name": "Shahih Bukhari",
-    "arabicName": "صحيح البخاري",
+    "arabicName": "صَحِيْحُ الْبُخَارِيِّ",
     "author": "Imam Abu Abdillah Muhammad bin Ismail Al-Bukhari",
     "grade": "Shahih",
     "totalChunks": 3,
@@ -12,7 +12,7 @@
   {
     "id": "muslim",
     "name": "Shahih Muslim",
-    "arabicName": "صحيح مسلم",
+    "arabicName": "صَحِيْحُ مُسْلِمٍ",
     "author": "Imam Abul Husain Muslim bin Al-Hajjaj An-Naisaburi",
     "grade": "Shahih",
     "totalChunks": 3,
