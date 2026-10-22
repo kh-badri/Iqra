@@ -8,7 +8,7 @@
  * - Audio Qori: Range Request handler untuk Safari/iOS dari Cache Storage
  */
 
-const CACHE_NAME = 'iqra-static-v1.5.0';
+const CACHE_NAME = 'iqra-static-v1.5.1';
 const DATA_CACHE_NAME = 'iqra-data-v1.3.0';
 const AUDIO_CACHE_NAME = 'iqra-audio-cache-v1';
 
@@ -108,13 +108,27 @@ self.addEventListener('push', (event) => {
     body,
     icon: '/icons/icon-192.png',
     badge: '/icons/icon-192.png',
-    vibrate: [500, 250, 500, 250, 500],
+    vibrate: [500, 200, 500, 200, 500, 200, 800],
     tag: 'iqra-adhan-' + prayerId + '-' + new Date().toISOString().slice(0, 10),
     renotify: true,
     requireInteraction: true,
+    sound: '/audio/adhan-makkah.mp3',
+    actions: [
+      {
+        action: 'play_adhan',
+        title: '🔊 Putar Adzan',
+        icon: '/icons/icon-192.png',
+      },
+      {
+        action: 'open_schedule',
+        title: '📖 Buka Jadwal',
+        icon: '/icons/icon-192.png',
+      },
+    ],
     data: {
-      url: '/sholat/?adzan=' + prayerId,
+      url: '/sholat/?adzan=' + prayerId + '&play=1',
       prayerId,
+      shouldPlay: true,
     },
   };
 
@@ -126,21 +140,28 @@ self.addEventListener('push', (event) => {
 // Notification click listener: buka / fokuskan aplikasi ketika user mengetuk notifikasi di HP
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
-  const urlToOpen = (event.notification.data && event.notification.data.url) || '/sholat/';
+  const action = event.action;
+  const prayerId = (event.notification.data && event.notification.data.prayerId) || 'sholat';
+  const shouldPlay = (action === 'play_adhan' || !action);
+  const targetUrl = shouldPlay
+    ? '/sholat/?adzan=' + prayerId + '&play=1'
+    : '/sholat/';
 
   event.waitUntil(
     self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((windowClients) => {
       for (const client of windowClients) {
         if (client.url.includes(self.location.origin) && 'focus' in client) {
           client.postMessage({
-            type: 'NOTIFICATION_CLICKED',
+            type: shouldPlay ? 'PLAY_ADHAN_DIRECT' : 'NOTIFICATION_CLICKED',
+            prayerId: prayerId,
+            action: action,
             data: event.notification.data,
           });
           return client.focus();
         }
       }
       if (self.clients.openWindow) {
-        return self.clients.openWindow(urlToOpen);
+        return self.clients.openWindow(targetUrl);
       }
     })
   );

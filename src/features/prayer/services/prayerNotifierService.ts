@@ -235,6 +235,27 @@ export async function playAdhanAudio(
 }
 
 /**
+ * Memutar adzan langsung berdasarkan ID sholat (fajr, dhuhr, asr, maghrib, isha)
+ * Dipanggil saat notifikasi diketuk atau tombol 'Putar Adzan' ditekan
+ */
+export async function triggerAdhanDirectly(prayerId?: string): Promise<void> {
+  if (typeof window === 'undefined') return;
+  primeAudioOnUserInteraction();
+  const settings = getStoredPrayerSettings();
+  const isFajr = prayerId === 'fajr';
+  const prayerName = prayerId
+    ? (PRAYER_LABELS[prayerId as PrayerName]?.name || prayerId)
+    : 'Sholat';
+
+  await playAdhanAudio(
+    settings.soundType || 'full',
+    settings.adhanMuadhin || 'makkah',
+    isFajr,
+    prayerName
+  );
+}
+
+/**
  * Menampilkan Web Notification yang kompatibel dengan Android Mobile PWA & Desktop
  * Menggunakan ServiceWorkerRegistration.showNotification() sebagai jalur utama
  */
@@ -264,10 +285,23 @@ export async function showPrayerNotification({
     tag, // Mencegah notifikasi ganda bertumpuk
     renotify: true,
     requireInteraction: true,
-    vibrate: [500, 250, 500, 250, 500], // Pola getar pengingat di Android
+    vibrate: [500, 200, 500, 200, 500, 200, 800], // Pola getar pengingat di Android
+    actions: [
+      {
+        action: 'play_adhan',
+        title: '🔊 Putar Adzan',
+        icon: '/icons/icon-192.png',
+      },
+      {
+        action: 'open_schedule',
+        title: '📖 Buka Jadwal',
+        icon: '/icons/icon-192.png',
+      },
+    ],
     data: {
-      url: '/sholat/',
+      url: '/sholat/?adzan=' + (prayerId || 'dhuhr') + '&play=1',
       prayerId: prayerId || 'dhuhr',
+      shouldPlay: true,
       timestamp: Date.now(),
     },
   };

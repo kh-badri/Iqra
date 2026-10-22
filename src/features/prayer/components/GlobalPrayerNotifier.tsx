@@ -6,6 +6,7 @@ import {
   checkAndTriggerPrayers,
   primeAudioOnUserInteraction,
   stopAdhanAudio,
+  triggerAdhanDirectly,
 } from '../services/prayerNotifierService';
 
 export function GlobalPrayerNotifier() {
@@ -42,12 +43,30 @@ export function GlobalPrayerNotifier() {
     };
     window.addEventListener('iqraAdhanStatusChange', handleAdhanStatus);
 
-    // 3. Tangani klik notifikasi dari Service Worker saat layar HP dibuka
+    // 3. Tangani parameter URL jika aplikasi dibuka via tombol 'Putar Adzan' (?adzan=...&play=1)
+    if (typeof window !== 'undefined' && window.location.search) {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const shouldPlay = params.get('play') === '1';
+        const prayerId = params.get('adzan');
+        if (shouldPlay && prayerId) {
+          triggerAdhanDirectly(prayerId);
+          // Bersihkan URL tanpa reload agar tidak terpicu berulang kali
+          const cleanUrl = window.location.pathname;
+          window.history.replaceState({}, '', cleanUrl);
+        }
+      } catch {}
+    }
+
+    // 4. Tangani klik notifikasi dari Service Worker saat layar HP dibuka
     if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
       navigator.serviceWorker.addEventListener('message', (event) => {
-        if (event.data && event.data.type === 'NOTIFICATION_CLICKED') {
-          // Ketika notifikasi diklik, cek dan sinkronkan jadwal
-          checkAndTriggerPrayers();
+        if (event.data) {
+          if (event.data.type === 'PLAY_ADHAN_DIRECT') {
+            triggerAdhanDirectly(event.data.prayerId);
+          } else if (event.data.type === 'NOTIFICATION_CLICKED') {
+            checkAndTriggerPrayers();
+          }
         }
       });
     }
