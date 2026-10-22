@@ -110,7 +110,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
     stepNumber: 4,
     category: 'sunnah',
     title: 'Doa Iftitah (Istiftah)',
-    arabicName: 'دُعَاۤءُ الِاسْتِفْتَاحِ',
+    arabicName: 'دُعَاءُ الِاسْتِفْتَاحِ',
     postureId: 'sedekap',
     movementName: 'Berdiri Khidmat Membaca Pembuka Sholat',
     movementDescription:
@@ -138,7 +138,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
     stepNumber: 5,
     category: 'rukun',
     title: "Membaca Surah Al-Fatihah (Ummul Qur'an)",
-    arabicName: 'قِرَاۤءَةُ سُوْرَةِ الْفَاتِحَةِ',
+    arabicName: 'قِرَاءَةُ سُوْرَةِ الْفَاتِحَةِ',
     postureId: 'sedekap',
     movementName: 'Membaca Ayat demi Ayat dengan Tartil',
     movementDescription:
@@ -149,7 +149,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
       'Memahami bahwa setiap ayat dijawab langsung oleh Allah (Hadits Qudsi)',
     ],
     arabic:
-      'بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ (١) اَلْحَمْدُ لِلّٰهِ رَبِّ الْعٰلَمِيْنَ (٢) اَلرَّحْمٰنِ الرَّحِيْمِ (٣) مٰلِكِ يَوْمِ الدِّيْنِ (٤) اِيَّاكَ نَعْبُدُ وَاِيَّاكَ نَسْتَعِيْنُ (٥) اِهْدِنَا الصِّرَاطَ الْمُسْتَقِيْمَ (٦) صِرَاطَ الَّذِيْنَ اَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوْبِ عَلَيْهِمْ وَلَا الضَّاۤلِّيْنَ (٧)',
+      'بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ (١)\nاَلْحَمْدُ لِلّٰهِ رَبِّ الْعٰلَمِيْنَ (٢)\nاَلرَّحْمٰنِ الرَّحِيْمِ (٣)\nمٰلِكِ يَوْمِ الدِّيْنِ (٤)\nاِيَّاكَ نَعْبُدُ وَاِيَّاكَ نَسْتَعِيْنُ (٥)\nاِهْدِنَا الصِّرَاطَ الْمُسْتَقِيْمَ (٦)\nصِرَاطَ الَّذِيْنَ اَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوْبِ عَلَيْهِمْ وَلَا الضَّآلِّيْنَ (٧)',
     transliteration:
       "Bismillāhir-raḥmānir-raḥīm. Al-ḥamdu lillāhi rabbil-'ālamīn. Ar-raḥmānir-raḥīm. Māliki yaumid-dīn. Iyyāka na'budu wa iyyāka nasta'īn. Ihdinaṣ-ṣirāṭal-mustaqīm. Ṣirāṭal-ladzīna an'amta 'alaihim ghairil-maghdhūbi 'alaihim waladh-dhāllīn.",
     translation:
@@ -199,7 +199,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
       },
       {
         number: 7,
-        arabic: 'صِرَاطَ الَّذِيْنَ اَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوْبِ عَلَيْهِمْ وَلَا الضَّاۤلِّيْنَ',
+        arabic: 'صِرَاطَ الَّذِيْنَ اَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوْبِ عَلَيْهِمْ وَلَا الضَّآلِّيْنَ',
         transliteration: "Ṣirāṭal-ladzīna an'amta 'alaihim ghairil-maghdhūbi 'alaihim waladh-dhāllīn",
         translation: '(yaitu) jalan orang-orang yang telah Engkau beri nikmat kepada mereka; bukan (jalan) mereka yang dimurkai dan bukan (pula) jalan mereka yang sesat.',
         hadithReply: 'Amin — "Ini untuk hamba-Ku, dan untuk hamba-Ku apa yang ia mohonkan."',
@@ -432,7 +432,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
     stepNumber: 12,
     category: 'sunnah',
     title: 'Doa Perlindungan 4 Perkara Sebelum Salam',
-    arabicName: 'الدُّعَاۤءُ قَبْلَ السَّلَامِ',
+    arabicName: 'الدُّعَاءُ قَبْلَ السَّلَامِ',
     postureId: 'tasyahud',
     movementName: 'Memohon Perlindungan Terakhir Sebelum Menutup Sholat',
     movementDescription:

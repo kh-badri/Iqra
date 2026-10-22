@@ -10,11 +10,9 @@ const TARGET_BRANCH = 'cpanel';
 
 console.log('🚀 Memulai persiapan deploy cPanel...');
 
-// 1. Pastikan folder out ada dan memiliki index.html
-if (!fs.existsSync(OUT_DIR) || !fs.existsSync(path.join(OUT_DIR, 'index.html'))) {
-  console.log('📦 Folder out belum lengkap. Menjalankan npm run build...');
-  execSync('npm run build', { stdio: 'inherit' });
-}
+// 1. Selalu jalankan build produksi terbaru agar out/ 100% mutakhir
+console.log('📦 Menjalankan npm run build untuk memastikan seluruh aset produksi mutakhir...');
+execSync('npm run build', { stdio: 'inherit' });
 
 // 2. Pastikan file penting dari public/ tersalin ke out/
 console.log('📋 Menyalin file konfigurasi cPanel (.htaccess, manifest, icons, favicon) ke out/ ...');
