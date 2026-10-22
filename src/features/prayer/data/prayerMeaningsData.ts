@@ -1,5 +1,6 @@
 export interface PrayerVerseItem {
   number: number;
+  label?: string;
   arabic: string;
   transliteration: string;
   translation: string;
@@ -119,7 +120,8 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
       'Dibaca secara lirih (sirr) setelah takbiratul ihram',
       'Hati mengikrarkan penyerahan hidup dan mati kepada Allah',
     ],
-    arabic: 'وَجَّهْتُ وَجْهِيَ لِلَّذِيْ فَطَرَ السَّمٰوٰتِ وَالْاَرْضَ حَنِيْفًا مُّسْلِمًا وَّمَآ اَنَا مِنَ الْمُشْرِكِيْنَ، اِنَّ صَلَاتِيْ وَنُسُكِيْ وَمَحْيَايَ وَمَمَاتِيْ لِلّٰهِ رَبِّ الْعٰلَمِيْنَ، لَا شَرِيْكَ لَهٗ وَبِذٰلِكَ اُمِرْتُ وَاَنَا مِنَ الْمُسْلِمِيْنَ',
+    arabic:
+      'وَجَّهْتُ وَجْهِيَ لِلَّذِيْ فَطَرَ السَّمٰوٰتِ وَالْاَرْضَ حَنِيْفًا مُّسْلِمًا وَّمَآ اَنَا مِنَ الْمُشْرِكِيْنَ،\nاِنَّ صَلَاتِيْ وَنُسُكِيْ وَمَحْيَايَ وَمَمَاتِيْ لِلّٰهِ رَبِّ الْعٰلَمِيْنَ،\nلَا شَرِيْكَ لَهٗ وَبِذٰلِكَ اُمِرْتُ وَاَنَا مِنَ الْمُسْلِمِيْنَ',
     transliteration:
       'Wajjahtu wajhiya lilladzii fatharas-samaawaati wal-ardha haniifam-muslimaw-wa maa ana minal-musyrikiin. Inna shalaatii wa nusukii wa mahyaaya wa mamaatii lillaahi rabbil-\'aalamiin. Laa syariika lahu wa bidzaalika umirtu wa ana minal-muslimiin.',
     translation:
@@ -332,11 +334,42 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
       'Tangan kanan bertumpu di atas lutut dan telunjuk diacungkan saat kalimat tauhid (tidak diangkat melayang)',
       'Pandangan mata diarahkan ke jari telunjuk',
     ],
-    arabic: 'التَّحِيَّاتُ الْمُبَارَكَاتُ الصَّلَوَاتُ الطَّيِّبَاتُ لِلّٰهِ، اَلسَّلَامُ عَلَيْكَ اَيُّهَا النَّبِيُّ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهُ، اَلسَّلَامُ عَلَيْنَا وَعَلٰى عِبَادِ اللّٰهِ الصَّالِحِيْنَ، اَشْهَدُ اَنْ لَا اِلٰهَ اِلَّا اللّٰهُ، وَاَشْهَدُ اَنَّ مُحَمَّدًا رَسُوْلُ اللّٰهِ',
+    arabic:
+      'التَّحِيَّاتُ الْمُبَارَكَاتُ الصَّلَوَاتُ الطَّيِّبَاتُ لِلّٰهِ،\nاَلسَّلَامُ عَلَيْكَ اَيُّهَا النَّبِيُّ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهُ،\nاَلسَّلَامُ عَلَيْنَا وَعَلٰى عِبَادِ اللّٰهِ الصَّالِحِيْنَ،\nاَشْهَدُ اَنْ لَا اِلٰهَ اِلَّا اللّٰهُ، وَاَشْهَدُ اَنَّ مُحَمَّدًا رَسُوْلُ اللّٰهِ',
     transliteration:
       "At-tahiyyaatul-mubaarakaatus-shalawaatut-thayyibaatu lillaah. As-salaamu 'alayka ayyuhan-nabiyyu wa rahmatullaahi wa barakaatuh. As-salaamu 'alaynaa wa 'alaa 'ibaadillaahis-shaalihiin. Asyhadu allaa ilaaha illallaah, wa asyhadu anna Muhammadar-rasuulullaah.",
     translation:
       'Segala penghormatan yang penuh berkah, shalawat, dan kebaikan hanyalah milik Allah. Keselamatan bagimu wahai Nabi, beserta rahmat Allah dan keberkahan-Nya. Keselamatan semoga tercurah atas kami dan atas hamba-hamba Allah yang shalih. Aku bersaksi bahwa tiada ilah selain Allah, dan aku bersaksi bahwa Muhammad adalah utusan Allah.',
+    verses: [
+      {
+        number: 1,
+        label: '1. Penghormatan & Pengagungan kepada Allah',
+        arabic: 'التَّحِيَّاتُ الْمُبَارَكَاتُ الصَّلَوَاتُ الطَّيِّبَاتُ لِلّٰهِ',
+        transliteration: 'At-tahiyyaatul-mubaarakaatus-shalawaatut-thayyibaatu lillaah.',
+        translation: 'Segala penghormatan yang penuh berkah, shalawat, dan kebaikan hanyalah milik Allah.',
+      },
+      {
+        number: 2,
+        label: '2. Salam Penghormatan kepada Nabi Muhammad ﷺ',
+        arabic: 'اَلسَّلَامُ عَلَيْكَ اَيُّهَا النَّبِيُّ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهُ',
+        transliteration: "As-salaamu 'alayka ayyuhan-nabiyyu wa rahmatullaahi wa barakaatuh.",
+        translation: 'Keselamatan bagimu wahai Nabi, beserta rahmat Allah dan keberkahan-Nya.',
+      },
+      {
+        number: 3,
+        label: '3. Doa Keselamatan untuk Kaum Mukminin yang Shalih',
+        arabic: 'اَلسَّلَامُ عَلَيْنَا وَعَلٰى عِبَادِ اللّٰهِ الصَّالِحِيْنَ',
+        transliteration: "As-salaamu 'alaynaa wa 'alaa 'ibaadillaahis-shaalihiin.",
+        translation: 'Keselamatan semoga tercurah atas kami dan atas segenap hamba-hamba Allah yang shalih.',
+      },
+      {
+        number: 4,
+        label: '4. Ikrar Dua Kalimat Syahadat (Tauhid & Risalah)',
+        arabic: 'اَشْهَدُ اَنْ لَا اِلٰهَ اِلَّا اللّٰهُ، وَاَشْهَدُ اَنَّ مُحَمَّدًا رَسُوْلُ اللّٰهِ',
+        transliteration: "Asyhadu allaa ilaaha illallaah, wa asyhadu anna Muhammadar-rasuulullaah.",
+        translation: 'Aku bersaksi bahwa tiada ilah selain Allah, dan aku bersaksi bahwa Muhammad adalah utusan Allah.',
+      },
+    ],
     spiritualMeaning:
       'Mengabadikan salam penghormatan ruhani: mempersembahkan segala kemuliaan kepada Allah, menyapa Rasulullah ﷺ dengan salam cinta dan rindu, mendoakan keselamatan seluruh kaum mukminin di seantero bumi, dan memperbarui ikrar dua kalimat syahadat.',
     tadabbur:
@@ -359,11 +392,34 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
       'Jari telunjuk tetap dalam posisi isyarat tauhid',
       'Melafadzkan shalawat dengan penuh cinta dan takzim kepada Rasulullah ﷺ',
     ],
-    arabic: 'اَللّٰهُمَّ صَلِّ عَلٰى مُحَمَّدٍ وَّعَلٰى اٰلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلٰى اِبْرَاهِيْمَ وَعَلٰى اٰلِ اِبْرَاهِيْمَ، اِنَّكَ حَمِيْدٌ مَّجِيْدٌ. اَللّٰهُمَّ بَارِكْ عَلٰى مُحَمَّدٍ وَّعَلٰى اٰلِ مُحَمَّدٍ، كَمَا بَارَكْتَ عَلٰى اِبْرَاهِيْمَ وَعَلٰى اٰلِ اِبْرَاهِيْمَ، اِنَّكَ حَمِيْدٌ مَّجِيْدٌ',
+    arabic:
+      'اَللّٰهُمَّ صَلِّ عَلٰى مُحَمَّدٍ وَّعَلٰى اٰلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلٰى اِبْرَاهِيْمَ وَعَلٰى اٰلِ اِبْرَاهِيْمَ، اِنَّكَ حَمِيْدٌ مَّجِيْدٌ\nاَللّٰهُمَّ بَارِكْ عَلٰى مُحَمَّدٍ وَّعَلٰى اٰلِ مُحَمَّدٍ، كَمَا بَارَكْتَ عَلٰى اِبْرَاهِيْمَ وَعَلٰى اٰلِ اِبْرَاهِيْمَ، اِنَّكَ حَمِيْدٌ مَّجِيْدٌ',
     transliteration:
       "Allaahumma shalli 'alaa Muhammadiw-wa 'alaa aali Muhammad, kamaa shallayta 'alaa Ibraahiima wa 'alaa aali Ibraahiim, innaka hamiidum-majiid. Allaahumma baarik 'alaa Muhammadiw-wa 'alaa aali Muhammad, kamaa baarakta 'alaa Ibraahiima wa 'alaa aali Ibraahiim, innaka hamiidum-majiid.",
     translation:
       'Ya Allah, limpahkanlah rahmat kepada Nabi Muhammad dan kepada keluarga Nabi Muhammad, sebagaimana Engkau telah melimpahkan rahmat kepada Nabi Ibrahim dan keluarga Nabi Ibrahim. Sesungguhnya Engkau Maha Terpuji lagi Maha Mulia. Ya Allah, berkahilah Nabi Muhammad dan keluarga Nabi Muhammad, sebagaimana Engkau telah memberkahi Nabi Ibrahim dan keluarga Nabi Ibrahim. Sesungguhnya Engkau Maha Terpuji lagi Maha Mulia.',
+    verses: [
+      {
+        number: 1,
+        label: 'Bagian 1: Permohonan Rahmat (Shalawat)',
+        arabic:
+          'اَللّٰهُمَّ صَلِّ عَلٰى مُحَمَّدٍ وَّعَلٰى اٰلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلٰى اِبْرَاهِيْمَ وَعَلٰى اٰلِ اِبْرَاهِيْمَ، اِنَّكَ حَمِيْدٌ مَّجِيْدٌ',
+        transliteration:
+          "Allaahumma shalli 'alaa Muhammadiw-wa 'alaa aali Muhammad, kamaa shallayta 'alaa Ibraahiima wa 'alaa aali Ibraahiim, innaka hamiidum-majiid.",
+        translation:
+          'Ya Allah, limpahkanlah rahmat kepada Nabi Muhammad dan kepada keluarga Nabi Muhammad, sebagaimana Engkau telah melimpahkan rahmat kepada Nabi Ibrahim dan keluarga Nabi Ibrahim. Sesungguhnya Engkau Maha Terpuji lagi Maha Mulia.',
+      },
+      {
+        number: 2,
+        label: 'Bagian 2: Permohonan Keberkahan (Barakah)',
+        arabic:
+          'اَللّٰهُمَّ بَارِكْ عَلٰى مُحَمَّدٍ وَّعَلٰى اٰلِ مُحَمَّدٍ، كَمَا بَارَكْتَ عَلٰى اِبْرَاهِيْمَ وَعَلٰى اٰلِ اِبْرَاهِيْمَ، اِنَّكَ حَمِيْدٌ مَّجِيْدٌ',
+        transliteration:
+          "Allaahumma baarik 'alaa Muhammadiw-wa 'alaa aali Muhammad, kamaa baarakta 'alaa Ibraahiima wa 'alaa aali Ibraahiim, innaka hamiidum-majiid.",
+        translation:
+          'Ya Allah, berkahilah Nabi Muhammad dan keluarga Nabi Muhammad, sebagaimana Engkau telah memberkahi Nabi Ibrahim dan keluarga Nabi Ibrahim. Sesungguhnya Engkau Maha Terpuji lagi Maha Mulia.',
+      },
+    ],
     spiritualMeaning:
       'Lafadz shalawat paling utama dan paling afdhal yang diajarkan langsung oleh Rasulullah ﷺ. Menyambungkan sanad keberkahan risalah tauhid dari Nabi Ibrahim Khalilullah hingga penutup para nabi, Muhammad Rasulullah ﷺ.',
     tadabbur:
@@ -386,11 +442,42 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
       'Memohon perlindungan dari 4 fitnah paling dahsyat dalam hidup',
       'Dilafadzkan secara lirih sebelum salam penutup',
     ],
-    arabic: 'اَللّٰهُمَّ اِنِّيْ اَعُوْذُ بِكَ مِنْ عَذَابِ جَهَنَّمَ، وَمِنْ عَذَابِ الْقَبْرِ، وَمِنْ فِتْنَةِ الْمَحْيَا وَالْمَمَاتِ، وَمِنْ شَرِّ فِتْنَةِ الْمَسِيْحِ الدَّجَّالِ',
+    arabic:
+      'اَللّٰهُمَّ اِنِّيْ اَعُوْذُ بِكَ مِنْ عَذَابِ جَهَنَّمَ، وَمِنْ عَذَابِ الْقَبْرِ، وَمِنْ فِتْنَةِ الْمَحْيَا وَالْمَمَاتِ، وَمِنْ شَرِّ فِتْنَةِ الْمَسِيْحِ الدَّجَّالِ',
     transliteration:
       "Allaahumma innii a'uudzu bika min 'adzaabi jahannam, wa min 'adzaabil-qabr, wa min fitnatil-mahyaa wal-mamaat, wa min syarri fitnatil-masiihid-dajjaal.",
     translation:
       'Ya Allah, sesungguhnya aku berlindung kepada-Mu dari siksa neraka Jahannam, dari siksa kubur, dari fitnah kehidupan dan kematian, serta dari keburukan fitnah Al-Masih Ad-Dajjal.',
+    verses: [
+      {
+        number: 1,
+        label: '1. Perlindungan dari Siksa Neraka Jahannam',
+        arabic: 'اَللّٰهُمَّ اِنِّيْ اَعُوْذُ بِكَ مِنْ عَذَابِ جَهَنَّمَ',
+        transliteration: "Allaahumma innii a'uudzu bika min 'adzaabi jahannam,",
+        translation: 'Ya Allah, sesungguhnya aku berlindung kepada-Mu dari siksa neraka Jahannam,',
+      },
+      {
+        number: 2,
+        label: '2. Perlindungan dari Siksa Kubur (Alam Barzakh)',
+        arabic: 'وَمِنْ عَذَابِ الْقَبْرِ',
+        transliteration: "wa min 'adzaabil-qabr,",
+        translation: 'dan dari siksa kubur,',
+      },
+      {
+        number: 3,
+        label: '3. Perlindungan dari Ujian Hidup & Mati',
+        arabic: 'وَمِنْ فِتْنَةِ الْمَحْيَا وَالْمَمَاتِ',
+        transliteration: 'wa min fitnatil-mahyaa wal-mamaat,',
+        translation: 'dan dari fitnah (ujian) kehidupan serta kematian,',
+      },
+      {
+        number: 4,
+        label: '4. Perlindungan dari Fitnah Al-Masih Ad-Dajjal',
+        arabic: 'وَمِنْ شَرِّ فِتْنَةِ الْمَسِيْحِ الدَّجَّالِ',
+        transliteration: 'wa min syarri fitnatil-masiihid-dajjaal.',
+        translation: 'serta dari keburukan fitnah Al-Masih Ad-Dajjal.',
+      },
+    ],
     spiritualMeaning:
       'Benteng pamungkas dari 4 fitnah dan ancaman paling mengerikan dalam eksistensi manusia: azab neraka, azab alam barzakh (kubur), ujian godaan nafsu/dunia saat hidup dan saat sakaratul maut, serta fitnah penyesatan Dajjal di akhir zaman.',
     tadabbur:

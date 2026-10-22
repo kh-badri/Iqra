@@ -56,7 +56,7 @@ export function PrayerMeaningView() {
       readingContent = step.verses
         .map(
           (v) =>
-            `Ayat ${v.number}:\n${v.arabic}\n${v.transliteration}\n"${v.translation}"${
+            `[${v.label || `Ayat ${v.number}`}]\n${v.arabic}\n${v.transliteration}\n"${v.translation}"${
               v.hadithReply ? `\n(${v.hadithReply})` : ''
             }`
         )
@@ -273,15 +273,15 @@ export function PrayerMeaningView() {
                 {/* Kotak Lafadz Bacaan Arab */}
                 {step.verses && step.verses.length > 0 ? (
                   <div className="p-4 sm:p-5 rounded-card bg-surface-alt border border-border/80 space-y-4">
-                    {/* Bar Kontrol Mode Tampilan Ayat */}
+                    {/* Bar Kontrol Mode Tampilan Ayat / Bagian */}
                     <div className="flex items-center justify-between gap-2 flex-wrap pb-3 border-b border-border/70">
                       <div className="flex items-center gap-2">
                         <span className="w-2 h-2 rounded-full bg-primary" />
                         <span className="text-xs sm:text-sm font-bold text-text-primary">
-                          Lafadz Bacaan ({step.verses.length} Ayat)
+                          Lafadz Bacaan ({step.verses.length} {step.id === 'al-fatihah' ? 'Ayat' : 'Bagian'})
                         </span>
                         <span className="text-[10px] sm:text-[11px] px-2.5 py-0.5 rounded-pill bg-primary/10 text-primary font-semibold border border-primary/20">
-                          Tartil &amp; Sunnah Waqaf
+                          {step.id === 'al-fatihah' ? 'Tartil & Sunnah Waqaf' : 'Tertata Rapi (Mobile & Desktop)'}
                         </span>
                       </div>
 
@@ -297,7 +297,7 @@ export function PrayerMeaningView() {
                               : 'text-text-secondary hover:text-text-primary'
                           }`}
                         >
-                          Per Ayat (Tartil)
+                          {step.id === 'al-fatihah' ? 'Per Ayat (Tartil)' : 'Per Bagian'}
                         </button>
                         <button
                           type="button"
@@ -315,7 +315,7 @@ export function PrayerMeaningView() {
                       </div>
                     </div>
 
-                    {/* Mode Tampilan Per Ayat (Tertata Rapi, Indah, dan Berbobot) */}
+                    {/* Mode Tampilan Per Bagian / Ayat (Sangat Rapi di Layar HP & Laptop) */}
                     {viewModePerStep[step.id] !== 'compact' ? (
                       <div className="space-y-3">
                         {step.verses.map((verse) => (
@@ -323,14 +323,14 @@ export function PrayerMeaningView() {
                             key={verse.number}
                             className="p-3.5 sm:p-4 rounded-button bg-surface border border-border/80 hover:border-primary/40 transition-colors space-y-3"
                           >
-                            {/* Header Ayat & Catatan Hadits Qudsi */}
+                            {/* Header Bagian / Ayat & Catatan Hadits */}
                             <div className="flex items-center justify-between gap-2 flex-wrap">
                               <div className="flex items-center gap-2">
                                 <span className="w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-mono font-bold flex items-center justify-center border border-primary/20 shadow-xs">
                                   {verse.number}
                                 </span>
                                 <span className="text-xs font-bold text-text-secondary">
-                                  Ayat {verse.number}
+                                  {verse.label || `Ayat ${verse.number}`}
                                 </span>
                               </div>
                               {verse.hadithReply && (
@@ -341,9 +341,9 @@ export function PrayerMeaningView() {
                               )}
                             </div>
 
-                            {/* Teks Arab Rasm Utsmani */}
+                            {/* Teks Arab Rasm Utsmani Responsif */}
                             <div
-                              className="font-arabic text-2xl sm:text-3xl text-text-primary leading-[2.4] tracking-wide text-right selection:bg-primary/20 py-1"
+                              className="font-arabic text-xl sm:text-2xl md:text-3xl text-text-primary leading-[2.2] sm:leading-[2.4] tracking-wide text-right selection:bg-primary/20 py-1 break-words whitespace-pre-line"
                               dir="rtl"
                             >
                               {verse.arabic}
@@ -362,10 +362,10 @@ export function PrayerMeaningView() {
                         ))}
                       </div>
                     ) : (
-                      /* Mode Tampilan Teks Lengkap (Tetap Bersih Tanpa Karakter Rusak) */
+                      /* Mode Tampilan Teks Lengkap (Responsif Mobile & Desktop) */
                       <div className="space-y-3">
                         <div
-                          className="font-arabic text-2xl sm:text-3xl text-text-primary leading-[2.4] tracking-wide text-right selection:bg-primary/20 py-1"
+                          className="font-arabic text-xl sm:text-2xl md:text-3xl text-text-primary leading-[2.2] sm:leading-[2.4] tracking-wide text-right selection:bg-primary/20 py-1 whitespace-pre-line break-words"
                           dir="rtl"
                         >
                           {step.arabic}
@@ -386,7 +386,7 @@ export function PrayerMeaningView() {
                   /* Kotak Default untuk Langkah Sholat Lainnya */
                   <div className="p-4 sm:p-5 rounded-card bg-surface-alt border border-border/80 space-y-3">
                     <div
-                      className="font-arabic text-2xl sm:text-3xl text-text-primary leading-[2.4] tracking-wide text-right selection:bg-primary/20 py-1"
+                      className="font-arabic text-xl sm:text-2xl md:text-3xl text-text-primary leading-[2.2] sm:leading-[2.4] tracking-wide text-right selection:bg-primary/20 py-1 whitespace-pre-line break-words"
                       dir="rtl"
                     >
                       {step.arabic}
