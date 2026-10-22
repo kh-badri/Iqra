@@ -1,3 +1,11 @@
+export interface PrayerVerseItem {
+  number: number;
+  arabic: string;
+  transliteration: string;
+  translation: string;
+  hadithReply?: string;
+}
+
 export interface PrayerStepMeaning {
   id: string;
   stepNumber: number;
@@ -15,6 +23,7 @@ export interface PrayerStepMeaning {
   tadabbur: string;
   hadithSource: string;
   referenceBook: string;
+  verses?: PrayerVerseItem[];
 }
 
 export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
@@ -134,14 +143,66 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
       'Membaca Surah Al-Fatihah dengan benar tajwidnya, melafadzkan basmalah, dan berhenti pada setiap akhir ayat (waqaf sunnah). Wajib dibaca pada setiap rakaat.',
     keyPoints: [
       'Membaca basmalah dan setiap ayat dengan tartil',
-      'Berhenti sejenak di setiap akhir ayat (waqaf)',
-      'Memahami bahwa setiap ayat dijawab langsung oleh Allah',
+      'Berhenti sejenak di setiap akhir ayat (sunnah waqaf)',
+      'Memahami bahwa setiap ayat dijawab langsung oleh Allah (Hadits Qudsi)',
     ],
-    arabic: 'بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ ۝ اَلْحَمْدُ لِلّٰهِ رَبِّ الْعٰلَمِيْنَۙ ۝ الرَّحْمٰنِ الرَّحِيْمِۙ ۝ مٰلِكِ يَوْمِ الدِّيْنِۗ ۝ اِيَّاكَ نَعْبُدُ وَاِيَّاكَ نَسْتَعِيْنُۗ ۝ اِهْدِنَا الصِّرَاطَ الْمُسْتَقِيْمَۙ ۝ صِرَاطَ الَّذِيْنَ اَنْعَمْتَ عَلَيْهِمْ ەۙ غَيْرِ الْمَغْضُوْبِ عَلَيْهِمْ وَلَا الضَّاۤلِّيْنَ ࣖ',
+    arabic:
+      'بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ (١) اَلْحَمْدُ لِلّٰهِ رَبِّ الْعٰلَمِيْنَ (٢) اَلرَّحْمٰنِ الرَّحِيْمِ (٣) مٰلِكِ يَوْمِ الدِّيْنِ (٤) اِيَّاكَ نَعْبُدُ وَاِيَّاكَ نَسْتَعِيْنُ (٥) اِهْدِنَا الصِّرَاطَ الْمُسْتَقِيْمَ (٦) صِرَاطَ الَّذِيْنَ اَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوْبِ عَلَيْهِمْ وَلَا الضَّاۤلِّيْنَ (٧)',
     transliteration:
-      "Bismillaahir-rahmaanir-rahiim. Al-hamdu lillaahi rabbil-'aalamiin. Ar-rahmaanir-rahiim. Maaliki yawmid-diin. Iyyaaka na'budu wa iyyaaka nasta'iin. Ihdinas-shiraathal-mustaqiim. Shiraathal-ladziina an'amta 'alayhim ghayril-maghdhuubi 'alayhim waladh-dhaalliin.",
+      "Bismillāhir-raḥmānir-raḥīm. Al-ḥamdu lillāhi rabbil-'ālamīn. Ar-raḥmānir-raḥīm. Māliki yaumid-dīn. Iyyāka na'budu wa iyyāka nasta'īn. Ihdinaṣ-ṣirāṭal-mustaqīm. Ṣirāṭal-ladzīna an'amta 'alaihim ghairil-maghdhūbi 'alaihim waladh-dhāllīn.",
     translation:
-      'Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang. Segala puji bagi Allah, Rabb semesta alam. Maha Pengasih lagi Maha Penyayang. Pemilik Hari Pembalasan. Hanya kepada Engkaulah kami menyembah dan hanya kepada Engkaulah kami memohon pertolongan. Tunjukilah kami jalan yang lurus, (yaitu) jalan orang-orang yang telah Engkau beri nikmat kepada mereka; bukan (jalan) mereka yang dimurkai dan bukan (pula jalan) mereka yang sesat.',
+      'Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang. Segala puji bagi Allah, Rabb semesta alam. Maha Pengasih lagi Maha Penyayang. Pemilik Hari Pembalasan. Hanya kepada Engkaulah kami menyembah dan hanya kepada Engkaulah kami memohon pertolongan. Tunjukilah kami jalan yang lurus, (yaitu) jalan orang-orang yang telah Engkau beri nikmat kepada mereka; bukan (jalan) mereka yang dimurkai dan bukan (pula) jalan mereka yang sesat.',
+    verses: [
+      {
+        number: 1,
+        arabic: 'بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ',
+        transliteration: 'Bismillāhir-raḥmānir-raḥīm',
+        translation: 'Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang.',
+        hadithReply: 'Allah berfirman: "Hamba-Ku telah memuji-Ku."',
+      },
+      {
+        number: 2,
+        arabic: 'اَلْحَمْدُ لِلّٰهِ رَبِّ الْعٰلَمِيْنَ',
+        transliteration: "Al-ḥamdu lillāhi rabbil-'ālamīn",
+        translation: 'Segala puji bagi Allah, Rabb seluruh alam semesta.',
+        hadithReply: 'Allah berfirman: "Hamba-Ku telah menyanjung-Ku."',
+      },
+      {
+        number: 3,
+        arabic: 'اَلرَّحْمٰنِ الرَّحِيْمِ',
+        transliteration: 'Ar-raḥmānir-raḥīm',
+        translation: 'Maha Pengasih lagi Maha Penyayang.',
+        hadithReply: 'Allah berfirman: "Hamba-Ku telah memuliakan-Ku."',
+      },
+      {
+        number: 4,
+        arabic: 'مٰلِكِ يَوْمِ الدِّيْنِ',
+        transliteration: 'Māliki yaumid-dīn',
+        translation: 'Pemilik Hari Pembalasan.',
+        hadithReply: 'Allah berfirman: "Hamba-Ku telah menyerahkan urusannya kepada-Ku."',
+      },
+      {
+        number: 5,
+        arabic: 'اِيَّاكَ نَعْبُدُ وَاِيَّاكَ نَسْتَعِيْنُ',
+        transliteration: "Iyyāka na'budu wa iyyāka nasta'īn",
+        translation: 'Hanya kepada Engkaulah kami menyembah dan hanya kepada Engkaulah kami memohon pertolongan.',
+        hadithReply: 'Allah berfirman: "Ini antara Aku dan hamba-Ku, dan untuk hamba-Ku apa yang ia minta."',
+      },
+      {
+        number: 6,
+        arabic: 'اِهْدِنَا الصِّرَاطَ الْمُسْتَقِيْمَ',
+        transliteration: 'Ihdinaṣ-ṣirāṭal-mustaqīm',
+        translation: 'Tunjukilah kami jalan yang lurus,',
+        hadithReply: 'Allah berfirman: "Ini untuk hamba-Ku, dan bagi hamba-Ku apa yang ia minta."',
+      },
+      {
+        number: 7,
+        arabic: 'صِرَاطَ الَّذِيْنَ اَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوْبِ عَلَيْهِمْ وَلَا الضَّاۤلِّيْنَ',
+        transliteration: "Ṣirāṭal-ladzīna an'amta 'alaihim ghairil-maghdhūbi 'alaihim waladh-dhāllīn",
+        translation: '(yaitu) jalan orang-orang yang telah Engkau beri nikmat kepada mereka; bukan (jalan) mereka yang dimurkai dan bukan (pula) jalan mereka yang sesat.',
+        hadithReply: 'Amin — "Ini untuk hamba-Ku, dan untuk hamba-Ku apa yang ia mohonkan."',
+      },
+    ],
     spiritualMeaning:
       'Al-Fatihah adalah dialog dua arah langsung dengan Allah. Dalam Hadits Qudsi, Allah menjawab setiap ayat: memuji-Ku, menyanjung-Ku, mengagungkan-Ku, dan doa hamba-Ku pasti Ku-kabulkan.',
     tadabbur:
@@ -190,7 +251,7 @@ export const PRAYER_MEANINGS_DATA: PrayerStepMeaning[] = [
       'Berdiri tegak lurus hingga seluruh persendian tenang kembali',
       'Wajib thuma\'ninah sebelum turun ke posisi sujud',
     ],
-    arabic: 'سَمِعَ اللّٰهُ لِمَنْ حَمِدَهٗ ۝ رَبَّنَا لَكَ الْحَمْدُ مِلْءَ السَّمٰوٰتِ وَمِلْءَ الْاَرْضِ وَمِلْءَ مَا شِئْتَ مِنْ شَيْءٍ بَعْدُ',
+    arabic: 'سَمِعَ اللّٰهُ لِمَنْ حَمِدَهٗ، رَبَّنَا لَكَ الْحَمْدُ مِلْءَ السَّمٰوٰتِ وَمِلْءَ الْاَرْضِ وَمِلْءَ مَا شِئْتَ مِنْ شَيْءٍ بَعْدُ',
     transliteration:
       "Sami'allaahu liman hamidah. Rabbanaa lakal hamdu mil'as-samaawaati wa mil'al-ardhi wa mil'a maa syi'ta min syai'im-ba'd.",
     translation:

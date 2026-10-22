@@ -21,6 +21,7 @@ export function PrayerMeaningView() {
   const [activeFilter, setActiveFilter] = React.useState<'all' | 'rukun' | 'sunnah'>('rukun');
   const [searchQuery, setSearchQuery] = React.useState('');
   const [copiedId, setCopiedId] = React.useState<string | null>(null);
+  const [viewModePerStep, setViewModePerStep] = React.useState<Record<string, 'verses' | 'compact'>>({});
 
   const filteredSteps = React.useMemo(() => {
     return PRAYER_MEANINGS_DATA.filter((step) => {
@@ -37,13 +38,32 @@ export function PrayerMeaningView() {
         step.translation.toLowerCase().includes(query) ||
         step.spiritualMeaning.toLowerCase().includes(query) ||
         step.tadabbur.toLowerCase().includes(query) ||
-        step.transliteration.toLowerCase().includes(query)
+        step.transliteration.toLowerCase().includes(query) ||
+        (step.verses &&
+          step.verses.some(
+            (v) =>
+              v.translation.toLowerCase().includes(query) ||
+              v.transliteration.toLowerCase().includes(query)
+          ))
       );
     });
   }, [activeFilter, searchQuery]);
 
   const handleCopy = (step: PrayerStepMeaning) => {
-    const textToCopy = `*${step.title}* (${step.movementName})\n\nLafadz Arab:\n${step.arabic}\n\nLatin:\n${step.transliteration}\n\nArtinya:\n"${step.translation}"\n\nHikmah Ruhani:\n${step.spiritualMeaning}\n\nSumber: ${step.hadithSource}\nKitab: ${step.referenceBook}\n\n(Aplikasi Iqra: Belajar Al-Qur'an, Sholat & Tajwid)`;
+    let readingContent = `Lafadz Arab:\n${step.arabic}\n\nLatin:\n${step.transliteration}\n\nArtinya:\n"${step.translation}"`;
+
+    if (step.verses && step.verses.length > 0) {
+      readingContent = step.verses
+        .map(
+          (v) =>
+            `Ayat ${v.number}:\n${v.arabic}\n${v.transliteration}\n"${v.translation}"${
+              v.hadithReply ? `\n(${v.hadithReply})` : ''
+            }`
+        )
+        .join('\n\n');
+    }
+
+    const textToCopy = `*${step.title}* (${step.movementName})\n\n${readingContent}\n\nHikmah Ruhani:\n${step.spiritualMeaning}\n\nSumber: ${step.hadithSource}\nKitab: ${step.referenceBook}\n\n(Aplikasi Iqra: Belajar Al-Qur'an, Sholat & Tajwid)`;
 
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
       navigator.clipboard.writeText(textToCopy);
@@ -251,23 +271,137 @@ export function PrayerMeaningView() {
                 </div>
 
                 {/* Kotak Lafadz Bacaan Arab */}
-                <div className="p-4 sm:p-5 rounded-card bg-surface-alt border border-border/80 space-y-3">
-                  <div
-                    className="font-arabic text-2xl sm:text-3xl text-text-primary leading-[2.4] tracking-wide text-right selection:bg-primary/20"
-                    dir="rtl"
-                  >
-                    {step.arabic}
-                  </div>
+                {step.verses && step.verses.length > 0 ? (
+                  <div className="p-4 sm:p-5 rounded-card bg-surface-alt border border-border/80 space-y-4">
+                    {/* Bar Kontrol Mode Tampilan Ayat */}
+                    <div className="flex items-center justify-between gap-2 flex-wrap pb-3 border-b border-border/70">
+                      <div className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-primary" />
+                        <span className="text-xs sm:text-sm font-bold text-text-primary">
+                          Lafadz Bacaan ({step.verses.length} Ayat)
+                        </span>
+                        <span className="text-[10px] sm:text-[11px] px-2.5 py-0.5 rounded-pill bg-primary/10 text-primary font-semibold border border-primary/20">
+                          Tartil &amp; Sunnah Waqaf
+                        </span>
+                      </div>
 
-                  <div className="pt-2 border-t border-border/60 space-y-1.5">
-                    <p className="text-xs sm:text-sm font-semibold text-primary italic leading-relaxed">
-                      {step.transliteration}
-                    </p>
-                    <p className="text-xs sm:text-sm text-text-primary leading-relaxed font-normal">
-                      &ldquo;{step.translation}&rdquo;
-                    </p>
+                      <div className="inline-flex p-0.5 bg-surface border border-border rounded-pill text-[11px] font-semibold">
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setViewModePerStep((prev) => ({ ...prev, [step.id]: 'verses' }))
+                          }
+                          className={`px-2.5 py-1 rounded-pill transition-all ${
+                            viewModePerStep[step.id] !== 'compact'
+                              ? 'bg-primary text-on-primary shadow-xs font-bold'
+                              : 'text-text-secondary hover:text-text-primary'
+                          }`}
+                        >
+                          Per Ayat (Tartil)
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setViewModePerStep((prev) => ({ ...prev, [step.id]: 'compact' }))
+                          }
+                          className={`px-2.5 py-1 rounded-pill transition-all ${
+                            viewModePerStep[step.id] === 'compact'
+                              ? 'bg-primary text-on-primary shadow-xs font-bold'
+                              : 'text-text-secondary hover:text-text-primary'
+                          }`}
+                        >
+                          Teks Penuh
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Mode Tampilan Per Ayat (Tertata Rapi, Indah, dan Berbobot) */}
+                    {viewModePerStep[step.id] !== 'compact' ? (
+                      <div className="space-y-3">
+                        {step.verses.map((verse) => (
+                          <div
+                            key={verse.number}
+                            className="p-3.5 sm:p-4 rounded-button bg-surface border border-border/80 hover:border-primary/40 transition-colors space-y-3"
+                          >
+                            {/* Header Ayat & Catatan Hadits Qudsi */}
+                            <div className="flex items-center justify-between gap-2 flex-wrap">
+                              <div className="flex items-center gap-2">
+                                <span className="w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-mono font-bold flex items-center justify-center border border-primary/20 shadow-xs">
+                                  {verse.number}
+                                </span>
+                                <span className="text-xs font-bold text-text-secondary">
+                                  Ayat {verse.number}
+                                </span>
+                              </div>
+                              {verse.hadithReply && (
+                                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-pill bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 text-[11px] font-medium border border-emerald-500/20">
+                                  <Sparkles className="w-3 h-3 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
+                                  <span>{verse.hadithReply}</span>
+                                </div>
+                              )}
+                            </div>
+
+                            {/* Teks Arab Rasm Utsmani */}
+                            <div
+                              className="font-arabic text-2xl sm:text-3xl text-text-primary leading-[2.4] tracking-wide text-right selection:bg-primary/20 py-1"
+                              dir="rtl"
+                            >
+                              {verse.arabic}
+                            </div>
+
+                            {/* Transliterasi & Terjemahan */}
+                            <div className="pt-2 border-t border-border/60 space-y-1">
+                              <p className="text-xs sm:text-sm font-semibold text-primary italic leading-relaxed">
+                                {verse.transliteration}
+                              </p>
+                              <p className="text-xs sm:text-sm text-text-primary leading-relaxed font-normal">
+                                &ldquo;{verse.translation}&rdquo;
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      /* Mode Tampilan Teks Lengkap (Tetap Bersih Tanpa Karakter Rusak) */
+                      <div className="space-y-3">
+                        <div
+                          className="font-arabic text-2xl sm:text-3xl text-text-primary leading-[2.4] tracking-wide text-right selection:bg-primary/20 py-1"
+                          dir="rtl"
+                        >
+                          {step.arabic}
+                        </div>
+
+                        <div className="pt-2 border-t border-border/60 space-y-1.5">
+                          <p className="text-xs sm:text-sm font-semibold text-primary italic leading-relaxed">
+                            {step.transliteration}
+                          </p>
+                          <p className="text-xs sm:text-sm text-text-primary leading-relaxed font-normal">
+                            &ldquo;{step.translation}&rdquo;
+                          </p>
+                        </div>
+                      </div>
+                    )}
                   </div>
-                </div>
+                ) : (
+                  /* Kotak Default untuk Langkah Sholat Lainnya */
+                  <div className="p-4 sm:p-5 rounded-card bg-surface-alt border border-border/80 space-y-3">
+                    <div
+                      className="font-arabic text-2xl sm:text-3xl text-text-primary leading-[2.4] tracking-wide text-right selection:bg-primary/20 py-1"
+                      dir="rtl"
+                    >
+                      {step.arabic}
+                    </div>
+
+                    <div className="pt-2 border-t border-border/60 space-y-1.5">
+                      <p className="text-xs sm:text-sm font-semibold text-primary italic leading-relaxed">
+                        {step.transliteration}
+                      </p>
+                      <p className="text-xs sm:text-sm text-text-primary leading-relaxed font-normal">
+                        &ldquo;{step.translation}&rdquo;
+                      </p>
+                    </div>
+                  </div>
+                )}
 
                 {/* Ruh & Hikmah Spiritual (Penghayatan Khusyuk) */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
